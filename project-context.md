@@ -2,7 +2,7 @@
 project_name: 'dk_verseny_stories'
 user_name: 'Krisztián'
 date: '2026-03-25'
-version: '1.8.0'
+version: '1.10.0'
 sections_completed: ['technology_stack', 'critical_rules']
 existing_patterns_found: 5
 ---
@@ -38,8 +38,15 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - **Coding Standard:** Follow strict ESLint and Prettier configurations. Avoid `var`; use `const` for immutables and `let` for variables.
 - **CSS Naming:** Classes must use **kebab-case** with the `.dkv-` prefix (**BEM style**).
 - **Prohibited Patterns:** `console.log` is forbidden in production; use the built-in `GameLogger`.
+- **MTA 12. kiadás szigorú betartása**: Kötelező a magyar helyesírási szabályzat legújabb kiadásának követése minden felhasználói feliratnál, kommentnél és dokumentációnál.
+    - **Idegen és mozaikszós összetételek**: Kötőjellel kapcsoljuk az idegen szavakat és mozaikszókat (pl. `AI-generálás`, `UI-skálázás`, `Google Fonts-link`, `flexbox-hierarchia`).
+    - **Gyakori szakkifejezések**: `ergonomikus` (rövid 'o', NEM ergonómikus), `interakció`, `szinkronizáció`, `iteráció`.
+    - **Címek és feliratok**: Magyarul a címekben és fejlécekben csak a legelső szót és a tulajdonneveket kezdjük nagybetűvel (pl. `Navigációs térkép`, `Prémium tipográfia`, `A dia finomhangolása`).
+    - **Ragozás**: A mozaikszók utáni ragokat kötőjellel kapcsoljuk (pl. `AI-nak`, `AI-val`, `UI-hoz`).
+    - **Központozás**: Mindig ügyelj a tagmondatok közötti vesszőkre (pl. `Kérjük, várjon!`).
+    - **Idézőjelek**: Magyar szövegben a „alsó nyitó” és „felső záró” idézőjeleket használjuk.
 - **Documentation:** Hungarian JSDoc comments are mandatory for all public methods and modules.
-- **Changelog:** Maintain the `CHANGELOG.md` file in Hungarian, following Semantic Versioning (SemVer) principles.
+- **Changelog:** Maintain the `CHANGELOG.md` file in Hungarian, following Semantic Versioning (SemVer) principles and MTA 12. spelling.
 
 ### Critical Don't-Miss Rules
 

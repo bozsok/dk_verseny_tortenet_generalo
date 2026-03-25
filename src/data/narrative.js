@@ -1,47 +1,197 @@
 export const narrative = [
-  // === ONBOARDING (1-3) ===
-  { id: 'on-1', type: 'onboarding', title: 'Üdvözöllek az Adatpohár világában!', content: 'Isten hozott a Digitális Íróasztal birodalmában, ahol a gondolatok pixelekké állnak össze! Egy különleges küldetésre hívtalak, amely a rendszerünk legféltettebb kincséről, a központi Adatpohárról szól. Ez a kehely őrzi az összes folyamat életenergiáját, de most a félig telt állapota veszélybe került. Szükségünk van egy bátor Kódmesterre, aki képes stabilizálni a benne lévő információs folyadékot. Készen állsz arra, hogy belépj ebbe a mikroszkopikus, de kritikus szektorba?', image: '', notes: '' },
-  { id: 'on-2', type: 'onboarding', title: 'Identitásszinkronizáció', content: 'Mielőtt megközelítenénk az íróasztal központi zónáját, regisztrálnunk kell a jelenlétedet a rendszernaplóban. Kérlek, add meg a teljes nevedet és az osztályodat a hitelesítési protokoll számára! Szükségünk van egy egyedi hívójelre is, amely végigkísér a küldetés során. Minden sikeres logikai műveleted ehhez az azonosítóhoz lesz rendelve a Nagy Adattárban. Az Adatpohár már érzékeli a frekvenciádat, ne hagyd várakozni a hálózatot!', image: '', notes: '' },
-  { id: 'on-3', type: 'onboarding', title: 'Avatárkonfiguráció', content: 'Az üvegpohár világa rendkívül érzékeny a fénytörésekre, ezért szükséged van egy megfelelő vizuális interfészre. Válaszd ki azt a hősavatárt, amely a leginkább passzol a logikai stílusodhoz ebben a transzparens környezetben! Három különböző érzékelőstílus közül választhatsz, amelyek segítenek eligazodni a folyadékfelszín alatti adatfolyamban. Kattints a portrékra a részletes specifikációk megtekintéséhez, és végül hagyd jóvá a döntésedet. Amint az avatárod szinkronizálódik a pufferüveggel, megkezdhetjük a merülést!', image: '', notes: '' },
+  // --- ONBOARDING (Slide 1-3) ---
+  {
+    id: 1,
+    title: "Üdvözlet, Kódmester!",
+    content: "Üdvözöllek a Kód Királyság bejáratánál, ahol az adatfolyamok és algoritmusok alkotják a valóság szövetét. Egy különleges küldetés vár rád, amelyhez minden digitális készségedre szükség lesz. Készülj fel, mert a rendszermag mélyéről érkező hívás nem tűr halasztást. Lépj be a kapun, és válj te is a királyság védelmezőjévé!",
+    type: "onboarding"
+  },
+  {
+    id: 2,
+    title: "Azonosítási Folyamat",
+    content: "Mielőtt megkezdenéd az utazást, rögzítenünk kell a digitális lenyomatodat a központi adatbázisban. Kérlek, add meg a nevedet, a becenevedet és az osztályodat, hogy a rendszer felismerjen téged. Ezek az adatok fontosak lesznek a dicsőségtáblán elért eredményeid pontos naplózásához. Ne feledd: a Kód Királyságban minden karakter számít!",
+    type: "onboarding"
+  },
+  {
+    id: 3,
+    title: "Avatár Kiválasztása",
+    content: "Válaszd ki azt a hősasztárt, aki a leginkább reprezentálja a stílusodat a virtuális térben. Legyél egy gyors Adatfutár, egy bölcs Architektus vagy egy rettenthetetlen Rendszerőr. Az avatárod lesz a társad a küldetés során, akivel együtt fedezheted fel a rejtett zugokat. Kattints a kedvencedre, és kezdődhet a valódi kaland!",
+    type: "onboarding"
+  },
 
-  // === INTRÓ (4-7) ===
-  { id: 'in-1', type: 'intro', title: 'A csendes íróasztal', content: 'A birodalom egykor békés hely volt, ahol az adatok tiszta formában áramlottak az asztal mentén. Az Adatpohár mozdulatlanul állt a központban, félig telt kincse pedig éltető energiát árasztott. Minden processzor hűvösen duruzsolt, és a logikai kapuk ritmikus tánca harmóniát teremtett. Te, mint a szektor őrzője, büszkén néztél végig a jól strukturált könyvtárakon. Ez volt a digitális nyugalom korszaka, ahol semmi sem zavarta meg az asztal felszínét.', image: '', notes: '' },
-  { id: 'in-2', type: 'intro', title: 'A szivárgó valóság', content: 'Hirtelen egy ismeretlen eredetű rezgés rázta meg a faerezetes alapzatot, amitől a pohár fala megremegett. Egy apró, hajszálvékony repedés jelent meg az üvegen, és az értékes folyadék szivárogni kezdett a kernelbe. Az adatszint süllyedni kezdett, a korábbi stabilitás pillanatok alatt köddé vált az asztalon. Ha az összes folyadék távozik, a rendszer kiszárad, és a folyamatok örökre leállnak. Érezted a pánikot a hálózatban, ahogy a bitmorajlás nyugtalanabbá vált.', image: '', notes: '' },
-  { id: 'in-3', type: 'intro', title: 'A Zajentitás megjelenése', content: 'A szivárgás nem véletlen volt: a Zajentitás, egy rosszindulatú algoritmus kezdte el rágni az üveg szerkezetét. Ő az ürességre vágyik, és minden cseppet a saját sötét memóriájába akar szippantani. A pohárban lévő folyadék zavarossá vált, és idegen karakterek kezdtek úszkálni a felszín alatt. A Zajentitás gúnyos kacaja statikus zajként visszhangzott a terminálodban, miközben a fenyegetés valósággá vált. Meg kell állítanod ezt a pusztító folyamatot, mielőtt az asztal teljesen elsötétülne!', image: '', notes: '' },
-  { id: 'in-4', type: 'intro', title: 'Útnak indítás', content: 'Megnyílik az első kapu, amely közvetlenül a Stabilitás Alátétje felé vezeti az utadat. Ahogy átléped a küszöböt, a digitális fények megnyúlnak, és érezni kezded az asztal vibrálását. Minden logikai lépésed közelebb visz az Adatpohár megmentéséhez és a Zajentitás elűzéséhez. Tedd meg az első lépést a transzparens világba, a küldetés célja a rendszer vitalitásának megőrzése. A jövő most a te kezedben van, bátor Kódmester!', image: '', notes: '' },
+  // --- INTRÓ (Slide 4-7) ---
+  {
+    id: 4,
+    title: "A Békés Királyság",
+    content: "A Kód Királyság valaha a stabilitás és a tökéletes optimalizáció szigete volt a hálózati tengeren. Az adatpoharak mindig csurig teltek friss bitekkel, a processzorok pedig egyenletes ritmusban dübörögtek a háttérben. Senki nem sejtette, hogy a mélyben egy elfeledett hiányosság lassan elkezdi felemészteni a rendszert. A harmónia kora azonban most a végéhez közeledik.",
+    type: "intro"
+  },
+  {
+    id: 5,
+    title: "A Rendszerhiba Megjelenése",
+    content: "Váratlanul furcsa jelenségek ütötték fel a fejüket: a képernyők vibrálni kezdtek, és a válaszidők drasztikusan megnőttek. A legendák szerint létezik egy „Rejtett Frissítés”, egy kritikus kódrészlet, amelyet valamiért soha nem telepítettek. Ennek hiánya miatt a királyság struktúrája repedezni kezdett, és a teljes összeomlás réme fenyeget minden lakót. Az óra ketyeg, a hibák szaporodnak.",
+    type: "intro"
+  },
+  {
+    id: 6,
+    title: "A Zajentitás Fenyegetése",
+    content: "A káosz közepén megjelent a hírhedt Zajentitás, egy rosszindulatú programcsomag, amely a hiányzó frissítést akarja végleg törölni. Ez a vírus-szerű lény fekete kódköddel árasztja el a szektorokat, megbénítva a kommunikációt és elnyelve a hasznos adatokat. Ha nem állítjuk meg időben, a Zajentitás lesz az úr a Kód Királyság romjai felett. Te vagy az utolsó reményünk ellene!",
+    type: "intro"
+  },
+  {
+    id: 7,
+    title: "Indulás a Küldetésre",
+    content: "A feladatod világos, Kódmester: meg kell találnod az öt rejtett frissítőszkriptet, mielőtt a Zajentitás eléri azokat. Minden egyes szkript egy-egy védett zónában található, ahol komoly próbákat kell kiállnod. Ha sikerül összegyűjtened mindet, beléphetsz a Magrendszer Kamrájába, hogy elindítsd a végső frissítést. A királyság jövője a te kezedben van, indulj hát azonnal!",
+    type: "intro"
+  },
 
-  // === 1. ÁLLOMÁS (8-11) ===
-  { id: 'st1-1', type: 'stage', title: 'A Stabilitás Alátétje', content: 'Megérkeztél az első állomáshoz, a Stabilitás Alátétjéhez, amely hatalmas korongként támasztja alá az Adatpoharat. Ez a terület a rezgéscsillapításért felelős, de a Zajentitás támadása miatt zűrzavaros hullámok suhannak át rajta. Minden egyes rezzenés további repedéseket okozhat az üvegen, ezért meg kell szilárdítanod az alapot. A levegő itt sűrű és nehéz, szinte hallani a molekulák feszültségét az asztallap felett. Készülj fel, mert a biztonsági protokollok itt a legszigorúbbak!', image: '', notes: '' },
-  { id: 'st1-2', type: 'stage', title: 'A rezgések elemzése', content: 'A korong közepén egy lebegő érzékelő, a Rezgésanalizátor várja az érkezésedet, folyamatos vészjelzéseket küldve. „Az asztal alapzata instabil, és a frekvenciák ütköznek!” – jelenti szaggatott digitális hangon. Ahhoz, hogy folytathasd az utadat, kalibrálnod kell a csillapítórendszert és semlegesítened a zavaró hullámokat. Ha elbuksz, az alátét elmozdul, és a pohár eldőlhet, ami a küldetés végét jelentené. Koncentrálj a tiszta szignálra, és ne hagyd, hogy a zaj elterelje a figyelmedet!', image: '', notes: '' },
-  { id: 'st1-3', type: 'stage', title: 'FELADAT: Rezgéscsillapító kód', content: 'Az analizátor egy sorozatot mutat neked, amely a hullámok amplitúdóját reprezentálja számsorok formájában. A feladatod: találd meg a sorozatban lévő anomáliákat, és írd be a helyes ellensúlyozó értékeket a terminálba! Minden jó válasz egy-egy mágneses rögzítőt aktivál az alátét szélén, stabilizálva az Adatpohár helyzetét. A számok lüktetése jelzi a folyamat sikerességét, érezd a ritmust! Sikerül helyreállítanod a nyugalmat az íróasztalon?', image: '', notes: '' },
-  { id: 'st1-4', type: 'stage', title: 'Az alapok sikere', content: 'Amint az utolsó stabilizációs parancs lefut, az alátét kék fényben ragyog fel, és a rezgések megszűnnek. A pohár fala kisimul, és a folyadék mozdulatlanná válik, ami megkönnyebbülést okoz a rendszerben. Az első hídcsomópont aktiválódott, és érzed, ahogy az energia elindul a kehely gyökerei felé. Ez a siker önbizalmat ad: a fundamentumok rendbetétele az első lépés volt a győzelemhez. Most azonban a Szűrési Szita vár rád a folyadék mélyebb rétegeiben!', image: '', notes: '' },
+  // --- 1. ÁLLOMÁS: Rendszernaplók Temploma (Slide 8-11) ---
+  {
+    id: 8,
+    title: "A Rendszernaplók Temploma",
+    content: "Megérkeztél az első helyszínre, a hatalmas adatoszlopok közé, ahol a királyság minden mozzanatát naplózzák. A levegő sűrű a lebegő bináris karakterektől, és minden falat végtelen kódlisták borítanak. Itt őrzik az első frissítőszkriptet, de a templom mélyére csak az juthat be, aki érti a titkosított jelek nyelvét. Légy éber, mert a Zajentitás már itt is járt!",
+    type: "station"
+  },
+  {
+    id: 9,
+    title: "A Titkosírás Őrzője",
+    content: "Egy ősi Adatpuffer állja utadat, akinek a teste vibráló fényekből és elmosódott karakterekből áll. Csak akkor enged tovább, ha bebizonyítod, hogy képes vagy átlátni a zavaros kódoláson és megérteni a rejtett üzeneteket. A Zajentitás összezavarta a naplófájlokat, így a tisztánlátásodra most nagyobb szükség van, mint valaha. Ne hagyd, hogy a szimbólumok megtévesszenek!",
+    type: "station"
+  },
+  {
+    id: 10,
+    title: "FELADAT: Titkosított üzenet",
+    content: "A templom főterminálján egy zavaros karaktersorozat jelent meg, ahol a betűket számok és különleges jelek helyettesítik. Használd a logikádat, és fejtsd meg, mit rejt a kód! Például az 'h1rdv3r' szó valójában a hardverre utal. Ha helyesen olvasod ki a parancsokat, a rendszer feloldja a védelmi zárat, és hozzáférhetsz az első szkriptdarabhoz.",
+    type: "station"
+  },
+  {
+    id: 11,
+    title: "Az Első Szkript Megvan",
+    content: "Sikerült! A kód feltörése után a főterminál kéken felizzott, és kiadta az első frissítőszkriptet. Érzed, ahogy a zónában a feszültség enyhül, és az adatok ismét akadálytalanul áramlanak az oszlopok között. Azonban ez csak a kezdet volt, még négy darab hiányzik a teljességhez. Ne pihenj sokat, a következő célpont már vár rád a távolban!",
+    type: "station"
+  },
 
-  // === 2. ÁLLOMÁS (12-15) ===
-  { id: 'st2-1', type: 'stage', title: 'A Szűrési Szita', content: 'Átlépted az üveg falát, és most közvetlenül a folyadékfelszín felett lebegsz, ahol a Szűrési Szita rácshálózata feszül keresztbe. Ez a réteg felel az adatok tisztaságáért, de most tele van hiba-pixel darabkákkal és korrupt fájltöredékekkel. A Zajentitás ide szórta a legtöbb szemetet, hogy eltömítse a rendszer csatornáit és megmérgezze a puffervizet. A környezetedben neonfényű örvények kavarognak, ahogy a folyadék átjutni próbál a rácson. Merülj el a részletekben, és kezdd meg a tisztítást!', image: '', notes: '' },
-  { id: 'st2-2', type: 'stage', title: 'A szűrő hibái', content: 'A rácsok között egy pókformájú javítómodul, a Memóriatisztító dolgozik kétségbeejtő sebességgel a karjaival. „Túl sok a szemét, az algoritmusaim már nem bírják ezt a terhelést!” – kiáltja neked a statikus zajon keresztül. Ő felel az adatok tisztaságáért, de a szennyeződés olyan mély, hogy segítségre van szüksége a dekódoláshoz. Segíts neki kiválogatni az érvényes adatcsomagokat a hibás töredékek közül, hogy a folyadék újra tiszta lehessen! Érezd az adatszűrés fontosságát a tengerben.', image: '', notes: '' },
-  { id: 'st2-3', type: 'stage', title: 'FELADAT: Adatcsomag-szűrés', content: 'A tisztító egy sor villogó bináris kódot mutat neked, amelyek mellett különböző formájú adat-ikonok lebegnek a folyadékban. A feladatod: azonosítsd a kódok alapján a helyes csomagokat, és válaszd ki őket a zavaros áramlatból! Minden jó választás tisztítja a környezetedet, és segít a Memóriatisztítónak újjáépíteni a szűrőmechanizmust. A feladat gyorsaságot és éles megfigyelést igényel ebben a lüktető környezetben. Sikerül átlátnod a káoszon, és kiválasztanod az igazat?', image: '', notes: '' },
-  { id: 'st2-4', type: 'stage', title: 'A tisztaság diadala', content: 'Siker! A rácshálózat hirtelen vakító fényben kezd izzani, és a szennyeződések elpárolognak a folyadékból. A Memóriatisztító hálásan bólint feléd, és aktiválja a második hídcsomópontot a szita közepén. Érzed, ahogy a puffervíz újra tisztán kezd áramlani a pohár mélyebb rétegei felé az asztal felett. Ez az élmény felemelő, láthatod a munkád közvetlen eredményét a ragyogó környezetben. Most azonban a Tükröződés Tükre vár rád a fénytörések zónájában!', image: '', notes: '' },
+  // --- 2. ÁLLOMÁS: Futtatókör (Slide 12-15) ---
+  {
+    id: 12,
+    title: "A Futtatókör Zónája",
+    content: "A következő állomásod egy neonfényben úszó, végtelenített versenypályához hasonlít, ahol az adatok szédítő sebességgel keringenek. Itt tesztelik a folyamatok hatékonyságát és sebességét a királyság mérnökei. A környezet folyamatosan változik, és a szemednek minden apró részletet rögzítenie kell, ha nem akarsz elveszni a pörgésben. Itt a figyelem a legfőbb fegyvered.",
+    type: "station"
+  },
+  {
+    id: 13,
+    title: "Váratlan Változások",
+    content: "Ahogy belépsz a pálya közepére, a környezet hirtelen megdermed, majd egy pillanattal később minden megváltozik. A Zajentitás zavart keltett a vizuális pufferben, így a valóság már nem az, aminek látszik. Egy különös hologram jelenik meg előtted, amely a rendszermemóriát reprezentálja. Fel kell ismerned a legkisebb eltérést is, hogy stabilizáld a futtatókör energiáit.",
+    type: "station"
+  },
+  {
+    id: 14,
+    title: "FELADAT: Memóriajáték",
+    content: "Figyeld meg alaposan a kivetített képet, mert csak 15 másodperced van rá! Ezután egy nagyon hasonló kép váltja fel, de valami megváltozott rajta: egy plusz ikon, egy eltolódott pixel vagy egy más színű adatcsomag. Találd meg az összes különbséget a két állapot között, hogy bebizonyítsd: a memóriád élesebb és gyorsabb, mint bármilyen vírus!",
+    type: "station"
+  },
+  {
+    id: 15,
+    title: "Sikeres Stabilizáció",
+    content: "A megfigyeléseid pontosak voltak, a futtatókör vibrálása megszűnt, és a rendszer ismét szinkronba került. Jutalmul megkaptad a második frissítőszkriptet, amely arany színben ragyog az avatárod kezében. Érzed, ahogy a királyság energiája egy kicsit stabilabbá válik, de a Zajentitás dühe is fokozódik. Siess tovább a Töréspont-híd felé, mielőtt lezárják az utat!",
+    type: "station"
+  },
 
-  // === 3. ÁLLOMÁS (16-19) ===
-  { id: 'st3-1', type: 'stage', title: 'A Tükröződés Tükre', content: 'Ebben a zónában az üveg és a folyadék találkozása mentén minden kép megkettőződik, létrehozva a Tükröződés Tükre szektort. Itt a rendszer az adatokat duplikálja és ellenőrzi, hogy elkerülje a hibás mentéseket és az információvesztést. A falakon lebegő tükörpanelek láthatók, amelyek összevissza szórják a fényt, elmosva a valóság és a másolat határát. A levegőben halk hangot hallasz, ahogy a fotonok egymásnak ütköznek a pohár falán. Meg kell találnod a harmadik hídcsomópontot ebben a világban.', image: '', notes: '' },
-  { id: 'st3-2', type: 'stage', title: 'A reflekciók zavara', content: 'A tükrök közül egy prismatikus alak, a Duplikátormagiszter lép eléd, kezében egy kettős adatjogart tartva. „A képek eltorzultak, és az eredeti minták elvesztek a tükröződésekben” – mondja mély, visszhangzó hangon. Ő felel az adatok integritásáért és a másolatok pontosságáért, de a Zajentitás összekuszálta a reflekciókat. Csak egy olyan operátor segíthet neki, aki képes meglátni a lényeget az illúziók és törések tengerében. Segíts neki rekonstruálni a mintákat, és megnyílik az út!', image: '', notes: '' },
-  { id: 'st3-3', type: 'stage', title: 'FELADAT: Mintaintegritás', content: 'A magiszter több komplex geometriai mintát vetít eléd, amelyek mindegyike egy-egy fontos adatszerkezetet reprezentál a kódokban. A feladatod: hasonlítsd össze az eredeti forráskódot a tükrözött másolatokkal, és keresd meg a hibátlan párosokat! Figyelj az apró eltérésekre a formák és a színek illeszkedése között ebben a csillogó útvesztőben! Ha jól döntesz, a tükrök visszanyerik tiszta képüket, és a minták összeállnak. Sikerül megtalálnod a tökéletes egyezést a képekben?', image: '', notes: '' },
-  { id: 'st3-4', type: 'stage', title: 'Szimmetrikus siker', content: 'Az utolsó mintapár is a helyére kerül, a környezeted hirtelen stabilizálódik, a felesleges tükröződések pedig elillannak. A Duplikátormagiszter elismerően átnyújtja neked a harmadik hídcsomóponthoz tartozó kulcsszkriptet a pohárban. Ahogy aktiválod, az energiaáramlás már érezhetően dübörög a mélyben, és a Gépezet hangja is magabiztossá válik. Ez a tapasztalat megtanított arra, hogy a másolatok pontossága éppolyan fontos, mint a forrás. Már csak két állomás van hátra a teljes sikerig!', image: '', notes: '' },
+  // --- 3. ÁLLOMÁS: Töréspont-híd (Slide 16-19) ---
+  {
+    id: 16,
+    title: "A Töréspont-híd",
+    content: "Ez a híd köti össze a szoftveres és hardveres rétegeket a Kód Királyságban, de jelenleg veszélyesen inog. A szerkezete darabokra esett a Rejtett Frissítés hiánya miatt, és alatta a végtelen adatüresség tátong. Csak logikus összefüggések segítségével építheted újjá az átjárót. Vigyázz, hova lépsz, mert a híd elemei folyamatosan átrendeződnek a lábad alatt!",
+    type: "station"
+  },
+  {
+    id: 17,
+    title: "A Logika Őrei",
+    content: "A híd pilléreinél kis lebegő botok várnak, amelyek csak akkor segítenek, ha találsz nekik megfelelő párokat. A Zajentitás szétválasztotta a definíciókat az ábráktól, így teljes a káosz a hídfőnél. Ha szükséged van rá, a rendszer adhat egy kis segítséget, de az igazi felismerést neked kell megtenned. Rakd össze a kirakóst, és tedd stabillá a szerkezetet!",
+    type: "station"
+  },
+  {
+    id: 18,
+    title: "FELADAT: Összepárosítás",
+    content: "A feladatod egyszerűnek tűnik, de nagy odafigyelést igényel: párosítsd össze a képernyőn látható képeket a hozzájuk tartozó leírásokkal! Ha elakadsz, bármikor kérhetsz egy tippet (hint), ami segít az irányban. Minden helyes párosítás egy-egy tartógerendát rögzít a híd alatt, míg végül az egész szerkezet szilárddá válik. Építsd újjá az utat a logikád erejével!",
+    type: "station"
+  },
+  {
+    id: 19,
+    title: "Átkelés Sikerült",
+    content: "A híd végre szilárdan áll, és te biztonságban átértél a túlsó oldalra. A harmadik frissítőszkript a híd túlsó végén várt rád, készen a beépítésre. Most már a küldetés felénél jársz, és a királyság reménye egyre erősebbé válik. Már csak két állomás van hátra a végső cél előtt, de a környezet egyre zordabbá és ellenségesebbé válik. Ne add fel, Kódmester!",
+    type: "station"
+  },
 
-  // === 4. ÁLLOMÁS (20-23) ===
-  { id: 'st4-1', type: 'stage', title: 'A Fénytörés Prizmája', content: 'A Fénytörés Prizmája egy lenyűgöző zóna a folyadék felszínén, ahol a beérkező fény alapszínekre bomlik szét, megvilágítva az adatfolyamokat. Itt történik az információk kategorizálása és irányítása a megfelelő processzormagok felé az asztalon. A levegőben színes adatszálak suhannak, mint a villámok, összekötve a perifériákat a központi egységgel. Minden egyes fénysugár egy-egy parancssort jelképez, amely választ vár a rendszertől. A negyedik hídcsomópont a legmagasabb prizmatorony tetején vár rád.', image: '', notes: '' },
-  { id: 'st4-2', type: 'stage', title: 'Szétválasztott jelek', content: 'A torony lábánál a Spektrumőrző fogad, aki kristályszerű mechanizmussal irányítja a fények áramlását az üvegpohár szélén. „A színek keveredtek, és a válaszjelek elvesztek a spektrum tengerében” – magyarázza a szituációt nekünk. Ő tartja karban a jelzések útvonalait, de a Zajentitás elszínezte a tiszta adatokat, hogy félrevezesse a rendszert. Ahhoz, hogy továbbléphess, bebizonyítanod kell, hogy érted a spektrumok és a kódok közötti összefüggést. Csak a tiszta fény-adat vezethet el a csúcsig!', image: '', notes: '' },
-  { id: 'st4-3', type: 'stage', title: 'FELADAT: Szín-kód társítás', content: 'A platform fölött több kódentitás és színblokk lebeg, amelyek között meg kell találnod a logikailag hozzájuk illő párokat. A feladatod: párosítsd össze a bináris színértékeket a vizuális megfelelőjükkel és a hozzájuk tartozó funkciókkal! Minden helyes párosítás egy-egy kristályos fokot teremt a torony lépcsőjén, amelyen felfelé haladhatsz. A feladat mély odafigyelést és technikai ismereteket igényel a spektrum-analízis világában. Ne engedd, hogy a ragyogás becsapjon! Találd meg a valódi szálakat!', image: '', notes: '' },
-  { id: 'st4-4', type: 'stage', title: 'A spektrum rendje', content: 'Siker! Az összes fényjárta szál a helyére került, és a Spektrum-torony tetejéről végre elindul a negyedik hídcsomópont lüktetése. Érzed, ahogy the pohár belseje újra teljes pompájában világít, és a folyamatok egymáshoz hangolva pulzálnak az asztalon. Ez az élmény felemelő, hiszen újra részese vagy az asztal vizuális harmóniájának, és a zavarodottság érzése tovatűnik. Már csak egyetlen kihívás áll előtted, a legmélyebb Sűrűség Magva a pohár alján. Indulj az utolsó próbára!', image: '', notes: '' },
+  // --- 4. ÁLLOMÁS: Kernel-pajzs Galéria (Slide 20-23) ---
+  {
+    id: 20,
+    title: "Kernel-pajzs Galéria",
+    content: "Beléptél a királyság legvédettebb művészeti zónájába, ahol az operációs rendszer legfontosabb magkódjait őrzik festményként. Ez a hely alapvetően a biztonságról és a harmóniáról szól, de a Zajentitás itt is nyomot hagyott. A galéria falain látható minták közé oda nem illő elemeket csempészett, hogy megzavarja a védelmi protokollokat. Találd meg a hibát a rendszerben!",
+    type: "station"
+  },
+  {
+    id: 21,
+    title: "Az Anomália Keresése",
+    content: "A galéria őrzői zavartan futkároznak, mert nem tudják eldönteni, melyik adatcsomag az, amelyik veszélyt jelent. Egy finom, de kritikus anomália rejtőzik a képek és szövegek között, amit csak egy szakértő szem fedezhet fel. Olyan, mintha egy idegen kódrészlet próbálna beépülni a tökéletes mintába. Legyél te az a szűrő, aki kiszűri a nemkívánatos vendéget a rendszerből!",
+    type: "station"
+  },
+  {
+    id: 22,
+    title: "FELADAT: Kakukktojás",
+    content: "Egy sorozatot látsz magad előtt, amelyben képek vagy szövegek követik egymást egy bizonyos szabály szerint. Azonban az egyik elem kakukktojás: nem illik bele a mintába vagy sérti a logikai sort. Mutass rá a hibás elemre, és távolítsd el a galéria faláról! Ezzel megtisztítod a Kernel-pajzsot a Zajentitás befolyásától, és biztosítod a rendszer alapvető integritását.",
+    type: "station"
+  },
+  {
+    id: 23,
+    title: "A Tisztaság Záloga",
+    content: "A galéria ismét a régi fényében ragyog, miután kivetetted az anomáliát. A negyedik frissítőszkript egy rejtett rekeszből bukkant elő, hálaképpen a munkádért. Már majdnem megvagy, csak egy utolsó erőpróba választ el a végső sikertől. A levegő forróvá és szárazzá válik, ahogy közeledsz a Reboot-sivatag felé. Gyűjtsd össze minden maradék energiádat!",
+    type: "station"
+  },
 
-  // === 5. ÁLLOMÁS (24-27) ===
-  { id: 'st5-1', type: 'stage', title: 'A Sűrűség Magva', content: 'A Sűrűség Magva a pohár legmélyebb pontja, ahol a folyadék nyomása a legnagyobb, és az adatok tömör formában tárolódnak. Itt a legnehezebb a navigáció, mert a bitsűrűség miatt minden mozdulatod lassabb és megfontoltabb kell, hogy legyen. A levegő itt nehéz és vibrál az összesűrített adat-energiától, ami minden interfészedre hatással van. Valahol ebben a mélységben kell megtalálnod az utolsó algoritmust, ami véglegesen lezárja a repedéseket az üveg alján. A kristályos struktúra már látható.', image: '', notes: '' },
-  { id: 'st5-2', type: 'stage', title: 'A tömörség próbája', content: 'A mélyből egy hatalmas digitális alak, a Sűrűségőrző emelkedik ki, körülötte a folyadék szinte megszilárdul a nyomástól. „Csak az képes irányítani a forrást, aki uralja a tömörítést és a logikai súlyt” – mondja mély, dübörgő hangon. Ő az utolsó védelmi vonal, aki segít finomhangolni az Adatpohár legbelső magját a végső győzelem előtt. Ahhoz, hogy aktiváld az utolsó kódot, bizonyítanod kell a figyelem és a ritmusérzék erejét a nagy nyomás alatt. Ez a próba a türelmed végső tesztje lesz!', image: '', notes: '' },
-  { id: 'st5-3', type: 'stage', title: 'FELADAT: Bit-tömörítési ritmus', content: 'A képernyődön egy pulzáló grafikon jelenik meg, amely a folyadék sűrűségét és az adatok ütemét mutatja hullámok formájában. A feladatod: a gombot pontos ritmusban kell lenyomnod, szinkronba kerülve a lüktető maggal, hogy tömörítsd a szivárgó réseket! Minden egyes ütemes kattintás egy-egy réteg védőpajzsot von az üveg belső fala elé ebben a mélységben. A folyamat maximális fókuszt igényel, hiszen a Zajentitás itt támad a leghevesebben a ritmus megbontásával. Sikerül befejezned a tömörítést?', image: '', notes: '' },
-  { id: 'st5-4', type: 'stage', title: 'A szivárgás vége', content: 'Megcsináltad! A sötét áramlatok hirtelen lecsendesednek, és eléd tárul az ötödik hídcsomópont, vakítóan tiszta fényben ragyogva az üveg alján. Ahogy aktiválod, egy hatalmas koordináta-jel lövell ki a pohárból felfelé, kijelölve az utat a végső helyreállításhoz. Ez az élmény megmutatta neked, hogy a legmélyebb pontokon is létezik egy tiszta válasz, csak elég kitartónak kell lenni a nyomás alatt. Minden állomás aktív, és a pohár vibrálása már az erőtől duzzad. Most pedig siess vissza a peremre!', image: '', notes: '' },
+  // --- 5. ÁLLOMÁS: Reboot-sivatag (Slide 24-27) ---
+  {
+    id: 24,
+    title: "A Reboot-sivatag",
+    content: "Ez a terület a királyság perifériája, ahol a régi, törölt fájlok homokként borítanak be mindent. Itt az idő lelassul, és minden mozdulat nehézkesnek tűnik a statikus feltöltődés miatt. A Zajentitás itt próbál meg utoljára feltartóztatni, mielőtt elérnéd a Magrendszer Kamráját. A sivatag közepén egy hatalmas generátort kell újraindítanod, amihez nyers erőre és gyorsaságra lesz szükséged.",
+    type: "station"
+  },
+  {
+    id: 25,
+    title: "Küzdelem a Statikus Feltöltődéssel",
+    content: "A homokvihar egyre erősebben tombol, és a Zajentitás árnyai próbálják lemeríteni az avatárod akkumulátorait. Csak folyamatos és gyors impulzusokkal tarthatod életben a rendszereidet. A sivatagi generátor indítógombja berozsdásodott, és csak a leggyorsabb reakciók képesek életet lehelni belé. Ne hagyd, hogy a statikus zaj elnyomja az akaratodat, mutasd meg, milyen gyors vagy!",
+    type: "station"
+  },
+  {
+    id: 26,
+    title: "FELADAT: Kattintás sebességmérés",
+    content: "Itt nincs helye a gondolkodásnak, csak a tiszta reflexeknek! Kattints az egér gombjával vagy a kijelzővel a lehető leggyorsabban, hogy felpörgesd a generátor fordulatszámát. Minden egyes kattintás energiát termel, ami segít áttörni a Zajentitás záróvonalát. Figyeld a kijelzőt, és ne állj le, amíg a mutató el nem éri a kritikus szintet! Pörgesd fel a rendszert a maximumra!",
+    type: "station"
+  },
+  {
+    id: 27,
+    title: "Az Ötödik Szkript",
+    content: "A generátor hatalmas robajjal beindult, és egy fénycsóva kíséretében megjelent az utolsó, ötödik frissítőszkript is. Sikerült! Mind az öt darab a birtokodban van, amik együttesen már egy komplett megoldást alkotnak. A Zajentitás dühöngve hátrál meg az aktivált energia elől, de tudod, hogy a döntő csata még hátravan. Indulj a Magrendszer Kamrájába, a királyság szívébe!",
+    type: "station"
+  },
 
-  // === FINÁLÉ (28-30) ===
-  { id: 'fi-1', type: 'finale', title: 'A végső kapu', content: 'Visszatértél az Adatpohár felső peremére, ahol a rendszer összes energiája most egyetlen oszlopba tömörülve várakozik. Az öt hídcsomópont fénysugarai a törés felett találkoznak, készen a repedések molekuláris szintű rögzítésére az üvegen. A Zajentitás utolsó, kétségbeesett felhői próbálják eltakarni a látásodat, de az akaratod már erősebb náluk. „Minden készen áll a végső szinkronizációhoz, Kódmester” – szólal meg a Gépezet. Csak egyetlen lépés választ el a teljes és végleges sikertől!', image: '', notes: '' },
-  { id: 'fi-2', type: 'finale', title: 'FELADAT: A stabilizációs algoritmus', content: 'A vezérlőpulton egy utolsó, komplex parancsblokk jelenik meg, amelyhez minden állomáson megszerzett tudásodra szükséged lesz. A feladatod: fűzd össze a 30 dia minden tapasztalatát egyetlen hibátlan algoritmussá, amely örökre lezárja a pohár repedéseit! Ahogy az ujjaid a parancsokat gépelik, az alátét stabilitása és a szita tisztasága mind-mind beépül a végső kódba. Ez a művelet felszabadítja a birodalmat a Zajentitás hatása alól. Egyetlen kattintás választ el a diadaltól. Hajtsd végre!', image: '', notes: '' },
-  { id: 'fi-3', type: 'finale', title: 'A Kristálykehely bajnoka', content: 'Az utolsó kód lefut, az Adatpohár vakító fehér fénybe borul, és a kijelzőn megjelenik az üzenet: „SYSTEM RESTORED: 100%”. Érzed, ahogy az üveg fala újra tökéletesen simává válik, a folyadék pedig visszanyeri eredeti, éltető kristálytisztaságát. A Zajentitás végleg elpárolgott, és a Digitális Íróasztal birodalma újra biztonságos hellyé vált a folyamatos munkához. Megcsináltad, a pohár újra teljes és sérthetetlen! Gratulálunk, bátor Kódmester, te vagy az Adatpohár örökös és hűséges bajnoka!', image: '', notes: '' }
+  // --- FINÁLÉ (Slide 28-30) ---
+  {
+    id: 28,
+    title: "A Magrendszer Kamrája",
+    content: "Megérkeztél a végső kapuhoz, ami a Kód Királyság legbelső magjába vezet. Itt minden adat és folyamat összeér, ez a rendszer agya és szíve egyben. A falak lüktetnek az életenergiától, de a központi parancssor még sötét és mozdulatlan. Csak az öt begyűjtött szkript együttes használatával tudod felébreszteni az alvó óriást. Ez az a pillanat, amiért annyit küzdöttél!",
+    type: "finale"
+  },
+  {
+    id: 29,
+    title: "FELADAT: Végső próba",
+    content: "A parancssorban megjelentek a gyűjtött kódsorok, de véletlenszerű sorrendben. Feladatod, hogy az elhangzott instrukciók alapján illeszd őket a helyes szekvenciába, és indítsd el a futtatást az időzített rendszerben. Ha egyetlen karakter is rossz helyre kerül, a frissítés összeomlik. Koncentrálj, rakd össze a végső kódot, és nyomd meg az Entert! A királyság sorsa ezen a mozdulaton múlik.",
+    type: "finale"
+  },
+  {
+    id: 30,
+    title: "Győzelem és Stabillitás",
+    content: "A kód lefutott, a rendszer felzúgott, és egy vakító fehér fény árasztotta el az egész királyságot. A Zajentitás végleg elpárolgott, a hibák és fagyások pedig a múlté lettek. A Kód Királyság újra stabil, gyors és biztonságosabb, mint valaha. Gratulálunk, Kódmester, te vagy a nap hőse! A nevedet örökre bejegyeztük a rendszernaplók aranyoldalaira. Köszönjük a segítségedet!",
+    type: "finale"
+  }
 ];

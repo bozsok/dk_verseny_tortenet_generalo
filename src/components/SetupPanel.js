@@ -20,27 +20,27 @@ export const SetupPanel = () => {
       </div>
 
       <div class="dkv-input-block">
-        <label class="dkv-label">NARRATÍVA KONCEPTUS ÉS FINOMHANGOLÁS</label>
+        <label class="dkv-label">NARRATÍVA-KONCEPTUS ÉS FINOMHANGOLÁS</label>
         <textarea id="prompt-input" class="dkv-textarea dkv-textarea--medium" placeholder="Írd le a történet alapötletét vagy fűzz hozzá globális kéréseket..." ${disabledAttr}>${store.prompt || store.projectShortDesc}</textarea>
       </div>
 
       <div class="dkv-sidebar__actions">
         <button id="generate-btn" data-action="generate" class="dkv-btn dkv-btn--primary ${lockedBtnClass}" ${disabledAttr}>
-          ${isLocked ? 'GENERÁLÁS FOLYAMATBAN...' : 'AI GENERÁLÁS INDÍTÁSA'}
+          ${isLocked ? 'GENERÁLÁS FOLYAMATBAN...' : 'AI-GENERÁLÁS INDÍTÁSA'}
         </button>
-        
-        <div class="dkv-sidebar__secondary-actions">
-          <button id="blueprint-btn" data-action="edit-blueprint" class="dkv-btn dkv-btn--secondary ${lockedBtnClass}" ${disabledAttr}>
-            BLUEPRINT
+      </div>
+
+      <div class="dkv-sidebar__secondary-actions">
+        <button id="blueprint-btn" data-action="edit-blueprint" class="dkv-btn dkv-btn--secondary ${lockedBtnClass}" ${disabledAttr}>
+          BLUEPRINT
+        </button>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+          <button id="export-md-btn" data-action="export-md" class="dkv-btn dkv-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Markdown-exportálás">
+            .MD
           </button>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
-            <button id="export-md-btn" data-action="export-md" class="dkv-btn dkv-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Markdown Export">
-              .MD
-            </button>
-            <button id="export-txt-btn" data-action="export-txt" class="dkv-btn dkv-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Sima Szöveg Export">
-              .TXT
-            </button>
-          </div>
+          <button id="export-txt-btn" data-action="export-txt" class="dkv-btn dkv-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Sima szöveges exportálás">
+            .TXT
+          </button>
         </div>
       </div>
     </div>

@@ -34,11 +34,11 @@ export class NarrativeEngine {
     const sections = [];
 
     // 1. Onboarding
-    sections.push({ id: 'sec-on', title: 'KEZDÉS // ONBOARDING', start: current, end: (current += onCount), icon: '◈' });
+    sections.push({ id: 'sec-on', title: 'ONBOARDING // KEZDÉS', start: current, end: (current += onCount), icon: '◈' });
 
     // 2. Bevezetés
     if (inCount > 0) {
-      sections.push({ id: 'sec-in', title: 'SZINT // BEVEZETÉS', start: current, end: (current += inCount), icon: '✦' });
+      sections.push({ id: 'sec-in', title: 'INTRO // BEVEZETÉS', start: current, end: (current += inCount), icon: '✦' });
     }
 
     // 3. Állomások
@@ -48,7 +48,7 @@ export class NarrativeEngine {
       if (count > 0) {
         sections.push({
           id: `sec-st${i + 1}`,
-          title: `${String(i + 1).padStart(2, '0')}. ÁLLOMÁS // SZAKASZ ${i + 1}`,
+          title: `${String(i + 1).padStart(2, '0')}. SZAKASZ // ${i + 1}. ÁLLOMÁS`,
           start: current,
           end: (current += count),
           color: stationColors[i],
@@ -66,14 +66,14 @@ export class NarrativeEngine {
   }
 
   /**
-   * Legenerálja a Navigációs Térkép HTML-jét.
+   * Legenerálja a navigációs térkép HTML-jét.
    * @param {Array} sections - A szekciók listája.
    * @returns {string} A mini-térkép HTML kódja.
    */
   static generateMiniMapHTML(sections) {
     return `
       <div class="dkv-mini-map">
-        <h4 class="dkv-mini-map__title">Navigációs Térkép</h4>
+        <h4 class="dkv-mini-map__title">Navigációs térkép</h4>
         <div class="dkv-mini-map__links">
           ${sections.map(s => `
             <a href="#${s.id}" class="dkv-jump-link" title="${s.title.split(' // ')[1]}">

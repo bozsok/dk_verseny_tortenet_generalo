@@ -41,7 +41,7 @@ eventBus.on('UI_REJECTED_ACTION', ({ reason }) => {
 
     const toast = document.createElement('div');
     toast.className = 'dkv-toast';
-    toast.innerText = 'GENERÁLÁS FOLYAMATBAN... KÉRJÜK VÁRJON!';
+    toast.innerText = 'GENERÁLÁS FOLYAMATBAN... KÉRJÜK, VÁRJON!';
     document.body.appendChild(toast);
     setTimeout(() => toast.remove(), 2500);
   }
@@ -174,7 +174,7 @@ function updateDynamicContent(property, value) {
           <div class="dkv-status-card">
             <h2 class="dkv-neon-text">SZINKRONIZÁCIÓ FOLYAMATBAN</h2>
             <div class="dkv-digital-pulse" style="margin-bottom: 30px;"></div>
-            <p style="font-size: 1.2rem; color: var(--text-white);">Adatok küldése az AI motornak...</p>
+            <p style="font-size: 1.2rem; color: var(--text-white);">Adatok küldése az AI-motornak...</p>
             <p style="color: var(--text-dim); margin-top: 15px;">A folyamat automatikus.</p>
           </div>
         </div>
@@ -187,7 +187,7 @@ function updateDynamicContent(property, value) {
     return;
   }
 
-  // Várakozás az AI válaszára
+  // Várakozás az AI-válaszra
   if (property === 'isWaitingForNarrative') {
     if (value && statusRoot) {
       statusRoot.innerHTML = `
@@ -198,7 +198,7 @@ function updateDynamicContent(property, value) {
               Kérlek, most kérd meg az AI-t a chatben a történet legenerálására!
             </p>
             <p style="color: var(--neon-cyan); margin-top: 20px; font-weight: bold;">
-              Várakozás az AI válaszára...
+              Várakozás az AI-válaszra...
             </p>
           </div>
         </div>
@@ -377,10 +377,10 @@ function setupEventListeners() {
         const result = await response.json();
         if (!result.success) throw new Error(result.error);
         Logger.info('Blueprint sikeresen mentve a szerverre.');
-        // store.toastMessage = 'Adatok elküldve az AI motornak...'; // Okafogyott a modal miatt
+        // store.toastMessage = 'Adatok elküldve az AI-motornak...'; // Okafogyott a modal miatt
       } catch (err) {
         Logger.error('Hiba a mentés során:', err);
-        store.toastMessage = 'HIBA: Az AI Bridge (server.js) nem érhető el!';
+        store.toastMessage = 'HIBA: Az AI-Bridge (server.js) nem érhető el!';
         store.isGenerating = false;
         return;
       }
@@ -395,7 +395,7 @@ function setupEventListeners() {
           if (newNarrative && Array.isArray(newNarrative)) {
             store.narrative = [...newNarrative];
             Logger.info(`Sikeres importálás: ${newNarrative.length} dia betöltve.`);
-            store.toastMessage = 'A történet automatikusan meg fog jelnni itt, amint az AI elkészült vele.';
+            store.toastMessage = 'A történet automatikusan meg fog jelenni itt, amint az AI elkészült vele.';
             // A felhasználói élmény kedvéért néha töröljük a promptot, 
             // ha már "feldolgoztuk" (ahogy a felhasználó említette)
             // de a címet érdemes megtartani. Itt most csak naplózzuk.

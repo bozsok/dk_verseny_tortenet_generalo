@@ -5,7 +5,7 @@ export const BlueprintModal = () => {
     <div id="blueprint-modal" class="dkv-modal-overlay dkv-modal-overlay--visible">
       <div class="dkv-modal-card dkv-modal-card--cyan dkv-fade-in-up">
         <div class="dkv-modal-header">
-          <h2 class="dkv-neon-text">Mesterleíró Szerkesztő</h2>
+          <h2 class="dkv-neon-text">Mesterleíró szerkesztő</h2>
           <button id="close-blueprint" class="dkv-close-btn">&times;</button>
         </div>
         

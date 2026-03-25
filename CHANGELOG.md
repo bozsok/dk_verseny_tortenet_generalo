@@ -3,6 +3,17 @@
 Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **szemantikus verziózás (SemVer)** elvei szerint.
 
 ---
+## [1.10.0] – 2026-03-26
+### 🛠️ Hozzáadva
+- **Google Fonts infrastruktúra**: Az `index.html` mostantól hatékonyan tölti be az új betűtípusokat preconnect támogatással.
+- **Fira Code integráció**: A kártyaszámok és technikai adatok mostantól stílusos monospaced betűtípussal jelennek meg.
+
+### 🎨 Megváltoztatva
+- **Prémium tipográfia**: Az elavult 'Inter' lecserélése az **Outfit** (szöveg) és **Rajdhani** (címsorok) párosra a modernebb „cyber-fantasy” hatás érdekében.
+- **Ergonomikus sidebar**: A másodlagos akciógombok (Blueprint, Export) a panel aljára kerültek, tisztább és rendezettebb felületet biztosítva.
+- **UI-skálázás**: Megnövelt betűméretek (1 rem alapméret, nagyobb gombok és fejlécek) a jobb olvashatóságért.
+- **Stíluskód-tisztítás**: Felesleges CSS-kommentek és nem használt `base.css` hivatkozás eltávolítása.
+
 
 ## [1.9.0] – 2026-03-25
 ### 🛠️ Hozzáadva

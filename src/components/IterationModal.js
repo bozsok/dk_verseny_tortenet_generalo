@@ -8,7 +8,7 @@ export const IterationModal = (slideId) => {
     <div class="dkv-modal-overlay dkv-modal-overlay--visible">
       <div class="dkv-modal-card dkv-modal-card--cyan dkv-fade-in-up">
         <div class="dkv-modal-header">
-          <h2 class="dkv-neon-text">DIÁK FINOMHANGOLÁSA</h2>
+          <h2 class="dkv-neon-text">A dia finomhangolása</h2>
           <button id="close-iteration" class="dkv-close-btn">&times;</button>
         </div>
         
