@@ -1,0 +1,711 @@
+:root {
+  --bg-deep: #07080d;
+  --bg-card: #0f111a;
+  --bg-input: #161a26;
+
+  --neon-cyan: #00f2ff;
+  --neon-purple: #9d50bb;
+  --neon-gradient: linear-gradient(90deg, #00f2ff 0%, #9d50bb 100%);
+
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-white: #ffffff;
+  --text-dim: #8a8d9b;
+
+  --radius: 12px;
+  --sidebar-width: 440px;
+  --sidebar-collapsed-width: 70px;
+  --sidebar-header-height: 70px;
+  --transition-speed: 0.4s;
+  --sidebar-easing: linear;
+  /* Egyenletes mozgás */
+}
+
+.dkv-neon-text {
+  color: var(--text-white);
+  text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-white);
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* Elrendezés: 2 fő hasáb mockup alapján */
+.dkv-main-layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-actual-width, var(--sidebar-width)) 1fr;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  height: 100vh;
+  padding: 40px;
+  gap: 40px;
+  transition: grid-template-columns var(--transition-speed) var(--sidebar-easing);
+}
+
+.dkv-main-layout.dkv-main-layout--collapsed {
+  --sidebar-actual-width: var(--sidebar-collapsed-width);
+}
+
+/* --- BAL HASÁB: SIDEBAR (BEM: .dkv-sidebar) --- */
+.dkv-sidebar {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.dkv-sidebar__content-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dkv-sidebar__header {
+  background: var(--neon-gradient);
+  padding: 0 25px;
+  height: 70px;
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  transition: all var(--transition-speed) var(--sidebar-easing);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.dkv-sidebar__toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) var(--sidebar-easing);
+  width: 34px;
+  height: 34px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  position: absolute;
+  top: 50%;
+  left: calc(var(--sidebar-width) - 42px);
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+.dkv-sidebar__toggle:hover {
+  background: var(--neon-cyan);
+  color: var(--bg-deep);
+  box-shadow: 0 0 15px var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+.dkv-sidebar__body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  transition: opacity 0.2s ease, padding 0.3s ease;
+}
+
+.dkv-sidebar--content-hidden .dkv-sidebar__header-text,
+.dkv-sidebar--content-hidden .dkv-sidebar__body,
+.dkv-sidebar--content-hidden .dkv-sidebar__nav {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.dkv-main-layout--collapsed .dkv-sidebar__header-text {
+  display: none;
+}
+
+.dkv-main-layout--collapsed .dkv-sidebar__header {
+  padding: 0;
+  height: 70px;
+  background: var(--neon-gradient);
+  border: none;
+  width: 100%;
+  position: relative;
+}
+
+.dkv-main-layout--collapsed .dkv-sidebar__toggle {
+  left: calc(var(--sidebar-collapsed-width) / 2);
+}
+
+.dkv-input-block label, .dkv-label {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.dkv-input, .dkv-textarea, .dkv-select, input, textarea, select {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  outline: none;
+  font-size: 0.9rem;
+  transition: border-color 0.3s;
+}
+
+.dkv-input:focus, .dkv-textarea:focus, input:focus, textarea:focus {
+  border-color: var(--neon-cyan);
+}
+
+.dkv-tag-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.dkv-tag {
+  padding: 6px 15px;
+  background: var(--bg-input);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.dkv-tag.dkv-tag--active {
+  background: var(--neon-cyan);
+  color: black;
+  font-weight: bold;
+  border: none;
+}
+
+.dkv-sidebar__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.dkv-sidebar__secondary-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* --- GOMB VARIÁNSOK --- */
+.dkv-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: center;
+  border: none;
+}
+
+.dkv-btn--primary {
+  background: var(--neon-gradient);
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dkv-btn--primary:hover {
+  box-shadow: 0 0 20px var(--neon-cyan);
+  transform: translateY(-2px);
+}
+
+.dkv-btn--secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-dim);
+}
+
+.dkv-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.dkv-btn--accent {
+  background: rgba(157, 80, 187, 0.1);
+  border: 1px solid var(--neon-purple);
+  color: var(--neon-purple);
+}
+
+.dkv-btn--accent:hover {
+  background: var(--neon-purple);
+  color: white;
+  box-shadow: 0 0 15px var(--neon-purple);
+  transform: translateY(-2px);
+}
+
+.dkv-btn:disabled, .dkv-btn--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+input:disabled, textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(22, 26, 38, 0.5);
+  border-color: var(--glass-border);
+}
+
+/* GLOBAL NAVIGATION LOCK OVERLAY */
+.dkv-preview-container {
+  position: relative;
+}
+
+.dkv-lock-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  cursor: not-allowed;
+  display: none;
+}
+
+.dkv-main-layout--locked .dkv-lock-overlay {
+  display: block;
+}
+
+/* TOAST NOTIFICATION */
+.dkv-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--bg-card);
+  border-left: 4px solid var(--neon-cyan);
+  padding: 15px 25px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 3000;
+  animation: dkvSlideIn 0.3s ease-out;
+}
+
+@keyframes dkvSlideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* --- JOBB HASÁB: STORY PREVIEW --- */
+.dkv-preview-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.dkv-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.dkv-preview-header h1 {
+  flex: 1;
+  min-width: 0;
+  min-height: 1.5em;
+  word-wrap: break-word;
+  color: var(--text-white);
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+/* AKTÍV KÁRTYA (HERO) */
+.dkv-hero-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 40px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.dkv-hero-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.dkv-hero-content {
+  width: 100%;
+}
+
+/* KISEBB KÁRTYÁK GRIDJE */
+.dkv-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.dkv-small-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dkv-small-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.dkv-small-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ZÓNA KÁRTYA */
+.dkv-zone-card {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  grid-column: span 2;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.dkv-zone-icon {
+  font-size: 2.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  border: 1px solid var(--glass-border);
+  color: var(--neon-cyan);
+}
+
+.dkv-zone-tag {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.dkv-zone-title {
+  font-size: 1.4rem;
+  color: var(--text-white);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.dkv-edit-icon-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+  z-index: 10;
+}
+
+.dkv-edit-icon-btn:hover {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  background: rgba(0, 242, 255, 0.05);
+}
+
+.dkv-digital-pulse {
+  width: 60px;
+  height: 60px;
+  background: var(--neon-cyan);
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto;
+  animation: dkvPulseRing 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+.dkv-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 25px 25px 25px;
+}
+
+.dkv-jump-link {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.dkv-jump-link:hover {
+  opacity: 1;
+  transform: translateX(5px);
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.dkv-mini-map {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.dkv-mini-map__title {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dkv-mini-map__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* --- KÁRTYA BELSŐ ELEMEK --- */
+.dkv-hero-card__title {
+  font-size: 1.5rem;
+  color: var(--neon-cyan);
+  margin-bottom: 12px;
+  font-weight: 900;
+  text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.dkv-hero-card__description {
+  font-size: 1.1rem;
+  color: var(--text-white);
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.dkv-small-card__title {
+  font-size: 0.9rem;
+  color: var(--text-white);
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.dkv-small-card__description {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+/* --- MODAL FINÍROZÁS --- */
+.dkv-modal-card--cyan {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+}
+
+.dkv-textarea--large {
+  height: 450px !important;
+}
+
+.dkv-textarea--iteration {
+  height: 120px !important;
+}
+
+.dkv-modal-info {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.dkv-modal-info--italic {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.dkv-input:focus, .dkv-textarea:focus {
+  border-color: var(--neon-cyan);
+}
+
+@keyframes dkvPulseRing {
+  0% { transform: scale(0.33); opacity: 1; }
+  80%, 100% { transform: scale(1.5); opacity: 0; }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+
+/* --- MODAL SYSTEM --- */
+.dkv-textarea--medium {
+  height: 180px !important;
+}
+
+.dkv-btn--modal-action {
+  width: auto !important;
+  padding: 0 40px !important;
+}
+
+.dkv-modal-header h2 {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 10px var(--neon-cyan);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.dkv-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: 0.3s;
+}
+
+.dkv-close-btn:hover {
+  color: white;
+}
+
+.dkv-modal-card {
+  background: rgba(15, 17, 26, 0.98);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 900px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 242, 255, 0.05);
+  backdrop-filter: blur(30px);
+}
+
+.dkv-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.dkv-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 25px;
+  margin-top: 20px;
+}
+
+.dkv-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2005;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.dkv-modal-overlay.dkv-modal-overlay--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dkv-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dkv-close-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.dkv-close-btn:hover {
+  color: white;
+}

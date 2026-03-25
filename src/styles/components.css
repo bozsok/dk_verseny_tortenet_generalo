@@ -1,0 +1,88 @@
+/* Narrative Card Numbering */
+.dkv-card-number {
+  position: absolute;
+  top: 16px;
+  right: 55px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px var(--neon-cyan);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  z-index: 5;
+  pointer-events: none;
+  font-family: 'Fira Code', monospace;
+}
+
+/* Slide-in Animation */
+.dkv-card--animated {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+  animation: dkv-slide-in-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.dkv-card--animated:hover {
+  transform: translateY(-5px);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 25px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
+  z-index: 10;
+}
+
+@keyframes dkv-slide-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggering utility (optional, but we use inline delay in JS for better control) */
+.dkv-cards-grid > div {
+  opacity: 0;
+}
+
+/* --- STORY 3.1: BLUEPRINT FEEDBACK STYLES --- */
+
+/* Loading Button State */
+.dkv-btn--loading {
+    position: relative;
+    pointer-events: none;
+    background: rgba(0, 242, 255, 0.2) !important;
+    border-color: var(--neon-cyan) !important;
+    color: var(--neon-cyan) !important;
+    animation: dkv-pulse-cyan 1.5s infinite ease-in-out;
+}
+
+@keyframes dkv-pulse-cyan {
+    0% { box-shadow: 0 0 5px var(--neon-cyan); opacity: 0.8; }
+    50% { box-shadow: 0 0 20px var(--neon-cyan); opacity: 1; }
+    100% { box-shadow: 0 0 5px var(--neon-cyan); opacity: 0.8; }
+}
+
+/* Error Modal State (CorruptionUI) */
+.dkv-modal-card--error {
+    border-color: #ff0000 !important;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 0, 0.2) !important;
+    animation: dkv-glitch-border 0.3s ease-in-out;
+}
+
+.dkv-modal-card--error .dkv-neon-text {
+    color: #ff3333 !important;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000 !important;
+}
+
+@keyframes dkv-glitch-border {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
