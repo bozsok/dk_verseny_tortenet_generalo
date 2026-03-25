@@ -31,11 +31,16 @@ export const SetupPanel = () => {
         
         <div class="dkv-sidebar__secondary-actions">
           <button id="blueprint-btn" data-action="edit-blueprint" class="dkv-btn dkv-btn--secondary ${lockedBtnClass}" ${disabledAttr}>
-            BLUEPRINT SZERKESZTÉSE
+            BLUEPRINT
           </button>
-          <button id="export-btn" data-action="export" class="dkv-btn dkv-btn--accent ${lockedBtnClass}" ${disabledAttr}>
-            EXPORTÁLÁS
-          </button>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+            <button id="export-md-btn" data-action="export-md" class="dkv-btn dkv-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Markdown Export">
+              .MD
+            </button>
+            <button id="export-txt-btn" data-action="export-txt" class="dkv-btn dkv-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Sima Szöveg Export">
+              .TXT
+            </button>
+          </div>
         </div>
       </div>
     </div>

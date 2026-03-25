@@ -1,77 +1,109 @@
-# 📜 CHANGELOG: Narratív Generátor - Kód Királyság
+# 📜 CHANGELOG: Narratív Generátor – Kódkirályság
 
 Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **Semantic Versioning (SemVer)** elvei szerint.
 
 ---
 
-## [1.5.0] - 2026-03-25
-### 🛠️ Hozzáadva (Added)
-- **AI Sync Bridge Integráció:** Teljeskörű mentési folyamat (`server.js`) a Blueprint és az Iterációk fájlszintű rögzítéséhez.
-- **UI Visszajelzés (Toasts):** Valós idejű értesítések a mentési és generálási folyamatok állapotáról.
-- **Esemény-delegáció:** Robusztus kattintáskezelés, amely kiküszöböli az eseménykezelők elvesztését a UI újrarenderelésekor.
+## [1.7.0] – 2026-03-25
+### 🛠️ Hozzáadva
+- **MTA 12. kiadás protokoll**: szigorú helyesírási és egybeírási szabályok bevezetése a narratív generálásban (Adatpohár, Zajentitás, Puffer, Avatár).
+- **Narratív Blueprint V3**: a teljes, részletes Mesterleíró tartalom visszaállítása és kibővítése a 30 diás struktúra (3-4-20-3) rögzítésével.
+- **Intelligens Grid Layout**: a kártyák elrendezése páratlan szekciók esetén (Onboarding első kártya, Finálé utolsó kártya) automatikusan két oszlopos "Hero" stílusra vált a vizuális egyensúlyért.
 
-### 🎨 Megváltoztatva (Changed)
-- **Dinamikus NarrativeEngine:** A szekcióelosztás (Onboarding, Intro, Állomások) mostantól automatikusan igazodik a diák számához.
-- **Visual Glow:** Erősebb neon-cián hover effektus és 3D-s emelkedés a narratív kártyákon.
-- **Gomb Feliratok:** Egyértelműbb **'AI GENERÁLÁS INDÍTÁSA'** és **'ADATOK KÜLDÉSE'** üzenetek.
+### 🎨 Megváltoztatva
+- **UX-finomítás**: eltávolítottuk a hover effektust a nem kattintható szekciófejlécekről (`.dkv-zone-card`).
+- **Workflow frissítés**: a generálási útmutató (`generate-narrative.md`) mostantól a pontos 30 diás darabszámot tükrözi.
 
-### 🐛 Javítva (Fixed)
-- **Generálás Szinkron:** Megszűnt a "beragadó" generálás gomb és a frissítetlen tartalom problémája.
-- **Input Binding:** A projekt címe és a prompt mostantól konzisztensen megmarad a UI frissítésekor.
+### 🐛 Javítva
+- **Szekció-eltolódás fixálása**: a `NarrativeEngine.js` mostantól helyesen, az Onboardingot 3, az Intrót pedig 4 diásnak tekinti, megszüntetve a kártyák közötti csúszást.
 
 ---
 
-## [1.4.0] - 2026-03-25
-### 🛠️ Hozzáadva (Added)
-- **Logger.js:** A tiltott `console.log` hívások kiváltására létrehozott egységes naplózó rendszer.
-- **Generálás Stabilizálása:** Az UI animáció függetlenítése és a tartalom automatikus újrarajzolásának javítása.
-- **Exportálás (.txt):** Strukturált szövegfájl letöltése a teljes narratívával és a Mesterleíróval.
-- **Destroy Logika:** Alkalmazás szintű erőforrás-felszabadítás a memóriaszivárgások ellen.
+## [1.6.0] – 2026-03-25
+### 🛠️ Hozzáadva
+- **Robusztus mentési folyamat:** bevezetve az `AbortController` (10 mp-es időtúllépés) és a `response.ok` ellenőrzése a hálózati hibák és a szerverleállások kezelésére.
+- **Többformátumú exportálás:** különálló gombok a narratíva .md (Markdown) és .txt (egyszerű szöveg) formátumban történő letöltéséhez.
+- **Projektperzisztencia:** az alkalmazás indításkor automatikusan beolvassa a `blueprint.json` fájlt, így a projekt címe és a prompt megmarad a munkamenetek között.
+- **Hordozhatóság:** az alkalmazás leválasztása a `Source` mappáról. A generálási szabályok (Mesterleíró v2) mostantól beépítve találhatók a `store.js` fájlban, így a mappa nélkül is működőképes a rendszer.
+- **Vizuális hibajelzés:** vörös neon glitch effektus a háttérben kritikus mentési hiba esetén.
 
-### 🎨 Megváltoztatva (Changed)
-- **Gombok Újratervezése:** Közérthetőbb feliratok: **'TÖRTÉNET GENERÁLÁSA'** és **'EXPORTÁLÁS'**.
-- **Projekt Címe:** Visszaállítottuk az egyedi beviteli mezőt a történet címének megadásához.
-- **Kódminőségi Audit:** Teljes refaktorálás a `.dkv-` prefix és a magyar JSDoc használatával.
-- **Névfinomítás:** A `GameLogger` egyszerűsítve lett `Logger`-re.
+### 🎨 Megváltoztatva
+- **Exportálási logika:** teljesen natív, `Blob` alapú megoldás külső függőségek nélkül.
+- **Dinamikus címkezelés:** a `slides-title` mostantól valós időben követi a projekt címének változásait az előnézeti területen.
 
----
-
-## [1.3.0] - 2026-03-25
-### 🛠️ Hozzáadva (Added)
-- **Blueprint Szerkesztő (Mesterleíró):** Új modális ablak a rendszerszintű AI utasítások (Mesterleíró-V2) közvetlen módosításához.
-- **Kezdeti Állapot Betöltése:** A Blueprint tartalom mostantól alapértelmezetten a `store.js`-ből töltődik be, elkerülve az üres szerkesztőablakot.
-
-### 🎨 Megváltoztatva (Changed)
-- **Modal UI Újratervezés:** A lila/rózsaszín színeket professzionális **neon-cián** váltotta fel a Blueprint ablakban.
-- **Geometria:** 20px-es lekerekített sarkok és tágas (kezdetben 50px, majd 25px) padding a modális ablakokon.
-- **Módosítások mentése:** A "MENTÉS ÉS BEÉPÍTÉS" funkció bekötve a Store-ba a rugalmasabb generálás érdekében.
+### 🐛 Javítva
+- **Címfrissítési hiba:** megszűnt a `main.js` fájlban lévő korai return, amely megakadályozta a fő tartalom címének frissülését.
+- **Karakterkódolási hiba:** kiküszöböltük a PowerShell-alapú fájlmódosítások okozta UTF-8 kódolási rendellenességeket.
 
 ---
 
-## [1.2.0] - 2026-03-24
-### 🎨 Megváltoztatva (Changed)
-- **Prémium Gombok:** Minden oldalsáv-gomb magassága egységesen **56px**, biztosítva a szimmetrikus, vaskos megjelenést.
-- **Vágólap Funkció:** Az "ÖSSZES MÁSOLÁSA" gomb mostantól a teljes narratíva szövegét másolja (31 dia), nemcsak a jegyzeteket.
-- **UX Finomhangolás:** Eltávolítottuk a zavaró pipát a "MÁSOLVA!" felirat elől a letisztultabb stílus érdekében.
+## [1.5.0] – 2026-03-25
+### 🛠️ Hozzáadva
+- **AI Sync Bridge integráció:** teljes körű mentési folyamat (`server.js`) a blueprint és az iterációk fájlszintű rögzítéséhez.
+- **Vizuális visszajelzés (toasts):** valós idejű értesítések a mentési és a generálási folyamatok állapotáról.
+- **Eseménydelegáció:** robusztus kattintáskezelés, amely kiküszöböli az eseménykezelők elvesztését a UI újrarenderelésekor.
+
+### 🎨 Megváltoztatva
+- **Dinamikus NarrativeEngine:** a szekcióelosztás (onboarding, intro, állomások) mostantól automatikusan igazodik a diák számához.
+- **Vizuális ragyogás:** erősebb neoncián hover effektus és 3D-s emelkedés a narratív kártyákon.
+- **Gombfeliratok:** egyértelműbb „AI GENERÁLÁS INDÍTÁSA” és „ADATOK KÜLDÉSE” üzenetek.
+
+### 🐛 Javítva
+- **Generálási szinkron:** megszűnt a beragadó generálás gomb és a frissítetlen tartalom problémája.
+- **Input Binding:** a projekt címe és a prompt mostantól konzisztensen megmarad a UI frissítésekor.
 
 ---
 
-## [1.1.0] - 2026-03-24
-### 🛠️ Hozzáadva (Added)
-- **Kollapszibilis Oldalsáv (Sidebar):** Integrált 70px/440px szélességváltás, szinkronizált animációval.
-- **Sync Bridge Kapcsolat:** Felkészülés a `server.js` (`npm run bridge`) alapú mentési folyamatokra.
+## [1.4.0] – 2026-03-25
+### 🛠️ Hozzáadva
+- **Logger.js:** a tiltott `console.log` hívások kiváltására létrehozott egységes naplózó rendszer.
+- **Generálás stabilizálása:** az UI-animáció függetlenítése és a tartalom automatikus újrarajzolásának javítása.
+- **Exportálás (.txt):** strukturált szövegfájl letöltése a teljes narratívával és a mesterleíróval.
+- **Erőforrás-felszabadítás:** alkalmazásszintű tisztítási logika a memóriaszivárgások ellen.
 
-### 🐛 Javítva (Fixed)
-- **Z-Index és Rétegek:** A modális ablakok és az oldalsáv rétegrendjének javítása (z-index: 2005+).
-- **Vizuális Szinkron:** A sidebar váltógombjának pozíciója mostantól tökéletesen együtt mozog a panel szélével, "pattogás" (bounce) nélkül.
+### 🎨 Megváltoztatva
+- **Gombok újratervezése:** közérthetőbb feliratok: „TÖRTÉNET GENERÁLÁSA” és „EXPORTÁLÁS”.
+- **Projekt címe:** visszaállítottuk az egyedi beviteli mezőt a történet címének megadásához.
+- **Kódminőségi felülvizsgálat:** teljes refaktorálás a `.dkv-` prefix és a magyar JSDoc használatával.
 
 ---
 
-## [1.0.0] - 2026-03-24
-### 🛠️ Hozzáadva (Added)
-- **TRON UI Rendszer:** Teljesen új, neon-cián alapú cyber-fantasy esztétika bevezetése.
-- **Dinamikus Diakezelő:** Proxy-alapú állapotkezelés (`store.js`) a diák valós idejű szerkesztéséhez és megjelenítéséhez.
-- **Projekt Kontextus:** Létrehozva a `project-context.md` a szigorú kódolási és fejlesztési irányelvek rögzítéséhez.
+## [1.3.0] – 2026-03-25
+### 🛠️ Hozzáadva
+- **Blueprint-szerkesztő:** új modális ablak a rendszerszintű AI utasítások (Mesterleíró v2) közvetlen módosításához.
+- **Kezdeti állapot betöltése:** a blueprint tartalma mostantól alapértelmezetten a `store.js` fájlból töltődik be.
+
+### 🎨 Megváltoztatva
+- **Modal UI újratervezése:** a lila és rózsaszín színeket professzionális neoncián váltotta fel a blueprint ablakban.
+- **Geometria:** 20 px-es lekerekített sarkok és tágas térközök a modális ablakokon.
+- **Mentési funkció:** a „MENTÉS ÉS BEÉPÍTÉS” funkció bekötve a store rendszerbe.
+
+---
+
+## [1.2.0] – 2026-03-24
+### 🎨 Megváltoztatva
+- **Prémium gombok:** minden oldalsávgomb magassága egységesen 56 px a szimmetrikus megjelenésért.
+- **Vágólapfunkció:** az „ÖSSZES MÁSOLÁSA” gomb mostantól a teljes narratíva szövegét másolja.
+- **UX-finomhangolás:** a zavaró pipajel eltávolítása a „MÁSOLVA!” felirat elől.
+
+---
+
+## [1.1.0] – 2026-03-24
+### 🛠️ Hozzáadva
+- **Összecsukható oldalsáv:** integrált 70 px / 440 px szélességváltás szinkronizált animációval.
+- **Sync Bridge kapcsolat:** felkészülés a `server.js` alapú mentési folyamatokra.
+
+### 🐛 Javítva
+- **Rétegrend javítása:** a modális ablakok és az oldalsáv z-index értékeinek korrekciója.
+- **Vizuális szinkron:** a sidebar váltógombjának pozíciója mostantól tökéletesen együtt mozog a panel szélével.
+
+---
+
+## [1.0.0] – 2026-03-24
+### 🛠️ Hozzáadva
+- **TRON UI rendszer:** teljes körű, neoncián alapú cyber-fantasy esztétika bevezetése.
+- **Dinamikus diakezelő:** proxyalapú állapotkezelés a diák valós idejű szerkesztéséhez.
+- **Projektkontextus:** a `project-context.md` létrehozása az irányelvek rögzítéséhez.
 
 ---
 

@@ -14,9 +14,9 @@ export class NarrativeEngine {
     const total = narrative.length;
     if (total === 0) return [];
 
-    // Alapértelmezett eloszlás (PRD szerint): 4 Onboarding, 4 Intro, 3 Finálé
+    // Alapértelmezett eloszlás (PRD szerint): 3 Onboarding, 4 Intro, 3 Finálé
     // A maradékot elosztjuk 5 állomásra.
-    const onCount = Math.min(4, total);
+    const onCount = Math.min(3, total);
     const inCount = Math.min(4, Math.max(0, total - onCount));
     const fiCount = Math.min(3, Math.max(0, total - (onCount + inCount)));
     const stationTotal = Math.max(0, total - (onCount + inCount + fiCount));

@@ -59,7 +59,10 @@ store.narrative = narrative;
 /**
  * Inicializálja az alkalmazás alapvető elrendezését (layout).
  */
-function initLayout() {
+async function initLayout() {
+  // Beolvassuk a mentett állapotot a fájlból indításkor
+  await loadInitialState();
+
   app.innerHTML = `
     <div class="dkv-main-layout ${store.sidebarCollapsed ? 'dkv-main-layout--collapsed' : ''} ${store.isGenerating ? 'dkv-main-layout--locked' : ''}">
       <!-- BAL OLDAL: GENERATOR -->
@@ -107,6 +110,23 @@ function initLayout() {
 }
 
 /**
+ * Beolvassa a korábban mentett projekt adatokat a szerverről.
+ */
+async function loadInitialState() {
+  try {
+    const response = await fetch('/src/data/blueprint.json');
+    if (response.ok) {
+      const data = await response.json();
+      if (data.title) store.projectTitle = data.title;
+      if (data.prompt) store.prompt = data.prompt;
+      Logger.info('Kiinduló állapot betöltve a blueprint.json-ból.');
+    }
+  } catch (err) {
+    Logger.debug('Nem található mentett blueprint.json (elsố indítás?).');
+  }
+}
+
+/**
  * Frissíti az alkalmazás dinamikus tartalmait a Store változásai alapján.
  * @param {string} property - A megváltozott tulajdonság neve a store-ban.
  * @param {any} value - Az új érték.
@@ -120,7 +140,6 @@ function updateDynamicContent(property, value) {
   // Csak a címet frissítjük, ha az változott
   if (property === 'projectTitle' && header) {
     header.innerText = `TÖRTÉNET ELŐNÉZETE: ${value.toUpperCase()}`;
-    return;
   }
 
   if (property === 'projectShortDesc') return;
@@ -223,13 +242,22 @@ function updateDynamicContent(property, value) {
                <div class="dkv-cards-grid">
                  ${items.map((item, i) => {
                     const globalIndex = sec.start + i;
-                    const isHero = globalIndex === 0;
-                    const gridStyle = (globalIndex === 0) ? 'grid-column: span 2;' : '';
-                    // Staggered delay for CSS animation (80ms per card to stay under 3s total)
+                    const itemsCount = items.length;
+                    const isOdd = itemsCount % 2 !== 0;
+                    
+                    let gridStyle = '';
+                    if (isOdd) {
+                      // Onboarding esetén az első, Finálé esetén az utolsó legyen széles
+                      if ((sec.id === 'sec-on' && i === 0) || (sec.id === 'sec-fi' && i === itemsCount - 1)) {
+                        gridStyle = 'grid-column: span 2;';
+                      }
+                    }
+                    
+                    const isFullWidth = gridStyle.includes('span 2');
                     const delay = globalIndex * 0.08;
                     return `
                       <div class="dkv-card--animated" style="${gridStyle} animation-delay: ${delay}s;">
-                        ${NarrativeCard(item, isHero, globalIndex)}
+                        ${NarrativeCard(item, isFullWidth, globalIndex)}
                       </div>
                     `;
                   }).join('')}
@@ -353,17 +381,14 @@ function setupEventListeners() {
       return;
     }
 
-    // 3. EXPORTÁLÁS
-    if (action === 'export' || id === 'export-btn') {
-      const title = store.projectTitle || 'Névtelen Projekt';
-      const exportText = `PROJEKT: ${title.toUpperCase()}\nDAT: ${new Date().toLocaleString('hu-HU')}\n\nBLUEPRINT:\n${store.blueprint}\n\nNARRATIVA:\n${store.narrative.map(d => `[${d.id}] ${d.title}\n${d.content}`).join('\n\n')}`;
-      
-      const success = await UIController.copyToClipboard(exportText);
-      if (success) {
-        const originalText = target.innerText;
-        target.innerText = 'MÁSOLVA!';
-        setTimeout(() => target.innerText = originalText, 2000);
-      }
+    // 3. EXPORTÁLÁS (Markdown vagy Sima Szöveg)
+    if (action === 'export-md') {
+      exportNarrative('markdown');
+      return;
+    }
+
+    if (action === 'export-txt') {
+      exportNarrative('text');
       return;
     }
 
@@ -463,6 +488,10 @@ function setupBlueprintListeners() {
       saveBtn.classList.add('dkv-btn--loading');
       modalicCard.classList.remove('dkv-modal-card--error');
       
+      // Timeout beállítása (10 másodperc)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
       try {
         Logger.info('Blueprint mentése indítva...');
         const response = await fetch('http://localhost:3001/save-blueprint', {
@@ -471,8 +500,15 @@ function setupBlueprintListeners() {
           body: JSON.stringify({
             title: store.projectTitle,
             blueprint: blueprintContent
-          })
+          }),
+          signal: controller.signal
         });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          throw new Error(`Szerver hiba (${response.status})`);
+        }
 
         const result = await response.json();
         
@@ -490,8 +526,13 @@ function setupBlueprintListeners() {
 
       } catch (err) {
         // HIBA ÁLLAPOT (CorruptionUI)
+        let errorMsg = err.message;
+        if (err.name === 'AbortError') {
+          errorMsg = 'Időtúllépés (timeout)';
+        }
+        
         Logger.error('Hiba a Blueprint mentésekor:', err);
-        store.toastMessage = 'MENTÉSI HIBA: ' + err.message;
+        store.toastMessage = 'MENTÉSI HIBA: ' + errorMsg;
         
         modalicCard.classList.add('dkv-modal-card--error');
         saveBtn.innerText = 'HIBA! PRÓBÁLD ÚJRA';
@@ -533,3 +574,56 @@ disposalService.add(() => {
   if (unsubscribeStore) unsubscribeStore();
   Logger.debug('main.js: Store előfizetés leállítva.');
 });
+
+/**
+ * Generálja és letölti a narratíva fájlt a megadott formátumban.
+ * @param {'markdown'|'text'} format 
+ */
+function exportNarrative(format) {
+  if (!store.narrative || store.narrative.length === 0) {
+    store.toastMessage = 'Nincs exportálható tartalom!';
+    return;
+  }
+
+  const title = store.projectTitle || 'Névtelen-Projekt';
+  const date = new Date().toISOString().split('T')[0];
+  const filename = `dk-story-${title.replace(/\s+/g, '-')}-${date}.${format === 'markdown' ? 'md' : 'txt'}`;
+  
+  let content = '';
+  if (format === 'markdown') {
+    content = `# ${title.toUpperCase()}\n\n`;
+    content += `*Generálva: ${new Date().toLocaleString('hu-HU')}*\n\n---\n\n`;
+    store.narrative.forEach((slide, index) => {
+      content += `## Dia ${index + 1}: ${slide.title}\n\n${slide.content}\n\n---\n\n`;
+    });
+  } else {
+    content = `${title.toUpperCase()}\n`;
+    content += `Generálva: ${new Date().toLocaleString('hu-HU')}\n\n`;
+    store.narrative.forEach((slide, index) => {
+      content += `DIA ${index + 1}: ${slide.title}\n`;
+      content += `${slide.content}\n\n`;
+      content += `--------------------------------------------------\n\n`;
+    });
+  }
+  
+  try {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 0);
+
+    store.toastMessage = `Sikeres exportálás: ${filename}`;
+    Logger.info(`Adatok exportálva: ${filename}`);
+  } catch (err) {
+    Logger.error('Hiba az exportálás során:', err);
+    store.toastMessage = 'Hiba az exportálásnál!';
+  }
+}
