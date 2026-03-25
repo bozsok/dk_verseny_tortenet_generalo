@@ -353,12 +353,50 @@ textarea:disabled {
   }
 }
 
+#preview-status-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dkv-preview-status {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 400px;
+}
+
+.dkv-status-card {
+  background: var(--bg-card);
+  border: 1px solid var(--neon-cyan);
+  padding: 45px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+  max-width: 600px;
+  animation: dkvStatusFadeIn 0.5s ease-out;
+}
+
+@keyframes dkvStatusFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dkv-status-card .dkv-neon-text {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
 /* --- JOBB HASÁB: STORY PREVIEW --- */
 .dkv-preview-container {
   display: flex;
   flex-direction: column;
+  height: 100%;
   overflow-y: auto;
   min-width: 0;
+  position: relative;
 }
 
 .dkv-preview-header {

@@ -18,7 +18,7 @@ eventBus.setLockProvider(() => store.isGenerating);
  */
 eventBus.on('NAVIGATE_TO', (targetId) => {
   if (!targetId || typeof targetId !== 'string') return;
-  
+
   const target = document.querySelector(targetId);
   if (target) {
     Logger.info(`Navigálás a szekcióhoz: ${targetId}`);
@@ -90,15 +90,8 @@ async function initLayout() {
         <section id="slides-container" class="dkv-slides-viewer">
           <!-- Ide kerülnek a kártyák -->
         </section>
+        <div id="preview-status-root"></div>
       </main>
-
-      <!-- Generálási Overlay -->
-      <div id="gen-overlay" class="dkv-gen-overlay" style="display: none;">
-          <div class="dkv-gen-overlay__content">
-            <h2 class="dkv-neon-text">ADATOK KÜLDÉSE AZ AI-NAK...</h2>
-            <p style="color: var(--text-dim);">Várj 3 másodpercet a szinkronizációig, majd jelezd nekem az AI-nak a chatben, hogy kész vagy!</p>
-          </div>
-      </div>
     </div>
     
     <div id="modal-root"></div>
@@ -133,10 +126,11 @@ async function loadInitialState() {
  * @param {any} value - Az új érték.
  */
 function updateDynamicContent(property, value) {
-  const header = document.querySelector('#preview-title-header');
-  const overlay = document.querySelector('#gen-overlay');
+  const header = document.querySelector('.dkv-preview-header');
+  const statusRoot = document.querySelector('#preview-status-root');
   const modalRoot = document.querySelector('#modal-root');
   const slidesContainer = document.querySelector('#slides-container');
+  const previewContainer = document.querySelector('.dkv-preview-container');
 
   // Csak a címet frissítjük, ha az változott
   if (property === 'projectTitle' && header) {
@@ -166,19 +160,61 @@ function updateDynamicContent(property, value) {
     return;
   }
 
-  // Generálási állapot kezelése
+  // Generálási állapot kezelése (Szinkronizáció)
   if (property === 'isGenerating') {
     const layout = document.querySelector('.dkv-main-layout');
     if (layout) layout.classList.toggle('dkv-main-layout--locked', value);
 
     const setupRoot = document.querySelector('#setup-panel-root');
     if (setupRoot) setupRoot.innerHTML = SetupPanel();
-    
-    if (overlay) overlay.style.display = value ? 'flex' : 'none';
-    if (value && slidesContainer) {
-      slidesContainer.innerHTML = `<div style="padding: 100px; text-align: center; width: 100%;"><div class="dkv-digital-pulse"></div></div>`;
-      return;
+
+    if (value && statusRoot) {
+      statusRoot.innerHTML = `
+        <div class="dkv-preview-status">
+          <div class="dkv-status-card">
+            <h2 class="dkv-neon-text">SZINKRONIZÁCIÓ FOLYAMATBAN</h2>
+            <div class="dkv-digital-pulse" style="margin-bottom: 30px;"></div>
+            <p style="font-size: 1.2rem; color: var(--text-white);">Adatok küldése az AI motornak...</p>
+            <p style="color: var(--text-dim); margin-top: 15px;">A folyamat automatikus.</p>
+          </div>
+        </div>
+      `;
+      if (slidesContainer) slidesContainer.style.display = 'none';
+      if (header) header.style.display = 'none';
+      statusRoot.style.display = 'flex';
+      if (previewContainer) previewContainer.style.justifyContent = 'center';
     }
+    return;
+  }
+
+  // Várakozás az AI válaszára
+  if (property === 'isWaitingForNarrative') {
+    if (value && statusRoot) {
+      statusRoot.innerHTML = `
+        <div class="dkv-preview-status">
+          <div class="dkv-status-card">
+            <h2 class="dkv-neon-text">A BLUEPRINT SIKERESEN RÖGZÍTÉSRE KERÜLT</h2>
+            <p style="font-size: 1.2rem; color: var(--text-white); line-height: 1.6;">
+              Kérlek, most kérd meg az AI-t a chatben a történet legenerálására!
+            </p>
+            <p style="color: var(--neon-cyan); margin-top: 20px; font-weight: bold;">
+              Várakozás az AI válaszára...
+            </p>
+          </div>
+        </div>
+      `;
+      if (slidesContainer) slidesContainer.style.display = 'none';
+      if (header) header.style.display = 'none';
+      statusRoot.style.display = 'flex';
+      if (previewContainer) previewContainer.style.justifyContent = 'center';
+    } else if (!value && statusRoot) {
+      statusRoot.innerHTML = '';
+      statusRoot.style.display = 'none';
+      if (slidesContainer) slidesContainer.style.display = 'block';
+      if (header) header.style.display = 'flex';
+      if (previewContainer) previewContainer.style.justifyContent = 'flex-start';
+    }
+    return;
   }
 
   // Sidebar és elrendezés
@@ -242,26 +278,26 @@ function updateDynamicContent(property, value) {
 
                <div class="dkv-cards-grid">
                  ${items.map((item, i) => {
-                    const globalIndex = sec.start + i;
-                    const itemsCount = items.length;
-                    const isOdd = itemsCount % 2 !== 0;
-                    
-                    let gridStyle = '';
-                    if (isOdd) {
-                      // Onboarding esetén az első, Finálé esetén az utolsó legyen széles
-                      if ((sec.id === 'sec-on' && i === 0) || (sec.id === 'sec-fi' && i === itemsCount - 1)) {
-                        gridStyle = 'grid-column: span 2;';
-                      }
-                    }
-                    
-                    const isFullWidth = gridStyle.includes('span 2');
-                    const delay = globalIndex * 0.08;
-                    return `
+            const globalIndex = sec.start + i;
+            const itemsCount = items.length;
+            const isOdd = itemsCount % 2 !== 0;
+
+            let gridStyle = '';
+            if (isOdd) {
+              // Onboarding esetén az első, Finálé esetén az utolsó legyen széles
+              if ((sec.id === 'sec-on' && i === 0) || (sec.id === 'sec-fi' && i === itemsCount - 1)) {
+                gridStyle = 'grid-column: span 2;';
+              }
+            }
+
+            const isFullWidth = gridStyle.includes('span 2');
+            const delay = globalIndex * 0.08;
+            return `
                       <div class="dkv-card--animated" style="${gridStyle} animation-delay: ${delay}s;">
                         ${NarrativeCard(item, isFullWidth, globalIndex)}
                       </div>
                     `;
-                  }).join('')}
+          }).join('')}
                </div>
              </div>
            `;
@@ -341,7 +377,7 @@ function setupEventListeners() {
         const result = await response.json();
         if (!result.success) throw new Error(result.error);
         Logger.info('Blueprint sikeresen mentve a szerverre.');
-        store.toastMessage = 'Adatok elküldve az AI motornak...';
+        // store.toastMessage = 'Adatok elküldve az AI motornak...'; // Okafogyott a modal miatt
       } catch (err) {
         Logger.error('Hiba a mentés során:', err);
         store.toastMessage = 'HIBA: Az AI Bridge (server.js) nem érhető el!';
@@ -355,11 +391,11 @@ function setupEventListeners() {
           // Dinamikus import kényszerítése friss időbélyeggel
           const modulePath = `/src/data/narrative.js?t=${Date.now()}`;
           const { narrative: newNarrative } = await import(modulePath);
-          
+
           if (newNarrative && Array.isArray(newNarrative)) {
             store.narrative = [...newNarrative];
             Logger.info(`Sikeres importálás: ${newNarrative.length} dia betöltve.`);
-            store.toastMessage = 'Új narratíva betöltve!';
+            store.toastMessage = 'A történet automatikusan meg fog jelnni itt, amint az AI elkészült vele.';
             // A felhasználói élmény kedvéért néha töröljük a promptot, 
             // ha már "feldolgoztuk" (ahogy a felhasználó említette)
             // de a címet érdemes megtartani. Itt most csak naplózzuk.
@@ -371,9 +407,10 @@ function setupEventListeners() {
           store.toastMessage = 'Hiba a fájl betöltésekor.';
         } finally {
           store.isGenerating = false;
-          Logger.info('Generálási folyamat kész, UI feloldva.');
+          store.isWaitingForNarrative = true;
+          Logger.info('Generálási folyamat kész, várjuk a narratívát.');
         }
-      }, 3000);
+      }, 5000);
       return;
     }
 
@@ -423,7 +460,7 @@ function setupEventListeners() {
   };
 
   bindInputs();
-  
+
   // Minden store frissítéskor újra kell kötni az input mezőket a SetupPanel-ben
   subscribe((prop) => {
     if (prop === 'isGenerating' || prop === 'sidebarCollapsed') {
@@ -477,19 +514,19 @@ function setupBlueprintListeners() {
   const saveBtn = document.querySelector('#save-blueprint');
   const modalicCard = document.querySelector('.dkv-modal-card');
   const textarea = document.querySelector('#blueprint-textarea');
-  
+
   if (closeBtn) closeBtn.onclick = () => store.isEditingBlueprint = false;
-  
+
   if (saveBtn) {
     saveBtn.onclick = async () => {
       const originalText = saveBtn.innerText;
       const blueprintContent = textarea.value;
-      
+
       // Vizuális visszajelzés indítása
       saveBtn.innerText = 'MENTÉS ÉS BEÉPÍTÉS...';
       saveBtn.classList.add('dkv-btn--loading');
       modalicCard.classList.remove('dkv-modal-card--error');
-      
+
       // Timeout beállítása (10 másodperc)
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
@@ -513,14 +550,14 @@ function setupBlueprintListeners() {
         }
 
         const result = await response.json();
-        
+
         if (!result.success) throw new Error(result.error || 'Ismeretlen hiba a szerveren.');
 
         // SIKER ÁLLAPOT
         store.blueprint = blueprintContent;
         store.toastMessage = 'Blueprint sikeresen frissítve!';
         Logger.info('Blueprint sikeresen mentve.');
-        
+
         // Rövid várakozás a vizuális megerősítéshez, mielőtt bezárjuk
         setTimeout(() => {
           store.isEditingBlueprint = false;
@@ -532,14 +569,14 @@ function setupBlueprintListeners() {
         if (err.name === 'AbortError') {
           errorMsg = 'Időtúllépés (timeout)';
         }
-        
+
         Logger.error('Hiba a Blueprint mentésekor:', err);
         store.toastMessage = 'MENTÉSI HIBA: ' + errorMsg;
-        
+
         modalicCard.classList.add('dkv-modal-card--error');
         saveBtn.innerText = 'HIBA! PRÓBÁLD ÚJRA';
         saveBtn.classList.remove('dkv-btn--loading');
-        
+
         // Visszaállítjuk a gombot rövid idő múlva, de a hiba jelzése marad
         setTimeout(() => {
           if (store.isEditingBlueprint) {
@@ -556,10 +593,10 @@ function setupBlueprintListeners() {
  */
 export function destroy() {
   Logger.info('Alkalmazás erőforrásainak felszabadítása...');
-  
+
   // Központi takarítás indítása
   disposalService.purge();
-  
+
   NarrativeEngine.destroy();
   UIController.destroy();
   Logger.info('Pusztítás befejezve.');
@@ -590,7 +627,7 @@ function exportNarrative(format) {
   const title = store.projectTitle || 'Névtelen-Projekt';
   const date = new Date().toISOString().split('T')[0];
   const filename = `dk-story-${title.replace(/\s+/g, '-')}-${date}.${format === 'markdown' ? 'md' : 'txt'}`;
-  
+
   let content = '';
   if (format === 'markdown') {
     content = `# ${title.toUpperCase()}\n\n`;
@@ -607,7 +644,7 @@ function exportNarrative(format) {
       content += `--------------------------------------------------\n\n`;
     });
   }
-  
+
   try {
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -616,7 +653,7 @@ function exportNarrative(format) {
     a.download = filename;
     document.body.appendChild(a);
     a.click();
-    
+
     setTimeout(() => {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);

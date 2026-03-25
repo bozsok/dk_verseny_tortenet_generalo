@@ -61,6 +61,7 @@ Az AI válasza egy olyan lista lesz, amely diárol diára (Slide 1, Slide 2, stb
   currentSlideIndex: 0,
   isLoading: false,
   isGenerating: false,
+  isWaitingForNarrative: false,
   isEditingBlueprint: false,
   isSetupMode: true,
   editingSlideId: null,

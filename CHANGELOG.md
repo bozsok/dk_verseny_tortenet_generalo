@@ -6,9 +6,15 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ## [1.9.0] – 2026-03-25
 ### 🛠️ Hozzáadva
-- **Dinamikus Sidebar Navigáció**: a sidebar összecsukott állapotában színes ikonok teszik lehetővé a szekciók (Onboarding, Bevezetés, Állomások, Finálé) közötti gyors navigációt.
-- **Auto-Collapse funkcionalitás**: az alkalmazás mostantól alapértelmezés szerint összecsukott sidebar-ral indul a fókuszáltabb munkavégzés érdekében.
+- **Beágyazott AI munkafolyamat**: A modális ablak kiváltása az előnézeti területbe integrált, háromfázisú állapotjelzővel (Szinkronizáció → Várakozás → Automatikus frissítés).
+- **Megújult sidebar**: Dinamikus navigációs ikonok összecsukott állapotban, Simon-színkódolt szakaszokkal és smooth scroll-lal.
+- **UX optimalizáció**: Valós idejű, 5 másodperces beágyazott szinkronizációs visszaszámlálás és félrevezető toast üzenetek eltávolítása.
+- **Konvenciók**: MTA 12. kiadás szerinti helyesírás és minden `!important` CSS szabály kivezetése.
+- **Dinamikus sidebar navigáció**: a sidebar összecsukott állapotában színes ikonok teszik lehetővé a szekciók (Onboarding, Bevezetés, Állomások, Finálé) közötti gyors navigációt.
+- **Auto-collapse funkcionalitás**: az alkalmazás mostantól alapértelmezés szerint összecsukott sidebar-ral indul a fókuszáltabb munkavégzés érdekében.
 - **Konzisztens indulási állapot**: a `main.js` inicializációs folyamatának javítása, amely biztosítja, hogy a sidebar és a navigáció már az első betöltéskor a helyes pozícióban jelenjen meg.
+- **Dinamikus központosítás**: a státusz-kártya mostantól minden AI fázisban mértani középpontban (függőlegesen is) jelenik meg, a felesleges háttér-stílusok eltávolításával.
+- **UI finomhangolás**: a normál diák függőleges elhelyezkedésének korrekciója és a Preview terület dinamikus layout-kezelése.
 
 ### 🎨 Megváltoztatva
 - **Tipográfiai javítás**: a kártyák leírásának betűméretét 16px-re (1rem) növeltük a jobb olvashatóság érdekében.
