@@ -66,7 +66,7 @@ async function initLayout() {
   app.innerHTML = `
     <div class="dkv-main-layout ${store.sidebarCollapsed ? 'dkv-main-layout--collapsed' : ''} ${store.isGenerating ? 'dkv-main-layout--locked' : ''}">
       <!-- BAL OLDAL: GENERATOR -->
-      <aside id="sidebar" class="dkv-sidebar">
+      <aside id="sidebar" class="dkv-sidebar ${!store.sidebarContentVisible ? 'dkv-sidebar--content-hidden' : ''}">
         <div class="dkv-sidebar__content-wrapper">
           <div id="setup-panel-root">
             ${SetupPanel()}

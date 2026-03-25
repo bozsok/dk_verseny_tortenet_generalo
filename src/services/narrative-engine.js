@@ -76,8 +76,9 @@ export class NarrativeEngine {
         <h4 class="dkv-mini-map__title">Navigációs Térkép</h4>
         <div class="dkv-mini-map__links">
           ${sections.map(s => `
-            <a href="#${s.id}" class="dkv-jump-link">
-              <span style="color: ${s.color || 'var(--neon-cyan)'}">${s.icon}</span> ${s.title.split(' // ')[1]}
+            <a href="#${s.id}" class="dkv-jump-link" title="${s.title.split(' // ')[1]}">
+              <span class="dkv-jump-link__icon" style="color: ${s.color || 'var(--neon-cyan)'}">${s.icon}</span>
+              <span class="dkv-jump-link__text">${s.title.split(' // ')[1]}</span>
             </a>
           `).join('')}
         </div>

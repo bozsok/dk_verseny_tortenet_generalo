@@ -66,8 +66,8 @@ Az AI válasza egy olyan lista lesz, amely diárol diára (Slide 1, Slide 2, stb
   editingSlideId: null,
   toastMessage: '',
   notes: {},
-  sidebarCollapsed: false,
-  sidebarContentVisible: true,
+  sidebarCollapsed: true,
+  sidebarContentVisible: false,
   narrativeConfig: {
     onboardingCount: 3,
     introCount: 4,

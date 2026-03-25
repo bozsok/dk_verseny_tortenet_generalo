@@ -70,7 +70,7 @@ body {
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
-  overflow: visible;
+  overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
   transition: all var(--transition-speed) ease;
   position: relative;
@@ -142,11 +142,12 @@ body {
 }
 
 .dkv-sidebar--content-hidden .dkv-sidebar__header-text,
-.dkv-sidebar--content-hidden .dkv-sidebar__body,
-.dkv-sidebar--content-hidden .dkv-sidebar__nav {
+.dkv-sidebar--content-hidden .dkv-sidebar__body {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  display: none;
+  /* Ne foglaljon helyet összecsukva */
 }
 
 .dkv-main-layout--collapsed .dkv-sidebar__header-text {
@@ -166,7 +167,8 @@ body {
   left: calc(var(--sidebar-collapsed-width) / 2);
 }
 
-.dkv-input-block label, .dkv-label {
+.dkv-input-block label,
+.dkv-label {
   display: block;
   font-size: 0.7rem;
   color: var(--text-dim);
@@ -175,7 +177,12 @@ body {
   text-transform: uppercase;
 }
 
-.dkv-input, .dkv-textarea, .dkv-select, input, textarea, select {
+.dkv-input,
+.dkv-textarea,
+.dkv-select,
+input,
+textarea,
+select {
   width: 100%;
   background: var(--bg-input);
   border: 1px solid var(--glass-border);
@@ -187,7 +194,10 @@ body {
   transition: border-color 0.3s;
 }
 
-.dkv-input:focus, .dkv-textarea:focus, input:focus, textarea:focus {
+.dkv-input:focus,
+.dkv-textarea:focus,
+input:focus,
+textarea:focus {
   border-color: var(--neon-cyan);
 }
 
@@ -282,7 +292,8 @@ body {
   transform: translateY(-2px);
 }
 
-.dkv-btn:disabled, .dkv-btn--disabled {
+.dkv-btn:disabled,
+.dkv-btn--disabled {
   opacity: 0.5;
   cursor: not-allowed;
   filter: grayscale(0.5);
@@ -290,7 +301,8 @@ body {
   transform: none !important;
 }
 
-input:disabled, textarea:disabled {
+input:disabled,
+textarea:disabled {
   opacity: 0.6;
   cursor: not-allowed;
   background: rgba(22, 26, 38, 0.5);
@@ -324,14 +336,21 @@ input:disabled, textarea:disabled {
   border-left: 4px solid var(--neon-cyan);
   padding: 15px 25px;
   border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   z-index: 3000;
   animation: dkvSlideIn 0.3s ease-out;
 }
 
 @keyframes dkvSlideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* --- JOBB HASÁB: STORY PREVIEW --- */
@@ -367,7 +386,7 @@ input:disabled, textarea:disabled {
   background: var(--bg-card);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
-  padding: 40px;
+  padding: 25px;
   position: relative;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
@@ -417,7 +436,7 @@ input:disabled, textarea:disabled {
 /* ZÓNA KÁRTYA */
 .dkv-zone-card {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
-  padding: 30px;
+  padding: 25px;
   border-radius: 12px;
   margin-bottom: 30px;
   display: flex;
@@ -499,6 +518,66 @@ input:disabled, textarea:disabled {
   flex: 1;
   overflow-y: auto;
   padding: 0 25px 25px 25px;
+  transition: opacity 0.3s ease;
+}
+
+/* --- REFACTOR: Sidebar Nav dinamikus láthatóság --- */
+/* Nyitott állapotban elrejtjük a navigációs térképet */
+:not(.dkv-main-layout--collapsed) .dkv-sidebar__nav {
+  display: none;
+}
+
+/* Összecsukott állapotban megjelenítjük az ikonokat - specifikusabb szelektorral !important helyett */
+.dkv-main-layout--collapsed #sidebar .dkv-sidebar__nav {
+  padding: 0;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Fix horizontal scroll on hover */
+}
+
+.dkv-main-layout--collapsed .dkv-mini-map {
+  margin-top: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.dkv-main-layout--collapsed .dkv-mini-map__title {
+  display: none;
+}
+
+.dkv-main-layout--collapsed .dkv-mini-map__links {
+  gap: 15px;
+  align-items: center;
+}
+
+.dkv-main-layout--collapsed .dkv-jump-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+  opacity: 0.8;
+}
+
+.dkv-main-layout--collapsed .dkv-jump-link:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.dkv-main-layout--collapsed .dkv-jump-link__text {
+  display: none;
+  /* Szöveg elrejtése csukott módban */
+}
+
+.dkv-main-layout--collapsed .dkv-jump-link__icon {
+  font-size: 1.8rem;
 }
 
 .dkv-jump-link {
@@ -547,14 +626,14 @@ input:disabled, textarea:disabled {
 }
 
 .dkv-hero-card__description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text-white);
-  line-height: 1.8;
+  line-height: 1.6;
   opacity: 0.9;
 }
 
 .dkv-small-card__title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--text-white);
   margin-bottom: 10px;
   font-weight: 800;
@@ -562,7 +641,7 @@ input:disabled, textarea:disabled {
 }
 
 .dkv-small-card__description {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-dim);
   line-height: 1.6;
   opacity: 0.8;
@@ -594,13 +673,22 @@ input:disabled, textarea:disabled {
   margin-bottom: 20px;
 }
 
-.dkv-input:focus, .dkv-textarea:focus {
+.dkv-input:focus,
+.dkv-textarea:focus {
   border-color: var(--neon-cyan);
 }
 
 @keyframes dkvPulseRing {
-  0% { transform: scale(0.33); opacity: 1; }
-  80%, 100% { transform: scale(1.5); opacity: 0; }
+  0% {
+    transform: scale(0.33);
+    opacity: 1;
+  }
+
+  80%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 ::-webkit-scrollbar {

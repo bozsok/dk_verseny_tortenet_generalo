@@ -4,6 +4,22 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 
+## [1.9.0] – 2026-03-25
+### 🛠️ Hozzáadva
+- **Dinamikus Sidebar Navigáció**: a sidebar összecsukott állapotában színes ikonok teszik lehetővé a szekciók (Onboarding, Bevezetés, Állomások, Finálé) közötti gyors navigációt.
+- **Auto-Collapse funkcionalitás**: az alkalmazás mostantól alapértelmezés szerint összecsukott sidebar-ral indul a fókuszáltabb munkavégzés érdekében.
+- **Konzisztens indulási állapot**: a `main.js` inicializációs folyamatának javítása, amely biztosítja, hogy a sidebar és a navigáció már az első betöltéskor a helyes pozícióban jelenjen meg.
+
+### 🎨 Megváltoztatva
+- **Tipográfiai javítás**: a kártyák leírásának betűméretét 16px-re (1rem) növeltük a jobb olvashatóság érdekében.
+- **Konvenciók szigorítása**: a teljes CSS kód alapos tisztítása, az összes `!important` jelző eltávolítása és a specifikusság alapú prioritáskezelés bevezetése a `project-context.md` irányelvei szerint.
+
+### 🐛 Javítva
+- **Navigation Overflow**: megszüntettük a vízszintes görgetősáv megjelenését az ikonok hover állapotánál.
+- **Zónahiba**: javítottuk a hiányzó szakaszokat (pl. Finálé), így minden rész elérhetővé vált az oldalsávból.
+
+---
+
 ## [1.8.0] – 2026-03-25
 ### 🛠️ Hozzáadva
 - **Dinamikus narratív motor (QQ)**: a szekciók (onboarding, intro, finálé) és az állomások száma mostantól teljes mértékben konfigurálható a `store.js` és a `blueprint.json` fájlokon keresztül.
