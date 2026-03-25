@@ -14,14 +14,21 @@ export class NarrativeEngine {
     const total = narrative.length;
     if (total === 0) return [];
 
-    // Alapértelmezett eloszlás (PRD szerint): 3 Onboarding, 4 Intro, 3 Finálé
-    // A maradékot elosztjuk 5 állomásra.
-    const onCount = Math.min(3, total);
-    const inCount = Math.min(4, Math.max(0, total - onCount));
-    const fiCount = Math.min(3, Math.max(0, total - (onCount + inCount)));
+    // Dinamikus eloszlás a Store konfiguráció alapján
+    const config = store.narrativeConfig || {
+      onboardingCount: 3,
+      introCount: 4,
+      finaleCount: 3,
+      stationCount: 5
+    };
+
+    const onCount = Math.min(config.onboardingCount, total);
+    const inCount = Math.min(config.introCount, Math.max(0, total - onCount));
+    const fiCount = Math.min(config.finaleCount, Math.max(0, total - (onCount + inCount)));
     const stationTotal = Math.max(0, total - (onCount + inCount + fiCount));
-    const perStation = Math.floor(stationTotal / 5);
-    const remainder = stationTotal % 5;
+    const stationCount = config.stationCount || 5;
+    const perStation = Math.floor(stationTotal / stationCount);
+    const remainder = stationTotal % stationCount;
 
     let current = 0;
     const sections = [];
@@ -35,8 +42,8 @@ export class NarrativeEngine {
     }
 
     // 3. Állomások
-    const stationColors = ['#00f2ff', '#9d50bb', '#ffcc00', '#ff0055', '#00ffaa'];
-    for (let i = 0; i < 5; i++) {
+    const stationColors = ['#00f2ff', '#9d50bb', '#ffcc00', '#ff0055', '#00ffaa', '#ff8800', '#ff00ff', '#00ff00', '#0000ff', '#ffffff'];
+    for (let i = 0; i < stationCount; i++) {
       const count = perStation + (i < remainder ? 1 : 0);
       if (count > 0) {
         sections.push({

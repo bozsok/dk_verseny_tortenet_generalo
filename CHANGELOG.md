@@ -1,6 +1,18 @@
-# 📜 CHANGELOG: Narratív Generátor – Kódkirályság
+# 📜 CHANGELOG: Narratívgenerátor – Kódkirályság
 
-Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **Semantic Versioning (SemVer)** elvei szerint.
+Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **szemantikus verziózás (SemVer)** elvei szerint.
+
+---
+
+## [1.8.0] – 2026-03-25
+### 🛠️ Hozzáadva
+- **Dinamikus narratív motor (QQ)**: a szekciók (onboarding, intro, finálé) és az állomások száma mostantól teljes mértékben konfigurálható a `store.js` és a `blueprint.json` fájlokon keresztül.
+- **Rugalmas szekcionálás**: eltávolítottuk a beégetett (3-4-3) konstansokat a `narrative-engine.js`-ből, helyettük a projektszintű konfiguráció érvényesül.
+- **Kiterjesztett színskála**: tíz egyedi neonszín támogatása az állomásokhoz a dinamikus megjelenítés érdekében.
+- **Konfigurációperzisztencia**: a narratív felosztás beállításai elmentődnek a `blueprint.json` fájlba, így projektenként testre szabhatók.
+
+### 🎨 Megváltoztatva
+- **Motorrefaktor**: a `getSections` metódus mostantól a `store.narrativeConfig` adatait használja a beégetett számok helyett a szekcióelosztás kiszámításához.
 
 ---
 
@@ -8,14 +20,14 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **Se
 ### 🛠️ Hozzáadva
 - **MTA 12. kiadás protokoll**: szigorú helyesírási és egybeírási szabályok bevezetése a narratív generálásban (Adatpohár, Zajentitás, Puffer, Avatár).
 - **Narratív Blueprint V3**: a teljes, részletes Mesterleíró tartalom visszaállítása és kibővítése a 30 diás struktúra (3-4-20-3) rögzítésével.
-- **Intelligens Grid Layout**: a kártyák elrendezése páratlan szekciók esetén (Onboarding első kártya, Finálé utolsó kártya) automatikusan két oszlopos "Hero" stílusra vált a vizuális egyensúlyért.
+- **Intelligens rács-elrendezés**: a kártyák elhelyezése páratlan szekciók esetén (az első onboarding- vagy az utolsó finálékártya) automatikusan két oszlopos „Hero” stílusra vált a vizuális egyensúly érdekében.
 
 ### 🎨 Megváltoztatva
 - **UX-finomítás**: eltávolítottuk a hover effektust a nem kattintható szekciófejlécekről (`.dkv-zone-card`).
 - **Workflow frissítés**: a generálási útmutató (`generate-narrative.md`) mostantól a pontos 30 diás darabszámot tükrözi.
 
 ### 🐛 Javítva
-- **Szekció-eltolódás fixálása**: a `NarrativeEngine.js` mostantól helyesen, az Onboardingot 3, az Intrót pedig 4 diásnak tekinti, megszüntetve a kártyák közötti csúszást.
+- **Szekcióeltolódás javítása**: a `narrative-engine.js` mostantól helyesen, az onboardingot három, az intrót pedig négy diásnak tekinti, megszüntetve a kártyák közötti csúszást.
 
 ---
 

@@ -119,6 +119,7 @@ async function loadInitialState() {
       const data = await response.json();
       if (data.title) store.projectTitle = data.title;
       if (data.prompt) store.prompt = data.prompt;
+      if (data.narrativeConfig) store.narrativeConfig = { ...store.narrativeConfig, ...data.narrativeConfig };
       Logger.info('Kiinduló állapot betöltve a blueprint.json-ból.');
     }
   } catch (err) {
@@ -333,7 +334,8 @@ function setupEventListeners() {
           body: JSON.stringify({
             title: store.projectTitle,
             prompt: store.prompt,
-            blueprint: store.blueprint
+            blueprint: store.blueprint,
+            narrativeConfig: store.narrativeConfig
           })
         });
         const result = await response.json();

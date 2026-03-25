@@ -67,7 +67,13 @@ Az AI válasza egy olyan lista lesz, amely diárol diára (Slide 1, Slide 2, stb
   toastMessage: '',
   notes: {},
   sidebarCollapsed: false,
-  sidebarContentVisible: true
+  sidebarContentVisible: true,
+  narrativeConfig: {
+    onboardingCount: 3,
+    introCount: 4,
+    finaleCount: 3,
+    stationCount: 5
+  }
 };
 
 // Figyelők (listeners) halmaza a reaktív frissítésekhez

@@ -1,7 +1,7 @@
-# 🌌 Digital Kingdom (DK) – Verseny Narratív Generátor
+# 🌌 Digital Kingdom (DK) – versenynarratív-generátor
 
 > **STATUS**: STABLE / CORRUPTION LEVEL: 12%
-> **PROTOCOL**: CYBER-FANTASY v1.0
+> **PROTOCOL**: CYBER-FANTASY v1.8.0
 
 Üdvözöllek, Programozó! Beléptél a **Digital Kingdom** szívébe, ahol a kódsorok és a narratívák határai elmosódnak. Ez az alkalmazás nem csupán egy generátor; ez egy interfész a digitális univerzum töredékeihez.
 
@@ -12,9 +12,9 @@ A rendszer célja, hogy segítse a versenyzőket a történetalkotásban és a p
 ## 🛠️ Technikai architektúra
 
 Az interfész modern, letisztult és a végletekig optimalizált:
-- **Core**: vanilla JavaScript (ES6+), proxyalapú reaktív store-rendszerrel.
+- **Core**: vanilla JavaScript (ES6+), proxyalapú reaktív storerendszerrel.
 - **Tooling**: Vite 8 (ultragyors fejlesztési környezet).
-- **Design**: szigorú BEM módszertan, glassmorphism (üveghatású megjelenés) és GPU-gyorsított animációk.
+- **Design**: szigorú BEM-módszertan, glassmorphism (üveghatású megjelenés) és GPU-gyorsított animációk.
 - **Sync**: AI Sync Bridge a blueprint-adatok és a narratívák perzisztens tárolásához.
 
 ## 🚀 Telepítés és indítás
