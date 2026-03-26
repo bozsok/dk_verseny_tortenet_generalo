@@ -3,6 +3,23 @@
 Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **szemantikus verziózás (SemVer)** elvei szerint.
 
 ---
+---
+## [1.11.0] – 2026-03-26
+### 🛠️ Hozzáadva
+- **Bridge állapotjelző**: Interaktív ikon (piros/zöld) a sidebarban, amely 5 másodpercenként ellenőrzi az AI Sync Bridge elérhetőségét.
+- **Manuális Projektszinkronizáció**: Új munkafolyamat a betöltött történetek fájlrendszerbe (blueprint.json, narrative.js) történő mentéséhez.
+- **Biztonsági protokoll**: Client-Token alapú hitelesítés a Bridge végpontokon az illetéktelen fájlmódosítások ellen.
+
+### 🎨 Megváltoztatva
+- **Okos Blueprint Összefésülés**: A szinkronizáció mostantól megőrzi az eredeti AI Promptokat és beállításokat, csak a nevet és a narratívát frissíti.
+- **UX Optimalizáció**: A sidebar mostantól nyitva marad a történet betöltése után, biztosítva a szinkronizációs gomb láthatóságát.
+
+### 🐛 Javítva
+- **Névmegőrzési hiba**: A betöltött projekt címe mostantól konzisztensen megmarad a betöltés és a szinkronizáció során is.
+- **Csendes Polling**: A státuszellenőrzés többé nem szemeteli tele hibaüzenetekkel a böngésző konzolját offline állapotban.
+- **Vite import figyelmeztetés**: Elnyomva a dinamikus importálással kapcsolatos elemzési hiba a src/main.js fájlban.
+- **Zárolási visszajelzés**: Mostantól toast üzenet jelzi, ha a felhasználó tiltott műveletet próbál végezni generálás közben.
+
 ## [1.10.0] – 2026-03-26
 ### 🛠️ Hozzáadva
 - **Google Fonts infrastruktúra**: Az `index.html` mostantól hatékonyan tölti be az új betűtípusokat preconnect támogatással.

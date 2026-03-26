@@ -1,4 +1,5 @@
 import { Logger } from './Logger.js';
+import { store } from './store.js';
 
 /**
  * Központi eseménykezelő busz (Pub/Sub minta).
@@ -75,7 +76,7 @@ class EventBus {
   emit(event, data) {
     if (this.lockProvider && this.lockProvider()) {
       Logger.warn(`Event dropped (Navigation Lock active): ${event}`);
-      // TODO: Implement visual feedback (toast) as requested in review
+      store.toastMessage = 'Művelet elutasítva: Generálás folyamatban...';
       this.emit('UI_REJECTED_ACTION', { event, reason: 'LOCK_ACTIVE' });
       return;
     }

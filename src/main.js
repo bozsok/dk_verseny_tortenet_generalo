@@ -100,6 +100,36 @@ async function initLayout() {
   UIController.setupGlobalListeners();
   setupEventListeners();
   updateDynamicContent();
+  
+  // HMR szinkronizáció utáni visszajelzés
+  if (localStorage.getItem('dkv_sync_pending')) {
+    const title = localStorage.getItem('dkv_last_sync_title');
+    store.toastMessage = `Sikeres szinkronizáció: ${title}`;
+    localStorage.removeItem('dkv_sync_pending');
+  }
+
+  // Bridge státusz polling indítása
+  startBridgePolling();
+}
+
+/**
+ * Periodikusan ellenőrzi az AI Sync Bridge állapotát.
+ */
+function startBridgePolling() {
+  const check = async () => {
+    try {
+      const resp = await fetch('http://localhost:3001/health', { 
+        method: 'GET',
+        cache: 'no-cache'
+      });
+      store.isBridgeOnline = resp.ok;
+    } catch (err) {
+      store.isBridgeOnline = false;
+    }
+  };
+  
+  check();
+  setInterval(check, 5000);
 }
 
 /**
@@ -132,9 +162,15 @@ function updateDynamicContent(property, value) {
   const slidesContainer = document.querySelector('#slides-container');
   const previewContainer = document.querySelector('.dkv-preview-container');
 
-  // Csak a címet frissítjük, ha az változott
-  if (property === 'projectTitle' && header) {
-    header.innerText = `TÖRTÉNET ELŐNÉZETE: ${value.toUpperCase()}`;
+  // Cím és Prompt szinkronizálása a sidebarban
+  if (property === 'projectTitle' || property === 'prompt') {
+    if (header && property === 'projectTitle') {
+      header.innerText = `TÖRTÉNET ELŐNÉZETE: ${store.projectTitle.toUpperCase()}`;
+    }
+    const titleIn = document.querySelector('#input-title');
+    const promptIn = document.querySelector('#prompt-input');
+    if (titleIn) titleIn.value = store.projectTitle;
+    if (promptIn) promptIn.value = store.prompt || '';
   }
 
   if (property === 'projectShortDesc') return;
@@ -213,6 +249,15 @@ function updateDynamicContent(property, value) {
       if (slidesContainer) slidesContainer.style.display = 'block';
       if (header) header.style.display = 'flex';
       if (previewContainer) previewContainer.style.justifyContent = 'flex-start';
+    }
+    return;
+  }
+
+  // Bridge állapot vagy szinkronizációs igény változása (ÚJ)
+  if (property === 'isBridgeOnline' || property === 'needsSync') {
+    const setupRoot = document.querySelector('#setup-panel-root');
+    if (setupRoot) {
+      setupRoot.innerHTML = SetupPanel();
     }
     return;
   }
@@ -390,7 +435,7 @@ function setupEventListeners() {
         try {
           // Dinamikus import kényszerítése friss időbélyeggel
           const modulePath = `/src/data/narrative.js?t=${Date.now()}`;
-          const { narrative: newNarrative } = await import(modulePath);
+          const { narrative: newNarrative } = await import(/* @vite-ignore */ modulePath);
 
           if (newNarrative && Array.isArray(newNarrative)) {
             store.narrative = [...newNarrative];
@@ -411,6 +456,12 @@ function setupEventListeners() {
           Logger.info('Generálási folyamat kész, várjuk a narratívát.');
         }
       }, 5000);
+      return;
+    }
+    
+    // 1.5 TÖRTÉNET BETÖLTÉSE FÁJLBOOL
+    if (action === 'load-story' || id === 'load-story-btn') {
+      handleLoadStory();
       return;
     }
 
@@ -447,6 +498,12 @@ function setupEventListeners() {
     // 5. SCROLL TOP
     if (action === 'scroll-top') {
       eventBus.emit('SCROLL_TOP');
+      return;
+    }
+
+    // 6. PROJEKT SZINKRONIZÁLÁSA (Új funkció)
+    if (action === 'sync-project' || id === 'sync-project-btn') {
+      await syncProjectData();
       return;
     }
   };
@@ -664,5 +721,156 @@ function exportNarrative(format) {
   } catch (err) {
     Logger.error('Hiba az exportálás során:', err);
     store.toastMessage = 'Hiba az exportálásnál!';
+  }
+}
+
+/**
+ * Kezeli a történet betöltését fájlból.
+ */
+function handleLoadStory() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.md,.txt';
+  
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = event.target.result;
+      const extension = file.name.split('.').pop().toLowerCase();
+      
+      try {
+        const result = parseNarrativeContent(content, extension === 'md' ? 'markdown' : 'text');
+        
+        if (result && result.narrative.length > 0) {
+          // Állapot frissítése
+          store.narrative = result.narrative;
+          store.projectTitle = result.title || 'Betöltött Projekt';
+          store.prompt = ''; 
+          store.projectShortDesc = '';
+          
+          // UI nyitva tartása a szinkronizációhoz
+          store.sidebarContentVisible = true;
+          store.sidebarCollapsed = false;
+          
+          store.toastMessage = 'Történet sikeresen betöltve!';
+          Logger.info(`Történet betöltve: ${file.name} (${result.narrative.length} dia)`);
+          
+          // Jelezzük, hogy szinkronizációra van szükség a fájlrendszerbe
+          store.needsSync = true;
+        } else {
+          throw new Error('Nem sikerült feldolgozni a fájl tartalmát.');
+        }
+      } catch (err) {
+        Logger.error('Hiba a betöltéskor:', err);
+        store.toastMessage = 'HIBA: Érvénytelen fájlformátum!';
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  input.click();
+}
+
+/**
+ * Feldolgozza a beolvasott szöveget és kinyeri a címet és a diákat.
+ * @param {string} text - A fájl tartalma.
+ * @param {'markdown'|'text'} format - A fájl formátuma.
+ * @returns {Object} { title, narrative }
+ */
+function parseNarrativeContent(text, format) {
+  const narrative = [];
+  let title = '';
+
+  if (format === 'markdown') {
+    // Cím keresése (# [Title])
+    const titleMatch = text.match(/^#\s+(.*)$/m);
+    if (titleMatch) title = titleMatch[1].trim();
+
+    // Diákra bontás (## Dia [X]: [SubTitle])
+    // Az elválasztó --- jelek mentén is vághatunk, de a Dia fejléc biztosabb
+    const sections = text.split(/\n---\s*\n/);
+    
+    sections.forEach(section => {
+      const slideMatch = section.match(/## Dia \d+:\s*(.*)\n([\s\S]*)/);
+      if (slideMatch) {
+        narrative.push({
+          id: `slide-load-${Date.now()}-${narrative.length}`,
+          title: slideMatch[1].trim(),
+          content: slideMatch[2].trim()
+        });
+      }
+    });
+  } else {
+    // Sima szöveg formátum
+    const lines = text.split('\n');
+    title = lines[0].trim();
+
+    const sections = text.split(/\n-+\n/); // ------------------- elválasztó
+    
+    sections.forEach(section => {
+      const slideMatch = section.match(/DIA \d+:\s*(.*)\n([\s\S]*)/i);
+      if (slideMatch) {
+        narrative.push({
+          id: `slide-load-${Date.now()}-${narrative.length}`,
+          title: slideMatch[1].trim(),
+          content: slideMatch[2].trim()
+        });
+      }
+    });
+  }
+
+  return { title, narrative };
+}
+
+/**
+ * Szinkronizálja az aktuális (betöltött) projektet a fájlrendszerrel a Bridge segítségével.
+ */
+async function syncProjectData() {
+  if (!store.isBridgeOnline) {
+    store.toastMessage = 'HIBA: A Bridge nem elérhető a szinkronizációhoz!';
+    return;
+  }
+
+  const syncBtn = document.querySelector('#sync-project-btn');
+  if (syncBtn) {
+    syncBtn.innerText = 'SZINKRONIZÁLÁS...';
+    syncBtn.classList.add('dkv-btn--loading');
+  }
+
+  try {
+    const response = await fetch('http://localhost:3001/sync-full-project', {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-sync-token': 'dk-story-sync-2026'
+      },
+      body: JSON.stringify({
+        title: store.projectTitle,
+        narrative: store.narrative
+      })
+    });
+
+    const result = await response.json();
+    if (!result.success) throw new Error(result.error);
+
+    store.needsSync = false;
+    store.toastMessage = 'Sikeres szinkronizáció! A projekt és a ceruza ikon mostantól használatra kész.';
+    Logger.info('Projekt sikeresen szinkronizálva a fájlrendszerbe.');
+
+    // HMR elleni védelem: állapot mentése a localStorage-ba
+    localStorage.setItem('dkv_sync_pending', 'true');
+    localStorage.setItem('dkv_last_sync_title', store.projectTitle);
+
+  } catch (err) {
+    Logger.error('Szinkronizációs hiba:', err);
+    store.toastMessage = 'HIBA a szinkronizálás során: ' + err.message;
+  } finally {
+    if (syncBtn) {
+      syncBtn.innerText = 'SZINKRONIZÁCIÓ A PROJEKTBE';
+      syncBtn.classList.remove('dkv-btn--loading');
+    }
   }
 }

@@ -28,6 +28,29 @@ export const SetupPanel = () => {
         <button id="generate-btn" data-action="generate" class="dkv-btn dkv-btn--primary ${lockedBtnClass}" ${disabledAttr}>
           ${isLocked ? 'GENERÁLÁS FOLYAMATBAN...' : 'AI-GENERÁLÁS INDÍTÁSA'}
         </button>
+        
+        <div style="position: relative; margin-top: 10px;">
+          <!-- Bridge Status Indicator -->
+          <div class="dkv-bridge-status ${store.isBridgeOnline ? 'dkv-bridge-status--online' : 'dkv-bridge-status--offline'}" 
+               title="${store.isBridgeOnline ? 'Bridge Online – Készen áll az iterációra és a mentésre.' : 'Bridge Offline – SZÜKSÉGES AZ INDÍTÁS'}">
+            ${store.isBridgeOnline ? '✓' : '×'}
+            <span class="dkv-bridge-status__tooltip">
+              ${store.isBridgeOnline 
+                ? 'Bridge Online – Készen áll az iterációra és a mentésre.' 
+                : 'Bridge Offline – Indítsd el a terminálban az iterációhoz az \'npm run bridge\' paranccsal!'}
+            </span>
+          </div>
+          
+          <button id="load-story-btn" data-action="load-story" class="dkv-btn dkv-btn--secondary ${lockedBtnClass}" ${disabledAttr}>
+            TÖRTÉNET BETÖLTÉSE
+          </button>
+        </div>
+
+        ${store.needsSync && store.isBridgeOnline ? `
+          <button id="sync-project-btn" data-action="sync-project" class="dkv-btn dkv-btn--sync ${lockedBtnClass}" ${disabledAttr}>
+            SZINKRONIZÁCIÓ A PROJEKTBE
+          </button>
+        ` : ''}
       </div>
 
       <div class="dkv-sidebar__secondary-actions">

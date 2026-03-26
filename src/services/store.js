@@ -74,7 +74,9 @@ Az AI válasza egy olyan lista lesz, amely diárol diára (Slide 1, Slide 2, stb
     introCount: 4,
     finaleCount: 3,
     stationCount: 5
-  }
+  },
+  isBridgeOnline: false,
+  needsSync: false
 };
 
 // Figyelők (listeners) halmaza a reaktív frissítésekhez

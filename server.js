@@ -14,6 +14,12 @@ const PORT = 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
+const CLIENT_TOKEN = 'dk-story-sync-2026';
+
+app.get('/health', (req, res) => {
+  res.json({ success: true, version: '1.11.0' });
+});
+
 app.post('/save-blueprint', (req, res) => {
   try {
     const data = req.body;
@@ -34,6 +40,48 @@ app.post('/save-iteration', (req, res) => {
     console.log('📝 Iterációs kérelem érkezett:', data.slideId);
     res.json({ success: true });
   } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/sync-full-project', (req, res) => {
+  const token = req.headers['x-sync-token'];
+  if (token !== CLIENT_TOKEN) {
+    return res.status(403).json({ success: false, error: 'Érvénytelen biztonsági kulcs!' });
+  }
+
+  try {
+    const { title, narrative } = req.body;
+    if (!narrative || !Array.isArray(narrative) || narrative.length === 0) {
+      throw new Error('Érvénytelen vagy üres narratíva adat!');
+    }
+
+    const blueprintPath = path.join(__dirname, 'src', 'data', 'blueprint.json');
+    const narrativePath = path.join(__dirname, 'src', 'data', 'narrative.js');
+
+    // 1. SMART MERGE: Blueprint beolvasása és összefésülése
+    let blueprintData = {};
+    if (fs.existsSync(blueprintPath)) {
+      blueprintData = JSON.parse(fs.readFileSync(blueprintPath, 'utf8'));
+    }
+
+    blueprintData.title = title || blueprintData.title || 'Betöltött Történet';
+    // Frissítjük a diák számát a konfigurációban a betöltött adatok alapján
+    blueprintData.narrativeConfig = {
+      ...(blueprintData.narrativeConfig || {}),
+      totalSlides: narrative.length
+    };
+
+    fs.writeFileSync(blueprintPath, JSON.stringify(blueprintData, null, 2));
+
+    // 2. NARRATIVE.JS frissítése
+    const narrativeContent = `export const narrative = ${JSON.stringify(narrative, null, 2)};\n`;
+    fs.writeFileSync(narrativePath, narrativeContent);
+
+    console.log('🔄 Projekt szinkronizálva:', title);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('❌ Szinkronizációs hiba:', error);
     res.status(500).json({ success: false, error: error.message });
   }
 });
