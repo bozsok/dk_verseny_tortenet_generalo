@@ -5,11 +5,11 @@ export const IterationModal = (slideId) => {
   if (!slide) return '';
 
   return `
-    <div class="dkv-modal-overlay dkv-modal-overlay--visible">
+    <div class="dkv-modal-overlay dkv-modal-overlay--visible" data-action="close-iteration">
       <div class="dkv-modal-card dkv-modal-card--cyan dkv-fade-in-up">
         <div class="dkv-modal-header">
-          <h2 class="dkv-neon-text">A dia finomhangolása</h2>
-          <button id="close-iteration" class="dkv-close-btn">&times;</button>
+          <h2 class="dkv-neon-text dkv-modal-title--reading">A dia finomhangolása</h2>
+          <button id="close-iteration" class="dkv-close-btn" data-action="close-iteration">&times;</button>
         </div>
         
         <div class="dkv-modal-body">

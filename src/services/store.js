@@ -67,16 +67,19 @@ Az AI válasza egy olyan lista lesz, amely diárol diára (Slide 1, Slide 2, stb
   editingSlideId: null,
   toastMessage: '',
   notes: {},
+  dkv_bridge_interval: null,
   sidebarCollapsed: true,
-  sidebarContentVisible: false,
+  sidebarContentVisible: false, /* Nyitott tartalom láthatósága */
+  sidebarIconsVisible: true,    /* Összecsukott nav ikonok láthatósága */
   narrativeConfig: {
     onboardingCount: 3,
     introCount: 4,
     finaleCount: 3,
     stationCount: 5
   },
-  isBridgeOnline: false,
-  needsSync: false
+  isBridgeOnline: null,
+  needsSync: false,
+  viewingSlideId: null
 };
 
 // Figyelők (listeners) halmaza a reaktív frissítésekhez
@@ -87,6 +90,9 @@ const listeners = new Set();
  */
 export const store = new Proxy(initialState, {
   set(target, property, value) {
+    // Csak akkor frissítsünk és értesítsünk, ha az érték valóban megváltozott
+    if (target[property] === value) return true;
+    
     target[property] = value;
     listeners.forEach(fn => fn(property, value));
     return true;

@@ -29,5 +29,15 @@ export const Logger = {
    */
   warn(message) {
     console.warn(`[DKV-WARN] ${message}`);
+  },
+
+  /**
+   * Debug üzenet naplózása.
+   * @param {string} message - A debug üzenet.
+   * @param {any} data - Opcionális adat.
+   */
+  debug(message, data = null) {
+    if (data) console.debug(`[DKV-DEBUG] ${message}`, data);
+    else console.debug(`[DKV-DEBUG] ${message}`);
   }
 };

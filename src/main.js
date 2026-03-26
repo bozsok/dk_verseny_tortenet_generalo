@@ -6,6 +6,7 @@ import { NarrativeCard } from './components/NarrativeCard.js';
 import { SetupPanel } from './components/SetupPanel.js';
 import { IterationModal } from './components/IterationModal.js';
 import { BlueprintModal } from './components/BlueprintModal.js';
+import { SlideDetailModal } from './components/SlideDetailModal.js';
 import { NarrativeEngine } from './services/narrative-engine.js';
 import { UIController } from './services/ui-controller.js';
 import { disposalService } from './services/disposal-service.js';
@@ -56,17 +57,17 @@ const app = document.querySelector('#app');
 // Kezdeti narratíva betöltése a store-ba
 store.narrative = narrative;
 
-/**
- * Inicializálja az alkalmazás alapvető elrendezését (layout).
- */
 async function initLayout() {
+  // HMR védelem: korábbi eseménykezelők és időzítők felszabadítása
+  disposalService.purge();
+
   // Beolvassuk a mentett állapotot a fájlból indításkor
   await loadInitialState();
 
   app.innerHTML = `
     <div class="dkv-main-layout ${store.sidebarCollapsed ? 'dkv-main-layout--collapsed' : ''} ${store.isGenerating ? 'dkv-main-layout--locked' : ''}">
       <!-- BAL OLDAL: GENERATOR -->
-      <aside id="sidebar" class="dkv-sidebar ${!store.sidebarContentVisible ? 'dkv-sidebar--content-hidden' : ''}">
+      <aside id="sidebar" class="dkv-sidebar ${!store.sidebarContentVisible ? 'dkv-sidebar--content-hidden' : ''} ${!store.sidebarIconsVisible ? 'dkv-sidebar--icons-hidden' : ''}">
         <div class="dkv-sidebar__content-wrapper">
           <div id="setup-panel-root">
             ${SetupPanel()}
@@ -95,12 +96,18 @@ async function initLayout() {
     </div>
     
     <div id="modal-root"></div>
+    <div id="bridge-status-root" class="dkv-global-bridge-status"></div>
   `;
 
   UIController.setupGlobalListeners();
   setupEventListeners();
+
+  // Reaktivitás bekapcsolása: minden store változás frissíti a UI-t
+  subscribe(updateDynamicContent);
+
+  // Kezdeti renderelés
   updateDynamicContent();
-  
+
   // HMR szinkronizáció utáni visszajelzés
   if (localStorage.getItem('dkv_sync_pending')) {
     const title = localStorage.getItem('dkv_last_sync_title');
@@ -118,7 +125,10 @@ async function initLayout() {
 function startBridgePolling() {
   const check = async () => {
     try {
-      const resp = await fetch('http://localhost:3001/health', { 
+      // Csak akkor nehezítjük a hálózatot, ha az oldal aktív, vagy ha manuálisan hívják
+      if (document.hidden && !arguments[0]) return;
+
+      const resp = await fetch('http://127.0.0.1:3001/health', {
         method: 'GET',
         cache: 'no-cache'
       });
@@ -127,9 +137,20 @@ function startBridgePolling() {
       store.isBridgeOnline = false;
     }
   };
-  
+
+  // HMR védelem: Ne indítsunk el több intervallumot, ha már fut egy
+  if (window.dkv_bridge_interval) {
+    clearInterval(window.dkv_bridge_interval);
+  }
+
   check();
-  setInterval(check, 5000);
+  window.dkv_bridge_interval = setInterval(check, 3000);
+
+  // Fókusz visszatérésekor azonnali ellenőrzés
+  window.addEventListener('focus', () => check(true));
+
+  // Globálisan elérhetővé tesszük a manuális frissítéshez
+  window.refreshBridgeStatus = () => check(true);
 }
 
 /**
@@ -145,8 +166,16 @@ async function loadInitialState() {
       if (data.narrativeConfig) store.narrativeConfig = { ...store.narrativeConfig, ...data.narrativeConfig };
       Logger.info('Kiinduló állapot betöltve a blueprint.json-ból.');
     }
+
+    // 2. Narratíva betöltése (dinamikus importtal a frissességért)
+    const modulePath = `/src/data/narrative.js?t=${Date.now()}`;
+    const { narrative: newNarrative } = await import(/* @vite-ignore */ modulePath);
+    if (newNarrative) {
+      store.narrative = newNarrative;
+      Logger.info('Narratíva frissítve a fájlból.');
+    }
   } catch (err) {
-    Logger.debug('Nem található mentett blueprint.json (elsố indítás?).');
+    Logger.debug('Hiba a betöltés során (lehet még nincs fájl):', err);
   }
 }
 
@@ -253,12 +282,54 @@ function updateDynamicContent(property, value) {
     return;
   }
 
-  // Bridge állapot vagy szinkronizációs igény változása (ÚJ)
-  if (property === 'isBridgeOnline' || property === 'needsSync') {
-    const setupRoot = document.querySelector('#setup-panel-root');
-    if (setupRoot) {
-      setupRoot.innerHTML = SetupPanel();
+  // Bridge állapot változása (Globális, minden felett látszódó megjelenítés)
+  if (property === 'isBridgeOnline' || !property) {
+    const bridgeStatusRoot = document.querySelector('#bridge-status-root');
+    if (!bridgeStatusRoot) return;
+
+    let indicator = bridgeStatusRoot.querySelector('.dkv-bridge-status');
+    const isOnline = store.isBridgeOnline;
+
+    // Kezdeti létrehozás, ha még nincs ott (vagy property hiányzik)
+    if (!indicator || !property) {
+      bridgeStatusRoot.innerHTML = `
+        <div class="dkv-bridge-status" data-action="refresh-bridge" style="cursor: pointer;">
+          <span class="dkv-bridge-status__icon"></span>
+          <span class="dkv-bridge-status__tooltip"></span>
+        </div>
+      `;
+      indicator = bridgeStatusRoot.querySelector('.dkv-bridge-status');
     }
+
+    // Csak a változó részek frissítése osztályokkal és szöveggel (Pro/Erőforrás-kímélő)
+    const statusClass = isOnline === null ? 'dkv-bridge-status--unknown' :
+      (isOnline ? 'dkv-bridge-status--online' : 'dkv-bridge-status--offline');
+    const iconChar = isOnline === null ? '?' : (isOnline ? '✓' : '!');
+    const tooltipText = isOnline === null
+      ? 'Bridge állapota ismeretlen – ellenőrzés folyamatban...'
+      : (isOnline
+        ? 'Bridge Online – Készen áll az iterációra és a mentésre.'
+        : 'Bridge Offline – Indítsd el a bridge-et a terminálban az "npm run bridge" paranccsal!');
+
+    indicator.className = `dkv-bridge-status ${statusClass}`;
+    const iconEl = indicator.querySelector('.dkv-bridge-status__icon');
+    const tooltipEl = indicator.querySelector('.dkv-bridge-status__tooltip');
+    if (iconEl) iconEl.textContent = iconChar;
+    if (tooltipEl) tooltipEl.textContent = tooltipText;
+
+    // Ha bejön a bridge, és kell a szinkron, akkor frissítjük a panelt a gomb miatt
+    if (property === 'isBridgeOnline' && isOnline && store.needsSync) {
+      const setupRoot = document.querySelector('#setup-panel-root');
+      const syncBtn = document.querySelector('#sync-project-btn');
+      if (setupRoot && !syncBtn) setupRoot.innerHTML = SetupPanel();
+    }
+    if (property === 'isBridgeOnline') return;
+  }
+
+  // Szinkronizációs igény változása esetén továbbra is kell a teljes panel
+  if (property === 'needsSync') {
+    const setupRoot = document.querySelector('#setup-panel-root');
+    if (setupRoot) setupRoot.innerHTML = SetupPanel();
     return;
   }
 
@@ -274,6 +345,12 @@ function updateDynamicContent(property, value) {
   if (property === 'sidebarContentVisible') {
     const sidebar = document.querySelector('.dkv-sidebar');
     if (sidebar) sidebar.classList.toggle('dkv-sidebar--content-hidden', !value);
+    return;
+  }
+
+  if (property === 'sidebarIconsVisible') {
+    const sidebar = document.querySelector('.dkv-sidebar');
+    if (sidebar) sidebar.classList.toggle('dkv-sidebar--icons-hidden', !value);
     return;
   }
 
@@ -383,6 +460,10 @@ function updateDynamicContent(property, value) {
     modalRoot.innerHTML = value ? BlueprintModal() : '';
     setupBlueprintListeners();
   }
+
+  if (property === 'viewingSlideId' && modalRoot) {
+    modalRoot.innerHTML = value ? SlideDetailModal() : '';
+  }
 }
 
 /**
@@ -392,24 +473,60 @@ function updateDynamicContent(property, value) {
  * Beállítja a fő alkalmazás eseménykezelőit delegációs mintával.
  * Ez biztosítja, hogy az újrarenderelt (például generálás utáni) elemek is működjenek.
  */
+/**
+ * Beállítja a fő alkalmazás eseménykezelőit delegációs mintával.
+ */
 function setupEventListeners() {
   // --- ESEMÉNY DELEGÁCIÓ (Pattogó események kezelése) ---
   document.body.onclick = async (e) => {
-    const target = e.target.closest('[data-action], #generate-btn, #save-config-btn, #blueprint-btn, #export-btn, #sidebar-toggle');
+    const target = e.target.closest('[data-action], #generate-btn, #save-config-btn, #blueprint-btn, #export-btn, #sidebar-toggle, .dkv-hero-card, .dkv-small-card');
     if (!target || store.isGenerating) return;
 
     const action = target.getAttribute('data-action');
     const id = target.id;
 
-    // 1. GENERÁLÁS (A legfontosabb funkció)
+    // 0. KÁRTYA MEGTEKINTÉSE VAGY SZERKESZTÉSE
+    if (target.classList.contains('dkv-hero-card') || target.classList.contains('dkv-small-card')) {
+      const editBtn = e.target.closest('.dkv-edit-icon-btn');
+      if (editBtn) {
+        // SZERKESZTÉS MÓD
+        store.editingSlideId = editBtn.getAttribute('data-id');
+      } else {
+        // OLVASÓ MÓD
+        const slideId = target.querySelector('.dkv-edit-icon-btn')?.getAttribute('data-id');
+        if (slideId) store.viewingSlideId = slideId;
+      }
+      return;
+    }
+
+    // 0.1 MODAL BEZÁRÁSA
+    if (action && action.startsWith('close-')) {
+      const isOverlayClick = e.target.classList.contains('dkv-modal-overlay');
+      const isCloseBtnClick = e.target.closest('.dkv-close-btn');
+
+      if (isOverlayClick || isCloseBtnClick) {
+        if (action === 'close-view-modal') store.viewingSlideId = null;
+        if (action === 'close-blueprint') store.isEditingBlueprint = false;
+        if (action === 'close-iteration') store.editingSlideId = null;
+      }
+      return;
+    }
+
+    // 0.2 BRIDGE FRISSÍTÉSE
+    if (action === 'refresh-bridge') {
+      if (window.refreshBridgeStatus) window.refreshBridgeStatus();
+      store.toastMessage = 'Bridge állapotának ellenőrzése...';
+      return;
+    }
+
+    // 1. GENERÁLÁS ÉS MENTÉS
     if (action === 'generate' || id === 'generate-btn' || id === 'save-config-btn') {
       e.preventDefault();
       store.isGenerating = true;
-      Logger.info('Generálási folyamat indítása (Delegált esemény)...');
+      Logger.info('Blueprint mentése és generálási folyamat indítása...');
 
-      // ADATOK MENTÉSE A SZERVERRE (AI Sync Bridge)
       try {
-        const response = await fetch('http://localhost:3001/save-blueprint', {
+        const response = await fetch('http://127.0.0.1:3001/save-blueprint', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -421,47 +538,30 @@ function setupEventListeners() {
         });
         const result = await response.json();
         if (!result.success) throw new Error(result.error);
-        Logger.info('Blueprint sikeresen mentve a szerverre.');
-        // store.toastMessage = 'Adatok elküldve az AI-motornak...'; // Okafogyott a modal miatt
+
+        Logger.info('Blueprint sikeresen mentve.');
+
+        // Várakozás a fájl frissülésére (szimulált generálási idő)
+        setTimeout(async () => {
+          try {
+            const modulePath = `/src/data/narrative.js?t=${Date.now()}`;
+            const { narrative: newNarrative } = await import(/* @vite-ignore */ modulePath);
+            if (newNarrative && Array.isArray(newNarrative)) {
+              store.narrative = [...newNarrative];
+              Logger.info(`Adatok frissítve: ${newNarrative.length} dia.`);
+            }
+          } catch (err) {
+            Logger.error('Hiba a betöltéskor:', err);
+          } finally {
+            store.isGenerating = false;
+            store.isWaitingForNarrative = true;
+          }
+        }, 5000);
       } catch (err) {
         Logger.error('Hiba a mentés során:', err);
-        store.toastMessage = 'HIBA: Az AI-Bridge (server.js) nem érhető el!';
+        store.toastMessage = 'HIBA: A Bridge szerver nem érhető el!';
         store.isGenerating = false;
-        return;
       }
-
-      // Megvárjuk a vizuális visszajelzést (overlay)
-      setTimeout(async () => {
-        try {
-          // Dinamikus import kényszerítése friss időbélyeggel
-          const modulePath = `/src/data/narrative.js?t=${Date.now()}`;
-          const { narrative: newNarrative } = await import(/* @vite-ignore */ modulePath);
-
-          if (newNarrative && Array.isArray(newNarrative)) {
-            store.narrative = [...newNarrative];
-            Logger.info(`Sikeres importálás: ${newNarrative.length} dia betöltve.`);
-            store.toastMessage = 'A történet automatikusan meg fog jelenni itt, amint az AI elkészült vele.';
-            // A felhasználói élmény kedvéért néha töröljük a promptot, 
-            // ha már "feldolgoztuk" (ahogy a felhasználó említette)
-            // de a címet érdemes megtartani. Itt most csak naplózzuk.
-          } else {
-            throw new Error('Érvénytelen narratíva adatstruktúra érkezett a fájlból.');
-          }
-        } catch (err) {
-          Logger.error('Hiba a generálás befejezésekor:', err);
-          store.toastMessage = 'Hiba a fájl betöltésekor.';
-        } finally {
-          store.isGenerating = false;
-          store.isWaitingForNarrative = true;
-          Logger.info('Generálási folyamat kész, várjuk a narratívát.');
-        }
-      }, 5000);
-      return;
-    }
-    
-    // 1.5 TÖRTÉNET BETÖLTÉSE FÁJLBOOL
-    if (action === 'load-story' || id === 'load-story-btn') {
-      handleLoadStory();
       return;
     }
 
@@ -471,44 +571,71 @@ function setupEventListeners() {
       return;
     }
 
-    // 3. EXPORTÁLÁS (Markdown vagy Sima Szöveg)
+    // 3. EXPORTÁLÁS
     if (action === 'export-md') {
       exportNarrative('markdown');
       return;
     }
-
     if (action === 'export-txt') {
       exportNarrative('text');
       return;
     }
 
-    // 4. SIDEBAR TOGGLE
-    if (id === 'sidebar-toggle') {
-      if (!store.sidebarCollapsed) {
+    // 4. SIDEBAR TOGGLE (SZEKVENCIÁLIS 3 FÁZISÚ ANIMÁCIÓ)
+    if (id === 'sidebar-toggle' || action === 'toggle-sidebar') {
+      const isCollapsed = store.sidebarCollapsed;
+      if (!isCollapsed) {
+        // ZÁRÁS
+        // 1. A Setup Panel tartalma elhalványul 0.3s alatt a széles sidebarban
         store.sidebarContentVisible = false;
-        setTimeout(() => { store.sidebarCollapsed = true; }, 50);
+
+        // 2. Miután eltűnt a tartalom (300ms), a sidebar üresen összecsukódik
+        setTimeout(() => {
+          store.sidebarCollapsed = true;
+        }, 300);
+
+        // 3. Miután a sidebar bezárult (további ~400ms a CSS transition-nek), megjelennek az ikonok a végleges helyükön
+        setTimeout(() => {
+          store.sidebarIconsVisible = true;
+        }, 300 + 400);
+
       } else {
-        store.sidebarCollapsed = false;
-        await new Promise(r => setTimeout(r, 450));
-        store.sidebarContentVisible = true;
+        // NYITÁS
+        // 1. Az ikonok elhalványulnak (0.3s alatt) az eredeti helyükön, még az összecsukott sidebarban
+        store.sidebarIconsVisible = false;
+
+        // 2. Miután elhalványultak az ikonok (300ms), a sidebar üresen kinyílik
+        setTimeout(() => {
+          store.sidebarCollapsed = false;
+        }, 300);
+
+        // 3. Miután a sidebar kinyílt (további ~400ms CSS width változás), a teljes tartalom (Setup Panel + Nav) fade-in-nel megjelenik
+        setTimeout(() => {
+          store.sidebarContentVisible = true;
+          // store.sidebarIconsVisible = true; 
+        }, 300 + 400);
       }
       return;
     }
 
-    // 5. SCROLL TOP
+    // 4.5 TÖRTÉNET BETÖLTÉSE VAGY SZINKRONIZÁLÁSA
+    if (action === 'load-story') {
+      handleLoadStory();
+      return;
+    }
+    if (action === 'sync-project' || id === 'sync-project-btn') {
+      syncProjectData();
+      return;
+    }
+
+    // 5. TOVÁBBI AKCIÓK (SCROLL STB)
     if (action === 'scroll-top') {
       eventBus.emit('SCROLL_TOP');
       return;
     }
-
-    // 6. PROJEKT SZINKRONIZÁLÁSA (Új funkció)
-    if (action === 'sync-project' || id === 'sync-project-btn') {
-      await syncProjectData();
-      return;
-    }
   };
 
-  // Input mezők figyelése (ezeket nem delegáljuk a jobb UX miatt, de újra kötni kell rendereléskor)
+  // Input mezők figyelése
   const bindInputs = () => {
     const titleIn = document.querySelector('#input-title');
     const promptIn = document.querySelector('#prompt-input');
@@ -517,11 +644,9 @@ function setupEventListeners() {
   };
 
   bindInputs();
-
-  // Minden store frissítéskor újra kell kötni az input mezőket a SetupPanel-ben
   subscribe((prop) => {
     if (prop === 'isGenerating' || prop === 'sidebarCollapsed') {
-      setTimeout(bindInputs, 0); // Megvárjuk míg bekerül a DOM-ba
+      setTimeout(bindInputs, 0);
     }
   });
 }
@@ -543,7 +668,7 @@ function setupModalListeners() {
 
         // MENTÉS A SZERVERRE
         try {
-          await fetch('http://localhost:3001/save-iteration', {
+          await fetch('http://127.0.0.1:3001/save-iteration', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -567,12 +692,9 @@ function setupModalListeners() {
  * Beállítja a Blueprint szerkesztő modal eseménykezelőit.
  */
 function setupBlueprintListeners() {
-  const closeBtn = document.querySelector('#close-blueprint');
   const saveBtn = document.querySelector('#save-blueprint');
   const modalicCard = document.querySelector('.dkv-modal-card');
   const textarea = document.querySelector('#blueprint-textarea');
-
-  if (closeBtn) closeBtn.onclick = () => store.isEditingBlueprint = false;
 
   if (saveBtn) {
     saveBtn.onclick = async () => {
@@ -590,7 +712,7 @@ function setupBlueprintListeners() {
 
       try {
         Logger.info('Blueprint mentése indítva...');
-        const response = await fetch('http://localhost:3001/save-blueprint', {
+        const response = await fetch('http://127.0.0.1:3001/save-blueprint', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -731,7 +853,7 @@ function handleLoadStory() {
   const input = document.createElement('input');
   input.type = 'file';
   input.accept = '.md,.txt';
-  
+
   input.onchange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -740,24 +862,24 @@ function handleLoadStory() {
     reader.onload = (event) => {
       const content = event.target.result;
       const extension = file.name.split('.').pop().toLowerCase();
-      
+
       try {
         const result = parseNarrativeContent(content, extension === 'md' ? 'markdown' : 'text');
-        
+
         if (result && result.narrative.length > 0) {
           // Állapot frissítése
           store.narrative = result.narrative;
           store.projectTitle = result.title || 'Betöltött Projekt';
-          store.prompt = ''; 
+          store.prompt = '';
           store.projectShortDesc = '';
-          
+
           // UI nyitva tartása a szinkronizációhoz
           store.sidebarContentVisible = true;
           store.sidebarCollapsed = false;
-          
+
           store.toastMessage = 'Történet sikeresen betöltve!';
           Logger.info(`Történet betöltve: ${file.name} (${result.narrative.length} dia)`);
-          
+
           // Jelezzük, hogy szinkronizációra van szükség a fájlrendszerbe
           store.needsSync = true;
         } else {
@@ -792,7 +914,7 @@ function parseNarrativeContent(text, format) {
     // Diákra bontás (## Dia [X]: [SubTitle])
     // Az elválasztó --- jelek mentén is vághatunk, de a Dia fejléc biztosabb
     const sections = text.split(/\n---\s*\n/);
-    
+
     sections.forEach(section => {
       const slideMatch = section.match(/## Dia \d+:\s*(.*)\n([\s\S]*)/);
       if (slideMatch) {
@@ -809,7 +931,7 @@ function parseNarrativeContent(text, format) {
     title = lines[0].trim();
 
     const sections = text.split(/\n-+\n/); // ------------------- elválasztó
-    
+
     sections.forEach(section => {
       const slideMatch = section.match(/DIA \d+:\s*(.*)\n([\s\S]*)/i);
       if (slideMatch) {
@@ -841,9 +963,9 @@ async function syncProjectData() {
   }
 
   try {
-    const response = await fetch('http://localhost:3001/sync-full-project', {
+    const response = await fetch('http://127.0.0.1:3001/sync-full-project', {
       method: 'POST',
-      headers: { 
+      headers: {
         'Content-Type': 'application/json',
         'x-sync-token': 'dk-story-sync-2026'
       },
@@ -874,3 +996,5 @@ async function syncProjectData() {
     }
   }
 }
+
+initLayout();

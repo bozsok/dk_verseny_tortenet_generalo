@@ -30,6 +30,7 @@
   border-color: var(--neon-cyan);
   box-shadow: 0 0 25px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
   z-index: 10;
+  cursor: pointer;
 }
 
 @keyframes dkv-slide-in-up {
@@ -88,22 +89,32 @@
 }
 
 /* --- BRIDGE STATUS INDICATOR --- */
+.dkv-global-bridge-status {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    z-index: 3000; /* Minden felett, a modalok felett is (2005) */
+}
+
 .dkv-bridge-status {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    width: 20px;
-    height: 20px;
+    position: relative;
+    width: 28px; /* Kicsit nagyobb a globális láthatóságért */
+    height: 28px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
     cursor: help;
-    z-index: 100;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.dkv-bridge-status--unknown {
+    background: #555;
+    box-shadow: 0 0 5px #777;
 }
 
 .dkv-bridge-status--online {
@@ -114,6 +125,13 @@
 .dkv-bridge-status--offline {
     background: #ff0000;
     box-shadow: 0 0 10px #ff0000;
+    animation: dkv-bridge-pulse 2s infinite;
+}
+
+@keyframes dkv-bridge-pulse {
+    0% { box-shadow: 0 0 5px #ff0000; transform: scale(1); }
+    50% { box-shadow: 0 0 20px #ff4444; transform: scale(1.1); }
+    100% { box-shadow: 0 0 5px #ff0000; transform: scale(1); }
 }
 
 .dkv-bridge-status__tooltip {
@@ -125,10 +143,9 @@
     border-radius: 6px;
     padding: 10px;
     position: absolute;
-    z-index: 101;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -120px;
+    top: 130%;
+    right: 0; /* Végleges jobbra igazítás */
+    transform: none;
     opacity: 0;
     transition: opacity 0.3s;
     border: 1px solid var(--neon-cyan);
@@ -155,4 +172,26 @@
     0% { box-shadow: 0 0 0px var(--neon-cyan); }
     50% { box-shadow: 0 0 15px var(--neon-cyan); }
     100% { box-shadow: 0 0 0px var(--neon-cyan); }
+}
+
+/* --- VIEW MODAL READING MODE --- */
+.dkv-modal-body--reading {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--text-white);
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 15px;
+}
+
+.dkv-modal-body--reading p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.dkv-modal-title--reading {
+    font-size: 2.4rem !important;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }

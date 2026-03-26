@@ -4,6 +4,21 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 ---
+## [1.12.0] – 2026-03-26
+### 🛠️ Hozzáadva
+- **Kártya részletező modal**: Az előnézeti kártyák mostantól kattinthatók, és olvasásra optimalizált, nagybetűs modal ablakban jelenítik meg a teljes szöveget és címet.
+- **Konzisztens Modal Bezárás**: Mostantól a Blueprint szerkesztő és a részletező modal is bezárható az ablak mellé (overlay-re) kattintva.
+- **Intelligens Bridge Status UX**: Az állapotjelző a sidebar fejlécébe került. A frissítés most már célzottan csak az indikátort érinti, így gépelés közben nem veszik el a fókusz.
+- **Javított "Történet betöltése"**: A gomb most már a teljes narratívát (`narrative.js`) is frissíti a fájlrendszerből, nem csak a címet/promptot.
+
+### 🎨 Megváltoztatva
+- **Szekvenciális Sidebar-animáció**: Tiszta JavaScript-alapú, 3-fázisú animáció bevezetése a kinyitáshoz és az összecsukáshoz. Ezzel megakadályozható a beviteli mezők és az ikonok torzulása, nyúlása a flexbox-elrendezésben.
+- **Dinamikus ikonláthatóság**: Az oldalsáv navigációs ikonjai mostantól kifejezetten csak összecsukott állapotban kapnak tökéletes középre igazítást, elkerülve a „fentről lefelé hulló” vizuális hibát a kinyitás fázisában.
+
+### 🐛 Javítva
+- **Kiszorított ikonok (overflow-hiba)**: A `#setup-panel-root` elem rugalmas (`flex: 1`) magassága miatt kiszoruló ikonok hibája megszüntetve; a navigációs sáv zárt állapotban már mindig felúszik a fejléc alatti látható térbe.
+- **Hiányzó reaktivitás pótlása**: Felvettük a `sidebarIconsVisible` állapotot a DOM-frissítő, `updateDynamicContent` függvény figyelőjébe, megszüntetve az aszinkron DOM-renderelési elcsúszásokat.
+
 ## [1.11.0] – 2026-03-26
 ### 🛠️ Hozzáadva
 - **Bridge állapotjelző**: Interaktív ikon (piros/zöld) a sidebarban, amely 5 másodpercenként ellenőrzi az AI Sync Bridge elérhetőségét.

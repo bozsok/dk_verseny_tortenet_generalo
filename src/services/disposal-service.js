@@ -31,7 +31,8 @@ class DisposalService {
     target.addEventListener(type, listener, options);
     this.add(() => {
       target.removeEventListener(type, listener, options);
-      Logger.debug(`DisposalService: Listener eltávolítva: ${type}`);
+      if (Logger.debug) Logger.debug(`DisposalService: Listener eltávolítva: ${type}`);
+      else Logger.info(`DisposalService: Listener eltávolítva: ${type}`);
     });
   }
 
