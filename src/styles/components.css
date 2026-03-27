@@ -185,6 +185,12 @@
     line-height: 1.4;
 }
 
+[data-theme='literary'] .dkv-bridge-status__tooltip {
+    color: var(--text-white);
+    background-color: var(--bg-sidebar);
+    border-color: var(--neon-cyan);
+}
+
 .dkv-bridge-status:hover .dkv-bridge-status__tooltip {
     visibility: visible;
     opacity: 1;

@@ -4,6 +4,16 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 
+## [1.15.0] – 2026-03-27
+### 🎨 Megváltoztatva
+- **Letisztult diacímek**: Eltávolítottuk a redundáns szekció-előtagokat (pl. "1. állomás - ", "Intró - ") a narratív kártyák címeiből. A címek mostantól csak a dia egyedi, leíró nevét tartalmazzák, mivel a kontextust a zóna-fejlécek (Zone Cards) biztosítják.
+- **Narratív Blueprint V4**: Frissítve az AI-nak szóló generálási útmutató a letisztult címek és a magyar elnevezési konvenciók kényszerítésére.
+
+### 🐛 Javítva
+- **Bridge Tooltip olvashatóság**: Javítva a Bridge állapotjelző tooltip betűszíne a világos (Literary) témában. A fehér-a-fehéren hiba megszűnt, a szöveg mostantól sötét színnel jelenik meg a jobb olvashatóság érdekében, !important szabály használata nélkül.
+
+---
+
 ## [1.14.0] – 2026-03-27
 ### 🛠️ Hozzáadva
 - **Mélyreható projekt dokumentáció (Deep Scan)**: Létrehozva egy teljes körű technikai tudás bázis a `docs/` mappában, amely tartalmazza az API szerződéseket, adatmodelleket, komponens leltárt és a forrásfa elemzést.
@@ -95,7 +105,12 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 - **Dinamikus narratív motor (QQ)**: a szekciók (onboarding, intro, finálé) és az állomások száma mostantól teljes mértékben konfigurálható a `store.js` és a `blueprint.json` fájlokon keresztül.
 - **Rugalmas szekcionálás**: eltávolítottuk a beégetett (3-4-3) konstansokat a `narrative-engine.js`-ből, helyettük a projektszintű konfiguráció érvényesül.
 - **Kiterjesztett színskála**: tíz egyedi neonszín támogatása az állomásokhoz a dinamikus megjelenítés érdekében.
-- **Konfigurációperzisztencia**: a narratív felosztás beállításai elmentődnek a `blueprint.json` fájlba, így projektenként testre szabhatók.
+- **Konfigurációperzisztencia**: a narratív felosztás beállításai elmentődnek a `blueprint.json` fájlba, így project_name: 'dk_verseny_stories'
+user_name: 'Krisztián'
+date: '2026-03-27'
+version: '1.15.0'
+sections_completed: ['technology_stack', 'critical_rules']
+a projektenként testre szabhatók.
 
 ### 🎨 Megváltoztatva
 - **Motorrefaktor**: a `getSections` metódus mostantól a `store.narrativeConfig` adatait használja a beégetett számok helyett a szekcióelosztás kiszámításához.

@@ -29,7 +29,8 @@ _This file contains critical rules and patterns that AI agents must follow when 
     - **Logika/Fájlok:** kebab-case (pl. `blueprint-manager.js`).
     - **CSS osztályok:** kebab-case (pl. `.neon-button`).
 3.  **Visual Language:** Szigorú "Cyber-Fantasy / TRON Legacy" esztétika. Sötét háttér, neon cián/lila fények, 15px körüli blur effektek a paneleken.
-4.  **Blueprint Editor:** Biztosítani kell a Blueprint (prompt) szerkesztését egy modális ablakban (`BlueprintModal`), majd az "Export" funkciót a vágólapra másoláshoz.
+4.  **Naming Convention (Narrative Slides):** A diák (slides) címei NE tartalmazzák a szekció vagy állomás nevét (pl. KERÜLD: "1. állomás - [Cím]", "Intró - [Cím]"). Csak az egyedi, leíró címet használd (pl. "Az Algoritmusok Erdeje"). A kontextust a rendszer szekciófejlécei (Zone Cards) automatikusan biztosítják.
+5.  **Blueprint Editor:** Biztosítani kell a Blueprint (prompt) szerkesztését egy modális ablakban (`BlueprintModal`), majd az "Export" funkciót a vágólapra másoláshoz.
 5.  **State Purity:** Minden globális állapot (diák, megjegyzések) a `store.js` Proxy objektumában lakik. Nincs közvetlen DOM módosítás a Store frissítése nélkül.
 6. TILOS !important használni a CSS-ben. Ha valami nem működik, akkor a CSS hierarchiát kell javítani. A CSS-ben a !important használata tilos. BEM nevezéktan kell!
 

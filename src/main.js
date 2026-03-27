@@ -298,8 +298,8 @@ function updateDynamicContent(property, value) {
     const tooltipText = isOnline === null
       ? 'Bridge állapota ismeretlen – ellenőrzés folyamatban...'
       : (isOnline
-        ? 'Bridge Online – Készen áll az iterációra és a mentésre.'
-        : 'Bridge Offline – Indítsd el a bridge-et a terminálban az "npm run bridge" paranccsal!');
+        ? 'Bridge online – Készen állunk az iterációra és a mentésre.'
+        : 'Bridge offline – Indítsd el a bridge-et a terminálban az "npm run bridge" paranccsal!');
 
     globalStatusRoot.innerHTML = `
       ${ThemeToggle()}

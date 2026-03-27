@@ -29,7 +29,7 @@ Ez a dokumentum a kerettörténetek generálásának technikai és narratív "re
 4. **Dia (Küldetés célja)**: A feladat és a végcél meghatározása. **A hős elindul a küldetésére.**
 
 ### C) ÁLLOMÁSOK (5 állomás x 4 dia = 20 dia)
-1. **Dia (Érkezés)**: A helyszín vizuális bemutatása, hangulatfestés.
+1. **Dia (Érkezés)**: A helyszín vizuális bemutatása, hangulatfestés. Cím formátuma: **"[Helyszín neve]"** (pl. "Az Algoritmusok Erdeje"). **TILOS** az "X. állomás" vagy ehhez hasonló előtagok használata a diák címeiben!
 2. **Dia (Kihívás részletezése)**: Találkozás az őrzővel vagy a probléma leírása.
 3. **Dia (FELADAT: [Cím])**: **A konkrét technikai feladat narratív felvezetése!**
 4. **Dia (Siker & Átvezetés)**: Öröm a megoldás után, "kulcs/szkript" szerzése.
