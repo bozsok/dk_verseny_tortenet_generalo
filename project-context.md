@@ -31,8 +31,10 @@ _This file contains critical rules and patterns that AI agents must follow when 
 3.  **Visual Language:** Szigorú "Cyber-Fantasy / TRON Legacy" esztétika. Sötét háttér, neon cián/lila fények, 15px körüli blur effektek a paneleken.
 4.  **Naming Convention (Narrative Slides):** A diák (slides) címei NE tartalmazzák a szekció vagy állomás nevét (pl. KERÜLD: "1. állomás - [Cím]", "Intró - [Cím]"). Csak az egyedi, leíró címet használd (pl. "Az Algoritmusok Erdeje"). A kontextust a rendszer szekciófejlécei (Zone Cards) automatikusan biztosítják.
 5.  **Blueprint Editor:** Biztosítani kell a Blueprint (prompt) szerkesztését egy modális ablakban (`BlueprintModal`), majd az "Export" funkciót a vágólapra másoláshoz.
-5.  **State Purity:** Minden globális állapot (diák, megjegyzések) a `store.js` Proxy objektumában lakik. Nincs közvetlen DOM módosítás a Store frissítése nélkül.
-6. TILOS !important használni a CSS-ben. Ha valami nem működik, akkor a CSS hierarchiát kell javítani. A CSS-ben a !important használata tilos. BEM nevezéktan kell!
+6.  **State Purity:** Minden globális állapot (diák, megjegyzések) a `store.js` Proxy objektumában lakik. Nincs közvetlen DOM módosítás a Store frissítése nélkül.
+7.  **Testing & Fidelity (V1.19.0):** MINDEN új funkcióhoz kötelező a Vitest unit teszt. A legfontosabb kritérium: az `update()` során az `activeElement` fókusz nem mozdulhat el.
+8.  **Disposal Management:** Minden aszinkron folyamatot (polling, timer) a `DisposalService`-nél kell regisztrálni, és a komponens `destroy()` metódusa köteles leállítani őket.
+9. TILOS !important használni a CSS-ben. Ha valami nem működik, akkor a CSS hierarchiát kell javítani. BEM nevezéktan kell!
 
 ### Code Quality & Style Rules
 
@@ -48,6 +50,15 @@ _This file contains critical rules and patterns that AI agents must follow when 
     - **Idézőjelek**: Magyar szövegben a „alsó nyitó” és „felső záró” idézőjeleket használjuk.
 - **Documentation:** Hungarian JSDoc comments are mandatory for all public methods and modules.
 - **Changelog:** Maintain the `CHANGELOG.md` file in Hungarian, following Semantic Versioning (SemVer) principles and MTA 12. spelling.
+
+### Framework-Specific Rules (Vanilla JS & SEL)
+
+- **SEL Architecture:** All state changes must go through the **custom `StateManager`**, triggering events on the `EventBus`. Components must NEVER modify each other's style or state directly; always communicate via the Bus.
+- **Vanilla Component Class Pattern:** Components MUST be Classes inheriting from `BaseComponent`.
+    - **Lifecycle Hooks**: `render()` (build structure), `mount(container)` (events & insertion), `destroy()` (cleanup).
+    - **Targeted Updates**: Use `update(property, value)` for incremental DOM changes. NEVER use full `innerHTML` re-renders in persistent components.
+    - **Fidality Policy**: If an input is focused, `update()` must NOT replace its DOM node, only its value.
+- **Lifecycle Management:** Every custom component MUST call its `destroy()` method to clean up DOM elements, event listeners, and timeouts via `registerCleanup(fn)`.
 
 ### Critical Don't-Miss Rules
 

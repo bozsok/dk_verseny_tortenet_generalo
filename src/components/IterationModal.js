@@ -3,7 +3,7 @@ import { store } from '../services/store.js';
 export const IterationModal = (slideId) => {
   const index = store.narrative.findIndex(s => s.id === slideId);
   if (index === -1) return '';
-  
+
   const slide = store.narrative[index];
   const isHero = index === 0 || index === store.narrative.length - 1;
   const titleClass = isHero ? 'dkv-modal-title--hero' : 'dkv-modal-title--small';
