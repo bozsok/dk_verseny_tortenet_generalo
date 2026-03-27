@@ -162,13 +162,24 @@ function startBridgePolling() {
  */
 async function loadInitialState() {
   try {
+    // 1. Mesterleíró (Blueprint Master) betöltése
+    const masterResponse = await fetch('/src/data/blueprint-master.json');
+    if (masterResponse.ok) {
+      const masterData = await masterResponse.json();
+      if (masterData.blueprint) {
+        store.blueprint = masterData.blueprint;
+        Logger.info('V4 Mesterleíró betöltve a blueprint-master.json-ból.');
+      }
+    }
+
+    // 2. Projekt metaadatok betöltése
     const response = await fetch('/src/data/blueprint.json');
     if (response.ok) {
       const data = await response.json();
       if (data.title) store.projectTitle = data.title;
       if (data.prompt) store.prompt = data.prompt;
       if (data.narrativeConfig) store.narrativeConfig = { ...store.narrativeConfig, ...data.narrativeConfig };
-      Logger.info('Kiinduló állapot betöltve a blueprint.json-ból.');
+      Logger.info('Projekt adatok betöltve a blueprint.json-ból.');
     }
 
     // 2. Narratíva betöltése (dinamikus importtal a frissességért)
@@ -197,8 +208,8 @@ function updateDynamicContent(property, value) {
 
   // Cím és Prompt szinkronizálása a sidebarban
   if (property === 'projectTitle' || property === 'prompt') {
-    if (header && property === 'projectTitle') {
-      header.innerText = `TÖRTÉNET ELŐNÉZETE: ${store.projectTitle.toUpperCase()}`;
+    if (header) {
+      header.innerText = 'Történet előnézete: ' + (store.projectTitle || 'Névtelen-Projekt');
     }
     const titleIn = document.querySelector('#input-title');
     const promptIn = document.querySelector('#prompt-input');
@@ -241,8 +252,8 @@ function updateDynamicContent(property, value) {
       statusRoot.innerHTML = `
         <div class="dkv-preview-status">
           <div class="dkv-status-card">
-            <h2 class="dkv-neon-text">SZINKRONIZÁCIÓ FOLYAMATBAN</h2>
-            <div class="dkv-digital-pulse" style="margin-bottom: 30px;"></div>
+            <h2 class="dkv-neon-text">Szinkronizáció folyamatban</h2>
+            <div class="dkv-digital-pulse"></div>
             <p style="font-size: 1.2rem; color: var(--text-white);">Adatok küldése az AI-motornak...</p>
             <p style="color: var(--text-dim); margin-top: 15px;">A folyamat automatikus.</p>
           </div>
@@ -258,17 +269,21 @@ function updateDynamicContent(property, value) {
 
   // Várakozás az AI-válaszra
   if (property === 'isWaitingForNarrative') {
+    const setupRoot = document.querySelector('#setup-panel-root');
+    if (setupRoot) setupRoot.innerHTML = SetupPanel();
+
     if (value && statusRoot) {
       statusRoot.innerHTML = `
         <div class="dkv-preview-status">
           <div class="dkv-status-card">
-            <h2 class="dkv-neon-text">A BLUEPRINT SIKERESEN RÖGZÍTÉSRE KERÜLT</h2>
-            <p style="font-size: 1.2rem; color: var(--text-white); line-height: 1.6;">
+            <h2 class="dkv-neon-text">A blueprint sikeresen rögzítésre került</h2>
+            <div class="dkv-digital-pulse dkv-digital-pulse--cyan"></div>
+            <p style="font-size: 1.25rem; color: var(--text-white); line-height: 1.6; max-width: 500px; margin: 0 auto;">
               Kérlek, most kérd meg az AI-t a chatben a történet legenerálására!
             </p>
-            <p style="color: var(--neon-cyan); margin-top: 20px; font-weight: bold;">
-              Várakozás az AI-válaszra...
-            </p>
+            <div class="dkv-status-highlight">
+               <p style="color: var(--neon-cyan); font-weight: bold; margin: 0;">Várakozás az AI-válaszra...</p>
+            </div>
           </div>
         </div>
       `;
@@ -516,7 +531,7 @@ function setupEventListeners() {
     if (action === 'generate' || id === 'generate-btn' || id === 'save-config-btn') {
       e.preventDefault();
       store.isGenerating = true;
-      Logger.info('Blueprint mentése és generálási folyamat indítása...');
+      Logger.info('Projekt adatok mentése és generálási folyamat indítása...');
 
       try {
         const response = await fetch('http://127.0.0.1:3001/save-blueprint', {
@@ -525,7 +540,6 @@ function setupEventListeners() {
           body: JSON.stringify({
             title: store.projectTitle,
             prompt: store.prompt,
-            blueprint: store.blueprint,
             narrativeConfig: store.narrativeConfig
           })
         });
@@ -704,12 +718,12 @@ function setupBlueprintListeners() {
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       try {
-        Logger.info('Blueprint mentése indítva...');
-        const response = await fetch('http://127.0.0.1:3001/save-blueprint', {
+        Logger.info('Mesterleíró (Master) mentése indítva...');
+        const response = await fetch('http://127.0.0.1:3001/save-master-blueprint', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            title: store.projectTitle,
+            version: 'V4',
             blueprint: blueprintContent
           }),
           signal: controller.signal
@@ -746,7 +760,7 @@ function setupBlueprintListeners() {
         store.toastMessage = 'MENTÉSI HIBA: ' + errorMsg;
 
         modalicCard.classList.add('dkv-modal-card--error');
-        saveBtn.innerText = 'HIBA! PRÓBÁLD ÚJRA';
+        saveBtn.innerText = 'Hiba! Próbáld újra';
         saveBtn.classList.remove('dkv-btn--loading');
 
         // Visszaállítjuk a gombot rövid idő múlva, de a hiba jelzése marad

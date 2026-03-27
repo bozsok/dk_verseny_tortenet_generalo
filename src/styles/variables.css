@@ -28,6 +28,8 @@
   --glow-shadow-strong: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
   --modal-glow: 0 0 30px rgba(0, 242, 255, 0.15);
   --hover-glow: 0 0 25px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
+  --highlight-bg: rgba(0, 255, 255, 0.05);
+  --highlight-border: 1px solid var(--neon-cyan);
 }
 
 [data-theme='literary'] {
@@ -53,6 +55,8 @@
   --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   --hover-glow: 0 10px 25px rgba(0, 0, 0, 0.1);
   --section-color: var(--neon-purple);
+  --highlight-bg: rgba(140, 120, 97, 0.08);
+  --highlight-border: 1px solid var(--glass-border);
 }
 
 [data-theme='literary'] .dkv-btn--secondary {
@@ -510,9 +514,18 @@ textarea:disabled {
   padding: 45px;
   border-radius: var(--radius);
   text-align: center;
-  box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+  box-shadow: var(--modal-glow);
   max-width: 600px;
   animation: dkvStatusFadeIn 0.5s ease-out;
+  position: relative;
+}
+
+.dkv-status-highlight {
+  background: var(--highlight-bg);
+  border: var(--highlight-border);
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 8px;
 }
 
 @keyframes dkvStatusFadeIn {
@@ -727,13 +740,15 @@ textarea:disabled {
 }
 
 .dkv-digital-pulse {
-  width: 60px;
-  height: 60px;
+  width: 20px;
+  height: 20px;
   background: var(--neon-cyan);
   border-radius: 50%;
-  position: relative;
-  margin: 0 auto;
+  position: absolute;
+  top: 25px;
+  right: 25px;
   animation: dkvPulseRing 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  z-index: 10;
 }
 
 .dkv-sidebar__nav {

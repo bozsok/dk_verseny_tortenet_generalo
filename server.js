@@ -25,9 +25,23 @@ app.post('/save-blueprint', (req, res) => {
     const data = req.body;
     const filePath = path.join(__dirname, 'src', 'data', 'blueprint.json');
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-    console.log('📝 Új Blueprint mentve:', data.title);
+    console.info(`[DKV-BRIDGE] 📝 Projekt Blueprint mentve: ${data.title}`);
     res.json({ success: true, message: 'Blueprint saved successfully' });
   } catch (error) {
+    console.error(`[DKV-BRIDGE] ❌ Hiba a blueprint mentésekor: ${error.message}`);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/save-master-blueprint', (req, res) => {
+  try {
+    const data = req.body;
+    const filePath = path.join(__dirname, 'src', 'data', 'blueprint-master.json');
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    console.info('[DKV-BRIDGE] 👑 Mesterleíró (Master) frissítve!');
+    res.json({ success: true, message: 'Master blueprint saved successfully' });
+  } catch (error) {
+    console.error(`[DKV-BRIDGE] ❌ Hiba a master blueprint mentésekor: ${error.message}`);
     res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -37,9 +51,10 @@ app.post('/save-iteration', (req, res) => {
     const data = req.body;
     const filePath = path.join(__dirname, 'src', 'data', 'iteration.json');
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-    console.log('📝 Iterációs kérelem érkezett:', data.slideId);
+    console.info(`[DKV-BRIDGE] 📝 Iterációs kérelem érkezett: ${data.slideId}`);
     res.json({ success: true });
   } catch (error) {
+    console.error(`[DKV-BRIDGE] ❌ Hiba az iteráció mentésekor: ${error.message}`);
     res.status(500).json({ success: false, error: error.message });
   }
 });
@@ -66,7 +81,6 @@ app.post('/sync-full-project', (req, res) => {
     }
 
     blueprintData.title = title || blueprintData.title || 'Betöltött Történet';
-    // Frissítjük a diák számát a konfigurációban a betöltött adatok alapján
     blueprintData.narrativeConfig = {
       ...(blueprintData.narrativeConfig || {}),
       totalSlides: narrative.length
@@ -74,18 +88,17 @@ app.post('/sync-full-project', (req, res) => {
 
     fs.writeFileSync(blueprintPath, JSON.stringify(blueprintData, null, 2));
 
-    // 2. NARRATIVE.JS frissítése
     const narrativeContent = `export const narrative = ${JSON.stringify(narrative, null, 2)};\n`;
     fs.writeFileSync(narrativePath, narrativeContent);
 
-    console.log('🔄 Projekt szinkronizálva:', title);
+    console.info(`[DKV-BRIDGE] 🔄 Projekt szinkronizálva: ${title}`);
     res.json({ success: true });
   } catch (error) {
-    console.error('❌ Szinkronizációs hiba:', error);
+    console.error(`[DKV-BRIDGE] ❌ Szinkronizációs hiba: ${error.message}`);
     res.status(500).json({ success: false, error: error.message });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 AI Sync Bridge fut a http://localhost:${PORT} címen`);
+  console.info(`[DKV-BRIDGE] 🚀 AI Sync Bridge fut a http://localhost:${PORT} címen`);
 });

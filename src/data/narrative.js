@@ -1,152 +1,169 @@
 export const narrative = [
+  // A) ONBOARDING (Fix 3 dia)
   {
-    "id": "slide-1",
-    "title": "Bejelentkezés",
-    "content": "Üdvözöllek a Kód Királyság digitális kapujában, bátor Kódmester! Ezt a virtuális világot eddig a tiszta logika és a stabil adatáramlás éltette, de valami komoly probléma árnyékolja be a szervereinket. Az utóbbi időben hirtelen bekövetkező rendszerfagyások és megmagyarázhatatlan anomáliák teszik próbára a stabilitásunkat. A pletykák szerint mindez egy soha nem telepített, rejtett frissítőszkript hiánya miatt történik. Szükségünk van a programozói látásmódodra és a hibakereső reflexeidre, hogy megmentsd a királyságot a végső összeomlástól. Kérlek, lépj be a központi adatbázisba, és kezdjük meg a hibaelhárítást!"
+    id: 'on-1',
+    title: 'Üdvözlet a Fragmentum-térségben',
+    content: 'Üdvözöllek bátor Kódmester a Kód Királyság legtitokzatosabb peremvidékén! A szemed előtt lebegő izzó adatszilánkok nem csupán dekorációk, hanem a valóságunkat összetartó Alapkód-tükörmásolat darabjai. Egy ismeretlen erejű rázkódás széttörte a szent Tükröt, és most a részek a Fragmentum-térségben szóródnak szét, ahol az idő és a tér törvényei másképp működnek. Csak egy olyan tiszta logikájú hős képes újra összeilleszteni ezeket a darabokat, aki nem riad vissza a digitális káosztól és a rejtett összefüggések felkutatásától. Készülj fel, mert a világunk sorsa most a Te kezedben van!'
   },
   {
-    "id": "slide-2",
-    "title": "Regisztráció",
-    "content": "Mielőtt elindítanánk a biztonsági letapogatást, azonosítanod kell magadat a rendszergazdai naplóban. Minden belépő felhasználónak rögzítenie kell a pontos nevét és az azonosítóját, hogy a hálózat felismerje a tetteit. Ezek a hitelesítő adatok lesznek a pecsétek a megoldott logikai kapukon, miközben újraépítjük a sérült infrastruktúrát. A pontos regisztráció abban is segít minket, hogy szükség esetén azonnali memóriamentést tudjunk készíteni a profilodról. Add meg büszkén a nevedet, mert hamarosan a Kód Királyság megmentőjeként fognak tisztelni!"
+    id: 'on-2',
+    title: 'Digitális Lenyomat Rögzítése',
+    content: 'Mielőtt belépnél a instabil zóna mélyére, a rendszernek szinkronizálnia kell a jelenlétedet a Tükörcsarnok archívumával. Kérlek, add meg a teljes nevedet, a választott kódnevedet és az évfolyamodat, hogy a Rendszerőrök azonosítani tudják a haladásodat a küldetés során! Minden egyes leütött karakter egy-egy stabilizációs parancs a környező Fragmentumoknak, megakadályozva, hogy elpárologjanak a virtuális térben. A rögzítés után Te leszel a birodalom hivatalos Tükörőrzője, akinek a lépteit feszült figyelemmel kíséri minden lakó.'
   },
   {
-    "id": "slide-3",
-    "title": "Karakterválasztás",
-    "content": "A sikeres regisztrációt követően itt az ideje, hogy kiválaszd a saját, testreszabott hősavatárodat! Ez az Avatár fogja megjeleníteni a személyiségedet a belső adathurkok sűrűjében, miközben áttöröd a fagyásokat okozó kódblokkokat. Dönthetsz az Erőforrás-optimalizáló Lovag, a Haladó Algoritmus Ninja vagy akár az Adatvándor formája mellett, hiszen mindegyik különleges megjelenést biztosít. Jól fontold meg a választást, mert a kinézeted tükrözni fogja azt az eltökéltséget, amellyel nekivágsz a nagy rejtély felgöngyölítésének. Készítsd fel az avatárodat az indulásra, a kaland csak most kezdődik!"
+    id: 'on-3',
+    title: 'Az Avatár Szinkronizációja',
+    content: 'Válaszd ki azt a digitális avatárt, aki a leginkább képes elviselni a Tükörszilánkok erejét és a Fragmentum-térség sugárzását! Legyen szó egy villámgyors Adat-vándorról, egy bölcs Kód-mágusról vagy egy rettenthetetlen Puffer-páncélosról, a döntésed alapvetően befolyásolja a kutatási hatékonyságodat. Vizsgáld meg alaposan a karakterek energiamezőit és felszerelését, majd válassz egy olyat, akivel teljes összhangban érzed magadat! Amint megvagy a választással, a tudatod áthelyeződik a virtuális testbe, és a nagy utazás kezdetét veszi.'
+  },
+
+  // B) INTRÓ (Fix 4 dia)
+  {
+    id: 'in-1',
+    title: 'A rend aranykora',
+    content: 'A Kód Királyság évezredek óta a tökéletes egyensúly és a hibátlan adatfolyamok hazája volt, ahol minden bit pontosan tudta a helyét. A birodalom szívében őrizték az Alapkód-tükörmásolatot, egy misztikus relikviát, amely folyamatosan sugalmazta a helyes algoritmusokat a rendszer számára. Az égbolton ragyogó bináris csillagképek megnyugtató fénye alatt a lakók élete kiszámítható és biztonságos volt, mentes mindenféle rendszerhibától vagy lefagyástól. Ebben a világban a logika nemcsak egy szabály volt, hanem maga az életenergiát adó levegő, amely minden szervert átjárt.'
   },
   {
-    "id": "slide-4",
-    "title": "A tökéletes ciklus",
-    "content": "Valamikor régen, a Kód Királyság első teremtésének idején a rendszer tökéletes ciklusokban üzemelt, ahol minden bit és bájt hibátlan harmóniában mozgott. Az adatok simán, ellenállás nélkül áramlottak a szerverparkok óriási kábelein, biztosítva a virtuális élet felhőtlen lüktetését. Nem voltak olyan váratlan kilépések vagy rendszerkövetelmény-hibák, amelyek megtörték volna a békét. A programok békés egymás mellett élése miatt minden lakó teljes nyugalommal építette a saját szoftveres világát. Ebben a letűnt aranykorban a kékhalál fogalma csak egy távoli, megfejthetetlen mítosznak tűnt."
+    id: 'in-2',
+    title: 'A Tükör széttörése',
+    content: 'Hirtelen egy vakító, minden színt elnyelő villanás hasított végig a hálózaton, és egy velőtrázó reccsenéssel a Tükörmilliók darabokra hullott. A birodalmat összetartó szinkronizáció azonnal megszakadt, és a Királyság határai képlékennyé váltak, ahogy a biztonságos szektorok az idegen zónák felé kezdtek sodródni. A valóság és a digitális képzelet közötti választóvonal elmosódott, és a Fragmentum-térségből származó adatszilánkok elárasztották a várost, megakasztva a fontos hálózati folyamatokat. A káosz pillanatok alatt úrrá lett a birodalmon, és a lakók reményvesztetten figyelték, ahogy otthonuk szikrázó részei a semmibe hullanak.'
   },
   {
-    "id": "slide-5",
-    "title": "Rendszerhibák az édenben",
-    "content": "Az utóbbi hetekben azonban valami végérvényesen elromlott, a Királyság békéjét pedig rettegett figyelmeztetések szakították meg. Váratlan áramkimaradások, lefagyó háttérfolyamatok és rejtélyes memóriavezérlési hibák bénítják meg a mindennapi életünket. Az egyensúly teljesen felborult, miután kiderült, hogy egy létfontosságú Rendszerező Frissítés sosem került aktiválásra. E hiányzó sorok miatt a rendszer túltöltődik és széthasad, minden másodperccel egyre közelebb kerülve a tartós összeomláshoz. A lakók már be sem mernek jelentkezni a profiljaikba, attól tartva, hogy a fagyás végleg törli az adataikat."
+    id: 'in-3',
+    title: 'Az Entrópia-féreg megjelenése',
+    content: 'A Tükör helyén tátongó ürességből egy sötét, lüktető entitás emelkedett ki: a félelmetes Entrópia-féreg, egy kódromboló vírus, amely a rendetlenségből táplálkozik. Nem csupán egy vírusról van szó, hanem egy tudatos, romboló intelligenciáról, amely szisztematikusan falja fel a szétszóródott szilánkokat, hogy megakadályozza a Tükör újbóli összeillesztését. Amerre elhalad, csak törölt memóriát és végtelen hurokba zárt szervereket hagy maga után, rettegésben tartva a környező hálózatokat. Ha nem cselekszünk időben, az Entrópia-féreg végleg megemészti a Királyság utolsó ép részeit is, örök sötétségbe taszítva minket.'
   },
   {
-    "id": "slide-6",
-    "title": "Rendszerhibák Ura",
-    "content": "A hibák sokaságából azonban felsejlett egy sötét, rosszindulatú kód is, amit ma csak a Rendszerhibák Uraként emlegetnek a krónikákban. Ez a könyörtelen, vírushoz hasonló entitás azzal a céllal alakult ki a töredezett fájlokból, hogy örök instabilitásban tartsa a szervereinket. Megszállta az adatbázisokat, majd trójai programok hadával meggátolta a befejezetlen frissítőszkriptek futtatását. A Rendszerhibák Ura ott rejtőzik minden hálózati sötétedés mögött, felerősítve a végzetes fagyásokat a Királyság területén. Rajtad áll, hogy megtöröd-e a befolyását, vagy végignézed a teljes digitális széthullást."
+    id: 'in-4',
+    title: 'A küldetés célja',
+    content: 'A Rendszergazdák utolsó tanácsa egyetlen reménysugarat lát: egy bátor Kódmesternek át kell kelnie a Fragmentum-térség öt veszélyes zónáján, és vissza kell szereznie az elszórt Tükördarabokat. Mindegyik zónában egy speciális logikai akadály állja az utadat, amit csak a technikai képességeid használatával küzdhetsz le. Te vagy az, akit a sors kiválasztott erre a hálátlan feladatra, és aki képes szembeszállni a féreg által emelt digitális gátakkal. Indulj el most, mert minden egyes visszaszerzett szilánkkal a Tükör fénye kicsit erősebb lesz, és az Entrópia ereje halványulni kezd!'
+  },
+
+  // C) ÁLLOMÁSOK (5 állomás x 4 dia = 20 dia)
+
+  // 1. ÁLLOMÁS: Titkosított üzenet (Cézár eltolás)
+  {
+    id: 'st-1-1',
+    title: 'A Szimbólumok Rejtett Mezeje',
+    content: 'Megérkeztél az első zónába, a Szimbólumok Rejtett Mezejére, ahol a levegőben folyamatosan mozgó, eltolt karakterek rajzolnak furcsa mintákat. Ez az a hely, ahol a titkosított adatforgalom eredetét őrzik, de a vírus itt is hatalmas zavart keltett az írott jelek között. A távolban egy hatalmas, lebegő fémlemezt látsz, amelyen egy olvashatatlan, de ritmikus üzenet lüktet halvány lila fénnyel. Mindent elborít a kódolt zaj, és a szavakat csak egy speciális, eltoláson alapuló kulccsal lehet újra értelmezhetővé tenni.'
   },
   {
-    "id": "slide-7",
-    "title": "A küldetés célja",
-    "content": "A végső összeomlás elkerülése érdekében cselekednünk kell, Kódmester, így a küldetés célja most már teljesen világossá vált. Öt szétszóródott, letiltott frissítőszkriptet kell feltérképezned a Királyság különböző szektoraiban, hogy összerakhassuk belőlük a végső javítócsomagot. A Rendszerhibák Ura azonban minden szekciót ügyes logikai fejtörőkkel és biztonsági zárakkal védelmez. Minden egyes állomás sikeres teljesítése után közelebb kerülsz a megoldáshoz, és egy szkriptrészlettel gyarapítod a tudásodat. Indulj el késedelem nélkül, gyűjtsd össze mind az öt kódot, és mentsd meg velünk a hálózatot!"
+    id: 'st-1-2',
+    title: 'A Kódfejtő kihívása',
+    content: 'A lemez előtt egy zavart és kétségbeesett Adat-őr program siet eléd, és elmondja, hogy a Tükör első szilánkja a lemez mélyén van elrejtve, de a hozzáférési kód teljesen eltorzult. A vírus az ábécé összes betűjét eltolta három hellyel, így az üzenet most egy értelmetlen karakterláncnak tűnik, amit senki sem tud elolvasni. Csak egy éles eszű kódfejtő képes visszafejteni az eredeti jelentést, és megadni a helyes jelszót a rendszernek. Figyeld meg jól a lemezen lévő jeleket, és próbáld kitalálni a logikai eltolást, ami a megoldáshoz vezet!'
   },
   {
-    "id": "slide-8",
-    "title": "Az Algoritmusok Erdeje",
-    "content": "Hosszú adatcsatornákon át siklottál, majd egy sötét és sűrű virtuális rengetegben, az Algoritmusok Erdejében landoltál. Itt a fák törzsét apró, zölden foszforeszkáló bináris számsorok alkotják, leveleik pedig IF és ELSE feltételekként hajlonganak a virtuális szélben. A hely korábban a legkiválóbb optimalizálások otthona volt, ám a lefagyások miatt most hátborzongatóan csendes a táj. Mindenfelé beragadt folyamatok és soha véget nem érő végtelen ciklusok zárják el a helyes utat. A feszültség szinte tapintható, hiszen az első keresett szkript mélyen ide van rejtve."
+    id: 'st-1-3',
+    title: 'Feladat: A Titkosított Üzenet Megfejtése',
+    content: 'A hídcsomópont aktiválásához és az első Tükördarab megszerzéséhez megfejtened kell a kijelzőn látható kódolt szöveget. Tudjuk, hogy a vírus három betűvel tolta el az egész üzenetet, ezért a feladatod, hogy használd ezt a logikai kulcsot, és alakítsd vissza a karaktereket az eredeti állapotukba! Írd be a megfejtett jelszót a terminálba, ügyelve minden betű pontos helyére és a szöveg értelmére! Ha sikerül a kódfejtés, a fémlemez megnyílik, és átadja neked az első szent szilánkot, ami visszaadja a birodalom kommunikációjának stabilitását.'
   },
   {
-    "id": "slide-9",
-    "title": "A befagyott ciklus",
-    "content": "Amint óvatosan előbbre haladsz az ösvényen, a továbbjutást egy hatalmas, szikrázó energiafal zárja el, amit egy befagyott logikai ciklus tart életben. A rendszer anomáliája beleerőltette ezt a folyamatot egy olyan ágba, ahonnan nincs visszatérési érték vagy kilépési feltétel. A Rendszerhibák Ura azért helyezte ide ezt a csapdát, hogy egyetlen programozó se juthasson át a fák biztonságos zónáján. A hálózat védelmezője kétségbeesetten kérlel téged, hogy vezesd ki őt az áttekinthetetlen hibahalmazból. Ha nem fejtjük meg a folyamat helyes működését, mi is a hurok foglyai maradunk mindörökké."
+    id: 'st-1-4',
+    title: 'Az Első Szilánk Fénye',
+    content: 'Amint beütötted a helyes jelszót, a fémlemez lila fénye arany sárgára váltott, és egy ragyogó Tükördarabka pattant ki a közepéből az Avatár-kezedbe. A Szimbólumok Mezeje azonnal megnyugodott, a karakterek pedig rendezett sorokba álltak a horizonton, jelezve a győzelmedet. Az Adat-őr hálásan biccentett neked, és egy fontos adatcsomagot nyújtott át, ami segíteni fog a következő, vizuálisabb zónában. Az utad most egy olyan területre vezet, ahol nem a szavak, hanem a formák az uralkodók.'
+  },
+
+  // 2. ÁLLOMÁS: Puzzle téglalap
+  {
+    id: 'st-2-1',
+    title: 'A Geometriai Törések Völgye',
+    content: 'Következő állomásod a Geometriai Törések Völgye, ahol a táj hatalmas, szabályos téglalapokból álló digitális hegyekkel van tele. Ez a terület felelős a Királyság vizuális stabilitásáért és a grafikus elemek elrendezéséért a képernyőkön. A vírus azonban itt is rombolást végzett, és szó szerint szétszaggatta a völgy szimbólumait alkotó képeket, amik most mozaikként hevernek a földön. A levegőben szétszórt, téglalap alakú darabkák keringenek, és az egész táj olyan, mintha egy félbehagyott építkezés helyszíne lenne.'
   },
   {
-    "id": "slide-10",
-    "title": "FELADAT: Az algoritmus helyreállítása",
-    "content": "Most minden tudásodra szükséged lesz, hogy megértsd a ciklus valódi lefutásának sorrendjét. Előtted egy folyamatábra hever, amelynek a legfontosabb lépéseit és döntési pontjait szándékosan összecserélték, ezzel okozva a lefagyást. A feladatod az, hogy az állításokat és a feltételeket a megfelelő logikai sorrendbe rakd, biztosítva a program sikeres végrehajtását. Vizsgálj meg minden elágazást, és találd meg az IGEN, illetve a NEM ágakat a helyes megoldáshoz. Légy nagyon alapos, mert a legkisebb hiba esetén a ciklus másodpercek alatt újra leáll majd."
+    id: 'st-2-2',
+    title: 'Az Építőmester tanácstalansága',
+    content: 'A völgy szélén egy apró, négyzet alakú kis lény sírdogál, aki egykoron a birodalom főépítésze volt, de most nem tudja befejezni a legfontosabb tervrajzát. Elmondja neked, hogy a második Tükördarab a tervrajz közepébe van építve, de a kép most tizenhat darab téglalapra van szaggatva, amik zavarosan hevernek egymás mellett. Csak az képes helyreállítani a képet, aki pontosan látja, hogyan illeszkednek egymáshoz a színek és a vonalak a tökéletes összhang érdekében. Vedd szemügyre a darabokat, és készülj fel a nagy kirakós játékra, ami a továbbjutáshoz szükséges!'
   },
   {
-    "id": "slide-11",
-    "title": "Siker és továbbhaladás",
-    "content": "Remek munka, Kódmester, a logikád kigyógyította a rendszert a beragadt hurkok végtelen börtönéből! Az energiafal látványosan összeomlott, apró kódszilánkok formájában hullva a virtuális talajra, ezzel megnyitva előtted a továbbvezető utat. A helyreállított folyamatábra magjában fellelted az első rejtett frissítőszkriptet, amely stabil zöld fénnyel pulzál. Bár az első akadálynál győzedelmeskedtél, még négy fontos elem hiányzik a Királyság újraindításához. Ne veszítsd el a fókuszt, és irány a Biztonsági Puffer bejárata, hogy felszabadítsd a következő szektort is!"
+    id: 'st-2-3',
+    title: 'Feladat: A Téglalap-puzzle Összeállítása',
+    content: 'A második hídcsomópont aktiválásához pontosan ki kell raknod a széttört tervrajzot a megadott téglalap alakú részekből. Húzd a darabokat a helyes pozícióba a rácson, figyelve az illeszkedésekre és a kép folytonosságára, amíg az egész ábra tökéletesen össze nem áll! Minden egyes jól elhelyezett darabbal a völgy stabilitása nő, és a Tükördarab fénye egyre jobban látszik a kép alatt. Légy türelmes és precíz, mert csak a hibátlanul összeállított puzzle képes kinyitni az utat a következő szektor felé!'
   },
   {
-    "id": "slide-12",
-    "title": "A Biztonsági Puffer",
-    "content": "Megérkezel egy hatalmas, szürke fémszerkezetű csarnokba, amit a bennfentesek csak a Biztonsági Puffer néven tartanak számon. Ez a szektor gondoskodik a beérkező adatok szűréséről, az illetéktelen utasítások kizárásáról és a Kód Királyság páncélzatának védelméről. Azonban az instabilitás itt is felütötte a fejét; piros riasztófények villognak, és a Puffer átmeneti tárolói hermetikusan lezárt állapotban maradtak. Csend és fojtogató hőség uralja az arénát, miközben a hatalmas zsilipkapuk zártan tornyosulnak feletted. Ha nem tudunk bejutni, a háttérben ragadt második szkript is örökre elveszik."
+    id: 'st-2-4',
+    title: 'A Kép Teljessége',
+    content: 'Amint az utolsó téglalap is a helyére pattant, a tervrajz vakító fénnyel gyulladt fel, és a völgy hegyei újra szabályos alakzatokat öltöttek. Az Építőmester boldogan ugrándozott körbe, és a kép közepéből kiemelte neked a második, csillogó Tükörszilánkot. Érzed, ahogy az Avatár-erőd növekszik minden egyes sikeres feladattal, és az Entrópia-féreg árnyéka kicsit visszahúzódik. Az utad most egy titokzatos, kódolt kapuhoz vezet, ahol a legegyszerűbb jel sorozata a legbonyolultabb üzenetet hordozza.'
+  },
+
+  // 3. ÁLLOMÁS: QR kód feladat
+  {
+    id: 'st-3-1',
+    title: 'A Kódolt Kapuk Labirintusa',
+    content: 'Megérkeztél a Kódolt Kapuk Labirintusába, ahol minden falat apró, fekete-fehér rácsok borítanak, amik titkos információkat rejtenek. Ez a zóna a birodalom gyors elérésű adatainak könyvtára, ahol a legfontosabb parancsokat ilyen kódolt formában tárolják a könnyű hozzáférés érdekében. A vírus itt egy zavaros frekvenciát sugároz, ami elhomályosítja a kódokat, így a kapuk zárva maradtak és a hozzáférés lehetetlen. A labirintus sötét folyosóin néha felvillan egy-egy QR-kód, de azok megfejtése nélkül csak eltévednél a virtuális sötétségben.'
   },
   {
-    "id": "slide-13",
-    "title": "Az összekevert kódok kora",
-    "content": "Ahogy megvizsgálod az óriási kapukat nyitó képernyőt, látod, hogy a Rendszerhibák Ura itt is trükköt vetett be a behatolók ellen. A Puffer jelszókezelő adatbázisa teljesen összekeveredett, és a biztonsági szint olyan titkosítást kapott, amit alapesetben hetekig tartana feltörni. A beérkező hibajelentések szerint a hozzáférési kulcsot betűnként elcsúsztatva kódolták el előlünk. Egy őrző bot arról tájékoztat, hogy csak a dekódolás képessége szakíthatja át a Pufferüveg falait a továbbjutáshoz. Összpontosítanod kell a legfinomabb karakterkülönbségekre, ha eredményt akarsz elérni."
+    id: 'st-3-2',
+    title: 'A Szkennelő Őr próbája',
+    content: 'A labirintus közepén egy hatalmas, lézeres szemmel rendelkező kapuőr várakozik, aki mozdulatlanul figyeli az érkezőket. Közli veled, hogy a harmadik Tükördarab a kapu mögött található, de a zárómechanizmus egy speciális QR-kód aktiválására vár. A kód darabjai azonban szétszóródtak, vagy olyan technikai anomáliák veszik körül őket, amiket csak egy tapasztalt Adatvándor tud kezelni. Meg kell találnod a helyes kódot vagy elvégezni a hozzá tartozó feladatot, hogy bizonyítsd a jogosultságodat az átlépésre.'
   },
   {
-    "id": "slide-14",
-    "title": "FELADAT: A Puffer zárolásának feloldása",
-    "content": "Ezen a kihíváson a titkosírás szabályai dominálnak, tehát vedd elő a rejtvényfejtő hajlamodat! Előtted egy lezárt adatcsatorna kódja található, de a szavak felismerhetetlenek az eltolásos, karakterszintű kódolás miatt. A feladatod visszafejteni az üzenetet egy specifikus eljárás, például a betűk meghatározott számú visszaléptetése segítségével a szimbólumtáblázatban. Győződj meg arról, hogy minden karakter helyes, hiszen a Puffer azonnal elutasítja az apróbb gépelési hibákat is. Mentsd meg az elzárt adatokat a dekódolt, érvényes mesterjelszó beírásával!"
+    id: 'st-3-3',
+    title: 'Feladat: A QR-kód Megfejtése',
+    content: 'A harmadik hídcsomópont aktiválásához el kell végezned a kapuőr által felkínált QR-kódos feladatot, ami a biztonsági protokoll utolsó lépése. Keresd meg a képernyőn látható kódot, és használd a szkenneredet vagy a logikádat, hogy kinyerd belőle a titkos utasítást! Ez a feladat próbára teszi a figyelmedet és a modern kódolási eljárások ismeretét a digitális világ peremén. Amint a kód beolvasásra kerül, a labirintus falai megnyílnak, és szabaddá válik az út a csörgedező színek világa felé.'
   },
   {
-    "id": "slide-15",
-    "title": "A második szkript megérkezése",
-    "content": "Amint a helyes dekódolt jelszót betápláltad a rendszerbe, a zárt zsilipajtók halk szisszenéssel csúsztak szét, kiszellőztetve a fojtogató feszültséget. A Puffer adat tárolói ismét biztonságos üzemmódba kapcsoltak, ezáltal a hálózat ezen része megnyugodott a vírustámadástól. A zsilipkapu mögötti biztosító modulból egy adatcsomag formájában a tenyeredbe szállt a második elveszett frissítőszkript is. Egyértelművé vált, hogy a Rendszerhibák Ura nem tudta tartósan blokkolni a leleményességedet ezen szinten. Érintsd meg a szkriptet, és ugorjunk át a különösen ingatag Változók Völgyébe!"
+    id: 'st-3-4',
+    title: 'A Feltárt Titok',
+    content: 'Amint a QR-kód zölden villant fel, a nehéz vaskapu hangtalanul felemelkedett, és a harmadik Tükörszilánk a lábaid elé hullott a porból. A labirintus labilis falai megszilárdultak, és a fekete-fehér rácsokból harmonikus minták rajzolódtak ki, jelezve a stabilitás visszatértét. Már három darabod van a Tükörből, és érzed, ahogy a birodalom lassanként kezd újra magára találni a vezetéseddel. A következő szektor azonban nem a szabályokról, hanem a tiszta kreativitásról és a fények játékáról fog szólni.'
+  },
+
+  // 4. ÁLLOMÁS: Színezős feladat (számok alapján)
+  {
+    id: 'st-4-1',
+    title: 'A Színkódok Ligete',
+    content: 'Egy varázslatos, de most teljesen színtelen erdőbe érkeztél, amit a lakók csak Színkódok Ligetének hívnak. Itt minden egyes növény és lény a legtisztább színkódokból épül fel, de az Entrópia-féreg kiszívta az összes tónust a levelekből és a patakokból. A táj most egy szomorú, szürke vázlat csupán, ahol a fák ágain számok és titokzatos betűk jelzik a hiányzó energiát. Ez az állomás felelős a Királyság vizuális szépségéért és a hangulati hullámok generálásáért, így a színek visszatérése nélkül mindenki magányos és szomorú marad.'
   },
   {
-    "id": "slide-16",
-    "title": "A Változók Völgye",
-    "content": "Átkelve a Puffer zónáján egy olyan különös, folyamatosan alakját változtató dimenzióban találod magad, amelyet Változók Völgyének hívnak. Itt a formák, a hangok, pa de a talaj szerkezete is aszerint módosul, ahogyan a háttérben futó memóriaterületek adatai váltakoznak. Amíg a rendszer stabilan üzemelt, a változók logikusan tartották fent ezt az illúziót, alkalmazkodva a tiszta fejlesztői akaratokhoz. Azonban az elveszett frissítések miatt a völgy mostanra kaotikussá vált; minden típus keveredik, a számok szöveggé, az igazság pedig hamissá torzul egy pillanat leforgása alatt. A harmadik szkript itt rejtőzik az értékkáosz legmélyén, de óvatosan kell mozognod."
+    id: 'st-4-2',
+    title: 'A Fényfestő kérése',
+    content: 'A liget közepén egy ecsetet szorongató, halvány szellem-alak jelenik meg eléd, aki a birodalom Fényfestője névvel ismert. Elmondja, hogy a negyedik Tükördarab a liget legszebb virágának kelyhébe van zárva, de az csak akkor nyílik ki, ha a virág újra pompázik eredeti színeiben. A festő átnyújt egy palettát, amin a számokhoz tartozó pontos színkódok szerepelnek, de a színezést neked kell elvégezned a logikai rács mentén. Készülj fel, mert a szürkeség birodalmát csak a Te precíz ecsetvonásaid (vagyis kattintásaid) menthetik meg a teljes elfeledéstől!'
   },
   {
-    "id": "slide-17",
-    "title": "Típustévesztés a láthatáron",
-    "content": "A völgy fő adattároló obeliszkje mellett megfigyeled, hogy a sötét befolyás a memóriamutatók alapvető szabályait gúzsba kötötte. A változók elvesztették a képességüket, hogy megkülönböztessék, hol a logikai igazság határa, vagy mi minősül egyértelmű karakterláncnak és számnak. Mivel a típusok teljesen összeférhetetlen elemekként próbálnak kapcsolódni egymáshoz, a keretrendszer folyamatos hibákba ütközik ezen a szakaszon. Ha nem segítünk újra tisztázni, mi hova tartozik, a mutatók végzetesen összeomlanak, törölve ezzel az értékes tudásanyagot is. Rendet kell tenni az értékek között, mielőtt a völgy felfalná saját magát."
+    id: 'st-4-3',
+    title: 'Feladat: Számok Szerinti Színezés',
+    content: 'A negyedik hídcsomópont aktiválásához újra kell színezned a liget központi ábráját a megadott számkódok alapján! Minden szám egy-egy speciális színnek felel meg, és csak akkor tudod elindítani az életerőt a gyökerekbe, ha minden mezőt a megfelelő árnyalattal töltesz ki. Figyelj alaposan a határokra és a kódolt jelölésekre, mert egyetlen rossz szín is megzavarhatja a liget kényes egyensúlyát! Amint befejezted a festést, a táj életre kel, és a színek vad táncba kezdenek a szemed előtt.'
   },
   {
-    "id": "slide-18",
-    "title": "FELADAT: A változótípusok egyeztetése",
-    "content": "Itt élesítjük a memóriakeresési ösztöneidet, és a feladatod nem tűr halasztást az adattípusok útvesztőjében! Több összezavarodott kódrészletet kapsz, ahol a tárolt értékek és a megadott műveletek komoly típusütközéseket okoznak. Az lesz a dolgod, hogy felismerd, melyik memóriarekeszben milyen adattípusnak (szám, karakterlánc, logikai érték) kellene ténylegesen helyet kapnia a folyamat során. Próbáld meg helyrerakni az értékek definícióját a megfelelő helyükre húzva azokat az állításban! Ha elegendő fegyelemmel cseréled vissza a hibás típusokat, az obeliszk rendszere hamar stabilizálódik majd."
+    id: 'st-4-4',
+    title: 'A Liget Pompája',
+    content: 'Ahogy az utolsó mező is élénk színbe borult, egy hatalmas fény-hullám söpört végig az erdőn, visszahozva az életet minden egyes levélbe és fűszálba. A Fényfestő hálásan hajolt meg előtted, és a virág kelyhéből átnyújtotta a negyedik, vakítóan ragyogó Tükördarabot. A birodalom vizuális rendszere helyreállt, és a szürkeség kora véget ért ezen a területen. Már csak egyetlen lépés választ el a Finálétól, de az utolsó állomás a legmagasabb szintű szövegértésedet és megfigyelőképességedet fogja tesztelni.'
+  },
+
+  // 5. ÁLLOMÁS: Szövegértés (ábrák keresése leírás alapján)
+  {
+    id: 'st-5-1',
+    title: 'A Definíciók Tornya',
+    content: 'Végül elérted az utolsó nagy akadályt, a Definíciók Tornyát, amely az Alapkód-tükörmásolat őrzőhelyének közvetlen előszobája. Ez a torony rejti az összes digitális forma pontos leírását és jelentését egy gigantikus, folytonosan görgethető jegyzékben. A vírus azonban itt egy olyan információs vihart kavart, ami elválasztotta a képeket a hozzájuk tartozó leírásoktól, így a torony navigációja teljesen megbénult. A levegőben sűrű betűfelhők gomolyognak, és a földön heverő ábrák közül senki sem tudja megmondani, melyik kép mit hivatott ábrázolni a rendszerszabályzat szerint.'
   },
   {
-    "id": "slide-19",
-    "title": "Harmónia és a harmadik szkript",
-    "content": "Kiváló munka volt! A változótípusok tisztázása után a völgy vibrálása fokozatosan enyhült, a talaj alatt megbújó adatszobrok pedig újra stabil alakzatot vettek fel. Az obeliszk megnyugtató fényt bocsátott ki, majd a lüktetés közepén lassan elengedte magából az elrejtett harmadik frissítőszkriptet. Magadhoz vetted a narancssárgán sugárzó elemet, és tudod, hogy már majdnem a feladat végén jársz a Királyság stabilizálásában. A Töréspont hatása érezhetően gyengül, bár a Rendszerhibák Ura még mindig dühösen dolgozik ellenünk. Folytassuk utunkat a Hálózati Csomópont lebegő hidjaihoz!"
+    id: 'st-5-2',
+    title: 'A Könyvtáros vizsgája',
+    content: 'A torony kapujában egy szigorú, de igazságos Könyvtáros program áll, aki egy vastag, digitális pergament tart a kezében. Közli veled, hogy az utolsó Tükörszilánk csak annak jár, aki képes kiolvasni a leírt töredékekből, hogy melyik szimbólum hordozza a valódi jelentést. Ez egy olyan vizsga, ahol nem a gyorsaságod, hanem az éleslátásod és a szövegértésed a legfontosabb fegyvered. Meg kell találnod a pontos ábrákat a leírások alapján egy hatalmas adathalmazban, hogy bizonyítsd: érted a birodalom alapvető nyelvét.'
   },
   {
-    "id": "slide-20",
-    "title": "A Hálózati Csomópont",
-    "content": "Felfelé emelkedve megérkezel a Hálózati Csomóponthoz, egy égen lebegő digitális platformsorozathoz, melyet fényhidak kötnek össze az információs viharban. Ez a hely a Kód Királyság gerinceként funkcionált, folyamatos kommunikációban tartva minden távoli szektort és klienst is. A káosz hatására azonban a hálózati hidak többsége láthatatlan ronccsá változott, a kommunikáció pedig véglegesen darabokra szakadt ebben a régióban. Adatcsomagok lézengenek a platformokon cél nélkül, képtelenül arra, hogy rátaláljanak a helyes fogadó útvonalakra. Az utolsó előtti szkript megszerzése komoly útvonaltervezési logikát követel meg tőled."
+    id: 'st-5-3',
+    title: 'Feladat: Ábrák Keresése Leírás Alapján',
+    content: 'Az ötödik hídcsomópont aktiválásához olvasd el figyelmesen a Könyvtáros által adott leírásokat, és keresd meg az azokhoz pontosan illeszkedő digitális ábrákat a táblán! Minden leírás egy-egy egyedi részletet tartalmaz, ami csakis egyetlen ábrára jellemző, ezért légy alapos és ne hagyd, hogy a hasonló formák megtévesszenek! Ha sikerül párosítanod az összes szöveget a megfelelő vizuális elemmel, a torony titkos rekesze kinyílik. Ez az utolsó technikai feladat, mielőtt szembenéznél a Királyságot fenyegető végső veszedelemmel.'
   },
   {
-    "id": "slide-21",
-    "title": "Elszakadt kapcsolatok",
-    "content": "A központi adótornyot elemezve látod, hogy a Rendszerhibák Ura célzottan az adatútválasztási (routing) szabályokat pusztította el a hálózat szintjén. Ennek eredményeképpen egyetlen megcímzett bájt sem találja az utat a forrástól a rendeltetési elosztóig, a csomagveszteség pedig szinte 100%-os a platformok között. A helyi kiszolgáló robotok próbálnak alternatív kommunikációs csatornákat verni a rések felett, ám az okos beavatkozás hiánya miatt falakba ütköznek folyamatosan. Segítened kell visszavezetni az eltévedt forgalmat a főütőerekbe, vagy soha nem érjük el a rendszermagot. Ideje feltérképezni az épen maradt átjárókat és új utat szabni nekik!"
+    id: 'st-5-4',
+    title: 'A Definíciók Tisztasága',
+    content: 'Amint az utolsó ábra is a helyére került a leírása mellé, a torony falai megnyíltak, és az ötödik Tükördarab az öledbe hullott a fényes porból. A Könyvtáros elismerően biccentett, és elárulta, hogy az Entrópia-féreg már érzi a vereségét, és a Központi Mag felé menekül. Most, hogy mind az öt Fragmentumot összegyűjtötted, a kezedben tartod a birodalom sorsát és a Tükör teljes erejét. Az út szabaddá vált a Finálé felé, ahol a Királyság jövője egyetlen végső megmérettetésen dől majd el.'
+  },
+
+  // D) FINÁLÉ (Fix 3 dia)
+  {
+    id: 'fi-1',
+    title: 'A Tükörcsarnok szívében',
+    content: 'Megérkeztél a Központi Magba, a Tükörcsarnok legszentebb pontjára, ahol egykor az Alapkód-tükörmásolat ragyogott. A levegőben még látszanak az Entrópia-féreg által hagyott sötét nyomok, de az általad hozott öt szilánk fénye már elkezdi kiszorítani a homályt a sarkokból. Ez az a hely, ahol a valóság és a digitális rend összeszövődik, és ahol Te most egyedül állsz szemben a teljes széttöredezéssel. A szilánkok a levegőbe emelkednek, és várják a végső parancsot, hogy újra egyetlen, tökéletes felületté álljanak össze a szemed előtt.'
   },
   {
-    "id": "slide-22",
-    "title": "FELADAT: A csomagok eljuttatása",
-    "content": "Szedd össze a kapcsolatok logikáit, mert a feladatod egy óriási IP-útvonaltervező rejtvény megfejtése lesz a platformok között! Egy térképet látsz megadott végpontokkal, forrásokkal, és töredékes vezetékes szakaszokkal beborítva. Tervezd meg az eltévedt adatcsomagok útját lépésről lépésre, figyelembe véve az egyirányú átjárókat és a sebességi korlátozásokat. Kapcsold össze a helyes állomásokat úgy, hogy minden információs bájt sikeresen eljusson a célállomásra az akadályok megkerülésével! Készülj fel arra, hogy a logikai vakság miatt a téves utakon lévő adatok azonnal visszapattannak majd a kiinduló mezőre."
+    id: 'fi-2',
+    title: 'Feladat: A Végső Tükör-próba',
+    content: 'Az Entrópia-féreg egy utolsó, mindent eldöntő logikai pajzsot emelt a Tükör foglalata köré, amit csak az összes eddigi tudásod egyesítésével törhetsz át. Ezen a ponton nincs helye hibázásnak: meg kell találod a kritikus összefüggést az öt különböző zónából hozott információk között, és be kell vinned a végső aktiváló-kódot. Ez a feladat próbára teszi a memóriádat, a logikádat és a hidegvéredet a legnagyobb nyomás alatt. Csak a tökéletes megoldás fogja elriasztani a férget és rögzíteni a szilánkokat az eredeti helyükre, megmentve ezzel mindannyiunk jövőjét.'
   },
   {
-    "id": "slide-23",
-    "title": "A hálózat feléledése",
-    "content": "Ahogy az utolsó adatcsomag is villámgyors fénysávként elérte a célpontját az általad kiépített, egyértelmű útvonalon, a lebegő hidak gyönyörű aurával ismét teljes formát öltöttek magukra. A Hálózati Csomópont szervereiből egy hatalmas sóhajtás szerű zaj szakadt fel, az energiaellátás pedig pillanatok alatt helyrebillent. A fő router egy fénylő kapszulában katapultálta feléd a negyedik rejtett frissítőszkriptet a sikered jutalmaként. Már csupán a legerősebben védett utolsó szegmens választ el minket az abszolút sikertől az elátkozott erődítményben. Gyűjts erőt, mert utunk most a Királyság lüktető processzorához, a Hardver Magja felé visz minket."
-  },
-  {
-    "id": "slide-24",
-    "title": "A Hardver Magja",
-    "content": "Egy mély, zúgó sikátoron keresztül belépsz a Kód Királyság legnagyobb, ezüstösen lüktető reaktortermébe, a Hardver Magjába. A hőmérséklet drasztikusan magasabb, a gépezetek ritmusos moraja pedig tiszteletparancsoló hangulatot kelt az óriási adatkazánok körül. Ez a szektor maga az áram és a fizikai valóság megtestesítője, amely az összes eddigi réteget táplálja élettel a felhő alatti szinteken is. Mégis, a kék szikrák helyett itt is eluralkodott a baljós, vörös füst, amit az érintetlen frissítés hiánya terjesztett ki magából. Ha ez az utolsó szektor megadja magát a nyomásnak, akkor az összes digitális élet örökre végzetes leállást szenved el."
-  },
-  {
-    "id": "slide-25",
-    "title": "Az összeomló áramkörök",
-    "content": "Ebben a teremben tartózkodik a Rendszerhibák Ura az árnyékokban, aki a saját testével blokkolja a fő energiavezeték áramlását az utolsó szkripthez. Az őrület módszertaniként a reaktor logikai kapuit mind zártra cserélte, meggátolva, hogy az információ logikusan haladjon balról jobbra a hardveren. Néhány csomópontnál hamis ÉS (AND) kapukat, máshol megtévesztő VAGY (OR) elágazásokat hagyott maga után, ami teljes túltöltést idézett elő a rendszeren. Bár a vírus félelmetes fegyvertárral bír, a tiszta áramköri logika előtt ő is teljesen tehetetlen, ha ügyesen bánsz az állításokkal. Készülj, mert most elméletileg az áram útját kell kézi vezérléssel helyreraknod a káoszban!"
-  },
-  {
-    "id": "slide-26",
-    "title": "FELADAT: A logikai áramkör aktiválása",
-    "content": "A végső kódcsomag eléréséhez egy szigorú hardveres próbán kell átesned a túlhevült vezetékek erdejében! Egy több lépcsős logikai áramkör sémáját kapod meg, ahol az áram útja a különböző AND, OR és NOT kapuk logikai válaszai szerint halad célfüggvényéig. Az egyes bemeneteknél lévő értékek (igaz vagy hamis) megadása által neked kell kikövetkeztetned a végső kimeneti jelet ezen a hálón befejezésül. Olvass le minden kaput egyesével, írd le az összetevők végeredményét, majd élesítsd a megfelelő választ utolsóként. Ez a feladat követeli meg a leghidegebb vért és a legélesebb logikát, hogy kiszárítsd a hiba urának csapdáját!"
-  },
-  {
-    "id": "slide-27",
-    "title": "Az utolsó frissítőszkript",
-    "content": "Zseniális vagy, a logikai kapuk az általad diktált helyes mederbe terelték az energiaáramlást a túltöltések eloszlatásával! A Rendszerhibák Ura hatalmas ordítással megrettent a lángra lobbanó neonáramköröktől, majd visszahúzódott a legsötétebb szerverszobákba bujdokolni. A vezérlőpult csendes pittyenéssel kinyílt a falból, kezedbe adta az ötödik, és egyben utolsó elrejtett frissítőszkriptet is a dicsőség jegyében. Ahogy a darabokat egyesíted a virtuális táskádban, egy hatalmas kódkulcs formálódik meg az öt töredék összesüléséből a frissítéshez. Most már semmi akadálya nincs, hogy végleg lezárjuk ezt a sötét fejezetet a történelemkönyvekben, irány a finálé!"
-  },
-  {
-    "id": "slide-28",
-    "title": "A Rendszermag Kapuja",
-    "content": "Egy ünnepélyes, de rendkívül meghatározó lépésekkel teli útvonalon megérkezel a Kód Királyság abszolút belső epicentrumához, a Rendszermag Kapujához. A dimenzió itt hatalmas, pörgő adathasábokból és az egész világot mozgató vezérlőszoftver fényéből épült fel egy tökéletes üveggömbben. Bár kívül halvány nyomokban még küzdenek a lefagyásokkal a lakók, itt az öt frissítőszkript energiája láthatóan kezdi felélénkíteni a legalsó kódsorokat is az üvegingerben. A falakon a megboldogult hibák nyomai futnak végig a Rendszerhibák Ura által hagyott sebekként, ám te megannyi próbát kiálltál már. Itt az idő, hogy futtassuk az elveszett programot, és meglássuk a törekvésünk gyümölcsét."
-  },
-  {
-    "id": "slide-29",
-    "title": "FELADAT: A frissítőszkriptek integrálása",
-    "content": "Utolsó kihívásként össze kell illesztened a megszerzett kódok darabjait, hogy a Rendszermag végre betöltse a rejtett frissítést a fagyások ellen! Az öt megszerzett szkript önmagában csak félinformáció, de megfelelő sorrendben páratlan erőt szabadíthat fel a virtuális világban. Rakd sorbare az elemeket a Mappanév, a Kulcs, a Típus, a Hálózat és a Hardver kapujának törvényszerűségei szerint! Egyetlen logikai kirakós maradt hátra, ami bebiztosítja a fordítást és a teljesítést a szinkronizáláshoz. Fókuszáld utolsó energiáidat, oldd meg a végső algoritmus-rejtvényt, és indítsd el vele a végső betöltési folyamatot a gép szíve felé!"
-  },
-  {
-    "id": "slide-30",
-    "title": "Győzelem és a stabilitás kora",
-    "content": "A szkriptek helyes sorrendű betöltésével az egész Királyságot egy óriási, ragyogó tiszta fény hulláma mosta át villámcsapásként! A Rendszermag feldolgozta a hiányzó frissítéseket, s ezzel a lefagyások, kékhalálok és az összes megmagyarázhatatlan anomália egyszer és mindenkorra véget ért világunkban. A Rendszerhibák Ura szörnyű sikáltozások közepette karanténba került és végleges eltávolításra lett ítélve a védelem erejének köszönhetően. Büszke lehetsz magadra Kódmester, mert a gyors logikád, az algoritmikus tudásod és az emberi eszességed visszahozta a Kód Királyság számára a fejlődés aranykorát. Maradj még sokat velünk az elközelgő békés órákban, mert a szerverek felhőtlenül várják az új csodáidat!"
+    id: 'fi-3',
+    title: 'A Rend Visszatérése',
+    content: 'Sikerült! Amint a Tükör utolsó darabja is a helyére pattant, egy vakító, tisztító fény-gömb söpört végig a Királyságon, végleg megsemmisítve az Entrópia-férget és annak minden káros hordalékát. A Fragmentum-térség darabjai összeilleszkedtek, a határok megszilárdultak, és az Alapkód-tükörmásolat újra hirdeti a logika és a rend győzelmét. Te lettél a birodalom legendás Tükörőrzője, akinek a bátorsága és esze nélkül a világunk darabokra hullott volna a semmibe. Gratulálunk Kódmester, a küldetésed teljesült, a Tükör ragyog, és a Királyság ismét biztonságban tudhatja az adatait!'
   }
 ];

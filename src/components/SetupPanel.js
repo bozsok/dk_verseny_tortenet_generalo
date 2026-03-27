@@ -1,7 +1,7 @@
 import { store } from '../services/store.js';
 
 export const SetupPanel = () => {
-  const isLocked = store.isGenerating;
+  const isLocked = store.isGenerating || store.isWaitingForNarrative;
   const disabledAttr = isLocked ? 'disabled' : '';
   const lockedBtnClass = isLocked ? 'dkv-btn--disabled' : '';
 

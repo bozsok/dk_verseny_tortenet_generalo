@@ -4,6 +4,25 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 
+## [1.17.0] – 2026-03-27
+### 🛠️ Hozzáadva
+- **Master Blueprint Architektúra**: Bevezetve a `blueprint-master.json` fájl, amely a központi V4-es generálási szabályokat tartalmazza, teljesen elkülönítve a projekt-specifikus metaadatoktól (`blueprint.json`).
+- **AI-narratív Generálás (V4)**: Szigorú 30 diás struktúra (3 Onboarding, 4 Intro, 20 Stage, 3 Finale) és Cyber-Fantasy stílus kényszerítése az AI-motornál.
+
+### 🎨 Megváltoztatva
+- **Modális felületek finomhangolása (UI/UX)**:
+    - **Téma-érzékeny árnyékok**: Megszűntek a zavaró sötét árnyékok a világos (Literary) témában; a modálok mostantól lágy, dinamikus árnyékot használnak.
+    - **Pulzáló indikátor**: A nagy központi korong helyett egy 1/4 méretű, diszkrét indikátor került a modális ablakok jobb felső sarkába.
+    - **Várakozási állapot**: Az „AI-válaszra várva” box mostantól téma-specifikus háttérrel jelenik meg (Cyber-Fantasy alatt türkiz, Literary alatt lágy pergamen).
+- **MTA 12. helyesírási kontroll**:
+    - Az összes All-Caps állapotjelző és fejléc Capitalized formátumra váltott (pl. `Szinkronizáció folyamatban`).
+    - Technikai kifejezések egységesítése és kötőjelezése: `AI-generálás`, `QR-kód`, `Nulla-Bit vírus`.
+
+### 🐛 Javítva
+- **Sidebar Állapotkövetés**: A Sidebar gombjai és mezői mostantól az `isWaitingForNarrative` állapot alatt is helyesen zárolva maradnak, biztosítva az adatok integritását.
+
+---
+
 ## [1.16.0] – 2026-03-27
 ### 🛠️ Hozzáadva
 - **Robusztus Narratív Parser**: Teljesen megújult a `parseNarrativeContent` logika, amely mostantól intelligensen kezeli a kézzel módosított fájlokat is.
