@@ -1,8 +1,8 @@
 ---
 project_name: 'dk_verseny_stories'
 user_name: 'Krisztián'
-date: '2026-03-25'
-version: '1.10.0'
+date: '2026-03-27'
+version: '1.13.0'
 sections_completed: ['technology_stack', 'critical_rules']
 existing_patterns_found: 5
 ---

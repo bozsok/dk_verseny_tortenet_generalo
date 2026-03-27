@@ -1,4 +1,6 @@
 import { store, subscribe } from './services/store.js';
+import { themeManager } from './services/ThemeManager.js';
+import { ThemeToggle, initThemeToggleEvents } from './components/ThemeToggle.js';
 import { Logger } from './services/Logger.js';
 import { eventBus } from './services/EventBus.js';
 import { narrative } from './data/narrative.js';
@@ -83,7 +85,8 @@ async function initLayout() {
         <div class="dkv-lock-overlay"></div>
         <header class="dkv-preview-header">
           <h1 id="preview-title-header">TÖRTÉNET ELŐNÉZETE: ${store.projectTitle.toUpperCase()}</h1>
-          <div style="display: flex; gap: 10px;">
+          <div style="display: flex; gap: 10px; align-items: center;">
+             <div id="theme-toggle-container">${ThemeToggle()}</div>
              <button class="dkv-nav-btn" data-action="scroll-top">↑</button>
           </div>
         </header>
@@ -96,11 +99,12 @@ async function initLayout() {
     </div>
     
     <div id="modal-root"></div>
-    <div id="bridge-status-root" class="dkv-global-bridge-status"></div>
+    <div id="global-status-root" class="dkv-global-status-container"></div>
   `;
 
   UIController.setupGlobalListeners();
   setupEventListeners();
+  setupGlobalStatusListeners();
 
   // Reaktivitás bekapcsolása: minden store változás frissíti a UI-t
   subscribe(updateDynamicContent);
@@ -282,26 +286,12 @@ function updateDynamicContent(property, value) {
     return;
   }
 
-  // Bridge állapot változása (Globális, minden felett látszódó megjelenítés)
-  if (property === 'isBridgeOnline' || !property) {
-    const bridgeStatusRoot = document.querySelector('#bridge-status-root');
-    if (!bridgeStatusRoot) return;
+  // Téma és Bridge állapot változása (Globális, minden felett látszódó megjelenítés)
+  if (property === 'isBridgeOnline' || property === 'theme' || !property) {
+    const globalStatusRoot = document.querySelector('#global-status-root');
+    if (!globalStatusRoot) return;
 
-    let indicator = bridgeStatusRoot.querySelector('.dkv-bridge-status');
     const isOnline = store.isBridgeOnline;
-
-    // Kezdeti létrehozás, ha még nincs ott (vagy property hiányzik)
-    if (!indicator || !property) {
-      bridgeStatusRoot.innerHTML = `
-        <div class="dkv-bridge-status" data-action="refresh-bridge" style="cursor: pointer;">
-          <span class="dkv-bridge-status__icon"></span>
-          <span class="dkv-bridge-status__tooltip"></span>
-        </div>
-      `;
-      indicator = bridgeStatusRoot.querySelector('.dkv-bridge-status');
-    }
-
-    // Csak a változó részek frissítése osztályokkal és szöveggel (Pro/Erőforrás-kímélő)
     const statusClass = isOnline === null ? 'dkv-bridge-status--unknown' :
       (isOnline ? 'dkv-bridge-status--online' : 'dkv-bridge-status--offline');
     const iconChar = isOnline === null ? '?' : (isOnline ? '✓' : '!');
@@ -311,11 +301,13 @@ function updateDynamicContent(property, value) {
         ? 'Bridge Online – Készen áll az iterációra és a mentésre.'
         : 'Bridge Offline – Indítsd el a bridge-et a terminálban az "npm run bridge" paranccsal!');
 
-    indicator.className = `dkv-bridge-status ${statusClass}`;
-    const iconEl = indicator.querySelector('.dkv-bridge-status__icon');
-    const tooltipEl = indicator.querySelector('.dkv-bridge-status__tooltip');
-    if (iconEl) iconEl.textContent = iconChar;
-    if (tooltipEl) tooltipEl.textContent = tooltipText;
+    globalStatusRoot.innerHTML = `
+      ${ThemeToggle()}
+      <div class="dkv-bridge-status ${statusClass}" data-action="refresh-bridge" style="cursor: pointer;">
+        <span class="dkv-bridge-status__icon">${iconChar}</span>
+        <span class="dkv-bridge-status__tooltip">${tooltipText}</span>
+      </div>
+    `;
 
     // Ha bejön a bridge, és kell a szinkron, akkor frissítjük a panelt a gomb miatt
     if (property === 'isBridgeOnline' && isOnline && store.needsSync) {
@@ -381,17 +373,18 @@ function updateDynamicContent(property, value) {
       }
 
       // Kártyák renderelése
-      let html = `<h2 id="slides-title" class="dkv-neon-text" style="margin-bottom: 40px; font-size: 2.2rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase;">
+      let html = `<h2 id="slides-title" class="dkv-neon-text">
                      ${store.projectTitle || 'NÉVTELEN PROJEKT'}
                    </h2>`;
 
       sections.forEach((sec, idx) => {
         const items = n.slice(sec.start, sec.end);
         if (items.length > 0) {
+          const sectionColor = sec.color || 'var(--neon-cyan)';
           html += `
              <div id="${sec.id}" class="dkv-section-block" style="margin-bottom: 80px;">
-               <div class="dkv-zone-card dkv-card--animated" style="border-left: 6px solid ${sec.color || 'var(--neon-cyan)'}; animation-delay: ${sec.start * 0.08}s;">
-                 <div class="dkv-zone-icon" style="color: ${sec.color || 'var(--neon-cyan)'}; text-shadow: 0 0 15px ${sec.color || 'var(--neon-cyan)'};">${sec.icon}</div>
+               <div class="dkv-zone-card dkv-card--animated" style="--section-accent: ${sectionColor}; animation-delay: ${sec.start * 0.08}s;">
+                 <div class="dkv-zone-icon">${sec.icon}</div>
                  <div class="dkv-zone-info">
                    <span class="dkv-zone-tag">${sec.title.split(' // ')[0]}</span>
                    <h3 class="dkv-zone-title">${sec.title.split(' // ')[1]}</h3>
@@ -998,3 +991,29 @@ async function syncProjectData() {
 }
 
 initLayout();
+
+/**
+ * Globális állapotjelzők (téma, bridge) eseménykezelése delegálással.
+ */
+function setupGlobalStatusListeners() {
+  const root = document.querySelector('#global-status-root');
+  if (!root) return;
+
+  root.addEventListener('click', (e) => {
+    // Téma váltó gomb
+    const themeBtn = e.target.closest('#theme-toggle-btn');
+    if (themeBtn) {
+      Logger.debug('GlobalStatus: Téma váltás kattintás.');
+      themeManager.toggleTheme();
+      return;
+    }
+
+    // Bridge frissítés
+    const bridgeIndicator = e.target.closest('.dkv-bridge-status');
+    if (bridgeIndicator) {
+      Logger.debug('GlobalStatus: Bridge frissítés kattintás.');
+      if (window.refreshBridgeStatus) window.refreshBridgeStatus();
+      return;
+    }
+  });
+}

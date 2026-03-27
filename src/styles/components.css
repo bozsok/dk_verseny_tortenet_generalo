@@ -6,7 +6,7 @@
   font-size: 0.8rem;
   font-weight: 800;
   color: var(--neon-cyan);
-  text-shadow: 0 0 8px var(--neon-cyan);
+  text-shadow: var(--glow-shadow);
   background: rgba(0, 0, 0, 0.4);
   padding: 2px 8px;
   border-radius: 4px;
@@ -14,6 +14,11 @@
   z-index: 5;
   pointer-events: none;
   font-family: 'Fira Code', monospace;
+}
+
+[data-theme='literary'] .dkv-card-number {
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
 }
 
 /* Slide-in Animation */
@@ -28,7 +33,7 @@
 .dkv-card--animated:not(.dkv-zone-card):hover {
   transform: translateY(-5px);
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 25px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
+  box-shadow: var(--hover-glow);
   z-index: 10;
   cursor: pointer;
 }
@@ -52,12 +57,12 @@
 /* --- STORY 3.1: BLUEPRINT FEEDBACK STYLES --- */
 
 /* Loading Button State */
-.dkv-btn--loading {
+.dkv-btn.dkv-btn--loading {
     position: relative;
     pointer-events: none;
-    background: rgba(0, 242, 255, 0.2) !important;
-    border-color: var(--neon-cyan) !important;
-    color: var(--neon-cyan) !important;
+    background: rgba(0, 242, 255, 0.2);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
     animation: dkv-pulse-cyan 1.5s infinite ease-in-out;
 }
 
@@ -68,15 +73,15 @@
 }
 
 /* Error Modal State (CorruptionUI) */
-.dkv-modal-card--error {
-    border-color: #ff0000 !important;
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 0, 0.2) !important;
+.dkv-modal-card.dkv-modal-card--error {
+    border-color: #ff0000;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 0, 0.2);
     animation: dkv-glitch-border 0.3s ease-in-out;
 }
 
 .dkv-modal-card--error .dkv-neon-text {
-    color: #ff3333 !important;
-    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000 !important;
+    color: #ff3333;
+    text-shadow: none;
 }
 
 @keyframes dkv-glitch-border {
@@ -89,11 +94,40 @@
 }
 
 /* --- BRIDGE STATUS INDICATOR --- */
-.dkv-global-bridge-status {
+.dkv-global-status-container {
     position: fixed;
     top: 20px;
     right: 25px;
-    z-index: 3000; /* Minden felett, a modalok felett is (2005) */
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dkv-theme-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-dim);
+}
+
+.dkv-theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--glow-shadow);
+}
+
+[data-theme='literary'] .dkv-theme-toggle {
+    background: white;
+    box-shadow: var(--card-shadow);
+}
+
+.dkv-global-bridge-status {
+    position: relative; /* Levesszük a fix pozíciót, mert a konténer kezeli */
 }
 
 .dkv-bridge-status {
@@ -114,17 +148,14 @@
 
 .dkv-bridge-status--unknown {
     background: #555;
-    box-shadow: 0 0 5px #777;
 }
 
 .dkv-bridge-status--online {
     background: #00ff00;
-    box-shadow: 0 0 10px #00ff00;
 }
 
 .dkv-bridge-status--offline {
     background: #ff0000;
-    box-shadow: 0 0 10px #ff0000;
     animation: dkv-bridge-pulse 2s infinite;
 }
 
@@ -161,11 +192,17 @@
 
 /* --- SYNC BUTTON --- */
 .dkv-btn--sync {
-    background: rgba(0, 242, 255, 0.1);
+    background: rgba(var(--neon-cyan-rgb, 0, 242, 255), 0.1);
     border: 1px solid var(--neon-cyan);
     color: var(--neon-cyan);
     margin-top: 10px;
     animation: dkv-pulse-sync 2s infinite;
+}
+
+[data-theme='literary'] .dkv-btn--sync {
+    background: var(--bg-deep);
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
 }
 
 @keyframes dkv-pulse-sync {
@@ -189,9 +226,20 @@
     text-align: justify;
 }
 
-.dkv-modal-title--reading {
-    font-size: 2.4rem !important;
+.dkv-modal-header .dkv-modal-title--reading {
+    font-size: 2.4rem;
     margin-bottom: 30px;
     letter-spacing: 2px;
-    text-transform: uppercase;
+}
+
+[data-theme='literary'] .dkv-modal-title--reading {
+    text-transform: none;
+}
+
+.dkv-modal-header .dkv-modal-title--hero {
+    color: var(--neon-cyan);
+}
+
+.dkv-modal-header .dkv-modal-title--small {
+    color: var(--text-white);
 }

@@ -1,14 +1,18 @@
 import { store } from '../services/store.js';
 
 export const IterationModal = (slideId) => {
-  const slide = store.narrative.find(s => s.id === slideId);
-  if (!slide) return '';
+  const index = store.narrative.findIndex(s => s.id === slideId);
+  if (index === -1) return '';
+  
+  const slide = store.narrative[index];
+  const isHero = index === 0 || index === store.narrative.length - 1;
+  const titleClass = isHero ? 'dkv-modal-title--hero' : 'dkv-modal-title--small';
 
   return `
     <div class="dkv-modal-overlay dkv-modal-overlay--visible" data-action="close-iteration">
       <div class="dkv-modal-card dkv-modal-card--cyan dkv-fade-in-up">
         <div class="dkv-modal-header">
-          <h2 class="dkv-neon-text dkv-modal-title--reading">A dia finomhangolása</h2>
+          <h2 class="dkv-neon-text dkv-modal-title--reading ${titleClass}">A dia finomhangolása</h2>
           <button id="close-iteration" class="dkv-close-btn" data-action="close-iteration">&times;</button>
         </div>
         

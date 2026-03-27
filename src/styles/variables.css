@@ -17,19 +17,85 @@
   --sidebar-header-height: 70px;
   --transition-speed: 0.4s;
   --sidebar-easing: linear;
-  /* Egyenletes mozgás */
+
+  --font-main: 'Outfit', sans-serif;
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  --section-color: var(--neon-cyan);
+  --glow-shadow: 0 0 10px var(--neon-cyan);
+  --glow-shadow-strong: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+  --modal-glow: 0 0 30px rgba(0, 242, 255, 0.15);
+  --hover-glow: 0 0 25px rgba(0, 242, 255, 0.3), inset 0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+[data-theme='literary'] {
+  --bg-deep: #F9F7F2;
+  --bg-card: #ffffff;
+  --bg-input: transparent;
+
+  --neon-cyan: #8C7861;
+  --neon-purple: #A39382;
+  --neon-gradient: var(--neon-cyan);
+  --bg-sidebar: #F1EFE9;
+
+  --glass-border: #E5E1D8;
+  --text-white: #2D2926;
+  --text-dim: #6B645E;
+
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Lora', serif;
+
+  --glow-shadow: none;
+  --glow-shadow-strong: none;
+  --modal-glow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --hover-glow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --section-color: var(--neon-purple);
+}
+
+[data-theme='literary'] .dkv-btn--secondary {
+  background: white;
+  border-color: var(--glass-border);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme='literary'] .dkv-btn--secondary:hover {
+  background: var(--bg-deep);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+
+[data-theme='literary'] .dkv-btn--accent {
+  background: white;
+  border-color: var(--neon-purple);
+  color: var(--neon-purple);
+}
+
+[data-theme='literary'] .dkv-btn--accent:hover {
+  background: var(--neon-purple);
+  color: white;
+}
+
+[data-theme='literary'] .dkv-btn.dkv-btn--primary {
+  background: var(--neon-cyan);
+  color: #F9F7F2; /* Krem felirat a barna hatteren */
+  font-weight: 800;
+  border: none;
 }
 
 .dkv-neon-text {
   color: var(--text-white);
-  text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+  text-shadow: var(--glow-shadow-strong);
+  font-family: var(--font-heading);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-main);
 }
 
 h1,
@@ -39,7 +105,7 @@ h4,
 .dkv-sidebar__header,
 .dkv-btn,
 .dkv-label {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: var(--font-heading);
   letter-spacing: 0.5px;
 }
 
@@ -76,13 +142,13 @@ body {
 
 /* --- BAL HASÁB: SIDEBAR (BEM: .dkv-sidebar) --- */
 .dkv-sidebar {
-  background: var(--bg-card);
+  background: var(--bg-sidebar, var(--bg-card));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--card-shadow);
   transition: all var(--transition-speed) ease;
   position: relative;
   width: 100%;
@@ -98,7 +164,7 @@ body {
 }
 
 .dkv-sidebar__header {
-  background: var(--neon-gradient);
+  background: var(--neon-gradient, var(--neon-cyan));
   padding: 0 25px;
   height: 70px;
   color: white;
@@ -113,6 +179,16 @@ body {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+[data-theme='literary'] .dkv-sidebar__header {
+  background: var(--neon-cyan);
+  color: #F9F7F2;
+  border-bottom: 1px solid var(--glass-border);
+  font-family: var(--font-heading);
+  text-transform: none;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .dkv-sidebar__toggle {
@@ -134,6 +210,19 @@ body {
   left: calc(var(--sidebar-width) - 42px);
   transform: translate(-50%, -50%);
   margin: 0;
+}
+
+[data-theme='literary'] .dkv-sidebar__toggle {
+  background: white;
+  border-color: var(--glass-border);
+  color: var(--text-white);
+  box-shadow: var(--card-shadow);
+}
+
+[data-theme='literary'] .dkv-sidebar__toggle:hover {
+  background: var(--bg-deep);
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
 }
 
 .dkv-sidebar__toggle:hover {
@@ -186,7 +275,7 @@ body {
 .dkv-main-layout--collapsed .dkv-sidebar__header {
   padding: 0;
   height: 70px;
-  background: var(--neon-gradient);
+  background: var(--neon-gradient, var(--neon-cyan));
   border: none;
   width: 100%;
   position: relative;
@@ -215,7 +304,7 @@ select {
   width: 100%;
   background: var(--bg-input);
   border: 1px solid var(--glass-border);
-  color: white;
+  color: var(--text-white);
   padding: 12px;
   border-radius: 8px;
   outline: none;
@@ -287,10 +376,25 @@ textarea:focus {
 }
 
 .dkv-btn--primary {
-  background: var(--neon-gradient);
+  background: var(--neon-gradient, var(--neon-cyan));
   font-size: 1.4rem;
   color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.dkv-onboarding-title {
+  text-shadow: var(--glow-shadow);
+  margin-bottom: 30px;
+}
+
+[data-theme='literary'] .dkv-onboarding-title {
+  font-family: var(--font-main);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #8C7861;
+  text-shadow: none;
 }
 
 .dkv-btn--primary:hover {
@@ -445,6 +549,25 @@ textarea:disabled {
   overflow: hidden;
 }
 
+#slides-title {
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+[data-theme='literary'] #slides-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 400;
+  text-shadow: none;
+  margin-bottom: 50px;
+  text-transform: none;
+  font-style: italic;
+  color: #2D2926;
+}
+
 .dkv-preview-header h1 {
   flex: 1;
   min-width: 0;
@@ -465,15 +588,19 @@ textarea:disabled {
   border-radius: var(--radius);
   padding: 25px;
   position: relative;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
   overflow: hidden;
 }
 
 .dkv-hero-card:hover {
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
+}
+
+[data-theme='cyber-fantasy'] .dkv-hero-card:hover {
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.15);
 }
 
 .dkv-hero-content {
@@ -497,12 +624,17 @@ textarea:disabled {
   height: 100%;
   transition: all 0.3s ease;
   position: relative;
+  box-shadow: var(--card-shadow);
 }
 
 .dkv-small-card:hover {
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+}
+
+[data-theme='cyber-fantasy'] .dkv-small-card:hover {
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
 }
 
 .dkv-small-content {
@@ -521,6 +653,15 @@ textarea:disabled {
   gap: 25px;
   grid-column: span 2;
   box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+  border-left: 6px solid var(--section-accent, var(--neon-cyan));
+}
+
+[data-theme='literary'] .dkv-zone-card {
+  background: white;
+  border: 1px solid var(--glass-border);
+  border-left: 6px solid var(--neon-cyan);
+  box-shadow: var(--card-shadow);
+  --section-accent: var(--neon-cyan);
 }
 
 .dkv-zone-icon {
@@ -533,7 +674,13 @@ textarea:disabled {
   justify-content: center;
   border-radius: 15px;
   border: 1px solid var(--glass-border);
-  color: var(--neon-cyan);
+  color: var(--section-accent, var(--neon-cyan));
+  text-shadow: 0 0 15px var(--section-accent, var(--neon-cyan));
+}
+
+[data-theme='literary'] .dkv-zone-icon {
+  background: var(--bg-deep);
+  text-shadow: none;
 }
 
 .dkv-zone-tag {
@@ -573,7 +720,9 @@ textarea:disabled {
 .dkv-edit-icon-btn:hover {
   border-color: var(--neon-cyan);
   color: var(--neon-cyan);
-  box-shadow: 0 0 10px var(--neon-cyan);
+  font-family: var(--font-heading);
+  text-shadow: var(--glow-shadow);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
   background: rgba(0, 242, 255, 0.05);
 }
 
@@ -666,7 +815,7 @@ textarea:disabled {
 .dkv-jump-link:hover {
   opacity: 1;
   transform: translateX(5px);
-  text-shadow: 0 0 10px var(--neon-cyan);
+  text-shadow: var(--glow-shadow);
 }
 
 .dkv-mini-map {
@@ -697,7 +846,8 @@ textarea:disabled {
   color: var(--neon-cyan);
   margin-bottom: 12px;
   font-weight: 900;
-  text-shadow: 0 0 10px var(--neon-cyan);
+  text-shadow: var(--glow-shadow);
+  letter-spacing: 1px;
 }
 
 .dkv-hero-card__description {
@@ -725,7 +875,7 @@ textarea:disabled {
 /* --- MODAL FINÍROZÁS --- */
 .dkv-modal-card--cyan {
   border-color: var(--neon-cyan);
-  box-shadow: 0 0 30px rgba(0, 242, 255, 0.15);
+  box-shadow: var(--modal-glow);
 }
 
 .dkv-textarea--large {
@@ -786,8 +936,8 @@ textarea:disabled {
 }
 
 .dkv-modal-header h2 {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 10px var(--neon-cyan);
+  color: inherit;
+  text-shadow: var(--glow-shadow);
   font-size: 1.4rem;
   margin: 0;
 }
@@ -803,11 +953,11 @@ textarea:disabled {
 }
 
 .dkv-close-btn:hover {
-  color: white;
+  color: var(--neon-cyan);
 }
 
 .dkv-modal-card {
-  background: rgba(15, 17, 26, 0.98);
+  background: var(--bg-card);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 30px;

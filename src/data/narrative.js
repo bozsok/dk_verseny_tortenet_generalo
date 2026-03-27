@@ -1,152 +1,152 @@
 export const narrative = [
   {
-    "id": "slide-load-1774510755351-0",
+    "id": "slide-1",
     "title": "Onboarding - Bejelentkezés",
-    "content": "Üdvözöllek a Kód Királyság fénylő adatáramlatai között, bátor Programozó! Ez a világ eddig a rend és a tiszta logika birodalma volt, ahol minden bit a helyén pihent. Most azonban egy ismeretlen erő fenyegeti az alapjainkat, és rád vár a feladat, hogy megvédd ezt a digitális édenkertet. Készülj fel, mert a következő pillanatokban egy olyan utazásra indulunk, amely próbára teszi az összes logikai képességedet. Kérlek, lépj be a rendszerbe, és csatlakozz a védelemhez!"
+    "content": "Üdvözöllek a Kód Királyság digitális kapujában, bátor Kódmester! Ezt a virtuális világot eddig a tiszta logika és a stabil adatáramlás éltette, de valami komoly probléma árnyékolja be a szervereinket. Az utóbbi időben hirtelen bekövetkező rendszerfagyások és megmagyarázhatatlan anomáliák teszik próbára a stabilitásunkat. A pletykák szerint mindez egy soha nem telepített, rejtett frissítőszkript hiánya miatt történik. Szükségünk van a programozói látásmódodra és a hibakereső reflexeidre, hogy megmentsd a királyságot a végső összeomlástól. Kérlek, lépj be a központi adatbázisba, és kezdjük meg a hibaelhárítást!"
   },
   {
-    "id": "slide-load-1774510755351-1",
+    "id": "slide-2",
     "title": "Onboarding - Regisztráció",
-    "content": "Mielőtt nekivágnánk az ismeretlennek, rögzítenünk kell a jelenlétedet a központi naplóállományban. Kérlek, add meg a nevedet és az osztályodat, hogy a rendszer elismerhesse a későbbi tetteidet. Minden hősnek szüksége van egy azonosítóra, amely bekerül a Kód Királyság dicsőségtáblájára is. Ne feledd, a pontos adatok segítenek abban, hogy a történet végén mindenki tudja: te voltál az, aki segített helyreállítani a békét. A regisztrációs folyamat gyors, de annál fontosabb a biztonsági protokollok miatt."
+    "content": "Mielőtt elindítanánk a biztonsági letapogatást, azonosítanod kell magadat a rendszergazdai naplóban. Minden belépő felhasználónak rögzítenie kell a pontos nevét és az azonosítóját, hogy a hálózat felismerje a tetteit. Ezek a hitelesítő adatok lesznek a pecsétek a megoldott logikai kapukon, miközben újraépítjük a sérült infrastruktúrát. A pontos regisztráció abban is segít minket, hogy szükség esetén azonnali memóriamentést tudjunk készíteni a profilodról. Add meg büszkén a nevedet, mert hamarosan a Kód Királyság megmentőjeként fognak tisztelni!"
   },
   {
-    "id": "slide-load-1774510755351-2",
+    "id": "slide-3",
     "title": "Onboarding - Karakterválasztás",
-    "content": "Itt az ideje, hogy kiválaszd a digitális avatárodat, amely végigkísér majd a küldetés során. Olyan alakot válassz, amely a leginkább kifejezi a kitartásodat és a leleményességedet ebben a virtuális térben. Az avatár nemcsak egy kép, hanem a te kiterjesztett éned lesz a Töréspont rejtélyének feloldása közben. Legyél te a Kód Lovagja vagy az Adatvándor, a döntésed meghatározza a megjelenésedet a történet minden egyes állomásán. Ha készen állsz, válassz egy hőst, és kezdődjön a kaland!"
+    "content": "A sikeres regisztrációt követően itt az ideje, hogy kiválaszd a saját, testreszabott hősavatárodat! Ez az Avatár fogja megjeleníteni a személyiségedet a belső adathurkok sűrűjében, miközben áttöröd a fagyásokat okozó kódblokkokat. Dönthetsz az Erőforrás-optimalizáló Lovag, a Haladó Algoritmus Ninja vagy akár az Adatvándor formája mellett, hiszen mindegyik különleges megjelenést biztosít. Jól fontold meg a választást, mert a kinézeted tükrözni fogja azt az eltökéltséget, amellyel nekivágsz a nagy rejtély felgöngyölítésének. Készítsd fel az avatárodat az indulásra, a kaland csak most kezdődik!"
   },
   {
-    "id": "slide-load-1774510755351-3",
-    "title": "Intró - A béke kora",
-    "content": "Hosszú ciklusokon át a Kód Királyságban tökéletes harmónia uralkodott a forráskódok szintjén. Az algoritmusok hiba nélkül futottak, és a hálózatok selymes adatáramlása minden szegletet átjárt. Senki sem sejtette, hogy a mélyebb rétegekben egy sötét, csendes anomália kezd el növekedni a háttérben. A lakók nyugodtan végezték a feladataikat, bízva a rendszer sérthetetlenségében és az örökös rendben. Ez volt az aranykor, amikor a logika és a kreativitás kéz a kézben járt."
+    "id": "slide-4",
+    "title": "Intró - A tökéletes ciklus",
+    "content": "Valamikor régen, a Kód Királyság első teremtésének idején a rendszer tökéletes ciklusokban üzemelt, ahol minden bit és bájt hibátlan harmóniában mozgott. Az adatok simán, ellenállás nélkül áramlottak a szerverparkok óriási kábelein, biztosítva a virtuális élet felhőtlen lüktetését. Nem voltak olyan váratlan kilépések vagy rendszerkövetelmény-hibák, amelyek megtörték volna a békét. A programok békés egymás mellett élése miatt minden lakó teljes nyugalommal építette a saját szoftveres világát. Ebben a letűnt aranykorban a kékhalál fogalma csak egy távoli, megfejthetetlen mítosznak tűnt."
   },
   {
-    "id": "slide-load-1774510755351-4",
-    "title": "Intró - A Töréspont megjelenése",
-    "content": "Egy váratlan pillanatban azonban a képernyők vibrálni kezdtek, és a rendszernaplók vörös hibaüzenetekkel teltek meg. A valóság és a digitális világ közötti választóvonal, az úgynevezett Töréspont, repedezni kezdett. Az adatok kezdtek széttöredezni, és az összefüggések elvesztek a zajos adatzavarban, amit senki sem tudott megállítani. A pánik lassanként eluralkodott a szerverparkok folyosóin, ahogy a biztonsági tűzfalak egymás után omlottak össze. Valami szörnyű dolog történt, ami az egész világunkat a pusztulás szélére sodorta."
+    "id": "slide-5",
+    "title": "Intró - Rendszerhibák az édenben",
+    "content": "Az utóbbi hetekben azonban valami végérvényesen elromlott, a Királyság békéjét pedig rettegett figyelmeztetések szakították meg. Váratlan áramkimaradások, lefagyó háttérfolyamatok és rejtélyes memóriavezérlési hibák bénítják meg a mindennapi életünket. Az egyensúly teljesen felborult, miután kiderült, hogy egy létfontosságú Rendszerező Frissítés sosem került aktiválásra. E hiányzó sorok miatt a rendszer túltöltődik és széthasad, minden másodperccel egyre közelebb kerülve a tartós összeomláshoz. A lakók már be sem mernek jelentkezni a profiljaikba, attól tartva, hogy a fagyás végleg törli az adataikat."
   },
   {
-    "id": "slide-load-1774510755351-5",
-    "title": "Intró - Az ellenség: A Kódkorruptor",
-    "content": "Hirtelen a hibák sűrűjéből egy sötét entitás emelkedett ki, akit csak Kódkorruptornak neveznek. Ő nem egy egyszerű vírus, hanem egy intelligens anomália, amelynek egyetlen célja a Kód Királyság teljes megsemmisítése. Ahol megjelenik, ott a tiszta logika helyét átveszi a káosz és az olvashatatlan szemétszöveg. A Kódkorruptor gúnyos nevetése visszhangzik a hálózati csomópontokon, miközben elkezdi felfalni a legfontosabb adatbázisokat. Ő az az ellenség, akitől minden bátor programozónak tartania kell, mert ereje a rendszerszintű rombolásban rejlik."
+    "id": "slide-6",
+    "title": "Intró - A Rendszerhibák Ura",
+    "content": "A hibák sokaságából azonban felsejlett egy sötét, rosszindulatú kód is, amit ma csak a Rendszerhibák Uraként emlegetnek a krónikákban. Ez a könyörtelen, vírushoz hasonló entitás azzal a céllal alakult ki a töredezett fájlokból, hogy örök instabilitásban tartsa a szervereinket. Megszállta az adatbázisokat, majd trójai programok hadával meggátolta a befejezetlen frissítőszkriptek futtatását. A Rendszerhibák Ura ott rejtőzik minden hálózati sötétedés mögött, felerősítve a végzetes fagyásokat a Királyság területén. Rajtad áll, hogy megtöröd-e a befolyását, vagy végignézed a teljes digitális széthullást."
   },
   {
-    "id": "slide-load-1774510755351-6",
+    "id": "slide-7",
     "title": "Intró - A küldetés célja",
-    "content": "A Tanács utolsó reménye te vagy, Kódmester, és a feladatod nem is lehetne nemesebb. El kell jutnod a Töréspont Kapujához, de az odavezető út öt lezárt Hídcsomóponton keresztül vezet. Minden egyes csomópontnál egy technikai kihívást kell teljesítened, hogy aktiváld a hidat és továbbhaladhass. Ha sikerül mind az ötöt újraindítanod, megnyílik az út a végső összecsapáshoz a Kódkorruptor ellen. Indulj el most, mert az időnk fogy, és a digitális DNS-ünk darabjai már a semmibe hullanak!"
+    "content": "A végső összeomlás elkerülése érdekében cselekednünk kell, Kódmester, így a küldetés célja most már teljesen világossá vált. Öt szétszóródott, letiltott frissítőszkriptet kell feltérképezned a Királyság különböző szektoraiban, hogy összerakhassuk belőlük a végső javítócsomagot. A Rendszerhibák Ura azonban minden szekciót ügyes logikai fejtörőkkel és biztonsági zárakkal védelmez. Minden egyes állomás sikeres teljesítése után közelebb kerülsz a megoldáshoz, és egy szkriptrészlettel gyarapítod a tudásodat. Indulj el késedelem nélkül, gyűjtsd össze mind az öt kódot, és mentsd meg velünk a hálózatot!"
   },
   {
-    "id": "slide-load-1774510755351-7",
-    "title": "Station 1 - Megérkezés a Kódvárhoz",
-    "content": "Az első utad a Kódvár ősi bástyáihoz vezet, ahol a Királyság legfontosabb szöveges dokumentumait őrzik. A falakat körülvevő digitális köd azonban furcsa feszültséget hordoz, és a kapuk szorosan zárva maradtak. Ez a helyszín volt egykor a tudás központja, de most a csend és a bizonytalanság uralja a márványos oszlopokat. Csak a legbátrabbak mernek belépni az adathalmazok ezen rejtett zugába. Érezni lehet, ahogy a levegőben lüktet a megfejtetlen titok ereje."
+    "id": "slide-8",
+    "title": "Station 1 - Az Algoritmusok Erdeje",
+    "content": "Hosszú adatcsatornákon át siklottál, majd egy sötét és sűrű virtuális rengetegben, az Algoritmusok Erdejében landoltál. Itt a fák törzsét apró, zölden foszforeszkáló bináris számsorok alkotják, leveleik pedig IF és ELSE feltételekként hajlonganak a virtuális szélben. A hely korábban a legkiválóbb optimalizálások otthona volt, ám a lefagyások miatt most hátborzongatóan csendes a táj. Mindenfelé beragadt folyamatok és soha véget nem érő végtelen ciklusok zárják el a helyes utat. A feszültség szinte tapintható, hiszen az első keresett szkript mélyen ide van rejtve."
   },
   {
-    "id": "slide-load-1774510755351-8",
-    "title": "Station 1 - Az idegen üzenet",
-    "content": "Ahogy közelebb lépsz a várkapuhoz, egy különös, villódzó felirat jelenik meg a falon. Az üzenet nem a te nyelveden íródott, és a karakterek folyamatosan változtatják az alakjukat a szemed előtt. Úgy tűnik, a Kódkorruptor egy titkosítási algoritmust telepített ide, hogy megbénítsa a kommunikációt. A vár őre aggodalmasan tekint rád, remélve, hogy sikerül feltörnöd a rejtélyes szöveget. Ha nem fordítod le az üzenetet, a vár kapui örökre zárva maradnak előttünk."
+    "id": "slide-9",
+    "title": "Station 1 - A befagyott ciklus",
+    "content": "Amint óvatosan előbbre haladsz az ösvényen, a továbbjutást egy hatalmas, szikrázó energiafal zárja el, amit egy befagyott logikai ciklus tart életben. A rendszer anomáliája beleerőltette ezt a folyamatot egy olyan ágba, ahonnan nincs visszatérési érték vagy kilépési feltétel. A Rendszerhibák Ura azért helyezte ide ezt a csapdát, hogy egyetlen programozó se juthasson át a fák biztonságos zónáján. A hálózat védelmezője kétségbeesetten kérlel téged, hogy vezesd ki őt az áttekinthetetlen hibahalmazból. Ha nem fejtjük meg a folyamat helyes működését, mi is a hurok foglyai maradunk mindörökké."
   },
   {
-    "id": "slide-load-1774510755351-9",
-    "title": "Station 1 - FELADAT: Szöveges fordítás",
-    "content": "Itt az ideje, hogy megmutasd a fordítási képességeidet és technikai tudásodat! Kapsz egy képet, amelyen egy ismeretlen nyelvű üzenet látható, amit a Google-fordító segítségével kell magyarra fordítanod. Figyelj a karakterek pontos felismerésére, mert egyetlen félreértett betű is tévútra vezetheti a küldetést. A helyes fordítás birtokában képesek leszünk értelmezni a vár biztonsági kódját. Ne siesd el, a pontosság most sokkal többet ér, mint a gyorsaság!"
+    "id": "slide-10",
+    "title": "Station 1 - FELADAT: Az algoritmus helyreállítása",
+    "content": "Most minden tudásodra szükséged lesz, hogy megértsd a ciklus valódi lefutásának sorrendjét. Előtted egy folyamatábra hever, amelynek a legfontosabb lépéseit és döntési pontjait szándékosan összecserélték, ezzel okozva a lefagyást. A feladatod az, hogy az állításokat és a feltételeket a megfelelő logikai sorrendbe rakd, biztosítva a program sikeres végrehajtását. Vizsgálj meg minden elágazást, és találd meg az IGEN, illetve a NEM ágakat a helyes megoldáshoz. Légy nagyon alapos, mert a legkisebb hiba esetén a ciklus másodpercek alatt újra leáll majd."
   },
   {
-    "id": "slide-load-1774510755351-10",
+    "id": "slide-11",
     "title": "Station 1 - Siker és továbbhaladás",
-    "content": "Amint beírtad a helyes fordítást, a várkapu hatalmasat dördült és lassan kitárult előtted. Az őr hálálkodva nyújtja át az első Adatkulcsot, amely egy apró, kéken fénylő kristályhoz hasonlít. Sikerült helyreállítanod a hitet és a tudást ebben a szektorban, de az utad még csak most kezdődött igazán. Érezni lehet, ahogy a Töréspont egy apró repedése összezáródik a tetteid hatására. Menj tovább a Színszektor felé, ahol a színek és a szavak várnak rád!"
+    "content": "Remek munka, Kódmester, a logikád kigyógyította a rendszert a beragadt hurkok végtelen börtönéből! Az energiafal látványosan összeomlott, apró kódszilánkok formájában hullva a virtuális talajra, ezzel megnyitva előtted a továbbvezető utat. A helyreállított folyamatábra magjában fellelted az első rejtett frissítőszkriptet, amely stabil zöld fénnyel pulzál. Bár az első akadálynál győzedelmeskedtél, még négy fontos elem hiányzik a Királyság újraindításához. Ne veszítsd el a fókuszt, és irány a Biztonsági Puffer bejárata, hogy felszabadítsd a következő szektort is!"
   },
   {
-    "id": "slide-load-1774510755351-11",
-    "title": "Station 2 - A Színszektor ragyogása",
-    "content": "A Színszektorba érve elámulsz a mindenütt jelenlévő, vibráló neonszínektől és a geometrikus alakzatoktól. Ez a terület felelős a Királyság vizuális megjelenítéséért és a grafikus interfészek működéséért. Azonban most a színek összevissza villognak, és a formák kezdenek kiesni a kereteikből. A szektor vezetője kétségbeesetten próbálja visszahozni a vizuális egyensúlyt a káoszból. Ha nem sikerül rendszereznünk a színeket, a világunk lassan szürke adatzajjá fakul."
+    "id": "slide-12",
+    "title": "Station 2 - A Biztonsági Puffer",
+    "content": "Megérkezel egy hatalmas, szürke fémszerkezetű csarnokba, amit a bennfentesek csak a Biztonsági Puffer néven tartanak számon. Ez a szektor gondoskodik a beérkező adatok szűréséről, az illetéktelen utasítások kizárásáról és a Kód Királyság páncélzatának védelméről. Azonban az instabilitás itt is felütötte a fejét; piros riasztófények villognak, és a Puffer átmeneti tárolói hermetikusan lezárt állapotban maradtak. Csend és fojtogató hőség uralja az arénát, miközben a hatalmas zsilipkapuk zártan tornyosulnak feletted. Ha nem tudunk bejutni, a háttérben ragadt második szkript is örökre elveszik."
   },
   {
-    "id": "slide-load-1774510755351-12",
-    "title": "Station 2 - Az összekuszált mátrix",
-    "content": "A központi vezérlőpultnál egy óriási digitális rács árulkodik a problémáról, amelyben a szavak és a színek teljesen összekeveredtek. A Kódkorruptor szándékosan összekuszálta a mátrixot, hogy a szektor ne tudja helyesen renderelni a valóságot. Egy keresztrejtvény-szerű feladat áll előtted, ahol a helyes szavakat kell beillesztened a megfelelő sorokba. Csak a logikus gondolkodás és a szókincsed menthet meg minket ettől a vizuális katasztrófától. A sémák és a minták felismerése most a legfontosabb készséged lesz."
+    "id": "slide-13",
+    "title": "Station 2 - Az összekevert kódok kora",
+    "content": "Ahogy megvizsgálod az óriási kapukat nyitó képernyőt, látod, hogy a Rendszerhibák Ura itt is trükköt vetett be a behatolók ellen. A Puffer jelszókezelő adatbázisa teljesen összekeveredett, és a biztonsági szint olyan titkosítást kapott, amit alapesetben hetekig tartana feltörni. A beérkező hibajelentések szerint a hozzáférési kulcsot betűnként elcsúsztatva kódolták el előlünk. Egy őrző bot arról tájékoztat, hogy csak a dekódolás képessége szakíthatja át a Pufferüveg falait a továbbjutáshoz. Összpontosítanod kell a legfinomabb karakterkülönbségekre, ha eredményt akarsz elérni."
   },
   {
-    "id": "slide-load-1774510755351-13",
-    "title": "Station 2 - FELADAT: Színszektor-keresztrejtvény",
-    "content": "Nézd meg alaposan a megadott listát és a hiányos rácsot! A feladatod, hogy a megadott szavakat pontosan illeszd be a helyes sorokba, ügyelve a betűk egyezésére a metszéspontokon. Ha minden szót a helyére raktál, a középső oszlopban megkapod a végső megfejtést, amely aktiválja a csomópontot. Ez a rejtvény nemcsak tudást, hanem türelmet és élesszeműséget is igényel tőled. Hajrá, találd meg a harmóniát a betűk és a színek birodalmában!"
+    "id": "slide-14",
+    "title": "Station 2 - FELADAT: A Puffer zárolásának feloldása",
+    "content": "Ezen a kihíváson a titkosírás szabályai dominálnak, tehát vedd elő a rejtvényfejtő hajlamodat! Előtted egy lezárt adatcsatorna kódja található, de a szavak felismerhetetlenek az eltolásos, karakterszintű kódolás miatt. A feladatod visszafejteni az üzenetet egy specifikus eljárás, például a betűk meghatározott számú visszaléptetése segítségével a szimbólumtáblázatban. Győződj meg arról, hogy minden karakter helyes, hiszen a Puffer azonnal elutasítja az apróbb gépelési hibákat is. Mentsd meg az elzárt adatokat a dekódolt, érvényes mesterjelszó beírásával!"
   },
   {
-    "id": "slide-load-1774510755351-14",
-    "title": "Station 2 - A második híd aktiválása",
-    "content": "Ahogy az utolsó szó is a helyére került, a Színszektor újra régi fényében pompázik, és a neonszínek megnyugtató ritmusban pulzálnak. Megszerezted a második Adatkulcsot, amely bíborvörös fénnyel világítja meg a tenyeredet. A szektor vezetője hálája gyanánt egy védelmi szűrőt is készít neked, ami segíthet a későbbi harcokban. A Töréspont ereje tovább gyengült, de te már a következő célpontod, a Töredezett Képernyő felé tekintesz. Az utazás egyre mélyebbre visz a rendszer belsejébe."
+    "id": "slide-15",
+    "title": "Station 2 - A második szkript megérkezése",
+    "content": "Amint a helyes dekódolt jelszót betápláltad a rendszerbe, a zárt zsilipajtók halk szisszenéssel csúsztak szét, kiszellőztetve a fojtogató feszültséget. A Puffer adat tárolói ismét biztonságos üzemmódba kapcsoltak, ezáltal a hálózat ezen része megnyugodott a vírustámadástól. A zsilipkapu mögötti biztosító modulból egy adatcsomag formájában a tenyeredbe szállt a második elveszett frissítőszkript is. Egyértelművé vált, hogy a Rendszerhibák Ura nem tudta tartósan blokkolni a leleményességedet ezen szinten. Érintsd meg a szkriptet, és ugorjunk át a különösen ingatag Változók Völgyébe!"
   },
   {
-    "id": "slide-load-1774510755351-15",
-    "title": "Station 3 - A Töredezett Képernyő völgye",
-    "content": "A Töredezett Képernyő vidékén minden megbicsaklott: az idővonalak összecsúsztak, és a múlt eseményei jelenné váltak. Ez a terület rögzíti a Királyság történelmét és a végrehajtott műveletek sorrendjét. Most azonban a pillanatok darabokra törtek, mint egy leejtett tükör, és nem tudni, mi történt előbb és mi később. A helyi krónikás zavartan próbálja összeilleszteni a szétszórt emlékeket, de a logika teljesen elhagyta őt. Ha az idővonal nem áll helyre, a jövőnk is örökre elveszhet."
+    "id": "slide-16",
+    "title": "Station 3 - A Változók Völgye",
+    "content": "Átkelve a Puffer zónáján egy olyan különös, folyamatosan alakját változtató dimenzióban találod magad, amelyet Változók Völgyének hívnak. Itt a formák, a hangok, pa de a talaj szerkezete is aszerint módosul, ahogyan a háttérben futó memóriaterületek adatai váltakoznak. Amíg a rendszer stabilan üzemelt, a változók logikusan tartották fent ezt az illúziót, alkalmazkodva a tiszta fejlesztői akaratokhoz. Azonban az elveszett frissítések miatt a völgy mostanra kaotikussá vált; minden típus keveredik, a számok szöveggé, az igazság pedig hamissá torzul egy pillanat leforgása alatt. A harmadik szkript itt rejtőzik az értékkáosz legmélyén, de óvatosan kell mozognod."
   },
   {
-    "id": "slide-load-1774510755351-16",
-    "title": "Station 3 - Az időrend felbomlása",
-    "content": "A Kódkorruptor itt a szekvenciális adatfeldolgozást támadta meg, ami miatt a folyamatok sorrendje teljesen felborult. Képek és eseménytöredékek lebegnek a térben, várva, hogy valaki újra rendszerezze őket. A kaotikus sorrend miatt a rendszer nem tudja előállítani a következő logikai lépést a működéshez. Neked kell lenned az idő urának, aki képes átlátni az események valódi láncolatán. Rakd rendbe a múltat, hogy megnyithasd az utat a holnap felé!"
+    "id": "slide-17",
+    "title": "Station 3 - Típustévesztés a láthatáron",
+    "content": "A völgy fő adattároló obeliszkje mellett megfigyeled, hogy a sötét befolyás a memóriamutatók alapvető szabályait gúzsba kötötte. A változók elvesztették a képességüket, hogy megkülönböztessék, hol a logikai igazság határa, vagy mi minősül egyértelmű karakterláncnak és számnak. Mivel a típusok teljesen összeférhetetlen elemekként próbálnak kapcsolódni egymáshoz, a keretrendszer folyamatos hibákba ütközik ezen a szakaszon. Ha nem segítünk újra tisztázni, mi hova tartozik, a mutatók végzetesen összeomlanak, törölve ezzel az értékes tudásanyagot is. Rendet kell tenni az értékek között, mielőtt a völgy felfalná saját magát."
   },
   {
-    "id": "slide-load-1774510755351-17",
-    "title": "Station 3 - FELADAT: Idővonal helyreállítása",
-    "content": "Előtted több kép látható, amelyek egy-egy fontos eseményt ábrázolnak a Királyság történetéből. A feladatod az, hogy ezeket a képeket kronológiai sorrendbe állítsd, a legkorábbitól a legkésőbbiig. Figyelj a legapróbb részletekre és a logikai összefüggésekre minden egyes ábrán! Csak a helyes sorrend megadása után rögzülhet újra az idővonal a központi adatbázisban. Ez a próba a történelmi hűségre és a folyamatszemléletre épít."
+    "id": "slide-18",
+    "title": "Station 3 - FELADAT: A változótípusok egyeztetése",
+    "content": "Itt élesítjük a memóriakeresési ösztöneidet, és a feladatod nem tűr halasztást az adattípusok útvesztőjében! Több összezavarodott kódrészletet kapsz, ahol a tárolt értékek és a megadott műveletek komoly típusütközéseket okoznak. Az lesz a dolgod, hogy felismerd, melyik memóriarekeszben milyen adattípusnak (szám, karakterlánc, logikai érték) kellene ténylegesen helyet kapnia a folyamat során. Próbáld meg helyrerakni az értékek definícióját a megfelelő helyükre húzva azokat az állításban! Ha elegendő fegyelemmel cseréled vissza a hibás típusokat, az obeliszk rendszere hamar stabilizálódik majd."
   },
   {
-    "id": "slide-load-1774510755351-18",
-    "title": "Station 3 - Múltból a jövőbe",
-    "content": "Sikerült! A képek a helyükre kattantak, és az idővonal újra egyenesen halad előre, biztosítva a folyamatos működést. A harmadik Adatkulcs aranyszínűen ragyog fel a kezedben, jelezve a győzelmedet az idő felett. A krónikás boldogan jegyzi fel a tetteidet az örökkévalóság könyveibe. Érzed, ahogy a Töréspont már csak halványan emlékeztet korábbi fenyegető valójára. Most azonban irány a Meta-horizont, ahol a textúrák és alakzatok újabb kihívást támasztanak."
+    "id": "slide-19",
+    "title": "Station 3 - Harmónia és a harmadik szkript",
+    "content": "Kiváló munka volt! A változótípusok tisztázása után a völgy vibrálása fokozatosan enyhült, a talaj alatt megbújó adatszobrok pedig újra stabil alakzatot vettek fel. Az obeliszk megnyugtató fényt bocsátott ki, majd a lüktetés közepén lassan elengedte magából az elrejtett harmadik frissítőszkriptet. Magadhoz vetted a narancssárgán sugárzó elemet, és tudod, hogy már majdnem a feladat végén jársz a Királyság stabilizálásában. A Töréspont hatása érezhetően gyengül, bár a Rendszerhibák Ura még mindig dühösen dolgozik ellenünk. Folytassuk utunkat a Hálózati Csomópont lebegő hidjaihoz!"
   },
   {
-    "id": "slide-load-1774510755351-19",
-    "title": "Station 4 - Megérkezés a Meta-horizonthoz",
-    "content": "A Meta-horizont peremén a tér és a forma teljesen absztrakt módon nyilvánul meg az utazó számára. Itt születnek a rendszer alapvető építőkövei, a karakterekből felépített képek és a vázszerkezetek. A látvány egyszerre lenyűgöző és zavarba ejtő, ahogy a sorok és oszlopok ritmusa diktálja a világ lüktetését. Azonban a Kódkorruptor itt is otthagyta a nyomát, szét zilálva a finom mintázatokat. A horizonthoz érve érzed a billentyűzet adta lehetőségek végtelen erejét."
+    "id": "slide-20",
+    "title": "Station 4 - A Hálózati Csomópont",
+    "content": "Felfelé emelkedve megérkezel a Hálózati Csomóponthoz, egy égen lebegő digitális platformsorozathoz, melyet fényhidak kötnek össze az információs viharban. Ez a hely a Kód Királyság gerinceként funkcionált, folyamatos kommunikációban tartva minden távoli szektort és klienst is. A káosz hatására azonban a hálózati hidak többsége láthatatlan ronccsá változott, a kommunikáció pedig véglegesen darabokra szakadt ebben a régióban. Adatcsomagok lézengenek a platformokon cél nélkül, képtelenül arra, hogy rátaláljanak a helyes fogadó útvonalakra. Az utolsó előtti szkript megszerzése komoly útvonaltervezési logikát követel meg tőled."
   },
   {
-    "id": "slide-load-1774510755351-20",
-    "title": "Station 4 - A karakterek lázadása",
-    "content": "Ebben a szektorban minden kép betűkből és jelekből áll össze, de most a karakterek fellázadtak az alkotójuk ellen. Az ASCII-művészet, amely a Királyság legősibb ábrázolásmódja, darabjaira hullott a sötét befolyás hatására. Egy fontos szimbólumot kell újraalkotnod, hogy stabilizáld a Meta-horizont szerkezetét. Ez nem csak művészet, hanem precíziós munka, ahol minden egyes leütésnek jelentősége van. A billentyűzeted lesz a vésőd ebben a digitális szobrászatban."
+    "id": "slide-21",
+    "title": "Station 4 - Elszakadt kapcsolatok",
+    "content": "A központi adótornyot elemezve látod, hogy a Rendszerhibák Ura célzottan az adatútválasztási (routing) szabályokat pusztította el a hálózat szintjén. Ennek eredményeképpen egyetlen megcímzett bájt sem találja az utat a forrástól a rendeltetési elosztóig, a csomagveszteség pedig szinte 100%-os a platformok között. A helyi kiszolgáló robotok próbálnak alternatív kommunikációs csatornákat verni a rések felett, ám az okos beavatkozás hiánya miatt falakba ütköznek folyamatosan. Segítened kell visszavezetni az eltévedt forgalmat a főütőerekbe, vagy soha nem érjük el a rendszermagot. Ideje feltérképezni az épen maradt átjárókat és új utat szabni nekik!"
   },
   {
-    "id": "slide-load-1774510755351-21",
-    "title": "Station 4 - FELADAT: ASCII-rajz készítése",
-    "content": "A feladatod, hogy a megadott minta alapján készítsd el a képet kizárólag a billentyűzet karakterei segítségével. Figyelj a szóközökre, a jelekre és a sorok hosszára, hogy a végeredmény hű maradjon az eredeti ábrához! Ez a kihívás a türelmedet és a vizuális memóriádat teszi próbára a legvégsőkig. Csak a pontosan megrajzolt szimbólum képes visszaállítani a szektor integritását. Mutasd meg, hogy a karakterekből is lehet tökéletes világot építeni!"
+    "id": "slide-22",
+    "title": "Station 4 - FELADAT: A csomagok eljuttatása",
+    "content": "Szedd össze a kapcsolatok logikáit, mert a feladatod egy óriási IP-útvonaltervező rejtvény megfejtése lesz a platformok között! Egy térképet látsz megadott végpontokkal, forrásokkal, és töredékes vezetékes szakaszokkal beborítva. Tervezd meg az eltévedt adatcsomagok útját lépésről lépésre, figyelembe véve az egyirányú átjárókat és a sebességi korlátozásokat. Kapcsold össze a helyes állomásokat úgy, hogy minden információs bájt sikeresen eljusson a célállomásra az akadályok megkerülésével! Készülj fel arra, hogy a logikai vakság miatt a téves utakon lévő adatok azonnal visszapattannak majd a kiinduló mezőre."
   },
   {
-    "id": "slide-load-1774510755351-22",
-    "title": "Station 4 - A negyedik kulcs ereje",
-    "content": "Ahogy az utolsó karakter is a helyére került, a Meta-horizont újra megszilárdult, és a rajz fénylő keretbe foglalta a győzelmedet. A negyedik Adatkulcs mélyzöld fénnyel pulzál a tenyeredben, jelezve, hogy már csak egyetlen lépés választ el a végcéltól. A szektor összes építőköve tiszteleg előtted a kitartásodért. A Töréspont már csak apró vágásként látszik a digitális égbolton. Készülj fel a legnehezebb próbára, mert a Zajzóna tűzfala már a látótávolságban van!"
+    "id": "slide-23",
+    "title": "Station 4 - A hálózat feléledése",
+    "content": "Ahogy az utolsó adatcsomag is villámgyors fénysávként elérte a célpontját az általad kiépített, egyértelmű útvonalon, a lebegő hidak gyönyörű aurával ismét teljes formát öltöttek magukra. A Hálózati Csomópont szervereiből egy hatalmas sóhajtás szerű zaj szakadt fel, az energiaellátás pedig pillanatok alatt helyrebillent. A fő router egy fénylő kapszulában katapultálta feléd a negyedik rejtett frissítőszkriptet a sikered jutalmaként. Már csupán a legerősebben védett utolsó szegmens választ el minket az abszolút sikertől az elátkozott erődítményben. Gyűjts erőt, mert utunk most a Királyság lüktető processzorához, a Hardver Magja felé visz minket."
   },
   {
-    "id": "slide-load-1774510755351-23",
-    "title": "Station 5 - A Zajzóna kaotikus pereme",
-    "content": "A Zajzónához érve a füledet és a szemedet is megviseli az a szüntelen statikus sercegés, ami a tér minden pontjáról árad. Ez a terület elvileg a rendszer védelmét szolgálná, de most a Kódkorruptor maga tette a legveszélyesebb akadálypályává. A zajszint olykor elviselhetetlen, és az információk csak töredékekben jutnak el hozzád a sűrű interferencián keresztül. Itt lakik az utolsó hídcsomópont őrzője, egy hatalmas, zajból gyúrt entitás. Csak az éles elme találhat kiutat ebből a digitális viharból."
+    "id": "slide-24",
+    "title": "Station 5 - A Hardver Magja",
+    "content": "Egy mély, zúgó sikátoron keresztül belépsz a Kód Királyság legnagyobb, ezüstösen lüktető reaktortermébe, a Hardver Magjába. A hőmérséklet drasztikusan magasabb, a gépezetek ritmusos moraja pedig tiszteletparancsoló hangulatot kelt az óriási adatkazánok körül. Ez a szektor maga az áram és a fizikai valóság megtestesítője, amely az összes eddigi réteget táplálja élettel a felhő alatti szinteken is. Mégis, a kék szikrák helyett itt is eluralkodott a baljós, vörös füst, amit az érintetlen frissítés hiánya terjesztett ki magából. Ha ez az utolsó szektor megadja magát a nyomásnak, akkor az összes digitális élet örökre végzetes leállást szenved el."
   },
   {
-    "id": "slide-load-1774510755351-24",
-    "title": "Station 5 - Az áthatolhatatlan tűzfal",
-    "content": "Az őrző egy áthatolhatatlan tűzfallal torlaszolta el az utadat, amelyen csak a tudás morzsáival lehet átjutni. A tűzfal folyamatosan kérdéseket zúdít rád, tesztelve a technikai és logikai felkészültségedet ebben a zavaros környezetben. A zaj próbálja elfedni a válaszokat, és elterelni a figyelmedet a lényegről. Neked azonban szilárdnak kell maradnod, és át kell látnod a digitális homályon. Ha elhibázod a válaszokat, a tűzfal örökre elnyel az ismeretlen adatzajban."
+    "id": "slide-25",
+    "title": "Station 5 - Az összeomló áramkörök",
+    "content": "Ebben a teremben tartózkodik a Rendszerhibák Ura az árnyékokban, aki a saját testével blokkolja a fő energiavezeték áramlását az utolsó szkripthez. Az őrület módszertaniként a reaktor logikai kapuit mind zártra cserélte, meggátolva, hogy az információ logikusan haladjon balról jobbra a hardveren. Néhány csomópontnál hamis ÉS (AND) kapukat, máshol megtévesztő VAGY (OR) elágazásokat hagyott maga után, ami teljes túltöltést idézett elő a rendszeren. Bár a vírus félelmetes fegyvertárral bír, a tiszta áramköri logika előtt ő is teljesen tehetetlen, ha ügyesen bánsz az állításokkal. Készülj, mert most elméletileg az áram útját kell kézi vezérléssel helyreraknod a káoszban!"
   },
   {
-    "id": "slide-load-1774510755351-25",
-    "title": "Station 5 - FELADAT: A tűzfal próbatétele",
-    "content": "Figyelj az őrző által feltett kérdésekre, és adj rájuk pontos, helyes válaszokat! Minden jó válasz egy-egy réteget bont le az áthatolhatatlan tűzfalból, közelítve téged a győzelemhez. A kérdések a Kód Királyság működésétől kezdve a logikai rejtvényekig bármit lefedhetnek. Ne hagyd, hogy a Zajzóna sercegése összezavarjon, alapozd a döntéseidet a logikára! Ez a végső próba az állomások közül, ahol minden tudásodra szükségünk van."
+    "id": "slide-26",
+    "title": "Station 5 - FELADAT: A logikai áramkör aktiválása",
+    "content": "A végső kódcsomag eléréséhez egy szigorú hardveres próbán kell átesned a túlhevült vezetékek erdejében! Egy több lépcsős logikai áramkör sémáját kapod meg, ahol az áram útja a különböző AND, OR és NOT kapuk logikai válaszai szerint halad célfüggvényéig. Az egyes bemeneteknél lévő értékek (igaz vagy hamis) megadása által neked kell kikövetkeztetned a végső kimeneti jelet ezen a hálón befejezésül. Olvass le minden kaput egyesével, írd le az összetevők végeredményét, majd élesítsd a megfelelő választ utolsóként. Ez a feladat követeli meg a leghidegebb vért és a legélesebb logikát, hogy kiszárítsd a hiba urának csapdáját!"
   },
   {
-    "id": "slide-load-1774510755351-26",
-    "title": "Station 5 - Az utolsó kapu felé",
-    "content": "Az utolsó válasz is elhangzott, és a Zajzóna tűzfala látványos fényjelenség kíséretében oszlott szét a semmiben. Megszerezted az ötödik Adatkulcsot, amely tiszta fehér fénnyel világítja meg az utat a végső kapu felé. Sikerült legyőznöd az összes akadályt a hídcsomópontoknál, és készen állsz a legnagyobb kihívásra. A Töréspont már majdnem teljesen behegedt, de a Kódkorruptor még ott vár ránk a magban. Összesítsd az erődet, mert a finálé most kezdődik el!"
+    "id": "slide-27",
+    "title": "Station 5 - Az utolsó frissítőszkript",
+    "content": "Zseniális vagy, a logikai kapuk az általad diktált helyes mederbe terelték az energiaáramlást a túltöltések eloszlatásával! A Rendszerhibák Ura hatalmas ordítással megrettent a lángra lobbanó neonáramköröktől, majd visszahúzódott a legsötétebb szerverszobákba bujdokolni. A vezérlőpult csendes pittyenéssel kinyílt a falból, kezedbe adta az ötödik, és egyben utolsó elrejtett frissítőszkriptet is a dicsőség jegyében. Ahogy a darabokat egyesíted a virtuális táskádban, egy hatalmas kódkulcs formálódik meg az öt töredék összesüléséből a frissítéshez. Most már semmi akadálya nincs, hogy végleg lezárjuk ezt a sötét fejezetet a történelemkönyvekben, irány a finálé!"
   },
   {
-    "id": "slide-load-1774510755351-27",
-    "title": "Finálé - Megérkezés a Töréspont Kapujához",
-    "content": "A Töréspont Kapuja előtt állsz, ahol a digitális világ és a valóság maradéka feszül egymásnak egy utolsó, epikus küzdelemben. Itt a levegő lüktet a nyers energiától, és a lábad alatt a föld tiszta adatsorokból áll össze. Az öt Adatkulcs ott pihen a táskádban, készen arra, hogy egyesüljenek és kinyissák a zárat. A Kódkorruptor árnya rávetül a kapura, megpróbálva elnyomni a fényeket, amit te hoztál. Ez az a pillanat, amiért elindultál az ismeretlenbe."
+    "id": "slide-28",
+    "title": "Finálé - A Rendszermag Kapuja",
+    "content": "Egy ünnepélyes, de rendkívül meghatározó lépésekkel teli útvonalon megérkezel a Kód Királyság abszolút belső epicentrumához, a Rendszermag Kapujához. A dimenzió itt hatalmas, pörgő adathasábokból és az egész világot mozgató vezérlőszoftver fényéből épült fel egy tökéletes üveggömbben. Bár kívül halvány nyomokban még küzdenek a lefagyásokkal a lakók, itt az öt frissítőszkript energiája láthatóan kezdi felélénkíteni a legalsó kódsorokat is az üvegingerben. A falakon a megboldogult hibák nyomai futnak végig a Rendszerhibák Ura által hagyott sebekként, ám te megannyi próbát kiálltál már. Itt az idő, hogy futtassuk az elveszett programot, és meglássuk a törekvésünk gyümölcsét."
   },
   {
-    "id": "slide-load-1774510755351-28",
-    "title": "Finálé - FELADAT: A Forrásszál rekonstruálása",
-    "content": "A kapu csak akkor nyílik meg, ha képes vagy összeilleszteni az összes eddigi tudásodat a végső kihívásban: a Forrásszál helyreállításában. Ez a digitális DNS a Királyunk legfontosabb kincse, amely minden rendszert egyben tart. Egy komplex logikai hálót kell megfejtened, ahol az öt állomás során tanultak mindannyian szerepet kapnak valamilyen formában. Használd a fordítást, a rejtvényt, az időrendet, az alakzatokat és a válaszokat is! Ez a végső próba határozza meg, hogy a Királyság újra egyesül-e, vagy darabokra hullik."
+    "id": "slide-29",
+    "title": "Finálé - FELADAT: A frissítőszkriptek integrálása",
+    "content": "Utolsó kihívásként össze kell illesztened a megszerzett kódok darabjait, hogy a Rendszermag végre betöltse a rejtett frissítést a fagyások ellen! Az öt megszerzett szkript önmagában csak félinformáció, de megfelelő sorrendben páratlan erőt szabadíthat fel a virtuális világban. Rakd sorbare az elemeket a Mappanév, a Kulcs, a Típus, a Hálózat és a Hardver kapujának törvényszerűségei szerint! Egyetlen logikai kirakós maradt hátra, ami bebiztosítja a fordítást és a teljesítést a szinkronizáláshoz. Fókuszáld utolsó energiáidat, oldd meg a végső algoritmus-rejtvényt, és indítsd el vele a végső betöltési folyamatot a gép szíve felé!"
   },
   {
-    "id": "slide-load-1774510755351-29",
-    "title": "Finálé - Győzelem és a rend helyreállítása",
-    "content": "Amint az utolsó kód is a helyére került, a kapu vakító fénnyel tárult fel, és a Kódkorruptor sikoltva tűnt el az adatzaj mélyén. A Töréspont végleg behegedt, és a digitális világunk újra összeforrt a valósággal, tisztító áramlatot küldve végig a hálózaton. Gratulálunk neked, Kódmester, mert a kitartásoddal és az eszeddel te mentetted meg az egész digitális édenkertet! A Királyság lakói örökké hálásak lesznek neked, és nevedet aranybetűkkel írják be a történelembe. A béke helyreállt – pihenj meg, hős programozó!"
+    "id": "slide-30",
+    "title": "Finálé - Győzelem és a stabilitás kora",
+    "content": "A szkriptek helyes sorrendű betöltésével az egész Királyságot egy óriási, ragyogó tiszta fény hulláma mosta át villámcsapásként! A Rendszermag feldolgozta a hiányzó frissítéseket, s ezzel a lefagyások, kékhalálok és az összes megmagyarázhatatlan anomália egyszer és mindenkorra véget ért világunkban. A Rendszerhibák Ura szörnyű sikáltozások közepette karanténba került és végleges eltávolításra lett ítélve a védelem erejének köszönhetően. Büszke lehetsz magadra Kódmester, mert a gyors logikád, az algoritmikus tudásod és az emberi eszességed visszahozta a Kód Királyság számára a fejlődés aranykorát. Maradj még sokat velünk az elközelgő békés órákban, mert a szerverek felhőtlenül várják az új csodáidat!"
   }
 ];

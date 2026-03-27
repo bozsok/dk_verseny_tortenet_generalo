@@ -5,15 +5,18 @@ import { store } from '../services/store.js';
  * @returns {string} HTML sablon.
  */
 export const SlideDetailModal = () => {
-  const slide = store.narrative.find(s => s.id === store.viewingSlideId);
+  const index = store.narrative.findIndex(s => s.id === store.viewingSlideId);
+  if (index === -1) return '';
   
-  if (!slide) return '';
+  const slide = store.narrative[index];
+  const isHero = index === 0 || index === store.narrative.length - 1;
+  const titleClass = isHero ? 'dkv-modal-title--hero' : 'dkv-modal-title--small';
 
   return `
     <div id="slide-detail-modal" class="dkv-modal-overlay dkv-modal-overlay--visible" data-action="close-view-modal">
       <div class="dkv-modal-card dkv-modal-card--cyan dkv-fade-in-up">
         <div class="dkv-modal-header">
-          <h2 class="dkv-neon-text dkv-modal-title--reading">${slide.title}</h2>
+          <h2 class="dkv-neon-text dkv-modal-title--reading ${titleClass}">${slide.title}</h2>
           <button class="dkv-close-btn" data-action="close-view-modal">&times;</button>
         </div>
         

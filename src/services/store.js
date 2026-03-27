@@ -79,7 +79,8 @@ Az AI válasza egy olyan lista lesz, amely diárol diára (Slide 1, Slide 2, stb
   },
   isBridgeOnline: null,
   needsSync: false,
-  viewingSlideId: null
+  viewingSlideId: null,
+  theme: localStorage.getItem('dkv_theme') || 'cyber-fantasy'
 };
 
 // Figyelők (listeners) halmaza a reaktív frissítésekhez

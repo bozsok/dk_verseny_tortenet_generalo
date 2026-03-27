@@ -4,6 +4,17 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 ---
+## [1.13.0] – 2026-03-27
+### 🛠️ Hozzáadva
+- **Új "Literary" téma**: Bevezetve egy elegáns, világos téma (krém és barna színekkel), Lora és Inter betűtípusokkal a fókuszált olvasás és írás támogatására.
+- **Témaváltó (Theme Toggle)**: A fejlécbe integrált nap/hold ikon, amellyel valós időben lehet váltani a Cyber-Fantasy és a Literary témák között (a böngésző localStorage automatikusan menti az állapotot).
+- **Konzisztens színkódolás**: A felugró ablakok (modálok) címei is megkapták a kártyáknál megismert hero-státusz (első és utolsó dia türkiz/barna) és normál (sötét/fehér) színezést mindkét témában a diák pontos indexe alapján.
+
+### 🎨 Megváltoztatva
+- **CSS CSS-tisztítás (!important mentesítés)**: A vizuális problémák orvoslására az összes `!important` szabály el lett távolítva a kódból. A stílusok mostantól kizárólag BEM-alapú szelektorokat és helyes CSS specificitást használnak a `project-context.md` szigorú szabályainak megfelelve.
+- **Kártyaszámozás harmóniája**: A sorszámok formázása a Literary témában elegáns, barna keretet kapott az oda nem illő sötétszürke háttér helyett.
+- **Olvasó mód tipográfiája**: Az olvasó mód betűmérete megnövelve 2.4rem-re, stabilan biztosítva az elhatárolódást a többi bekezdéstől, egy specifikus szelektorral felülírva a globális modal beállításokat.
+
 ## [1.12.0] – 2026-03-26
 ### 🛠️ Hozzáadva
 - **Kártya részletező modal**: Az előnézeti kártyák mostantól kattinthatók, és olvasásra optimalizált, nagybetűs modal ablakban jelenítik meg a teljes szöveget és címet.
