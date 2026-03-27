@@ -1,7 +1,7 @@
 # 🌌 Digital Kingdom (DK) – versenynarratív-generátor
 
 > **STATUS**: STABLE / CORRUPTION LEVEL: 12%
-> **PROTOCOL**: CYBER-FANTASY v1.8.0
+> **PROTOCOL**: CYBER-FANTASY v1.14.0
 
 Üdvözöllek, Programozó! Beléptél a **Digital Kingdom** szívébe, ahol a kódsorok és a narratívák határai elmosódnak. Ez az alkalmazás nem csupán egy generátor; ez egy interfész a digitális univerzum töredékeihez.
 
@@ -41,6 +41,13 @@ Készítsd fel a munkaállomásodat az alábbi parancsokkal:
 - **Mesterleíró (blueprint) kezelése**: komplex történeti alapok szerkesztése valós idejű szerveroldali mentéssel és vizuális visszajelzéssel.
 - **Szekvenciális kártyamegjelenítés**: fluid, animált kártyarendszer a diák áttekintéséhez.
 - **Navigációs zár**: biztonsági protokoll a generálás alatt, amely megvédi az adatok épségét.
+
+## 📖 Dokumentáció
+
+A projekt részletes technikai dokumentációja elérhető a `docs/` mappában:
+- **[Kezdőoldal (Index)](./docs/index.md)**: A dokumentációs bázis központja.
+- **[Architektúra](./docs/architecture.md)**: Tervezési minták és belső működés.
+- **[Fejlesztői Útmutató](./docs/development-guide.md)**: Környezet beállítása és üzemeltetés.
 
 ## 🖋️ Szerzők és verzió
 

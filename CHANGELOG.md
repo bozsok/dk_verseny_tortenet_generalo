@@ -3,6 +3,16 @@
 Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **szemantikus verziózás (SemVer)** elvei szerint.
 
 ---
+
+## [1.14.0] – 2026-03-27
+### 🛠️ Hozzáadva
+- **Mélyreható projekt dokumentáció (Deep Scan)**: Létrehozva egy teljes körű technikai tudás bázis a `docs/` mappában, amely tartalmazza az API szerződéseket, adatmodelleket, komponens leltárt és a forrásfa elemzést.
+- **Architektúra specifikáció**: Részletes dokumentáció a projekt tervezési mintáiról (reaktív Store, EventBus locking, eseménydelegáció).
+- **Master Index**: Központi navigációs pont (`docs/index.md`) a dokumentumok könnyű eléréséhez.
+
+### 🎨 Megváltoztatva
+- **README frissítés**: A fő dokumentáció kiegészítve a technikai bázisra mutató hivatkozásokkal és a protokoll verziószám frissítésével.
+
 ---
 ## [1.13.0] – 2026-03-27
 ### 🛠️ Hozzáadva
