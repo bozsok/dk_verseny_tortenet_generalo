@@ -4,6 +4,21 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 
+## [1.18.0] – 2026-03-27
+### 🎨 Megváltoztatva
+- **Prémium Interakciók és Animációk (UI/UX)**:
+    - **Modál Fade-Animáció**: Bevezetve a `@keyframes` alapú, tiszta lineáris `fade-in` és `fade-out` (0.6s). A modális ablakok mostantól zökkenőmentesen, függőleges „ugrálás” és nagyítás nélkül jelennek meg.
+    - **Késleltetett bezárási logika**: A központi vezérlő (`main.js`) szinkronizálva lett a CSS-animációval; a bezáráskor 600ms várakozást alkalmazunk, amíg az elem elhalványul, mielőtt töröljük a DOM-ból.
+    - **Vizuális Szabad tér**: A Preview hasáb megnövelt oldalsó margót (padding) kapott, így a kártyák neon és szürke árnyékai már nem vágódnak le a képernyő szélénél.
+- **Kártya Integritás és Esztétika**:
+    - **Lekerekített sarkok fixálása**: Az összes kártya és animációs burkolóelem megkapta az `overflow: hidden` és a központi `border-radius` szabályokat, végleg megszüntetve az éles sarkok „kiszűrődését” világos témában.
+    - **Hover Transzformációk**: Konszolidált, stabil `-8px`-es emelkedés minden interaktív kártyatípusnál.
+
+### 🐛 Javítva
+- **Bezárási villanás (Glitch)**: Megszűnt az ablakok eltűnése utáni rövid visszavillanás a CSS és JS időzítések pontos összehangolásával.
+
+---
+
 ## [1.17.0] – 2026-03-27
 ### 🛠️ Hozzáadva
 - **Master Blueprint Architektúra**: Bevezetve a `blueprint-master.json` fájl, amely a központi V4-es generálási szabályokat tartalmazza, teljesen elkülönítve a projekt-specifikus metaadatoktól (`blueprint.json`).

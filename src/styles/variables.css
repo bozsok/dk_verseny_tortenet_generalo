@@ -84,7 +84,8 @@
 
 [data-theme='literary'] .dkv-btn.dkv-btn--primary {
   background: var(--neon-cyan);
-  color: #F9F7F2; /* Krem felirat a barna hatteren */
+  color: #F9F7F2;
+  /* Krem felirat a barna hatteren */
   font-weight: 800;
   border: none;
 }
@@ -243,7 +244,8 @@ body {
   gap: 20px;
   overflow-y: auto;
   flex: 1;
-  min-width: var(--sidebar-width); /* Stabil fix szélesség tágulás/szűkülés alatt */
+  min-width: var(--sidebar-width);
+  /* Stabil fix szélesség tágulás/szűkülés alatt */
   transition: opacity 0.3s ease;
 }
 
@@ -528,6 +530,26 @@ textarea:disabled {
   border-radius: 8px;
 }
 
+@keyframes dkvFadeInOnly {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dkvFadeOutOnly {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes dkvStatusFadeIn {
   from {
     opacity: 0;
@@ -551,6 +573,8 @@ textarea:disabled {
   flex-direction: column;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0px 20px;
   min-width: 0;
   position: relative;
 }
@@ -608,8 +632,7 @@ textarea:disabled {
 
 .dkv-hero-card:hover {
   border-color: var(--neon-cyan);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  box-shadow: var(--hover-glow);
 }
 
 [data-theme='cyber-fantasy'] .dkv-hero-card:hover {
@@ -638,12 +661,12 @@ textarea:disabled {
   transition: all 0.3s ease;
   position: relative;
   box-shadow: var(--card-shadow);
+  overflow: hidden;
 }
 
 .dkv-small-card:hover {
   border-color: var(--neon-cyan);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  box-shadow: var(--hover-glow);
 }
 
 [data-theme='cyber-fantasy'] .dkv-small-card:hover {
@@ -755,8 +778,10 @@ textarea:disabled {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 0 25px 25px 25px; /* Eredeti kinyitott padding */
-  align-items: flex-start;   /* Eredeti kinyitott balra-zárt elrendezés */
+  padding: 0 25px 25px 25px;
+  /* Eredeti kinyitott padding */
+  align-items: flex-start;
+  /* Eredeti kinyitott balra-zárt elrendezés */
   margin-top: 20px;
   width: 100%;
   overflow-x: hidden;
@@ -767,7 +792,7 @@ textarea:disabled {
 .dkv-main-layout--collapsed .dkv-sidebar__nav {
   padding: 0;
   margin-top: 10px;
-  align-items: center; 
+  align-items: center;
 }
 
 /* 1. Fázis JS által: Az ikonok elhalványulnak */
@@ -981,6 +1006,9 @@ textarea:disabled {
   position: relative;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 242, 255, 0.05);
   backdrop-filter: blur(30px);
+  opacity: 0;
+  /* Animáció az elem beillesztésekor */
+  animation: dkvFadeInOnly 0.6s ease forwards;
 }
 
 .dkv-modal-header {
@@ -1016,6 +1044,12 @@ textarea:disabled {
 .dkv-modal-overlay.dkv-modal-overlay--visible {
   opacity: 1;
   visibility: visible;
+  /* Az overlay elhalványulása */
+  animation: dkvFadeInOnly 0.6s ease forwards;
+}
+
+.dkv-modal-overlay.dkv-modal-overlay--closing {
+  animation: dkvFadeOutOnly 0.6s ease forwards;
 }
 
 .dkv-modal-header {

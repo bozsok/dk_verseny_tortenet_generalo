@@ -507,15 +507,21 @@ function setupEventListeners() {
       return;
     }
 
-    // 0.1 MODAL BEZÁRÁSA
+    // 0.1 MODAL BEZÁRÁSA KÉSLELTETETT ELTŰNÉSSEL (FADE-OUT)
     if (action && action.startsWith('close-')) {
       const isOverlayClick = e.target.classList.contains('dkv-modal-overlay');
       const isCloseBtnClick = e.target.closest('.dkv-close-btn');
 
       if (isOverlayClick || isCloseBtnClick) {
-        if (action === 'close-view-modal') store.viewingSlideId = null;
-        if (action === 'close-blueprint') store.isEditingBlueprint = false;
-        if (action === 'close-iteration') store.editingSlideId = null;
+        const overlay = e.target.closest('.dkv-modal-overlay');
+        if (overlay) overlay.classList.add('dkv-modal-overlay--closing');
+
+        // Várunk az animáció lefutására (0.6s), mielőtt töröljük a DOM-ból
+        setTimeout(() => {
+          if (action === 'close-view-modal') store.viewingSlideId = null;
+          if (action === 'close-blueprint') store.isEditingBlueprint = false;
+          if (action === 'close-iteration') store.editingSlideId = null;
+        }, 600);
       }
       return;
     }

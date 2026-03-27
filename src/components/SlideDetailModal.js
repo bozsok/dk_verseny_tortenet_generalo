@@ -14,7 +14,7 @@ export const SlideDetailModal = () => {
 
   return `
     <div id="slide-detail-modal" class="dkv-modal-overlay dkv-modal-overlay--visible" data-action="close-view-modal">
-      <div class="dkv-modal-card dkv-modal-card--cyan dkv-fade-in-up">
+      <div class="dkv-modal-card dkv-modal-card--cyan">
         <div class="dkv-modal-header">
           <h2 class="dkv-neon-text dkv-modal-title--reading ${titleClass}">${slide.title}</h2>
           <button class="dkv-close-btn" data-action="close-view-modal">&times;</button>
