@@ -899,42 +899,60 @@ function parseNarrativeContent(text, format) {
   const narrative = [];
   let title = '';
 
+  // 1. Normalizálás: Windows-stílusú sorvégek kezelése és szélső szóközök levágása
+  const cleanContent = text.replace(/\r\n/g, '\n').trim();
+
   if (format === 'markdown') {
     // Cím keresése (# [Title])
-    const titleMatch = text.match(/^#\s+(.*)$/m);
+    const titleMatch = cleanContent.match(/^#\s+(.*)$/m);
     if (titleMatch) title = titleMatch[1].trim();
 
-    // Diákra bontás (## Dia [X]: [SubTitle])
-    // Az elválasztó --- jelek mentén is vághatunk, de a Dia fejléc biztosabb
-    const sections = text.split(/\n---\s*\n/);
+    // Rugalmasabb elválasztó regex: \n---... \n (sor eleji/végi szóközökkel)
+    const sections = cleanContent.split(/\n\s*---\s*\n/);
+    Logger.debug(`Markdown Parser: ${sections.length} szakaszt találtam az elválasztók alapján.`);
 
-    sections.forEach(section => {
-      const slideMatch = section.match(/## Dia \d+:\s*(.*)\n([\s\S]*)/);
+    sections.forEach((section, idx) => {
+      // Rugalmasabb Dia fejléc: ## Dia X[: ] Cím
+      // Engedélyezzük az opcionális kettőspontot és a tetszőleges whitespace-t
+      const slideMatch = section.match(/## Dia \d+:?\s*(.*)\n([\s\S]*)/i);
       if (slideMatch) {
         narrative.push({
           id: `slide-load-${Date.now()}-${narrative.length}`,
           title: slideMatch[1].trim(),
           content: slideMatch[2].trim()
         });
+      } else {
+        Logger.debug(`Szakasz #${idx + 1}: Nem található érvényes dia-fejléc.`);
       }
     });
   } else {
     // Sima szöveg formátum
-    const lines = text.split('\n');
-    title = lines[0].trim();
+    const lines = cleanContent.split('\n');
+    if (lines.length > 0) title = lines[0].trim();
 
-    const sections = text.split(/\n-+\n/); // ------------------- elválasztó
+    // Rugalmasabb elválasztó regex a .txt-hez (legalább 3 kötőjel, szóközökkel)
+    const sections = cleanContent.split(/\n\s*-{3,}\s*\n/);
+    Logger.debug(`Text Parser: ${sections.length} szakaszt találtam az elválasztók alapján.`);
 
-    sections.forEach(section => {
-      const slideMatch = section.match(/DIA \d+:\s*(.*)\n([\s\S]*)/i);
+    sections.forEach((section, idx) => {
+      // Rugalmasabb DIA fejléc: DIA X[: ] Cím
+      const slideMatch = section.match(/DIA \d+:?\s*(.*)\n([\s\S]*)/i);
       if (slideMatch) {
         narrative.push({
           id: `slide-load-${Date.now()}-${narrative.length}`,
           title: slideMatch[1].trim(),
           content: slideMatch[2].trim()
         });
+      } else {
+        Logger.debug(`Szakasz #${idx + 1}: Nem található érvényes DIA-fejléc a szövegben.`);
       }
     });
+  }
+
+  if (narrative.length > 0) {
+    Logger.info(`Sikeresen kinyertem ${narrative.length} diát a(z) ${format} fájlból.`);
+  } else {
+    Logger.warn(`A parser nem talált egyetlen diát sem! Ellenőrizd a formátumot.`);
   }
 
   return { title, narrative };

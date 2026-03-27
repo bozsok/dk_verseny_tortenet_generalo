@@ -4,6 +4,16 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 
+## [1.16.0] – 2026-03-27
+### 🛠️ Hozzáadva
+- **Robusztus Narratív Parser**: Teljesen megújult a `parseNarrativeContent` logika, amely mostantól intelligensen kezeli a kézzel módosított fájlokat is.
+
+### 🐛 Javítva
+- **"Történet betöltése" stabilitás**: Megszűnt a beolvasási hiba a Windows-stílusú (`\r\n`) sorvégek és a változó formátumú elválasztó vonalak (`---` / `---`) esetén. A parser mostantól normalizálja a szöveget és rugalmasabb reguláris kifejezéseket használ a diák és a fejlécek kinyeréséhez.
+- **Parser Naplózás**: Részletes konzol riport (`Logger.debug`) segíti a hibakeresést betöltési nehézségek esetén.
+
+---
+
 ## [1.15.0] – 2026-03-27
 ### 🎨 Megváltoztatva
 - **Letisztult diacímek**: Eltávolítottuk a redundáns szekció-előtagokat (pl. "1. állomás - ", "Intró - ") a narratív kártyák címeiből. A címek mostantól csak a dia egyedi, leíró nevét tartalmazzák, mivel a kontextust a zóna-fejlécek (Zone Cards) biztosítják.
