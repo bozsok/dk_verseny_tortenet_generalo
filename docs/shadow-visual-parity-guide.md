@@ -92,7 +92,7 @@ Ez az útmutató úgy van felépítve, hogy **bármelyik fázisnál meg lehet á
 | # | Fázis | Terület | Státusz | Utolsó módosítás |
 |---|---|---|---|---|
 | 1 | Csontváz | Layout grid, padding, gap, scrollbar | ✅ Kész | 2026-03-29 |
-| 2 | Sidebar | Fejléc, inputok, gombok, navigáció | 🔧 Végrehajtás alatt | 2026-03-29 |
+| 2 | Sidebar | Fejléc, inputok, gombok, navigáció | ✅ Kész | 2026-03-29 |
 | 3 | Preview | Kártyák, zóna-kártyák, animációk | ⬜ Nem kezdődött | – |
 | 4 | Globális | Témaváltó, bridge jelző, fejléc | ⬜ Nem kezdődött | – |
 | 5 | Funkciók | Ceruza, olvasó mód, sidebar toggle | ⬜ Nem kezdődött | – |

@@ -27,28 +27,41 @@
   --shadow-sidebar-width: 440px;
   --shadow-sidebar-collapsed-width: 70px;
   --shadow-radius: 12px;
-  
-  --shadow-font-main: 'Inter', sans-serif;
+
+  --shadow-font-main: 'Outfit', sans-serif;
+  --shadow-font-ui: 'Inter', sans-serif;
   --shadow-font-heading: 'Rajdhani', sans-serif;
-  
-  --shadow-transition-speed: 0.4s;
+  --shadow-font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-bg-input: #161a26;
+  --shadow-textarea-height: 120px;
+  --shadow-input-radius: 8px;
+  --shadow-btn-radius: 8px;
+
+  --shadow-transition-speed: 0.3s;
 }
 
 /* --- LITERARY TÉMA (Irodalmi / Barna-Krémszínű esztétika) --- */
 [data-theme='literary'] {
-  --shadow-neon-cyan: #8C7861;   /* Barna */
-  --shadow-neon-purple: #A39382; /* Taupe */
+  --shadow-neon-cyan: #8C7861;
+  /* Barna */
+  --shadow-neon-purple: #A39382;
+  /* Taupe */
   --shadow-neon-green: #6B645E;
   --shadow-neon-yellow: #8C7861;
   --shadow-neon-gradient: var(--shadow-neon-cyan);
 
-  --shadow-bg-dim: rgba(249, 247, 242, 0.9); /* Krémszínű háttér */
+  --shadow-bg-dim: rgba(249, 247, 242, 0.9);
+  /* Krémszínű háttér */
   --shadow-bg-panel: #ffffff;
   --shadow-bg-sidebar: #F1EFE9;
+  --shadow-bg-input: transparent;
   --shadow-border-alpha: #E5E1D8;
   --shadow-text-main: #2D2926;
   --shadow-text-dim: #6B645E;
-  
+
+  --shadow-textarea-height: 360px;
+  --shadow-font-main: 'Lora', serif;
   --shadow-font-heading: 'Lora', serif;
 }
 
@@ -91,9 +104,9 @@
   background: none;
 }
 
-/* --- SCROLLBAR (Reactive Neon) --- */
+/* --- SCROLLBAR --- */
 .dkv-shadow-universe ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 .dkv-shadow-universe ::-webkit-scrollbar-track {
@@ -101,15 +114,8 @@
 }
 
 .dkv-shadow-universe ::-webkit-scrollbar-thumb {
-  background: var(--shadow-neon-cyan);
+  background: var(--shadow-border-alpha);
   border-radius: 10px;
-  box-shadow: 0 0 5px var(--shadow-neon-cyan);
-  opacity: 0.5;
-}
-
-.dkv-shadow-universe ::-webkit-scrollbar-thumb:hover {
-  background: var(--shadow-neon-pink);
-  box-shadow: 0 0 8px var(--shadow-neon-pink);
 }
 
 /* --- LAYOUT & GRID --- */
@@ -119,8 +125,8 @@
   width: 100%;
   max-width: var(--shadow-layout-max-width);
   margin: 0 auto;
-  min-height: 100vh;
-  padding: var(--shadow-layout-padding);
+  height: 100vh;
+  padding: 40px 40px 10px 40px;
   gap: var(--shadow-layout-gap);
   transition: grid-template-columns 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
@@ -152,7 +158,7 @@
 
 .dkv-shadow-universe input,
 .dkv-shadow-universe textarea {
-  font-family: inherit;
+  font-family: var(--shadow-font-ui);
   outline: none;
 }
 
@@ -262,8 +268,15 @@
   height: 100%;
   position: relative;
   z-index: 100;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
   transition: all var(--shadow-transition-speed) ease;
+  font-family: var(--shadow-font-main);
+}
+
+.dkv-shadow-setup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .dkv-shadow-universe .dkv-shadow-sidebar__body {
@@ -287,11 +300,11 @@
   align-items: center;
   justify-content: center;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   font-size: 1rem;
   position: absolute;
-  top: 35px; /* (70px header / 2) - pontosan középre */
+  top: 50%;
   left: calc(var(--shadow-sidebar-width) - 42px);
   transform: translate(-50%, -50%);
   z-index: 100;
@@ -305,6 +318,19 @@
   border-color: var(--shadow-neon-cyan);
 }
 
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-sidebar__toggle {
+  background: white;
+  border-color: var(--shadow-border-alpha);
+  color: var(--shadow-text-main);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-sidebar__toggle:hover {
+  background: var(--shadow-bg-dim);
+  color: var(--shadow-neon-cyan);
+  border-color: var(--shadow-neon-cyan);
+}
+
 .dkv-shadow-universe .dkv-shadow-layout--collapsed .dkv-shadow-sidebar__toggle {
   left: calc(var(--shadow-sidebar-collapsed-width) / 2);
 }
@@ -312,7 +338,8 @@
 .dkv-shadow-universe .dkv-shadow-layout--collapsed .dkv-shadow-sidebar__body {
   padding: 20px 5px;
   align-items: center;
-  overflow: visible; /* Hogy az ikonok látszódjanak */
+  overflow: visible;
+  /* Hogy az ikonok látszódjanak */
 }
 
 .dkv-shadow-universe .dkv-shadow-layout--collapsed .dkv-shadow-header__text {
@@ -325,28 +352,47 @@
 }
 
 /* --- Inputok és Formák (Setup) --- */
+.dkv-shadow-sidebar__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dkv-shadow-sidebar__secondary-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
 .dkv-shadow-input-block {
   margin-bottom: 25px;
 }
 
 .dkv-shadow-label {
   display: block;
-  font-size: 0.7rem;
+  font-size: 16px;
   color: var(--shadow-neon-cyan);
   margin-bottom: 8px;
-  letter-spacing: 1.5px;
   font-weight: bold;
+  text-transform: uppercase;
+  font-family: var(--shadow-font-main);
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-label {
+  color: #6B645E;
+  font-family: var(--shadow-font-heading);
 }
 
 .dkv-shadow-input,
 .dkv-shadow-textarea {
   width: 100%;
-  background: var(--shadow-bg-panel);
+  background: var(--shadow-bg-input);
   border: 1px solid var(--shadow-border-alpha);
   padding: 12px;
   color: var(--shadow-text-main);
   font-size: 0.9rem;
-  border-radius: var(--shadow-radius);
+  border-radius: var(--shadow-input-radius);
   outline: none;
   transition: all var(--shadow-transition-speed) ease;
   box-sizing: border-box;
@@ -359,13 +405,13 @@
 }
 
 /* --- GOMBOK (Buttons) --- */
-.dkv-shadow-btn {
+.dkv-shadow-universe .dkv-shadow-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 56px;
   padding: 0 24px;
-  border-radius: var(--shadow-radius);
+  border-radius: var(--shadow-btn-radius);
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
@@ -374,72 +420,117 @@
   width: 100%;
   text-align: center;
   border: none;
-  font-family: inherit;
+  font-family: var(--shadow-font-heading);
   box-sizing: border-box;
 }
 
-.dkv-shadow-btn--primary {
-  background: var(--shadow-neon-gradient);
+.dkv-shadow-universe .dkv-shadow-btn--primary {
+  background: var(--shadow-neon-gradient, var(--shadow-neon-cyan));
+  font-size: 1.4rem;
   color: white;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: none;
 }
 
-.dkv-shadow-btn--primary:hover {
+.dkv-shadow-universe .dkv-shadow-btn--primary:hover {
   box-shadow: 0 0 20px var(--shadow-neon-cyan);
   transform: translateY(-2px);
 }
 
-.dkv-shadow-btn--secondary {
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--primary {
+  background: var(--shadow-neon-cyan);
+  color: #F9F7F2;
+  font-weight: 800;
+  box-shadow: none;
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--primary:hover {
+  box-shadow: 0 0 20px rgba(140, 120, 97, 0.6);
+}
+
+.dkv-shadow-universe .dkv-shadow-btn--secondary {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--shadow-text-dim);
 }
 
-.dkv-shadow-btn--secondary:hover {
+.dkv-shadow-universe .dkv-shadow-btn--secondary:hover {
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
 }
 
-.dkv-shadow-btn--accent {
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--secondary {
+  background: white;
+  border-color: var(--shadow-border-alpha);
+  color: var(--shadow-text-main);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--secondary:hover {
+  background: var(--shadow-bg-dim);
+  color: var(--shadow-neon-cyan);
+  border-color: var(--shadow-neon-cyan);
+}
+
+.dkv-shadow-universe .dkv-shadow-btn--accent {
   background: rgba(157, 80, 187, 0.1);
   border: 1px solid var(--shadow-neon-purple);
   color: var(--shadow-neon-purple);
 }
 
-.dkv-shadow-btn--accent:hover {
+.dkv-shadow-universe .dkv-shadow-btn--accent:hover {
   background: var(--shadow-neon-purple);
   color: white;
   box-shadow: 0 0 15px var(--shadow-neon-purple);
   transform: translateY(-2px);
 }
 
-.dkv-shadow-btn--sync {
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--accent {
+  background: white;
+  border-color: var(--shadow-neon-purple);
+  color: var(--shadow-neon-purple);
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--accent:hover {
+  background: var(--shadow-neon-purple);
+  color: white;
+}
+
+.dkv-shadow-universe .dkv-shadow-btn--sync {
   background: rgba(0, 242, 255, 0.1);
   border: 1px solid var(--shadow-neon-cyan);
   color: var(--shadow-neon-cyan);
 }
 
-.dkv-shadow-btn--sync:hover {
+.dkv-shadow-universe .dkv-shadow-btn--sync:hover {
   background: var(--shadow-neon-cyan);
   color: var(--shadow-bg-panel);
   box-shadow: 0 0 15px var(--shadow-neon-cyan);
   transform: translateY(-2px);
 }
 
-.dkv-shadow-btn--disabled,
-.dkv-shadow-btn:disabled {
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--sync {
+  background: var(--shadow-bg-dim);
+  border-color: var(--shadow-neon-cyan);
+  color: var(--shadow-neon-cyan);
+}
+
+.dkv-shadow-universe .dkv-shadow-btn--disabled,
+.dkv-shadow-universe .dkv-shadow-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   filter: grayscale(0.5);
-  transform: none !important;
-  box-shadow: none !important;
+  box-shadow: none;
+}
+
+.dkv-shadow-textarea {
+  resize: none;
 }
 
 .dkv-shadow-textarea--medium {
-  height: 120px;
-  resize: none;
+  height: var(--shadow-textarea-height);
 }
 
 /* --- Kártyák (Shadow Grid & Card) --- */
@@ -468,9 +559,17 @@
 }
 
 @keyframes dkvShadowFadeIn {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 .dkv-shadow-grid {
   max-width: 1000px;
   margin: 0 auto;

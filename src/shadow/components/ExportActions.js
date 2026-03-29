@@ -53,28 +53,20 @@ export class ExportActions extends BaseComponent {
     const isCollapsed = store.sidebarCollapsed;
 
     return `
-      <div id="export-icons" class="dkv-shadow-sidebar__icons dkv-shadow-sidebar__icons--bottom dkv-shadow-fade-in ${isCollapsed ? '' : 'dkv-shadow-hidden'}">
-          <button class="dkv-shadow-icon-btn" data-action="edit-blueprint" title="Blueprint" type="button" ${disabledAttr}>📄</button>
-          <button class="dkv-shadow-icon-btn dkv-shadow-icon-btn--sync" data-action="sync-project" title="Szinkronizálás" type="button" ${disabledAttr}>🔄</button>
-      </div>
+
 
       <div id="export-buttons" class="dkv-shadow-sidebar__secondary-actions dkv-shadow-fade-in ${isCollapsed ? 'dkv-shadow-hidden' : ''}">
         <button id="blueprint-btn" type="button" data-action="edit-blueprint" class="dkv-shadow-btn dkv-shadow-btn--secondary ${lockedBtnClass}" ${disabledAttr}>
-          BLUEPRINT SZERKESZTÉSE
+          BLUEPRINT
         </button>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-          <button id="export-md-btn" type="button" data-action="export-md" class="dkv-shadow-btn dkv-shadow-btn--secondary ${lockedBtnClass}" ${disabledAttr} title="Markdown-exportálás">
-            .MD EXPORT
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+          <button id="export-md-btn" type="button" data-action="export-md" class="dkv-shadow-btn dkv-shadow-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Markdown-exportálás">
+            .MD
           </button>
-          <button id="export-txt-btn" type="button" data-action="export-txt" class="dkv-shadow-btn dkv-shadow-btn--secondary ${lockedBtnClass}" ${disabledAttr} title="Sima szöveges exportálás">
-             .TXT EXPORT
+          <button id="export-txt-btn" type="button" data-action="export-txt" class="dkv-shadow-btn dkv-shadow-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Sima szöveges exportálás">
+             .TXT
           </button>
         </div>
-
-        <button id="sync-project-btn" type="button" data-action="sync-project" class="dkv-shadow-btn dkv-shadow-btn--primary ${lockedBtnClass}" style="margin-top: 8px; width: 100%; font-size: 0.8rem; letter-spacing: 0.5px;" ${disabledAttr}>
-          MANUÁLIS SZINKRONIZÁCIÓ
-        </button>
       </div>
     `.trim();
   }
@@ -92,10 +84,8 @@ export class ExportActions extends BaseComponent {
     // Collapse toggle (Targeted - Rule 60)
     if (property === 'sidebarCollapsed') {
       const isCollapsed = store.sidebarCollapsed;
-      const icons = this.element.querySelector('#export-icons');
       const buttons = this.element.querySelector('#export-buttons');
       
-      if (icons) icons.classList.toggle('dkv-shadow-hidden', !isCollapsed);
       if (buttons) buttons.classList.toggle('dkv-shadow-hidden', isCollapsed);
     }
   }

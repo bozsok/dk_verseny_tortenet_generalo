@@ -39,8 +39,10 @@ export class ShadowSidebar extends BaseComponent {
           <!-- Setup Panel (Projekt adatok és akciók) -->
           <div id="setup-panel-root"></div>
           
-          <!-- Navigációs térkép (MiniMap) -->
-          <nav id="quick-jump-root" class="dkv-shadow-sidebar__nav"></nav>
+
+          
+          <!-- Export és egyéb másodlagos akciók -->
+          <div id="export-actions-root" style="margin-top: auto; width: 100%;"></div>
         </div>
       </aside>
     `.trim();
@@ -57,7 +59,7 @@ export class ShadowSidebar extends BaseComponent {
     this.element = document.createElement('div');
     this.element.className = 'dkv-shadow-sidebar-wrapper';
     this.element.innerHTML = this.render();
-    
+
     if (position === 'prepend') {
       parent.prepend(this.element);
     } else {
@@ -71,7 +73,7 @@ export class ShadowSidebar extends BaseComponent {
 
   _mountChildren() {
     Logger.debug('ShadowSidebar: Gyermekek csatolása...');
-    
+
     // Setup Panel
     const setup = new SetupShadow();
     const setupRoot = this.element.querySelector('#setup-panel-root');
@@ -80,24 +82,11 @@ export class ShadowSidebar extends BaseComponent {
 
     // Export akciók (Blueprint, Export gombok)
     const exportActions = new ExportActions();
-    exportActions.mount(this.element);
-    this.children.push(exportActions);
-
-    // Kezdeti MiniMap frissítés
-    this._refreshMiniMap();
-  }
-
-  _refreshMiniMap() {
-    const qjRoot = this.element.querySelector('#quick-jump-root');
-    if (qjRoot) {
-      if (store.narrative.length > 0) {
-        const sections = NarrativeEngine.getSections(store.narrative);
-        const fragment = NarrativeEngine.generateMiniMapFragment(sections);
-        qjRoot.replaceChildren(fragment);
-      } else {
-        qjRoot.replaceChildren();
-      }
+    const exportRoot = this.element.querySelector('#export-actions-root');
+    if (exportRoot) {
+      exportActions.mount(exportRoot);
     }
+    this.children.push(exportActions);
   }
 
   handleUpdate(property, value) {
@@ -116,25 +105,21 @@ export class ShadowSidebar extends BaseComponent {
       const titleEl = this.element.querySelector('.dkv-shadow-header__text');
       if (titleEl) titleEl.textContent = value || 'ÚJ TÖRTÉNET';
     }
-    
-    if (property === 'narrative') {
-      this._refreshMiniMap();
-    }
 
-    // Status update (disabling buttons and forms)
+
     if (property === 'status') {
-       const isLocked = store.isGenerating || store.isWaitingForNarrative;
-       this.element.querySelectorAll('button:not(#sidebar-toggle), input, textarea').forEach(el => {
-         el.disabled = isLocked;
-         if (el.classList.contains('dkv-shadow-btn')) {
-           el.classList.toggle('dkv-shadow-btn--disabled', isLocked);
-         }
-       });
+      const isLocked = store.isGenerating || store.isWaitingForNarrative;
+      this.element.querySelectorAll('button:not(#sidebar-toggle), input, textarea').forEach(el => {
+        el.disabled = isLocked;
+        if (el.classList.contains('dkv-shadow-btn')) {
+          el.classList.toggle('dkv-shadow-btn--disabled', isLocked);
+        }
+      });
     }
 
     if (property === 'sidebarContentVisible' || property === 'sidebarIconsVisible') {
-        this.element.classList.toggle('dkv-sidebar--content-hidden', !store.sidebarContentVisible);
-        this.element.classList.toggle('dkv-sidebar--icons-hidden', !store.sidebarIconsVisible);
+      this.element.classList.toggle('dkv-sidebar--content-hidden', !store.sidebarContentVisible);
+      this.element.classList.toggle('dkv-sidebar--icons-hidden', !store.sidebarIconsVisible);
     }
   }
 }

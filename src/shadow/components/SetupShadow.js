@@ -79,7 +79,7 @@ export class SetupShadow extends BaseComponent {
   setupEventListeners() {
     const titleInput = this.element.querySelector('#input-title');
     if (titleInput) {
-      titleInput.addEventListener('input', (e) => { 
+      titleInput.addEventListener('input', (e) => {
         if (this._titleTimeout) clearTimeout(this._titleTimeout);
         this._titleTimeout = setTimeout(() => {
           store.projectTitle = e.target.value;
@@ -89,7 +89,7 @@ export class SetupShadow extends BaseComponent {
 
     const promptInput = this.element.querySelector('#prompt-input');
     if (promptInput) {
-      promptInput.addEventListener('input', (e) => { 
+      promptInput.addEventListener('input', (e) => {
         if (this._promptTimeout) clearTimeout(this._promptTimeout);
         this._promptTimeout = setTimeout(() => {
           store.prompt = e.target.value;
@@ -123,12 +123,12 @@ export class SetupShadow extends BaseComponent {
 
   update(property, value) {
     if (!this.element) return;
-    
+
     // 1. Célzott input frissítések (Fidality Guard - Rule 61)
     if (property === 'projectTitle') {
       this.updateElement('#input-title', value, 'value');
     }
-    
+
     if (property === 'prompt') {
       this.updateElement('#prompt-input', value, 'value');
     }
@@ -150,19 +150,19 @@ export class SetupShadow extends BaseComponent {
     // 3. Status frissítések (Gombok és inputok tiltása)
     if (property === 'status') {
       const isLocked = store.isGenerating || store.isWaitingForNarrative;
-      
+
       // Gombok és inputok állapotának frissítése
       this.element.querySelectorAll('button, input, textarea').forEach(el => {
         if (el.id !== 'sidebar-toggle') el.disabled = isLocked;
       });
 
       // Gombfelirat frissítése célzottan
-      const btnText = store.isGenerating 
-        ? 'GENERÁLÁS FOLYAMATBAN...' 
+      const btnText = store.isGenerating
+        ? 'GENERÁLÁS FOLYAMATBAN...'
         : (store.isWaitingForNarrative ? 'VÁRAKOZÁS AI-RA...' : 'AI-GENERÁLÁS INDÍTÁSA');
-      
+
       this.updateElement('#generate-btn', btnText, 'textContent');
-      
+
       // Class-ok frissítése
       const genBtn = this.element.querySelector('#generate-btn');
       const loadBtn = this.element.querySelector('#load-story-btn');

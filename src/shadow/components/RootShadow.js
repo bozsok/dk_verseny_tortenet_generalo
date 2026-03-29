@@ -33,7 +33,7 @@ export class RootShadow extends BaseComponent {
     this._unsub_store.push(store.subscribe('editingSlideId', (val) => this.handleUpdate('editingSlideId', val)));
     this._unsub_store.push(store.subscribe('isEditingBlueprint', (val) => this.handleUpdate('isEditingBlueprint', val)));
     this._unsub_store.push(store.subscribe('isShowingAiInstructions', (val) => this.handleUpdate('isShowingAiInstructions', val)));
-    
+
     // AC 2: Eseményvezérelt kommunikáció az exportáláshoz és szinkronhoz
     this._unsub_bus = [];
     this._unsub_bus.push(eventBus.on(EVENTS.EXPORT_MD, () => this._handleExport('markdown')));
@@ -93,7 +93,7 @@ export class RootShadow extends BaseComponent {
     // 1. Gyermek komponensek inicializálása (Közvetlenül a Gridbe)
     const layout = this.element.querySelector('.dkv-shadow-layout');
     const previewWrapper = this.element.querySelector('.dkv-shadow-preview-wrapper');
-    
+
     // Sidebar: első elem a Gridben (320px)
     const sidebar = new ShadowSidebar();
     if (layout) sidebar.mount(layout, 'prepend'); // Legfelülre/Legelőre szúrjuk be
@@ -146,7 +146,7 @@ export class RootShadow extends BaseComponent {
             break;
           default:
             if (action.startsWith('close-')) {
-               this._handleModalClose(action, e.target);
+              this._handleModalClose(action, e.target);
             }
         }
         return;
@@ -197,9 +197,9 @@ export class RootShadow extends BaseComponent {
       store.isGenerating = false;
       store.isWaitingForNarrative = true;
       store.isShowingAiInstructions = true;
-    } catch (err) { 
+    } catch (err) {
       Logger.error('Shadow: Generálás hiba', err);
-      store.isGenerating = false; 
+      store.isGenerating = false;
     }
   }
 
@@ -253,7 +253,7 @@ export class RootShadow extends BaseComponent {
 
   handleUpdate(property, value) {
     if (!this.element) return;
-    
+
     if (property === 'sidebarCollapsed') {
       const layout = this.element.querySelector('.dkv-shadow-layout');
       if (layout) layout.classList.toggle('dkv-shadow-layout--collapsed', value);
