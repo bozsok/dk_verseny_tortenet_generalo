@@ -132,6 +132,9 @@ export class RootShadow extends BaseComponent {
         const action = actionBtn.getAttribute('data-action');
 
         switch (action) {
+          case 'sidebar-toggle':
+            store.sidebarCollapsed = !store.sidebarCollapsed;
+            break;
           case 'scroll-top':
             this.element.querySelector('.dkv-shadow-preview-wrapper')?.scrollTo({ top: 0, behavior: 'smooth' });
             break;

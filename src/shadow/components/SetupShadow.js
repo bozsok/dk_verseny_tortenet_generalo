@@ -30,14 +30,8 @@ export class SetupShadow extends BaseComponent {
 
     return `
       <div class="dkv-shadow-setup">
-        <div class="dkv-shadow-sidebar__header">
-          <span class="dkv-shadow-sidebar__header-text">${isCollapsed ? '' : 'PROJEKT PARAMÉTEREK'}</span>
-          <button id="sidebar-toggle" data-action="sidebar-toggle" class="dkv-shadow-sidebar__toggle" ${disabledAttr} type="button">
-            ${isCollapsed ? '»' : '«'}
-          </button>
-        </div>
-        
         <div class="dkv-shadow-sidebar__body">
+          <!-- Összecsukott nézet (Ikonok) -->
           <!-- Összecsukott nézet (Ikonok) -->
           <div id="sidebar-icons" class="dkv-shadow-sidebar__icons dkv-shadow-fade-in ${isCollapsed ? '' : 'dkv-shadow-hidden'}">
             <button class="dkv-shadow-icon-btn dkv-shadow-icon-btn--primary" data-action="generate" title="AI-generálás" type="button">🤖</button>

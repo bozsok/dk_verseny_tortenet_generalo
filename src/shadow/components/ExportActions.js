@@ -63,12 +63,12 @@ export class ExportActions extends BaseComponent {
           BLUEPRINT SZERKESZTÉSE
         </button>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px;">
-          <button id="export-md-btn" type="button" data-action="export-md" class="dkv-shadow-btn dkv-shadow-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Markdown-exportálás">
-            EXPORT .MD
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+          <button id="export-md-btn" type="button" data-action="export-md" class="dkv-shadow-btn dkv-shadow-btn--secondary ${lockedBtnClass}" ${disabledAttr} title="Markdown-exportálás">
+            .MD EXPORT
           </button>
-          <button id="export-txt-btn" type="button" data-action="export-txt" class="dkv-shadow-btn dkv-shadow-btn--accent ${lockedBtnClass}" ${disabledAttr} title="Sima szöveges exportálás">
-             EXPORT .TXT
+          <button id="export-txt-btn" type="button" data-action="export-txt" class="dkv-shadow-btn dkv-shadow-btn--secondary ${lockedBtnClass}" ${disabledAttr} title="Sima szöveges exportálás">
+             .TXT EXPORT
           </button>
         </div>
 

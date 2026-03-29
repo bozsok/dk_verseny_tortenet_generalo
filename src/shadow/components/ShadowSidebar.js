@@ -25,13 +25,24 @@ export class ShadowSidebar extends BaseComponent {
 
   render() {
     const isCollapsed = store.sidebarCollapsed;
+    const projectTitle = store.projectTitle || 'ÚJ TÖRTÉNET';
+
     return `
       <aside id="sidebar" class="dkv-shadow-sidebar ${isCollapsed ? 'dkv-shadow-sidebar--collapsed' : ''}">
-        <!-- Setup Panel (Projekt adatok és akciók) -->
-        <div id="setup-panel-root"></div>
+        <div class="dkv-shadow-header">
+           <span class="dkv-shadow-header__text">${projectTitle}</span>
+           <button id="sidebar-toggle" data-action="sidebar-toggle" class="dkv-shadow-sidebar__toggle" type="button">
+             ${isCollapsed ? '»' : '«'}
+           </button>
+        </div>
         
-        <!-- Navigációs térkép (MiniMap) -->
-        <nav id="quick-jump-root" class="dkv-shadow-sidebar__nav"></nav>
+        <div class="dkv-shadow-sidebar__body">
+          <!-- Setup Panel (Projekt adatok és akciók) -->
+          <div id="setup-panel-root"></div>
+          
+          <!-- Navigációs térkép (MiniMap) -->
+          <nav id="quick-jump-root" class="dkv-shadow-sidebar__nav"></nav>
+        </div>
       </aside>
     `.trim();
   }
@@ -44,13 +55,9 @@ export class ShadowSidebar extends BaseComponent {
     const parent = typeof container === 'string' ? document.querySelector(container) : container;
     if (!parent) return;
 
-    this.element = document.createElement('aside');
-    this.element.id = 'sidebar';
-    this.element.className = `dkv-shadow-sidebar ${store.sidebarCollapsed ? 'dkv-shadow-sidebar--collapsed' : ''}`;
-    this.element.innerHTML = `
-      <div id="setup-panel-root"></div>
-      <nav id="quick-jump-root" class="dkv-shadow-sidebar__nav"></nav>
-    `;
+    this.element = document.createElement('div');
+    this.element.className = 'dkv-shadow-sidebar-wrapper';
+    this.element.innerHTML = this.render();
     
     if (position === 'prepend') {
       parent.prepend(this.element);
@@ -97,12 +104,33 @@ export class ShadowSidebar extends BaseComponent {
   handleUpdate(property, value) {
     if (!this.element) return;
 
+    // Collapse toggle (Targeted - Rule 60)
     if (property === 'sidebarCollapsed') {
-      this.element.classList.toggle('dkv-shadow-sidebar--collapsed', value);
+      const isCollapsed = store.sidebarCollapsed;
+      this.element.classList.toggle('dkv-shadow-sidebar--collapsed', isCollapsed);
+      const toggle = this.element.querySelector('#sidebar-toggle');
+      if (toggle) toggle.textContent = isCollapsed ? '»' : '«';
+    }
+
+    // Title update (Targeted - Rule 60)
+    if (property === 'projectTitle') {
+      const titleEl = this.element.querySelector('.dkv-shadow-header__text');
+      if (titleEl) titleEl.textContent = value || 'ÚJ TÖRTÉNET';
     }
     
     if (property === 'narrative') {
       this._refreshMiniMap();
+    }
+
+    // Status update (disabling buttons and forms)
+    if (property === 'status') {
+       const isLocked = store.isGenerating || store.isWaitingForNarrative;
+       this.element.querySelectorAll('button:not(#sidebar-toggle), input, textarea').forEach(el => {
+         el.disabled = isLocked;
+         if (el.classList.contains('dkv-shadow-btn')) {
+           el.classList.toggle('dkv-shadow-btn--disabled', isLocked);
+         }
+       });
     }
 
     if (property === 'sidebarContentVisible' || property === 'sidebarIconsVisible') {
