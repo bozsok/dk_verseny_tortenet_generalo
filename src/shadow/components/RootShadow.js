@@ -339,15 +339,20 @@ export class RootShadow extends BaseComponent {
 
     const isOnline = store.isBridgeOnline;
     const themeIcon = store.theme === 'cyber-fantasy' ? 'light_mode' : 'dark_mode';
-    const statusClass = isOnline ? 'dkv-shadow-bridge-status--online' : 'dkv-shadow-bridge-status--offline';
+    const statusClass = isOnline === null ? 'dkv-shadow-bridge-status--unknown' : 
+                       (isOnline ? 'dkv-shadow-bridge-status--online' : 'dkv-shadow-bridge-status--offline');
     
+    const tooltipText = isOnline === null ? 'Bridge állapota ismeretlen...' :
+                       (isOnline ? 'Bridge online – Készen állunk a mentésre.' : 'Bridge offline – Indítsd el az "npm run bridge" parancsot!');
+
     root.innerHTML = `
-      <div class="dkv-shadow-global-status-inner">
-        <button id="shadow-theme-toggle" class="dkv-shadow-status-btn" title="Téma váltása">
-          <span class="material-symbols-outlined">${themeIcon}</span>
-        </button>
-        <div class="dkv-shadow-bridge-status ${statusClass}" title="${isOnline ? 'Bridge Online' : 'Bridge Offline'}">
-          <span class="dkv-shadow-bridge-dot"></span>
+      <div id="shadow-theme-toggle" class="dkv-shadow-theme-toggle" title="Téma váltása">
+        <span class="material-symbols-outlined">${themeIcon}</span>
+      </div>
+      <div class="dkv-shadow-global-bridge-status">
+        <div class="dkv-shadow-bridge-status ${statusClass}" title="Bridge Frissítése" data-action="refresh-bridge">
+          <span class="dkv-shadow-bridge-icon">${isOnline ? '✓' : (isOnline === null ? '?' : '!')}</span>
+          <span class="dkv-shadow-bridge-status__tooltip">${tooltipText}</span>
         </div>
       </div>
     `;

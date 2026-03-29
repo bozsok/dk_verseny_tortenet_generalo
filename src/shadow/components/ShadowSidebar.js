@@ -70,7 +70,7 @@ export class ShadowSidebar extends BaseComponent {
     // 2. Gyermek komponensek inicializálása
     this._mountChildren();
     this.setupEventListeners();
-    
+
     // Kezdeti állapotok kikényszerítése, miután a DOM felépült
     this.handleUpdate('narrative');
     this.handleUpdate('projectTitle', store.projectTitle);
@@ -106,12 +106,6 @@ export class ShadowSidebar extends BaseComponent {
       if (innerAside) innerAside.classList.toggle('dkv-shadow-sidebar--collapsed', isCollapsed);
       const toggle = this.element.querySelector('#sidebar-toggle');
       if (toggle) toggle.textContent = isCollapsed ? '»' : '«';
-    }
-
-    // Title update (Targeted - Rule 60)
-    if (property === 'projectTitle') {
-      const titleEl = this.element.querySelector('.dkv-shadow-header__text');
-      if (titleEl) titleEl.textContent = value || 'ÚJ TÖRTÉNET';
     }
 
     if (property === 'narrative') {
