@@ -39,6 +39,10 @@
   --shadow-btn-radius: 8px;
 
   --shadow-transition-speed: 0.3s;
+
+  --shadow-card-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  --shadow-hover-glow: 0 0 15px var(--shadow-neon-cyan), inset 0 0 10px rgba(0, 242, 255, 0.1);
+  --shadow-glow-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
 }
 
 /* --- LITERARY TÉMA (Irodalmi / Barna-Krémszínű esztétika) --- */
@@ -63,6 +67,10 @@
   --shadow-textarea-height: 360px;
   --shadow-font-main: 'Lora', serif;
   --shadow-font-heading: 'Lora', serif;
+
+  --shadow-hover-glow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  --shadow-card-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-glow-shadow: none;
 }
 
 /* --- CSS RESET GUARD (Izoláció a fő alkalmazástól) --- */
@@ -335,20 +343,11 @@
   left: calc(var(--shadow-sidebar-collapsed-width) / 2);
 }
 
-.dkv-shadow-universe .dkv-shadow-layout--collapsed .dkv-shadow-sidebar__body {
-  padding: 20px 5px;
-  align-items: center;
-  overflow: visible;
-  /* Hogy az ikonok látszódjanak */
-}
+
 
 .dkv-shadow-universe .dkv-shadow-layout--collapsed .dkv-shadow-header__text {
   opacity: 0;
   pointer-events: none;
-}
-
-.dkv-shadow-sidebar__nav {
-  margin-top: 30px;
 }
 
 /* --- Inputok és Formák (Setup) --- */
@@ -534,14 +533,13 @@
 }
 
 /* --- Kártyák (Shadow Grid & Card) --- */
-.dkv-shadow-cards-grid {
+.dkv-shadow-universe .dkv-shadow-cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-  padding: 20px 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
-.dkv-shadow-preview-wrapper {
+.dkv-shadow-universe .dkv-shadow-preview-wrapper {
   flex-direction: column;
   height: 100%;
   overflow-y: auto;
@@ -554,7 +552,7 @@
   display: none !important;
 }
 
-.dkv-shadow-fade-in {
+.dkv-shadow-universe .dkv-shadow-fade-in {
   animation: dkvShadowFadeIn 0.3s ease-out forwards;
 }
 
@@ -570,93 +568,331 @@
   }
 }
 
-.dkv-shadow-grid {
+.dkv-shadow-universe .dkv-shadow-grid {
   max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.dkv-shadow-section {
-  margin-bottom: 60px;
-}
-
-.dkv-shadow-card {
-  background: var(--shadow-bg-panel);
-  border: 1px solid var(--shadow-border-alpha);
-  padding: 25px;
-  position: relative;
-  transition: all var(--shadow-transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
+  /* margin-top: 20px; */
 }
 
-.dkv-shadow-card:hover {
-  border-color: var(--shadow-neon-cyan);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px hsla(184, 100%, 50%, 0.1);
-  transform: translateY(-5px);
+.dkv-shadow-universe .dkv-shadow-section {
+  margin-bottom: 80px;
 }
 
-.dkv-shadow-card--hero {
+/* HERO CARD */
+.dkv-shadow-universe .dkv-shadow-hero-card {
+  background: var(--shadow-bg-panel);
+  border: 1px solid var(--shadow-border-alpha);
+  border-radius: var(--shadow-radius);
+  padding: 25px;
+  position: relative;
+  box-shadow: var(--shadow-card-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
   grid-column: span 2;
-  border-left: 4px solid var(--shadow-neon-cyan);
 }
 
-.dkv-shadow-card-number {
-  position: absolute;
-  top: 15px;
-  left: 15px;
+.dkv-shadow-universe .dkv-shadow-hero-card:hover {
+  border-color: var(--shadow-neon-cyan);
+  box-shadow: var(--shadow-hover-glow);
+}
+
+.dkv-shadow-universe .dkv-shadow-hero-content {
+  width: 100%;
+}
+
+/* SMALL CARD */
+.dkv-shadow-universe .dkv-shadow-small-card {
+  background: var(--shadow-bg-panel);
+  border: 1px solid var(--shadow-border-alpha);
+  border-radius: var(--shadow-radius);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: var(--shadow-card-shadow);
+  overflow: hidden;
+}
+
+.dkv-shadow-universe .dkv-shadow-small-card:hover {
+  border-color: var(--shadow-neon-cyan);
+  box-shadow: var(--shadow-hover-glow);
+}
+
+.dkv-shadow-universe .dkv-shadow-small-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ZÓNA KÁRTYA */
+.dkv-shadow-universe .dkv-shadow-zone-card {
+  background: var(--shadow-neon-gradient, linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%));
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  grid-column: span 2;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+  border-left: 6px solid var(--section-accent, var(--shadow-neon-cyan));
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-zone-card {
+  background: white;
+  border: 1px solid var(--shadow-border-alpha);
+  border-left: 6px solid var(--shadow-neon-cyan);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --section-accent: var(--shadow-neon-cyan);
+}
+
+.dkv-shadow-universe .dkv-shadow-zone-icon {
+  font-size: 2.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  border: 1px solid var(--shadow-border-alpha);
+  color: var(--section-accent, var(--shadow-neon-cyan));
+  text-shadow: 0 0 15px var(--section-accent, var(--shadow-neon-cyan));
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-zone-icon {
+  background: var(--shadow-bg-dim);
+  text-shadow: none;
+}
+
+.dkv-shadow-universe .dkv-shadow-zone-tag {
+  display: block;
   font-size: 0.7rem;
-  color: var(--shadow-neon-gray);
-  font-family: monospace;
+  color: var(--shadow-text-dim);
+  letter-spacing: 2px;
+  margin-bottom: 5px;
 }
 
-.dkv-shadow-card__title {
-  margin: 15px 0 10px 0;
-  font-size: 1.2rem;
+.dkv-shadow-universe .dkv-shadow-zone-title {
+  font-size: 1.4rem;
+  color: var(--shadow-text-main);
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+/* KÁRTYA SORSZÁMOZÁS / CERUZA */
+.dkv-shadow-universe .dkv-shadow-card-number {
+  position: absolute;
+  top: 16px;
+  right: 55px;
+  font-size: 0.8rem;
+  font-weight: 800;
   color: var(--shadow-neon-cyan);
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 242, 255, 0.2);
+  z-index: 5;
+  pointer-events: none;
+  font-family: var(--shadow-font-mono, monospace);
 }
 
-.dkv-shadow-card__desc {
-  font-size: 0.9rem;
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-card-number {
+  background: transparent;
+  border: 1px solid var(--shadow-neon-cyan);
+}
+
+.dkv-shadow-universe .dkv-shadow-hero-card__title {
+  font-size: 1.5rem;
+  color: var(--shadow-neon-cyan);
+  margin-bottom: 12px;
+  font-weight: 900;
+  text-shadow: var(--shadow-glow-shadow);
+  letter-spacing: 1px;
+}
+
+.dkv-shadow-universe .dkv-shadow-hero-card__description {
+  font-size: 1rem;
+  color: var(--shadow-text-main);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.dkv-shadow-universe .dkv-shadow-small-card__title {
+  font-size: 1rem;
+  color: var(--shadow-text-main);
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.dkv-shadow-universe .dkv-shadow-small-card__description {
+  font-size: 1rem;
   color: var(--shadow-text-dim);
   line-height: 1.6;
+  opacity: 0.8;
 }
 
-.dkv-shadow-edit-btn {
+.dkv-shadow-universe .dkv-shadow-edit-icon-btn {
   position: absolute;
   top: 15px;
   right: 15px;
-  color: var(--shadow-neon-gray);
-  transition: color 0.3s;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--shadow-border-alpha);
+  color: var(--shadow-text-dim);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+  z-index: 10;
 }
 
-.dkv-shadow-edit-btn:hover {
+.dkv-shadow-universe .dkv-shadow-edit-icon-btn:hover {
+  border-color: var(--shadow-neon-cyan);
   color: var(--shadow-neon-cyan);
+  font-family: var(--shadow-font-heading);
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  background: rgba(0, 242, 255, 0.05);
 }
+
+/* ANIMÁCIÓ BEÚSZÁSRA */
+.dkv-shadow-card--animated {
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+  animation: dkv-shadow-slide-in-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border-radius: var(--shadow-radius);
+}
+
+.dkv-shadow-universe .dkv-shadow-card--animated:not(.dkv-shadow-zone-card):hover {
+  transform: translateY(-8px);
+  z-index: 10;
+}
+
+@keyframes dkv-shadow-slide-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* --- MiniMap --- */
-.dkv-shadow-mini-map__links {
+.dkv-shadow-universe .dkv-shadow-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  overflow-x: hidden;
+  transition: opacity 0.3s ease;
+  /* margin-top: auto; */
+}
+
+/* --- Fázis 1: Tartalom és Ikonok elhalványulása JS által --- */
+.dkv-shadow-universe .dkv-shadow-sidebar--icons-hidden .dkv-shadow-sidebar__nav {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.dkv-shadow-universe .dkv-shadow-sidebar--content-hidden .dkv-shadow-sidebar__body,
+.dkv-shadow-universe .dkv-shadow-sidebar--content-hidden .dkv-shadow-header__text {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* --- CSukott Állapot --- */
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-sidebar__body,
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-header__text {
+  display: none;
+}
+
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-mini-map {
+  margin-top: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-mini-map__title {
+  display: none;
+}
+
+.dkv-shadow-universe .dkv-shadow-mini-map__title {
+  font-size: 0.8rem;
+  color: var(--shadow-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dkv-shadow-universe .dkv-shadow-mini-map__links {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.dkv-shadow-jump-link {
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-mini-map__links {
+  gap: 15px;
+  align-items: center;
+}
+
+.dkv-shadow-universe .dkv-shadow-jump-link {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
   font-size: 0.8rem;
-  color: #888;
+  color: var(--shadow-text-dim);
   transition: all 0.2s;
+  width: 100%;
 }
 
-.dkv-shadow-jump-link:hover {
-  color: #fff;
+.dkv-shadow-universe .dkv-shadow-jump-link:hover {
+  color: var(--shadow-text-main);
   transform: translateX(5px);
+}
+
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-jump-link {
+  justify-content: center;
+  padding: 10px 0;
+  opacity: 0.8;
+}
+
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-jump-link:hover {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-jump-link__text {
+  display: none;
+}
+
+.dkv-shadow-universe .dkv-shadow-jump-link__icon {
+  font-size: 1.2rem;
+  color: var(--shadow-neon-cyan);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.dkv-shadow-universe .dkv-shadow-sidebar--collapsed .dkv-shadow-jump-link__icon {
+  font-size: 1.8rem;
 }
 
 /* --- Status & Effects --- */

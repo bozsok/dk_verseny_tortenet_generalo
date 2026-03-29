@@ -30,7 +30,6 @@ export class PreviewShadow extends BaseComponent {
 
   render() {
     return `
-      <div class="dkv-shadow-preview-wrapper">
         <!-- Diák konténere -->
         <section id="slides-container" class="dkv-shadow-slides-viewer"></section>
         
@@ -49,7 +48,6 @@ export class PreviewShadow extends BaseComponent {
              </div>
           </div>
         </div>
-      </div>
     `.trim();
   }
 
@@ -62,7 +60,8 @@ export class PreviewShadow extends BaseComponent {
     if (!parent) return;
 
     this.element = document.createElement('div');
-    this.element.className = 'dkv-shadow-preview-wrapper';
+    this.element.className = 'dkv-shadow-preview-inner-container';
+    this.element.style.height = '100%';
     this.element.innerHTML = this.render();
     parent.appendChild(this.element);
 

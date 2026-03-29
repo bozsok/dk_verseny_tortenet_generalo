@@ -99,9 +99,10 @@ export class RootShadow extends BaseComponent {
     if (layout) sidebar.mount(layout, 'prepend'); // Legfelülre/Legelőre szúrjuk be
     this.children.push(sidebar);
 
-    // Header: a Preview Wrapper tetejére
+    // Header: a Global Status Root-ba (mint a fő rendszerben)
     const header = new ShadowHeader();
-    if (previewWrapper) header.mount(previewWrapper, 'prepend');
+    const globalStatusRoot = this.element.querySelector('#global-status-root');
+    if (globalStatusRoot) header.mount(globalStatusRoot);
     this.children.push(header);
 
     const preview = new PreviewShadow();
@@ -132,9 +133,30 @@ export class RootShadow extends BaseComponent {
         const action = actionBtn.getAttribute('data-action');
 
         switch (action) {
-          case 'sidebar-toggle':
-            store.sidebarCollapsed = !store.sidebarCollapsed;
+          case 'sidebar-toggle': {
+            const isCollapsed = store.sidebarCollapsed;
+            if (!isCollapsed) {
+              // ZÁRÁS (Fő rendszer paritás)
+              store.sidebarContentVisible = false;
+              setTimeout(() => {
+                store.sidebarCollapsed = true;
+              }, 300);
+              setTimeout(() => {
+                store.sidebarIconsVisible = true;
+              }, 700);
+            } else {
+              // NYITÁS (Fő rendszer paritás)
+              store.sidebarIconsVisible = false;
+              setTimeout(() => {
+                store.sidebarCollapsed = false;
+              }, 300);
+              setTimeout(() => {
+                store.sidebarContentVisible = true;
+                // Az ikonok direkt rejtve maradnak nyitott állapotban, ahogy a fő rendszerben!
+              }, 700);
+            }
             break;
+          }
           case 'scroll-top':
             this.element.querySelector('.dkv-shadow-preview-wrapper')?.scrollTo({ top: 0, behavior: 'smooth' });
             break;
@@ -152,10 +174,18 @@ export class RootShadow extends BaseComponent {
         return;
       }
 
-      const card = e.target.closest('.dkv-shadow-card');
-      if (card && !e.target.closest('button')) {
-        const id = card.getAttribute('data-id');
-        if (id) store.viewingSlideId = id;
+      // 0. KÁRTYA MEGTEKINTÉSE VAGY SZERKESZTÉSE
+      const card = e.target.closest('.dkv-shadow-hero-card, .dkv-shadow-small-card');
+      if (card) {
+        const editBtn = e.target.closest('.dkv-shadow-edit-icon-btn');
+        if (editBtn) {
+          // SZERKESZTÉS MÓD
+          store.editingSlideId = editBtn.getAttribute('data-id');
+        } else if (!e.target.closest('button')) {
+          // OLVASÓ MÓD
+          const id = card.getAttribute('data-id');
+          if (id) store.viewingSlideId = id;
+        }
       }
     };
 

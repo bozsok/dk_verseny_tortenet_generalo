@@ -39,11 +39,12 @@ export class ShadowSidebar extends BaseComponent {
           <!-- Setup Panel (Projekt adatok és akciók) -->
           <div id="setup-panel-root"></div>
           
-
-          
           <!-- Export és egyéb másodlagos akciók -->
-          <div id="export-actions-root" style="margin-top: auto; width: 100%;"></div>
+          <div id="export-actions-root" style="width: 100%;"></div>
         </div>
+        
+        <!-- Mini-map navigáció a body-n KÍVÜL -->
+        <nav id="shadow-quick-jump-root" class="dkv-shadow-sidebar__nav"></nav>
       </aside>
     `.trim();
   }
@@ -69,6 +70,11 @@ export class ShadowSidebar extends BaseComponent {
     // 2. Gyermek komponensek inicializálása
     this._mountChildren();
     this.setupEventListeners();
+    
+    // Kezdeti állapotok kikényszerítése, miután a DOM felépült
+    this.handleUpdate('narrative');
+    this.handleUpdate('projectTitle', store.projectTitle);
+    this.handleUpdate('sidebarCollapsed', store.sidebarCollapsed);
   }
 
   _mountChildren() {
@@ -96,6 +102,8 @@ export class ShadowSidebar extends BaseComponent {
     if (property === 'sidebarCollapsed') {
       const isCollapsed = store.sidebarCollapsed;
       this.element.classList.toggle('dkv-shadow-sidebar--collapsed', isCollapsed);
+      const innerAside = this.element.querySelector('.dkv-shadow-sidebar');
+      if (innerAside) innerAside.classList.toggle('dkv-shadow-sidebar--collapsed', isCollapsed);
       const toggle = this.element.querySelector('#sidebar-toggle');
       if (toggle) toggle.textContent = isCollapsed ? '»' : '«';
     }
@@ -106,6 +114,19 @@ export class ShadowSidebar extends BaseComponent {
       if (titleEl) titleEl.textContent = value || 'ÚJ TÖRTÉNET';
     }
 
+    if (property === 'narrative') {
+      const n = store.narrative || [];
+      const sections = NarrativeEngine.getSections(n);
+      const qjRoot = this.element.querySelector('#shadow-quick-jump-root');
+      if (qjRoot) {
+        if (n.length === 0) {
+          qjRoot.innerHTML = '';
+        } else {
+          qjRoot.innerHTML = '';
+          qjRoot.appendChild(NarrativeEngine.generateMiniMapFragment(sections));
+        }
+      }
+    }
 
     if (property === 'status') {
       const isLocked = store.isGenerating || store.isWaitingForNarrative;
@@ -118,8 +139,8 @@ export class ShadowSidebar extends BaseComponent {
     }
 
     if (property === 'sidebarContentVisible' || property === 'sidebarIconsVisible') {
-      this.element.classList.toggle('dkv-sidebar--content-hidden', !store.sidebarContentVisible);
-      this.element.classList.toggle('dkv-sidebar--icons-hidden', !store.sidebarIconsVisible);
+      this.element.classList.toggle('dkv-shadow-sidebar--content-hidden', !store.sidebarContentVisible);
+      this.element.classList.toggle('dkv-shadow-sidebar--icons-hidden', !store.sidebarIconsVisible);
     }
   }
 }

@@ -96,7 +96,6 @@ export class ExportActions extends BaseComponent {
 
     this.element = document.createElement('div');
     this.element.className = 'dkv-shadow-export-actions-wrapper';
-    this.element.style.marginTop = 'auto'; // Toljuk az aljára
     this.element.innerHTML = this.render();
     
     parent.appendChild(this.element);

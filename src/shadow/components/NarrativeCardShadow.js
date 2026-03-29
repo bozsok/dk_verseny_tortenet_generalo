@@ -25,24 +25,24 @@ export class NarrativeCardShadow extends BaseComponent {
 
     if (this.isHero) {
       return `
-        <div class="dkv-shadow-card dkv-shadow-card--hero" data-id="${slide.id}">
+        <div class="dkv-shadow-hero-card" data-id="${slide.id}">
           ${numberTag}
-          <button class="dkv-shadow-edit-btn" data-id="${slide.id}">✎</button>
-          <div class="dkv-shadow-card__content">
-            <h2 class="dkv-shadow-card__title">${slide.title}</h2>
-            <p class="dkv-shadow-card__desc">${slide.content}</p>
+          <button class="dkv-shadow-edit-icon-btn" data-id="${slide.id}">✎</button>
+          <div class="dkv-shadow-hero-content">
+            <h2 class="dkv-shadow-hero-card__title">${slide.title}</h2>
+            <p class="dkv-shadow-hero-card__description">${slide.content}</p>
           </div>
         </div>
       `.trim();
     }
 
     return `
-      <div class="dkv-shadow-card dkv-shadow-card--small" data-id="${slide.id}">
+      <div class="dkv-shadow-small-card" data-id="${slide.id}">
         ${numberTag}
-        <button class="dkv-shadow-edit-btn" data-id="${slide.id}">✎</button>
-        <div class="dkv-shadow-card__content">
-          <h3 class="dkv-shadow-card__title">${slide.title}</h3>
-          <p class="dkv-shadow-card__desc">${slide.content}</p>
+        <button class="dkv-shadow-edit-icon-btn" data-id="${slide.id}">✎</button>
+        <div class="dkv-shadow-small-content">
+          <h3 class="dkv-shadow-small-card__title">${slide.title}</h3>
+          <p class="dkv-shadow-small-card__description">${slide.content}</p>
         </div>
       </div>
     `.trim();
@@ -54,8 +54,8 @@ export class NarrativeCardShadow extends BaseComponent {
     this.slide = newSlideData;
 
     // Targeted Update (Rule 60): Csak a címet és a tartalmat frissítjük.
-    const titleEl = this.element.querySelector('.dkv-shadow-card__title');
-    const descEl = this.element.querySelector('.dkv-shadow-card__desc');
+    const titleEl = this.element.querySelector('.dkv-shadow-hero-card__title, .dkv-shadow-small-card__title');
+    const descEl = this.element.querySelector('.dkv-shadow-hero-card__description, .dkv-shadow-small-card__description');
 
     if (titleEl && (titleEl.textContent !== newSlideData.title)) {
       titleEl.textContent = newSlideData.title;
