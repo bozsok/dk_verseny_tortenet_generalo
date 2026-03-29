@@ -12,7 +12,7 @@ export class NarrativeEngine {
    * @returns {Promise<Array>} A generált narratíva tömbje.
    */
   static async generate(title, prompt) {
-    Logger.info(`NarrativeEngine: Történet generálása indítva: ${title}`);
+    Logger.info(`NarrativeEngine (Shadow): Történet generálása indítva: ${title}`);
     
     // V4 STRUKTÚRA DEFINÍCIÓJA
     const narrative = [];
@@ -23,8 +23,6 @@ export class NarrativeEngine {
         "CPU-tornyok Fellegvára", 
         "Az Adatfolyam Kanyonja"
     ];
-    
-    // SZIMULÁLT GENERÁLÁSI LOGIKA (V4 szabvány szerint)
     
     // 1. ONBOARDING (3 dia)
     narrative.push({ id: `s-1`, title: "Üdvözlünk a Tizedik Kernelben!", content: `Köszöntelek, Kódmester, a ${title} projektben! Te vagy az utolsó reményünk a Szemétgyűjtő Átok ellen. Készítsd fel elmédet a legnagyobb kihívásra a digitális térben! A logika lesz a legerősebb fegyvered ebben a birodalomban. Lépj be a rendszerbe, ahol minden karakter sorsdöntő jelentőséggel bír.` });
@@ -116,24 +114,73 @@ export class NarrativeEngine {
   }
 
   /**
-   * Legenerálja a navigációs térkép HTML-jét.
-   * @param {Array} sections - A szekciók listája.
-   * @returns {string} A mini-térkép HTML kódja.
+   * Generál egy MiniMap navigációs struktúrát natív DOM elemekkel (Rule 60).
+   * @param {Array} sections 
+   * @returns {DocumentFragment}
+   */
+  static generateMiniMapFragment(sections) {
+    const fragment = document.createDocumentFragment();
+    const container = document.createElement('div');
+    container.className = 'dkv-shadow-mini-map';
+
+    const title = document.createElement('h4');
+    title.className = 'dkv-shadow-mini-map__title';
+    title.textContent = 'Navigációs térkép';
+    container.appendChild(title);
+
+    const linksContainer = document.createElement('div');
+    linksContainer.className = 'dkv-shadow-mini-map__links';
+
+    sections.forEach(s => {
+      const parts = s.title.split(' // ');
+      const subTitle = parts[1] || parts[0];
+
+      const link = document.createElement('a');
+      link.href = `#${s.id}`;
+      link.className = 'dkv-shadow-jump-link';
+      link.title = subTitle;
+
+      const icon = document.createElement('span');
+      icon.className = 'dkv-shadow-jump-link__icon';
+      icon.style.color = s.color || 'var(--shadow-neon-cyan)';
+      icon.textContent = s.icon;
+
+      const text = document.createElement('span');
+      text.className = 'dkv-shadow-jump-link__text';
+      text.textContent = subTitle;
+
+      link.appendChild(icon);
+      link.appendChild(text);
+      linksContainer.appendChild(link);
+    });
+
+    container.appendChild(linksContainer);
+    fragment.appendChild(container);
+
+    return fragment;
+  }
+
+  /**
+   * @deprecated Használja a generateMiniMapFragment metódust!
    */
   static generateMiniMapHTML(sections) {
     return `
-      <div class="dkv-mini-map">
-        <h4 class="dkv-mini-map__title">Navigációs térkép</h4>
-        <div class="dkv-mini-map__links">
-          ${sections.map(s => `
-            <a href="#${s.id}" class="dkv-jump-link" title="${s.title.split(' // ')[1]}">
-              <span class="dkv-jump-link__icon" style="color: ${s.color || 'var(--neon-cyan)'}">${s.icon}</span>
-              <span class="dkv-jump-link__text">${s.title.split(' // ')[1]}</span>
+      <div class="dkv-shadow-mini-map">
+        <h4 class="dkv-shadow-mini-map__title">Navigációs térkép</h4>
+        <div class="dkv-shadow-mini-map__links">
+          ${sections.map(s => {
+      const parts = s.title.split(' // ');
+      const subTitle = parts[1] || parts[0];
+      return `
+            <a href="#${s.id}" class="dkv-shadow-jump-link" title="${subTitle}">
+              <span class="dkv-shadow-jump-link__icon" style="color: ${s.color || 'var(--shadow-neon-cyan)'}">${s.icon}</span>
+              <span class="dkv-shadow-jump-link__text">${subTitle}</span>
             </a>
-          `).join('')}
+          `;
+    }).join('')}
         </div>
       </div>
-    `;
+    `.trim();
   }
 
   /**

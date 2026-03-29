@@ -1,58 +1,60 @@
 /* Narrative Card Numbering */
 .dkv-card-number {
-  position: absolute;
-  top: 16px;
-  right: 55px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: var(--neon-cyan);
-  text-shadow: var(--glow-shadow);
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2px 8px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 242, 255, 0.2);
-  z-index: 5;
-  pointer-events: none;
-  font-family: 'Fira Code', monospace;
+    position: absolute;
+    top: 16px;
+    right: 55px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--neon-cyan);
+    text-shadow: var(--glow-shadow);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    z-index: 5;
+    pointer-events: none;
+    font-family: 'Fira Code', monospace;
 }
 
 [data-theme='literary'] .dkv-card-number {
-  background: transparent;
-  border: 1px solid var(--neon-cyan);
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
 }
 
 /* Slide-in Animation */
 .dkv-card--animated {
-  opacity: 0;
-  transform: translateY(20px);
-  will-change: transform, opacity;
-  animation: dkv-slide-in-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  border-radius: var(--radius); /* Lekerekítés hozzáadása a befoglaló elemhez is */
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: transform, opacity;
+    animation: dkv-slide-in-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-radius: var(--radius);
+    /* Lekerekítés hozzáadása a befoglaló elemhez is */
 }
 
 .dkv-card--animated:not(.dkv-zone-card):hover {
-  transform: translateY(-8px);
-  border-color: var(--neon-cyan);
-  box-shadow: var(--hover-glow);
-  z-index: 10;
-  cursor: pointer;
+    transform: translateY(-8px);
+    border-color: var(--neon-cyan);
+    box-shadow: var(--hover-glow);
+    z-index: 10;
+    cursor: pointer;
 }
 
 @keyframes dkv-slide-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Staggering utility (optional, but we use inline delay in JS for better control) */
-.dkv-cards-grid > div {
-  opacity: 0;
+.dkv-cards-grid>div {
+    opacity: 0;
 }
 
 /* --- STORY 3.1: BLUEPRINT FEEDBACK STYLES --- */
@@ -68,9 +70,20 @@
 }
 
 @keyframes dkv-pulse-cyan {
-    0% { box-shadow: 0 0 5px var(--neon-cyan); opacity: 0.8; }
-    50% { box-shadow: 0 0 20px var(--neon-cyan); opacity: 1; }
-    100% { box-shadow: 0 0 5px var(--neon-cyan); opacity: 0.8; }
+    0% {
+        box-shadow: 0 0 5px var(--neon-cyan);
+        opacity: 0.8;
+    }
+
+    50% {
+        box-shadow: 0 0 20px var(--neon-cyan);
+        opacity: 1;
+    }
+
+    100% {
+        box-shadow: 0 0 5px var(--neon-cyan);
+        opacity: 0.8;
+    }
 }
 
 /* Error Modal State (CorruptionUI) */
@@ -86,12 +99,29 @@
 }
 
 @keyframes dkv-glitch-border {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-    100% { transform: translate(0); }
+    0% {
+        transform: translate(0);
+    }
+
+    20% {
+        transform: translate(-2px, 2px);
+    }
+
+    40% {
+        transform: translate(-2px, -2px);
+    }
+
+    60% {
+        transform: translate(2px, 2px);
+    }
+
+    80% {
+        transform: translate(2px, -2px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
 }
 
 /* --- BRIDGE STATUS INDICATOR --- */
@@ -128,12 +158,14 @@
 }
 
 .dkv-global-bridge-status {
-    position: relative; /* Levesszük a fix pozíciót, mert a konténer kezeli */
+    position: relative;
+    /* Levesszük a fix pozíciót, mert a konténer kezeli */
 }
 
 .dkv-bridge-status {
     position: relative;
-    width: 28px; /* Kicsit nagyobb a globális láthatóságért */
+    width: 28px;
+    /* Kicsit nagyobb a globális láthatóságért */
     height: 28px;
     border-radius: 50%;
     display: flex;
@@ -161,9 +193,20 @@
 }
 
 @keyframes dkv-bridge-pulse {
-    0% { box-shadow: 0 0 5px #ff0000; transform: scale(1); }
-    50% { box-shadow: 0 0 20px #ff4444; transform: scale(1.1); }
-    100% { box-shadow: 0 0 5px #ff0000; transform: scale(1); }
+    0% {
+        box-shadow: 0 0 5px #ff0000;
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 20px #ff4444;
+        transform: scale(1.1);
+    }
+
+    100% {
+        box-shadow: 0 0 5px #ff0000;
+        transform: scale(1);
+    }
 }
 
 .dkv-bridge-status__tooltip {
@@ -176,7 +219,8 @@
     padding: 10px;
     position: absolute;
     top: 130%;
-    right: 0; /* Végleges jobbra igazítás */
+    right: 0;
+    /* Végleges jobbra igazítás */
     transform: none;
     opacity: 0;
     transition: opacity 0.3s;
@@ -213,9 +257,17 @@
 }
 
 @keyframes dkv-pulse-sync {
-    0% { box-shadow: 0 0 0px var(--neon-cyan); }
-    50% { box-shadow: 0 0 15px var(--neon-cyan); }
-    100% { box-shadow: 0 0 0px var(--neon-cyan); }
+    0% {
+        box-shadow: 0 0 0px var(--neon-cyan);
+    }
+
+    50% {
+        box-shadow: 0 0 15px var(--neon-cyan);
+    }
+
+    100% {
+        box-shadow: 0 0 0px var(--neon-cyan);
+    }
 }
 
 /* --- VIEW MODAL READING MODE --- */

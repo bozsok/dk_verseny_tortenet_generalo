@@ -1,11 +1,10 @@
 {
-  "title": "A Fragmentumok Tükre",
-  "prompt": "A Kód Királyság határán túl, egy titokzatos zóna rejtőzik – a Fragmentum-térség, ahol a világ darabokra tört adatképei szabadon lebegnek. Régen itt őrizték az Alapkód tükörmásolatát, amely folyamatosan szinkronban tartotta a Királyságot. Most viszont a Tükör széttört, és a részei elszóródtak. A Fragmentumok összegyűjtése nélkül a valóság és a digitális rend határai végleg felbomlanak.\nFeladatok:\n1. Titkosított üzenet 1: a megfejtés betűi el vannak tolva pl. 3 betűt\n2. Puzzle téglalap: egy adott ábra részeit a helyükre illeszteni, a részek téglalap alakúak\n3. QR kód feladat: QR kódhoz kapcsolódó feladatok elvégzése\n4. Színezős feladat: a kép részekre bontva és a részekben számok vanna, a számok színkódok\n5. Szövegértés feladat: leírás alapján találjanak meg adott ábrákat\n\n",
+  "title": "A fragmentumok tükre",
+  "prompt": "A Kód Királyság határán túl, egy titokzatos zóna rejtőzik – a Fragmentum-térség, ahol a világ darabokra tört adatképei szabadon lebegnek. Régen itt őrizték az Alapkód tükörmásolatát, amely folyamatosan szinkronban tartotta a Királyságot. Most viszont a Tükör széttört, és a részei elszóródtak. A Fragmentumok összegyűjtése nélkül a valóság és a digitális rend határai végleg felbomlanak.\n\nFeladatok:\n1. Titkosított üzenet 1: a megfejtés betűi el vannak tolva pl. 3 betűt\n2. Puzzle téglalap: egy adott ábra részeit a helyükre illeszteni, a részek téglalap alakúak\n3. QR kód feladat: QR kódhoz kapcsolódó feladatok elvégzése\n4. Színezős feladat: a kép részekre bontva és a részekben számok vanna, a számok színkódok\n5. Szövegértés feladat: leírás alapján találjanak meg adott ábrákat\n\n",
   "narrativeConfig": {
     "onboardingCount": 3,
     "introCount": 4,
     "finaleCount": 3,
-    "stationCount": 5,
-    "totalSlides": 30
+    "stationCount": 5
   }
 }

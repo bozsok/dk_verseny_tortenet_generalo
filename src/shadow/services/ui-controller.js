@@ -57,12 +57,4 @@ export class UIController {
       .replace(/\s+/g, '_')
       .toLowerCase();
   }
-
-  /**
-   * Felszabadítja az eseménykezelőket.
-   */
-  static destroy() {
-    window.removeEventListener('keydown', this.handleGlobalKeydown);
-    Logger.info('UIController: Erőforrások felszabadítva.');
-  }
 }

@@ -1,169 +1,152 @@
 export const narrative = [
-  // A) ONBOARDING (Fix 3 dia)
   {
-    id: 'on-1',
-    title: 'Üdvözlet a Fragmentum-térségben',
-    content: 'Üdvözöllek bátor Kódmester a Kód Királyság legtitokzatosabb peremvidékén! A szemed előtt lebegő izzó adatszilánkok nem csupán dekorációk, hanem a valóságunkat összetartó Alapkód-tükörmásolat darabjai. Egy ismeretlen erejű rázkódás széttörte a szent Tükröt, és most a részek a Fragmentum-térségben szóródnak szét, ahol az idő és a tér törvényei másképp működnek. Csak egy olyan tiszta logikájú hős képes újra összeilleszteni ezeket a darabokat, aki nem riad vissza a digitális káosztól és a rejtett összefüggések felkutatásától. Készülj fel, mert a világunk sorsa most a Te kezedben van!'
+    id: "on-1",
+    title: "Üdvözlet a Fragmentum-térségben!",
+    content: "Üdvözlünk, Kód-Helyreállító, a Kód Királyság legrejtélyesebb peremvidékén, a Fragmentum-térségben. Itt az adatok nem statikusak, hanem szabadon lebegnek az ürességben, várva a szinkronizációt. Ez a zóna ad otthont a birodalom legfontosabb védelmi eszközének, az Alapkód tükörmásolatának. Jelenléted elengedhetetlen a stabilitás megőrzéséhez ebben az ingatag környezetben. Készülj fel, mert a térség törvényei eltérnek mindentől, amit eddig ismertél."
   },
   {
-    id: 'on-2',
-    title: 'Digitális Lenyomat Rögzítése',
-    content: 'Mielőtt belépnél a instabil zóna mélyére, a rendszernek szinkronizálnia kell a jelenlétedet a Tükörcsarnok archívumával. Kérlek, add meg a teljes nevedet, a választott kódnevedet és az évfolyamodat, hogy a Rendszerőrök azonosítani tudják a haladásodat a küldetés során! Minden egyes leütött karakter egy-egy stabilizációs parancs a környező Fragmentumoknak, megakadályozva, hogy elpárologjanak a virtuális térben. A rögzítés után Te leszel a birodalom hivatalos Tükörőrzője, akinek a lépteit feszült figyelemmel kíséri minden lakó.'
+    id: "on-2",
+    title: "A Tükör-Személyiség azonosítása",
+    content: "A határtérségbe való belépés előtt a rendszernek rögzítenie kell a digitális ujjlenyomatodat. Kérjük, add meg a hálózati nevedet, becenevedet és az aktuális bevetési egységedet a terminálon. Ez az azonosítás garantálja, hogy a Fragmentumok összegyűjtése során a rendszer mindvégig felismerjen téged, és ne tekintsen betolakodónak. Az adatok titkosítása megtörtént, a biztonsági protokoll zöld jelzést adott. Az azonosítás sikeres."
   },
   {
-    id: 'on-3',
-    title: 'Az Avatár Szinkronizációja',
-    content: 'Válaszd ki azt a digitális avatárt, aki a leginkább képes elviselni a Tükörszilánkok erejét és a Fragmentum-térség sugárzását! Legyen szó egy villámgyors Adat-vándorról, egy bölcs Kód-mágusról vagy egy rettenthetetlen Puffer-páncélosról, a döntésed alapvetően befolyásolja a kutatási hatékonyságodat. Vizsgáld meg alaposan a karakterek energiamezőit és felszerelését, majd válassz egy olyat, akivel teljes összhangban érzed magadat! Amint megvagy a választással, a tudatod áthelyeződik a virtuális testbe, és a nagy utazás kezdetét veszi.'
-  },
-
-  // B) INTRÓ (Fix 4 dia)
-  {
-    id: 'in-1',
-    title: 'A rend aranykora',
-    content: 'A Kód Királyság évezredek óta a tökéletes egyensúly és a hibátlan adatfolyamok hazája volt, ahol minden bit pontosan tudta a helyét. A birodalom szívében őrizték az Alapkód-tükörmásolatot, egy misztikus relikviát, amely folyamatosan sugalmazta a helyes algoritmusokat a rendszer számára. Az égbolton ragyogó bináris csillagképek megnyugtató fénye alatt a lakók élete kiszámítható és biztonságos volt, mentes mindenféle rendszerhibától vagy lefagyástól. Ebben a világban a logika nemcsak egy szabály volt, hanem maga az életenergiát adó levegő, amely minden szervert átjárt.'
+    id: "on-3",
+    title: "Az Avatár-Rezonancia",
+    content: "Ebben a térségben a fizikai forma értelmezhetetlen, ezért szükséged van egy stabil digitális rezonanciára, egy Avatárra. Válaszd ki azt a formát, amely a legjobban képes fókuszálni a szétesett tükördarabok energiáját. Az Avatár lesz a horgonyod a lebegő adathalmazok között, megvédve téged a de-szinkronizációtól. Ügyelj a választásra, mert a transzfer után ez a forma kísér végig a veszélyes zónákon. A szinkronizáció elindult, az utazás kezdődik."
   },
   {
-    id: 'in-2',
-    title: 'A Tükör széttörése',
-    content: 'Hirtelen egy vakító, minden színt elnyelő villanás hasított végig a hálózaton, és egy velőtrázó reccsenéssel a Tükörmilliók darabokra hullott. A birodalmat összetartó szinkronizáció azonnal megszakadt, és a Királyság határai képlékennyé váltak, ahogy a biztonságos szektorok az idegen zónák felé kezdtek sodródni. A valóság és a digitális képzelet közötti választóvonal elmosódott, és a Fragmentum-térségből származó adatszilánkok elárasztották a várost, megakasztva a fontos hálózati folyamatokat. A káosz pillanatok alatt úrrá lett a birodalmon, és a lakók reményvesztetten figyelték, ahogy otthonuk szikrázó részei a semmibe hullanak.'
+    id: "in-1",
+    title: "Az Alapkód Tükre",
+    content: "A Kód Királyság stabilitását évszázadok óta az Alapkód Tükre biztosította, amely a hálózat minden rezdülését tökéletes szinkronban tartotta. Ez a monumentális digitális építmény a Fragmentum-térség közepén lebegett, tiszta fényt sugározva a legtávolabbi szektorokba is. Senki sem hitte volna, hogy ez az ősi és sérthetetlennek hitt struktúra valaha is veszélybe kerülhet. A Királyság lakói biztonságban érezték magukat a Tükör állandó védelme alatt."
   },
   {
-    id: 'in-3',
-    title: 'Az Entrópia-féreg megjelenése',
-    content: 'A Tükör helyén tátongó ürességből egy sötét, lüktető entitás emelkedett ki: a félelmetes Entrópia-féreg, egy kódromboló vírus, amely a rendetlenségből táplálkozik. Nem csupán egy vírusról van szó, hanem egy tudatos, romboló intelligenciáról, amely szisztematikusan falja fel a szétszóródott szilánkokat, hogy megakadályozza a Tükör újbóli összeillesztését. Amerre elhalad, csak törölt memóriát és végtelen hurokba zárt szervereket hagy maga után, rettegésben tartva a környező hálózatokat. Ha nem cselekszünk időben, az Entrópia-féreg végleg megemészti a Királyság utolsó ép részeit is, örök sötétségbe taszítva minket.'
+    id: "in-2",
+    title: "A Nagy Széttörés",
+    content: "Váratlanul egy ismeretlen erejű lökéshullám rázta meg a Királyság alapjait, és a Tükör hatalmas robbanással millió darabra tört. A szilánkok elszóródtak a Fragmentum-térség sötét zugaiban, és a birodalmat azonnal elöntötte a bizonytalanság és a káosz. A valóság és a digitális rend határai elmosódtak, a fájlok pedig elkezdtek összeolvadni a semmivel. A Tükör darabolódása az egész rendszer lassú, de megállíthatatlan összeomlását vetíti előre."
   },
   {
-    id: 'in-4',
-    title: 'A küldetés célja',
-    content: 'A Rendszergazdák utolsó tanácsa egyetlen reménysugarat lát: egy bátor Kódmesternek át kell kelnie a Fragmentum-térség öt veszélyes zónáján, és vissza kell szereznie az elszórt Tükördarabokat. Mindegyik zónában egy speciális logikai akadály állja az utadat, amit csak a technikai képességeid használatával küzdhetsz le. Te vagy az, akit a sors kiválasztott erre a hálátlan feladatra, és aki képes szembeszállni a féreg által emelt digitális gátakkal. Indulj el most, mert minden egyes visszaszerzett szilánkkal a Tükör fénye kicsit erősebb lesz, és az Entrópia ereje halványulni kezd!'
-  },
-
-  // C) ÁLLOMÁSOK (5 állomás x 4 dia = 20 dia)
-
-  // 1. ÁLLOMÁS: Titkosított üzenet (Cézár eltolás)
-  {
-    id: 'st-1-1',
-    title: 'A Szimbólumok Rejtett Mezeje',
-    content: 'Megérkeztél az első zónába, a Szimbólumok Rejtett Mezejére, ahol a levegőben folyamatosan mozgó, eltolt karakterek rajzolnak furcsa mintákat. Ez az a hely, ahol a titkosított adatforgalom eredetét őrzik, de a vírus itt is hatalmas zavart keltett az írott jelek között. A távolban egy hatalmas, lebegő fémlemezt látsz, amelyen egy olvashatatlan, de ritmikus üzenet lüktet halvány lila fénnyel. Mindent elborít a kódolt zaj, és a szavakat csak egy speciális, eltoláson alapuló kulccsal lehet újra értelmezhetővé tenni.'
+    id: "in-3",
+    title: "Tükör-Árnyék felemelkedése",
+    content: "A széttört Tükör legsötétebb szilánkjából egy vészjósló entitás öltött formát: Tükör-Árnyék! Ez az anomália a Tükör minden negatív és korrupt adatpontját magába szippantotta, és most aktívan gátolja a helyreállítást. Tükör-Árnyék célja az Alapkód végleges megsemmisítése, hogy a saját képére formálja a Királyságot – egy sötét, torzított és irányíthatatlan világot teremtve. Őrizője a legfontosabb daraboknak, és könyörtelenül vadászik minden helyreállítóra."
   },
   {
-    id: 'st-1-2',
-    title: 'A Kódfejtő kihívása',
-    content: 'A lemez előtt egy zavart és kétségbeesett Adat-őr program siet eléd, és elmondja, hogy a Tükör első szilánkja a lemez mélyén van elrejtve, de a hozzáférési kód teljesen eltorzult. A vírus az ábécé összes betűjét eltolta három hellyel, így az üzenet most egy értelmetlen karakterláncnak tűnik, amit senki sem tud elolvasni. Csak egy éles eszű kódfejtő képes visszafejteni az eredeti jelentést, és megadni a helyes jelszót a rendszernek. Figyeld meg jól a lemezen lévő jeleket, és próbáld kitalálni a logikai eltolást, ami a megoldáshoz vezet!'
+    id: "in-4",
+    title: "A Küldetés: A Darabok összegyűjtése",
+    content: "A feladatod egyértelmű és sorsdöntő: meg kell látogatnod az elszigetelt szektorokat, és vissza kell szerezned az Alapkód öt legfontosabb tükörszilánkját. Csak ha mind az öt fő darab a birtokodban van, tudjuk újraalkotni a Tükröt és legyőzni Tükör-Árnyékot. Minden perc számít, mert a birodalom integritása folyamatosan csökken. Indulj el a Dekódoló Sziget felé, ahol az első szilánk jeleit észleltük. A Királyság jövője a te bátorságodon és precizitásodon múlik!"
   },
   {
-    id: 'st-1-3',
-    title: 'Feladat: A Titkosított Üzenet Megfejtése',
-    content: 'A hídcsomópont aktiválásához és az első Tükördarab megszerzéséhez megfejtened kell a kijelzőn látható kódolt szöveget. Tudjuk, hogy a vírus három betűvel tolta el az egész üzenetet, ezért a feladatod, hogy használd ezt a logikai kulcsot, és alakítsd vissza a karaktereket az eredeti állapotukba! Írd be a megfejtett jelszót a terminálba, ügyelve minden betű pontos helyére és a szöveg értelmére! Ha sikerül a kódfejtés, a fémlemez megnyílik, és átadja neked az első szent szilánkot, ami visszaadja a birodalom kommunikációjának stabilitását.'
+    id: "st1-1",
+    title: "A Dekódoló Sziget",
+    content: "Megérkeztél az első állomáshoz, egy magányosan lebegő adatszigethez, amely egy sűrű kriptográfiai felhőbe burkolózik. Itt tárolják a Tükör első szilánkját, de a hozzáférést egy komplex, eltolásos titkosítás védi. A levegő vibrál a titkosított karakterektől, és minden egyes terminál érthetetlen adatsorokat sugároz. Tükör-Árnyék itt szándékosan eltolta a karaktereket, hogy felismerhetetlenné tegye a szilánk aktiváló kódját. Csak egy matematikai zseni láthat át a védelmen."
   },
   {
-    id: 'st-1-4',
-    title: 'Az Első Szilánk Fénye',
-    content: 'Amint beütötted a helyes jelszót, a fémlemez lila fénye arany sárgára váltott, és egy ragyogó Tükördarabka pattant ki a közepéből az Avatár-kezedbe. A Szimbólumok Mezeje azonnal megnyugodott, a karakterek pedig rendezett sorokba álltak a horizonton, jelezve a győzelmedet. Az Adat-őr hálásan biccentett neked, és egy fontos adatcsomagot nyújtott át, ami segíteni fog a következő, vizuálisabb zónában. Az utad most egy olyan területre vezet, ahol nem a szavak, hanem a formák az uralkodók.'
-  },
-
-  // 2. ÁLLOMÁS: Puzzle téglalap
-  {
-    id: 'st-2-1',
-    title: 'A Geometriai Törések Völgye',
-    content: 'Következő állomásod a Geometriai Törések Völgye, ahol a táj hatalmas, szabályos téglalapokból álló digitális hegyekkel van tele. Ez a terület felelős a Királyság vizuális stabilitásáért és a grafikus elemek elrendezéséért a képernyőkön. A vírus azonban itt is rombolást végzett, és szó szerint szétszaggatta a völgy szimbólumait alkotó képeket, amik most mozaikként hevernek a földön. A levegőben szétszórt, téglalap alakú darabkák keringenek, és az egész táj olyan, mintha egy félbehagyott építkezés helyszíne lenne.'
+    id: "st1-2",
+    title: "A Karaktereltolás rejtélye",
+    content: "A csomópont megnyitásához meg kell értened az eltolásos titkosítás logikáját, amelyet az anomália alkalmazott. Minden betű egy meghatározott számú lépéssel el lett mozgatva az ábécében, így az eredeti üzenet csak egy értelmetlen katyvasz maradt. Fel kell ismerned az eltolás mértékét, és vissza kell fejtened az eredeti szöveget, hogy hatástalanítsd a biztonsági zárat. Minden egyes hibás kísérlet tovább erősíti a kriptográfiai felhőt, ami a küldetés azonnali végét jelentheti."
   },
   {
-    id: 'st-2-2',
-    title: 'Az Építőmester tanácstalansága',
-    content: 'A völgy szélén egy apró, négyzet alakú kis lény sírdogál, aki egykoron a birodalom főépítésze volt, de most nem tudja befejezni a legfontosabb tervrajzát. Elmondja neked, hogy a második Tükördarab a tervrajz közepébe van építve, de a kép most tizenhat darab téglalapra van szaggatva, amik zavarosan hevernek egymás mellett. Csak az képes helyreállítani a képet, aki pontosan látja, hogyan illeszkednek egymáshoz a színek és a vonalak a tökéletes összhang érdekében. Vedd szemügyre a darabokat, és készülj fel a nagy kirakós játékra, ami a továbbjutáshoz szükséges!'
+    id: "st1-3",
+    title: "Feladat: Titkosított üzenet",
+    content: "A feladatod a következő: fejtsd meg a kijelzőn megjelenő, eltolásos kóddal titkosított üzenetet. Határozd meg az eltolás mértékét, és írd be a helyes, dekódolt választ a rendszerbe. Ez a kód az egyetlen kulcs, amely megnyitja az első tükörszilánkot őrző széfet. Ügyelj a részletekre és a karakterek pontos sorrendjére. A logikai moduljaid most vizsgáznak először éles helyzetben. Indítsd a dekódolási eljárást most!"
   },
   {
-    id: 'st-2-3',
-    title: 'Feladat: A Téglalap-puzzle Összeállítása',
-    content: 'A második hídcsomópont aktiválásához pontosan ki kell raknod a széttört tervrajzot a megadott téglalap alakú részekből. Húzd a darabokat a helyes pozícióba a rácson, figyelve az illeszkedésekre és a kép folytonosságára, amíg az egész ábra tökéletesen össze nem áll! Minden egyes jól elhelyezett darabbal a völgy stabilitása nő, és a Tükördarab fénye egyre jobban látszik a kép alatt. Légy türelmes és precíz, mert csak a hibátlanul összeállított puzzle képes kinyitni az utat a következő szektor felé!'
+    id: "st1-4",
+    title: "Az első szilánk biztosítva",
+    content: "A kód sikeresen lefutott, a titkosítási felhő eloszlik a sziget felett. Egy ragyogó, éles szélű tükörszilánk emelkedik ki a terminálból, amit Tükör-Árnyék próbált elrejteni előlünk. Gyorsan és biztonságosan mentsd el az adataid közé, mielőtt a szektor stabilitása tovább romlana. Ez az első győzelem a korrupció felett, de a harc még csak most kezdődik. A következő állomás, az Adatmátrix Csarnoka, már radikálisan más kihívást tartogat. Ne lankadjon a figyelmed!"
   },
   {
-    id: 'st-2-4',
-    title: 'A Kép Teljessége',
-    content: 'Amint az utolsó téglalap is a helyére pattant, a tervrajz vakító fénnyel gyulladt fel, és a völgy hegyei újra szabályos alakzatokat öltöttek. Az Építőmester boldogan ugrándozott körbe, és a kép közepéből kiemelte neked a második, csillogó Tükörszilánkot. Érzed, ahogy az Avatár-erőd növekszik minden egyes sikeres feladattal, és az Entrópia-féreg árnyéka kicsit visszahúzódik. Az utad most egy titokzatos, kódolt kapuhoz vezet, ahol a legegyszerűbb jel sorozata a legbonyolultabb üzenetet hordozza.'
-  },
-
-  // 3. ÁLLOMÁS: QR kód feladat
-  {
-    id: 'st-3-1',
-    title: 'A Kódolt Kapuk Labirintusa',
-    content: 'Megérkeztél a Kódolt Kapuk Labirintusába, ahol minden falat apró, fekete-fehér rácsok borítanak, amik titkos információkat rejtenek. Ez a zóna a birodalom gyors elérésű adatainak könyvtára, ahol a legfontosabb parancsokat ilyen kódolt formában tárolják a könnyű hozzáférés érdekében. A vírus itt egy zavaros frekvenciát sugároz, ami elhomályosítja a kódokat, így a kapuk zárva maradtak és a hozzáférés lehetetlen. A labirintus sötét folyosóin néha felvillan egy-egy QR-kód, de azok megfejtése nélkül csak eltévednél a virtuális sötétségben.'
+    id: "st2-1",
+    title: "Az Adatmátrix Csarnoka",
+    content: "Beléptél a második állomáshoz, egy óriási architektúrába, ahol az adatokat téglalap alakú mátrixokba rendezve tárolják. Tükör-Árnyék itt szétzúzta a tárolókapacitásokat, és a második szilánkot őrző fájlt darabokra szaggatta. A csarnok padozatán rengeteg, szabályos téglalap alakú adatszelet hever, amelyek önmagukban érthetetlenek. Csak akkor tudod kinyitni a következő szintet, ha ezeket a darabokat tökéletesen egyetlen egységes ábrává illeszted össze."
   },
   {
-    id: 'st-3-2',
-    title: 'A Szkennelő Őr próbája',
-    content: 'A labirintus közepén egy hatalmas, lézeres szemmel rendelkező kapuőr várakozik, aki mozdulatlanul figyeli az érkezőket. Közli veled, hogy a harmadik Tükördarab a kapu mögött található, de a zárómechanizmus egy speciális QR-kód aktiválására vár. A kód darabjai azonban szétszóródtak, vagy olyan technikai anomáliák veszik körül őket, amiket csak egy tapasztalt Adatvándor tud kezelni. Meg kell találnod a helyes kódot vagy elvégezni a hozzá tartozó feladatot, hogy bizonyítsd a jogosultságodat az átlépésre.'
+    id: "st2-2",
+    title: "A Fragmentumok illesztése",
+    content: "Ez a feladat a térlátásodat és a logikai készségeidet teszi próbára a virtuális térben. A téglalap alakú puzzle darabok mindegyike a tükörszilánk védelmi kódjának egy-egy részletét tartalmazza. Ha egyetlen darabot is rossz helyre illesztesz, az ábra nem válik teljessé, és a szilánk energiája elérhetetlen marad. Tükör-Árnyék szándékosan hasonló darabokat helyezett el, hogy megtévessze az érzékeidet. Legyél türelmes és precíz, mert minden illesztés sorsdöntő jelentőségű."
   },
   {
-    id: 'st-3-3',
-    title: 'Feladat: A QR-kód Megfejtése',
-    content: 'A harmadik hídcsomópont aktiválásához el kell végezned a kapuőr által felkínált QR-kódos feladatot, ami a biztonsági protokoll utolsó lépése. Keresd meg a képernyőn látható kódot, és használd a szkenneredet vagy a logikádat, hogy kinyerd belőle a titkos utasítást! Ez a feladat próbára teszi a figyelmedet és a modern kódolási eljárások ismeretét a digitális világ peremén. Amint a kód beolvasásra kerül, a labirintus falai megnyílnak, és szabaddá válik az út a csörgedező színek világa felé.'
+    id: "st2-3",
+    title: "Feladat: Puzzle téglalap",
+    content: "A műveleted során egy digitális puzzle-t kell kiraknod: illeszd a téglalap alakú elemeket a megfelelő pozícióba, hogy visszaállítsd az eredeti ábrát. Ez a folyamat szimulálja a szétroncsolódott képfájl fizikai helyreállítását a rendszer szekvenciális memóriájában. Amint az összes darab a helyére kerül, a rendszer validálja az integritást, és felszabadítja a második tükörszilánkot. Koncentrálj a formákra és a mintákra. Indíts az Adat-összeillesztést!"
   },
   {
-    id: 'st-3-4',
-    title: 'A Feltárt Titok',
-    content: 'Amint a QR-kód zölden villant fel, a nehéz vaskapu hangtalanul felemelkedett, és a harmadik Tükörszilánk a lábaid elé hullott a porból. A labirintus labilis falai megszilárdultak, és a fekete-fehér rácsokból harmonikus minták rajzolódtak ki, jelezve a stabilitás visszatértét. Már három darabod van a Tükörből, és érzed, ahogy a birodalom lassanként kezd újra magára találni a vezetéseddel. A következő szektor azonban nem a szabályokról, hanem a tiszta kreativitásról és a fények játékáról fog szólni.'
-  },
-
-  // 4. ÁLLOMÁS: Színezős feladat (számok alapján)
-  {
-    id: 'st-4-1',
-    title: 'A Színkódok Ligete',
-    content: 'Egy varázslatos, de most teljesen színtelen erdőbe érkeztél, amit a lakók csak Színkódok Ligetének hívnak. Itt minden egyes növény és lény a legtisztább színkódokból épül fel, de az Entrópia-féreg kiszívta az összes tónust a levelekből és a patakokból. A táj most egy szomorú, szürke vázlat csupán, ahol a fák ágain számok és titokzatos betűk jelzik a hiányzó energiát. Ez az állomás felelős a Királyság vizuális szépségéért és a hangulati hullámok generálásáért, így a színek visszatérése nélkül mindenki magányos és szomorú marad.'
+    id: "st2-4",
+    title: "A Mátrix helyreállítva",
+    content: "Az ábra összeállt, a csarnok falai ismét ragyogni kezdenek a visszatérő energiától. A második tükörszilánk sikeresen felszabadult a káoszból, és már a kollekciód részét képezi. Ezzel a Tükör alapvető szerkezeti adatai már nálad vannak, ami komoly fejfájást okoz Tükör-Árnyéknak. Már érezhető a stabilitás növekedése, de a harmadik szektor, a Külső Források Zónája, egy teljesen új technológiai kaput nyit meg. Készülj fel a mobil eszközöd használatára!"
   },
   {
-    id: 'st-4-2',
-    title: 'A Fényfestő kérése',
-    content: 'A liget közepén egy ecsetet szorongató, halvány szellem-alak jelenik meg eléd, aki a birodalom Fényfestője névvel ismert. Elmondja, hogy a negyedik Tükördarab a liget legszebb virágának kelyhébe van zárva, de az csak akkor nyílik ki, ha a virág újra pompázik eredeti színeiben. A festő átnyújt egy palettát, amin a számokhoz tartozó pontos színkódok szerepelnek, de a színezést neked kell elvégezned a logikai rács mentén. Készülj fel, mert a szürkeség birodalmát csak a Te precíz ecsetvonásaid (vagyis kattintásaid) menthetik meg a teljes elfeledéstől!'
+    id: "st3-1",
+    title: "A Külső Források Zónája",
+    content: "Megérkeztél a harmadik állomáshoz, ahol a Fragmentum-térség határai átfedésbe kerülnek a külső hálózatokkal. Tükör-Árnyék itt elrejtette a harmadik szilánkot egy olyan titkosított zónában, amely csak külső validációs kulccsal nyitható meg. A falakon különös, fekete-fehér mintázatú kódok villannak fel, amelyek a Királyságon kívüli világ adataihoz kapcsolódnak. Ez az állomás egy technológiai hidat igényel a virtuális és a külső digitális világ között."
   },
   {
-    id: 'st-4-3',
-    title: 'Feladat: Számok Szerinti Színezés',
-    content: 'A negyedik hídcsomópont aktiválásához újra kell színezned a liget központi ábráját a megadott számkódok alapján! Minden szám egy-egy speciális színnek felel meg, és csak akkor tudod elindítani az életerőt a gyökerekbe, ha minden mezőt a megfelelő árnyalattal töltesz ki. Figyelj alaposan a határokra és a kódolt jelölésekre, mert egyetlen rossz szín is megzavarhatja a liget kényes egyensúlyát! Amint befejezted a festést, a táj életre kel, és a színek vad táncba kezdenek a szemed előtt.'
+    id: "st3-2",
+    title: "A QR Validáció kihívása",
+    content: "A harmadik szilánk eléréséhez igénybe kell venned a küldetés során biztosított technikai segédeszközöket. A terminálokon megjelenő QR kódok olyan titkosított utasításokat tartalmaznak, amelyeket csak egy külső szkenner képes megfelelően interpretálni. Ez a feladat a rendszer cross-platform integritását teszi próbára, ahol a belső és külső adatok szinkronizációja a cél. Ha elvéted a kódokat, a kapcsolat megszakad, és Tükör-Árnyék végleg zárolja a szektort. Használd a forrásokat okosan!"
   },
   {
-    id: 'st-4-4',
-    title: 'A Liget Pompája',
-    content: 'Ahogy az utolsó mező is élénk színbe borult, egy hatalmas fény-hullám söpört végig az erdőn, visszahozva az életet minden egyes levélbe és fűszálba. A Fényfestő hálásan hajolt meg előtted, és a virág kelyhéből átnyújtotta a negyedik, vakítóan ragyogó Tükördarabot. A birodalom vizuális rendszere helyreállt, és a szürkeség kora véget ért ezen a területen. Már csak egyetlen lépés választ el a Finálétól, de az utolsó állomás a legmagasabb szintű szövegértésedet és megfigyelőképességedet fogja tesztelni.'
-  },
-
-  // 5. ÁLLOMÁS: Szövegértés (ábrák keresése leírás alapján)
-  {
-    id: 'st-5-1',
-    title: 'A Definíciók Tornya',
-    content: 'Végül elérted az utolsó nagy akadályt, a Definíciók Tornyát, amely az Alapkód-tükörmásolat őrzőhelyének közvetlen előszobája. Ez a torony rejti az összes digitális forma pontos leírását és jelentését egy gigantikus, folytonosan görgethető jegyzékben. A vírus azonban itt egy olyan információs vihart kavart, ami elválasztotta a képeket a hozzájuk tartozó leírásoktól, így a torony navigációja teljesen megbénult. A levegőben sűrű betűfelhők gomolyognak, és a földön heverő ábrák közül senki sem tudja megmondani, melyik kép mit hivatott ábrázolni a rendszerszabályzat szerint.'
+    id: "st3-3",
+    title: "Feladat: QR kód feladat",
+    content: "Olvasd be a kijelzőn megjelenő QR kódokat, és hajtsd végre az azokhoz kapcsolt specifikus feladatokat vagy ellenőrzéseket. Ez a művelet szimulálja a rendszermag külső biztonsági kulccsal történő hitelesítését a hatalmi anomália közepette. Figyelj a terminál utasításaira a beolvasás után, mert minden kód újabb és újabb biztonsági réteget nyit meg. Amint az összes hitelesítés sikeres, a harmadik szilánk felszabadul. Kezdjük a beolvasást!"
   },
   {
-    id: 'st-5-2',
-    title: 'A Könyvtáros vizsgája',
-    content: 'A torony kapujában egy szigorú, de igazságos Könyvtáros program áll, aki egy vastag, digitális pergament tart a kezében. Közli veled, hogy az utolsó Tükörszilánk csak annak jár, aki képes kiolvasni a leírt töredékekből, hogy melyik szimbólum hordozza a valódi jelentést. Ez egy olyan vizsga, ahol nem a gyorsaságod, hanem az éleslátásod és a szövegértésed a legfontosabb fegyvered. Meg kell találnod a pontos ábrákat a leírások alapján egy hatalmas adathalmazban, hogy bizonyítsd: érted a birodalom alapvető nyelvét.'
+    id: "st3-4",
+    title: "Külső Kapcsolat stabil (3/5)",
+    content: "A QR kódok feldolgozva lettek, a hitelesítés sikeres volt a külső hálózattal. A harmadik tükörszilánk kiszabadult a technológiai zár fogságából, és már biztonságos tárolóban van nálad. Ezzel a Tükör kommunikációs moduljai ismét működnek, és már látjuk a negyedik szektor körvonalait: a Színek és Fények Palotáját. Ott a spektrális analízis lesz az egyetlen fegyvered Tükör-Árnyék ellen. Ne lankadjon a figyelmed, a finálé közeledik!"
   },
   {
-    id: 'st-5-3',
-    title: 'Feladat: Ábrák Keresése Leírás Alapján',
-    content: 'Az ötödik hídcsomópont aktiválásához olvasd el figyelmesen a Könyvtáros által adott leírásokat, és keresd meg az azokhoz pontosan illeszkedő digitális ábrákat a táblán! Minden leírás egy-egy egyedi részletet tartalmaz, ami csakis egyetlen ábrára jellemző, ezért légy alapos és ne hagyd, hogy a hasonló formák megtévesszenek! Ha sikerül párosítanod az összes szöveget a megfelelő vizuális elemmel, a torony titkos rekesze kinyílik. Ez az utolsó technikai feladat, mielőtt szembenéznél a Királyságot fenyegető végső veszedelemmel.'
+    id: "st4-1",
+    title: "A Színek és Fények Palotája",
+    content: "Beléptél a negyedik állomáshoz, egy lélegzetelállító architektúrába, ahol az adatok tiszta színekként és fényhullámokként manifesztálódnak. Tükör-Árnyék itt azonban minden színt kiszívott a környezetből, szürke és fakó adatsivataggá változtatva a palotát. A negyedik szilánk valahol a fakó struktúrák mélyén lapul, de csak akkor látható meg, ha visszaadod a rendszer eredeti spektrális értékeit. A levegő hideg és élettelen a színek hiánya miatt."
   },
   {
-    id: 'st-5-4',
-    title: 'A Definíciók Tisztasága',
-    content: 'Amint az utolsó ábra is a helyére került a leírása mellé, a torony falai megnyíltak, és az ötödik Tükördarab az öledbe hullott a fényes porból. A Könyvtáros elismerően biccentett, és elárulta, hogy az Entrópia-féreg már érzi a vereségét, és a Központi Mag felé menekül. Most, hogy mind az öt Fragmentumot összegyűjtötted, a kezedben tartod a birodalom sorsát és a Tükör teljes erejét. Az út szabaddá vált a Finálé felé, ahol a Királyság jövője egyetlen végső megmérettetésen dől majd el.'
-  },
-
-  // D) FINÁLÉ (Fix 3 dia)
-  {
-    id: 'fi-1',
-    title: 'A Tükörcsarnok szívében',
-    content: 'Megérkeztél a Központi Magba, a Tükörcsarnok legszentebb pontjára, ahol egykor az Alapkód-tükörmásolat ragyogott. A levegőben még látszanak az Entrópia-féreg által hagyott sötét nyomok, de az általad hozott öt szilánk fénye már elkezdi kiszorítani a homályt a sarkokból. Ez az a hely, ahol a valóság és a digitális rend összeszövődik, és ahol Te most egyedül állsz szemben a teljes széttöredezéssel. A szilánkok a levegőbe emelkednek, és várják a végső parancsot, hogy újra egyetlen, tökéletes felületté álljanak össze a szemed előtt.'
+    id: "st4-2",
+    title: "Spektrális Kódolás",
+    content: "A negyedik szilánk feloldásához meg kell értened a rendszer színkódolási logikáját, ahol minden szám egy-egy fényfrekvenciát képvisel. Ez a feladat a vizuális memóriádat és a kódértelmezési képességedet teszi próbára. Fel kell ismerned, melyik szektornak milyen színűnek kell lennie ahhoz, hogy a fény visszatérjen az építménybe. Tükör-Árnyék szándékosan összekeverte a kódokat, hogy egy kaotikus és átláthatatlan színteret hozzon létre. Csak a legpontosabb színezés hozhat sikert."
   },
   {
-    id: 'fi-2',
-    title: 'Feladat: A Végső Tükör-próba',
-    content: 'Az Entrópia-féreg egy utolsó, mindent eldöntő logikai pajzsot emelt a Tükör foglalata köré, amit csak az összes eddigi tudásod egyesítésével törhetsz át. Ezen a ponton nincs helye hibázásnak: meg kell találod a kritikus összefüggést az öt különböző zónából hozott információk között, és be kell vinned a végső aktiváló-kódot. Ez a feladat próbára teszi a memóriádat, a logikádat és a hidegvéredet a legnagyobb nyomás alatt. Csak a tökéletes megoldás fogja elriasztani a férget és rögzíteni a szilánkokat az eredeti helyükre, megmentve ezzel mindannyiunk jövőjét.'
+    id: "st4-3",
+    title: "Feladat: Színezős feladat",
+    content: "A feladatod a következő: színezd ki a megjelenő ábrát a megadott számok és színkódok alapján. Ez a művelet reprezentálja a sérült színcsatornák és vizuális pufferok technikai helyreállítását a rendszermagban. Ügyelj arra, hogy minden részletet a pontos színnel tölts meg, mert a palota védelmi mechanizmusa csak a tökéletes spektrumra reagál. Amint a kép kitöltve, a negyedik tükörszilánk láthatóvá válik a fényben. Indítsd a spektrális helyreállítást!"
   },
   {
-    id: 'fi-3',
-    title: 'A Rend Visszatérése',
-    content: 'Sikerült! Amint a Tükör utolsó darabja is a helyére pattant, egy vakító, tisztító fény-gömb söpört végig a Királyságon, végleg megsemmisítve az Entrópia-férget és annak minden káros hordalékát. A Fragmentum-térség darabjai összeilleszkedtek, a határok megszilárdultak, és az Alapkód-tükörmásolat újra hirdeti a logika és a rend győzelmét. Te lettél a birodalom legendás Tükörőrzője, akinek a bátorsága és esze nélkül a világunk darabokra hullott volna a semmibe. Gratulálunk Kódmester, a küldetésed teljesült, a Tükör ragyog, és a Királyság ismét biztonságban tudhatja az adatait!'
+    id: "st4-4",
+    title: "A Színek harmóniája (4/5)",
+    content: "A palota ismét ezer színben pompázik, a spektrum helyreállt. A negyedik tükörszilánk ragyogva emelkedik ki a színes adatfolyamból, és már a birtokodban van. Ezzel az Alapkód Tükrének vizuális és érzelmi rétegei ismét biztonságban vannak. Már csak egyetlen állomás válasz el a győzelemtől: az Adat-Analizátor Terme. Ott a szövegértés és a logikai dekódolás lesz a végső próba Tükör-Árnyék ellen. Az utolsó darab vár rád!"
+  },
+  {
+    id: "st5-1",
+    title: "Az Adat-Analizátor Terme",
+    content: "Megérkeztél az ötödik állomáshoz, egy csendes és steril terembe, ahol a birodalom metaadatait és leírásait tárolják. Tükör-Árnyék itt a szöveges instrukciókat torzította el, és a szilánkot őrző objektumot egy sűrű leírás-hálózatba rejtette. Itt nincs szükség sebességre vagy színekre, csak tiszta logikára és kiváló szövegértésre. Ebben a teremben minden szó döntő jelentőségű, és a legapróbb félreértés is végzetes hibához vezethet."
+  },
+  {
+    id: "st5-2",
+    title: "A Logikai Elemzés próbája",
+    content: "Az utolsó szilánk megszerzéséhez el kell olvasnod és értelmezned kell a rendszer által generált részletes leírásokat. Tükör-Árnyék elrejtette a keresett ábrát számos hasonló objektum között, és csak a pontos leírás alapján azonosíthatod be a megfelelőt. Ez a feladat a rendszermérnöki precizitást és az analitikai gondolkodást modellezi. Ha véletlenül rossz ábrát választasz, a rendszer azonnal törli az adatokat, és a szilánk örökre elveszik az ürességben."
+  },
+  {
+    id: "st5-3",
+    title: "Feladat: Szövegértés feladat",
+    content: "Olvasd el figyelmesen a terminálon megjelenő leírást, és keresd meg az annak pontosan megfelelő ábrát vagy objektumot a kijelzőn. Minden egyes tulajdonság számít: a szín, a forma, a sorrend és az elhelyezkedés is. Ez a művelet szimulálja a korrupt fájlstruktúrák közötti manuális keresést a pontos metaadatok alapján. Amint azonosítod a helyes elemet, az ötödik szilánk hozzáférhetővé válik. Kezdjük az analízist, legyél kíméletlenül pontos!"
+  },
+  {
+    id: "st5-4",
+    title: "A Teljes Tükör szilánkjai nálad: 5/5",
+    content: "Sikeresen azonosítottad a helyes elemet, az analízis befejeződött! Az ötödik és egyben utolsó tükörszilánk már a kollekciód része. Elképesztő teljesítmény, Kód-Helyreállító! Most már minden darab megvan ahhoz, hogy újraalkossuk az Alapkód Tükrét és visszahozzuk a stabilitást a Királyságba. Tükör-Árnyék hatalma a végéhez közeledik, de a finálé utolsó szekvenciája még vár rád a Központi Vault mélyén. Indulj a végső összecsapásra!"
+  },
+  {
+    id: "fi-1",
+    title: "A Központi Vault",
+    content: "Megérkeztél a Fragmentum-térség szívében található Központi Vault-hoz, ahol a Tükör eredeti helye volt. Az öt megszerzett szilánk váratlanul pulzálni kezd a kezedben, és egyetlen hatalmas, tiszta fényoszloppá áll össze. Ez az Alapkód Tükrének újjászülető ereje, a birodalom végső védelmi fegyvere. A Vault felismeri a szinkronizált kódokat, és hatalmas morajlással feltárul előtted. Nincs visszaút, a döntő pillanat elérkezett: szembe kell nézned Tükör-Árnyék maradék erejével."
+  },
+  {
+    id: "fi-2",
+    title: "A Tükör újraösszeállítása",
+    content: "Tükör-Árnyék utolsó, kétségbeesett támadást indít a Vault ellen, miközben te a szilánkok beillesztésén dolgozol. Ekkor következik a legnehezebb rész: szinkronizálnod kell a darabokat az Alapkód eredeti architektúrájával a sötét interferencia közepette. Ez az utolsó, mindent eldöntő logikai próba, ahol minden tudásodra és precizitásodra szükséged lesz. Az Avatárod ragyog a Tükör fényétől, ahogy kezedbe veszed a Királyság sorsát. Hajtsd végre a szinkront és győzd le az árnyékot!"
+  },
+  {
+    id: "fi-3",
+    title: "A Világ Restaurációja",
+    content: "Sikerült! Az Alapkód Tükre újra ép, és egy vakító fehér fényhullám söpör végig a Kód Királyságon, nyom nélkül kitörölve Tükör-Árnyékot a létezésből. A Fragmentum-térség stabilizálódott, az adatok visszataláltak a helyükre, és a birodalom ismét a tökéletes rend és harmónia szerint működik. Te vagy az, aki helyreállította a Tükröt és megmentette az Alapkódot. Gratulálunk, Kód-Helyreállító, a küldetés dicsőséggel teljesítve! A rendszer stabil, a jövő biztosítva."
   }
 ];

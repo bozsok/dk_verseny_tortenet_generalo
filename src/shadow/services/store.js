@@ -1,9 +1,9 @@
 /**
  * Tiszta reaktív Store implementáció ES6 Proxy használatával.
- * Biztosítja a globális állapot központosított kezelését és a komponensek értesítését.
+ * SHADOW UNIVERSE - 100% FUNKCIONÁLIS TÜKRÖZÉS
  */
 
-// A kezdeti állapot definíciója
+// A kezdeti állapot definíciója (SZÓ SZERINT az eredeti alapján)
 const initialState = {
   projectTitle: '',
   projectShortDesc: '',
@@ -15,15 +15,14 @@ const initialState = {
   isGenerating: false,
   isWaitingForNarrative: false,
   isEditingBlueprint: false,
-  isShowingAiInstructions: false,
   isSetupMode: true,
   editingSlideId: null,
   toastMessage: '',
   notes: {},
   dkv_bridge_interval: null,
   sidebarCollapsed: true,
-  sidebarContentVisible: false, /* Nyitott tartalom láthatósága */
-  sidebarIconsVisible: true,    /* Összecsukott nav ikonok láthatósága */
+  sidebarContentVisible: false,
+  sidebarIconsVisible: true,
   narrativeConfig: {
     onboardingCount: 3,
     introCount: 4,
@@ -31,22 +30,23 @@ const initialState = {
     stationCount: 5
   },
   isBridgeOnline: null,
+  mode: 'passive', // 'bridge' | 'passive' (NFR1 alapon)
+  isSyncing: false,
+  lastSyncError: null,
   needsSync: false,
   viewingSlideId: null,
   theme: localStorage.getItem('dkv_theme') || 'cyber-fantasy'
 };
 
-// Figyelők (listeners) halmaza a reaktív frissítésekhez
 const listeners = new Set();
 
 /**
  * A globális Store objektum Proxy-val védve a reaktivitásért.
+ * SZÓ SZERINTI MÁSOLÁS: src/services/store.js (44-53. sor)
  */
 export const store = new Proxy(initialState, {
   set(target, property, value) {
-    // Csak akkor frissítsünk és értesítsünk, ha az érték valóban megváltozott
     if (target[property] === value) return true;
-
     target[property] = value;
     listeners.forEach(fn => fn(property, value));
     return true;
@@ -55,18 +55,27 @@ export const store = new Proxy(initialState, {
 
 /**
  * Feliratkozás a Store változásaira.
- * @param {Function} fn - A callback függvény, ami lefut változáskor.
- * @returns {Function} - Függvény a leiratkozáshoz.
+ * Támogatja a globális és az ingatlan-specifikus (per-property) feliratkozást is.
+ * @param {string|Function} propOrFn - A tulajdonság neve VAGY a globális callback.
+ * @param {Function} [fn] - A callback, ha az első paraméter a tulajdonság neve.
  */
-export const subscribe = (fn) => {
-  listeners.add(fn);
-  return () => listeners.delete(fn);
+export const subscribe = (propOrFn, fn) => {
+  if (typeof propOrFn === 'function') {
+    listeners.add(propOrFn);
+    return () => listeners.delete(propOrFn);
+  } else {
+    const wrappedFn = (p, v) => {
+      if (p === propOrFn) fn(v);
+    };
+    listeners.add(wrappedFn);
+    return () => listeners.delete(wrappedFn);
+  }
 };
 
-/**
- * Segédfüggvény több tulajdonság egyszerre történő frissítéséhez.
- * @param {Object} updates - Az állapothoz hozzáadandó változások.
- */
+// Kényelmi funkció: a store-hoz is hozzáadjuk a subscribe metódust, 
+// mert a komponensek így hivatkoznak rá.
+store.subscribe = subscribe;
+
 export const updateState = (updates) => {
   Object.assign(store, updates);
 };

@@ -59,6 +59,13 @@
   --highlight-border: 1px solid var(--glass-border);
 }
 
+
+
+[data-theme='literary'] .dkv-hero-card .dkv-hero-card__description,
+[data-theme='literary'] .dkv-small-card .dkv-small-card__description {
+  font-style: normal;
+}
+
 [data-theme='literary'] .dkv-btn--secondary {
   background: white;
   border-color: var(--glass-border);

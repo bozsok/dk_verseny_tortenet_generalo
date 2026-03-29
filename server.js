@@ -20,6 +20,20 @@ app.get('/health', (req, res) => {
   res.json({ success: true, version: '1.11.0' });
 });
 
+app.get('/get-project-data', (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'src', 'data', 'blueprint.json');
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      res.json(data);
+    } else {
+      res.status(404).json({ success: false, error: 'Blueprint file not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 app.post('/save-blueprint', (req, res) => {
   try {
     const data = req.body;
@@ -29,6 +43,20 @@ app.post('/save-blueprint', (req, res) => {
     res.json({ success: true, message: 'Blueprint saved successfully' });
   } catch (error) {
     console.error(`[DKV-BRIDGE] ❌ Hiba a blueprint mentésekor: ${error.message}`);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.get('/get-master-blueprint', (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'src', 'data', 'blueprint-master.json');
+    if (fs.existsSync(filePath)) {
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      res.json(data);
+    } else {
+      res.status(404).json({ success: false, error: 'Master blueprint not found' });
+    }
+  } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });

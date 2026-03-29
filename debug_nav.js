@@ -20,14 +20,14 @@ const puppeteer = require('puppeteer');
     const panel = document.querySelector('#setup-panel-root');
     const layout = document.querySelector('.dkv-main-layout');
     const sidebar = document.querySelector('#sidebar');
-    
+
     if (!nav) return 'Nav not found';
-    
+
     const rect = nav.getBoundingClientRect();
     const style = window.getComputedStyle(nav);
     const panelRect = panel ? panel.getBoundingClientRect() : null;
     const panelStyle = panel ? window.getComputedStyle(panel) : null;
-    
+
     return {
       nav: {
         x: rect.x, y: rect.y, width: rect.width, height: rect.height,

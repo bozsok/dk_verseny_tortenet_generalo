@@ -794,9 +794,6 @@ export function destroy() {
   Logger.info('Pusztítás befejezve.');
 }
 
-// Alkalmazás indítása
-initLayout();
-
 // Feliratkozás a Store változásaira
 const unsubscribeStore = subscribe((prop, val) => updateDynamicContent(prop, val));
 
@@ -1028,8 +1025,6 @@ async function syncProjectData() {
   }
 }
 
-initLayout();
-
 /**
  * Globális állapotjelzők (téma, bridge) eseménykezelése delegálással.
  */
@@ -1053,5 +1048,57 @@ function setupGlobalStatusListeners() {
       if (window.refreshBridgeStatus) window.refreshBridgeStatus();
       return;
     }
+  });
+}
+
+// --- ÁRNYÉK-RENDSZER (SHADOW UNIVERSE) INDÍTÓ LOGIKA ---
+const SHADOW_MODE_KEY = 'dkv_shadow_mode';
+let isShadowMode = localStorage.getItem(SHADOW_MODE_KEY) === 'true';
+
+function setupShadowToggle() {
+  const container = document.createElement('div');
+  container.id = 'shadow-mode-overlay';
+  container.style.cssText = `
+    position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 9999;
+    background: rgba(0, 0, 0, 0.7); padding: 8px 16px; border-radius: 20px;
+    border: 1px solid var(--neon-purple); display: flex; align-items: center; gap: 10px;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.3); cursor: default; user-select: none;
+  `;
+  container.innerHTML = `
+    <input type="checkbox" id="shadow-toggle-input" ${isShadowMode ? 'checked' : ''} style="cursor: pointer; width: 18px; height: 18px;">
+    <label for="shadow-toggle-input" style="color: var(--neon-purple); font-weight: bold; font-size: 0.85rem; cursor: pointer; font-family: var(--font-heading);">
+      ÁRNYÉK-RENDSZER AKTIVÁLÁSA
+    </label>
+  `;
+  document.body.appendChild(container);
+
+  container.querySelector('#shadow-toggle-input').addEventListener('change', (e) => {
+    localStorage.setItem(SHADOW_MODE_KEY, e.target.checked);
+    location.reload();
+  });
+}
+
+async function startApp() {
+  setupShadowToggle();
+  if (isShadowMode) {
+    // 200% Elszigeteltség: CSAK az árnyék-fájlokat töltjük be dinamikusan
+    Logger.info('Alkalmazás indítása [Shadow Mode - Total Isolation]...');
+    await import('./shadow/main.js');
+  } else {
+    Logger.info('Alkalmazás indítása [Standard Mode]...');
+    initLayout();
+  }
+}
+
+// Inicializáció indítása
+document.addEventListener('DOMContentLoaded', startApp);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  startApp();
+}
+
+// HMR támogatás (csak a Standard Mode-ra)
+if (import.meta.hot) {
+  import.meta.hot.accept(() => {
+    if (!isShadowMode) initLayout();
   });
 }

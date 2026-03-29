@@ -35,6 +35,7 @@ _This file contains critical rules and patterns that AI agents must follow when 
 7.  **Testing & Fidelity (V1.19.0):** MINDEN új funkcióhoz kötelező a Vitest unit teszt. A legfontosabb kritérium: az `update()` során az `activeElement` fókusz nem mozdulhat el.
 8.  **Disposal Management:** Minden aszinkron folyamatot (polling, timer) a `DisposalService`-nél kell regisztrálni, és a komponens `destroy()` metódusa köteles leállítani őket.
 9. TILOS !important használni a CSS-ben. Ha valami nem működik, akkor a CSS hierarchiát kell javítani. BEM nevezéktan kell!
+10. **Kutatási Kötelezettség**: Tilos a tapasztalatok alapján vagy találgatással gyors választ adni a felhasználónak. Minden technikai következtetést körültekintő utánajárással, az idevonatkozó fájltartalmak (kód, CSS, konfigurációk) beolvasásával és szükség esetén a felhasználó megkérdezésével kell alátámasztani.
 
 ### Code Quality & Style Rules
 

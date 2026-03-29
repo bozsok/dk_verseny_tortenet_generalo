@@ -1,0 +1,10 @@
+{
+  "title": "A robot és az ember",
+  "prompt": "Élt egyszer egy oylan robot, amely sok bosszúságot és sok örömet is okozott a felhasználóknak. Egyetlen probléma vele, hogy amikor  a felhasználók már örültek, hogy milyen jó a robottal együtt dolgozni, akkor ő, mintha érteni az öröm kifejezését, számdékosan szabotálta a felhasználók érzéseit és bután kezdett el dolgozni. Egy idő után nagyon rossz kedvű lett a felhazsnáló és abbahagyta a munkát a robottal. Örökre. Ám egy napon ismét felvette a fonalat, ahol abbahagyták aközös munkát. A robot, mintha megtáltosodott volna. Gyorsan és pontosan szállította  amegoldásokat, kevés hibával, azokat is kijavította hamar. Ezért a felhasználó ismét elkezdett bízni a robotban.",
+  "narrativeConfig": {
+    "onboardingCount": 3,
+    "introCount": 4,
+    "finaleCount": 3,
+    "stationCount": 5
+  }
+}
