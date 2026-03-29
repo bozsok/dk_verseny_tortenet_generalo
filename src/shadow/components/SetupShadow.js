@@ -30,7 +30,6 @@ export class SetupShadow extends BaseComponent {
 
     return `
       <div class="dkv-shadow-setup">
-        <div class="dkv-shadow-sidebar__body">
           <!-- Összecsukott nézet (Ikonok) -->
           <!-- Összecsukott nézet (Ikonok) -->
           <div id="sidebar-icons" class="dkv-shadow-sidebar__icons dkv-shadow-fade-in ${isCollapsed ? '' : 'dkv-shadow-hidden'}">
@@ -41,24 +40,31 @@ export class SetupShadow extends BaseComponent {
           <div id="sidebar-inputs" class="dkv-shadow-setup-content dkv-shadow-fade-in ${isCollapsed ? 'dkv-shadow-hidden' : ''}">
             <div class="dkv-shadow-input-block">
               <label class="dkv-shadow-label">PROJEKT CÍME (TÖRTÉNET NEVE)</label>
-              <input id="input-title" type="text" class="dkv-shadow-input" placeholder="Projekt neve..." value="${store.projectTitle || ''}" ${disabledAttr}>
+              <input id="input-title" type="text" class="dkv-shadow-input" placeholder="pl. Kód Királyság: Az Utolsó Kernel" value="${store.projectTitle || ''}" ${disabledAttr}>
             </div>
 
             <div class="dkv-shadow-input-block">
               <label class="dkv-shadow-label">NARRATÍVA-KONCEPTUS ÉS FINOMHANGOLÁS</label>
-              <textarea id="prompt-input" class="dkv-shadow-textarea dkv-shadow-textarea--medium" placeholder="Írd le az alapötletet..." ${disabledAttr}>${store.prompt || ''}</textarea>
+              <textarea id="prompt-input" class="dkv-shadow-textarea dkv-shadow-textarea--medium" placeholder="Írd le a történet alapötletét vagy fűzz hozzá globális kéréseket..." ${disabledAttr}>${store.prompt || ''}</textarea>
             </div>
 
             <div class="dkv-shadow-sidebar__actions">
               <button id="generate-btn" type="button" data-action="generate" class="dkv-shadow-btn dkv-shadow-btn--primary ${lockedBtnClass}" ${disabledAttr}>
                 ${isLocked ? 'GENERÁLÁS FOLYAMATBAN...' : 'AI-GENERÁLÁS INDÍTÁSA'}
               </button>
+              
               <button id="load-story-btn" type="button" data-action="load-story" class="dkv-shadow-btn dkv-shadow-btn--secondary ${lockedBtnClass}" ${disabledAttr}>
                 TÖRTÉNET BETÖLTÉSE
               </button>
+
+              ${store.needsSync && store.isBridgeOnline ? `
+                <button id="sync-project-btn" data-action="sync-project" class="dkv-shadow-btn dkv-shadow-btn--sync ${lockedBtnClass}" ${disabledAttr}>
+                  SZINKRONIZÁCIÓ A PROJEKTBE
+                </button>
+              ` : ''}
             </div>
+
           </div>
-        </div>
       </div>
     `.trim();
   }

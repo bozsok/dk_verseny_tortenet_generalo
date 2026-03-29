@@ -5,12 +5,13 @@
  */
 
 :root {
-  /* Neon Színpaletta (HSL) */
-  --shadow-neon-cyan: hsl(184, 100%, 50%);
-  --shadow-neon-pink: hsl(330, 100%, 50%);
-  --shadow-neon-green: hsl(111, 100%, 54%);
-  --shadow-neon-yellow: hsl(50, 100%, 50%);
-  --shadow-neon-gray: hsl(240, 5%, 30%);
+  /* Neon Színpaletta (Pixelpontos HEX) */
+  --shadow-neon-cyan: #00f2ff;
+  --shadow-neon-purple: #9d50bb;
+  --shadow-neon-pink: #ff00ff;
+  --shadow-neon-green: #00ff00;
+  --shadow-neon-gray: #4a4a4a;
+  --shadow-neon-gradient: linear-gradient(90deg, #00f2ff 0%, #9d50bb 100%);
 
   /* Háttér és Panelek */
   --shadow-bg-dim: hsla(240, 10%, 4%, 0.85);
@@ -204,16 +205,19 @@
 }
 
 .dkv-shadow-universe .dkv-shadow-header {
-  background: var(--shadow-neon-gradient);
   height: 70px;
+  background: var(--shadow-neon-gradient, var(--shadow-neon-cyan));
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0 25px;
-  box-sizing: border-box;
-  color: #fff;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: white;
+  position: relative;
   overflow: hidden;
+  box-sizing: border-box;
+}
+
+[data-theme='literary'] .dkv-shadow-header {
+  border-bottom: 1px solid var(--shadow-border-alpha);
 }
 
 .dkv-shadow-header__text {
@@ -249,17 +253,17 @@
 }
 
 .dkv-shadow-universe .dkv-shadow-sidebar {
+  background: var(--shadow-bg-sidebar, var(--shadow-bg-panel));
+  border: 1px solid var(--shadow-border-alpha);
+  border-radius: var(--shadow-radius);
   display: flex;
   flex-direction: column;
-  background: var(--shadow-bg-panel);
-  border: 1px solid var(--shadow-border-alpha);
-  border-radius: var(--shadow-radius, 12px);
-  padding: 0; /* Padding a body-ba kerül */
-  box-sizing: border-box;
+  overflow: hidden;
   height: 100%;
-  overflow: hidden; /* A belső body görget helyette */
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  z-index: 100;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  transition: all var(--shadow-transition-speed) ease;
 }
 
 .dkv-shadow-universe .dkv-shadow-sidebar__body {
@@ -408,6 +412,19 @@
   background: var(--shadow-neon-purple);
   color: white;
   box-shadow: 0 0 15px var(--shadow-neon-purple);
+  transform: translateY(-2px);
+}
+
+.dkv-shadow-btn--sync {
+  background: rgba(0, 242, 255, 0.1);
+  border: 1px solid var(--shadow-neon-cyan);
+  color: var(--shadow-neon-cyan);
+}
+
+.dkv-shadow-btn--sync:hover {
+  background: var(--shadow-neon-cyan);
+  color: var(--shadow-bg-panel);
+  box-shadow: 0 0 15px var(--shadow-neon-cyan);
   transform: translateY(-2px);
 }
 

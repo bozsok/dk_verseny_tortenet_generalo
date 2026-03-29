@@ -25,12 +25,11 @@ export class ShadowSidebar extends BaseComponent {
 
   render() {
     const isCollapsed = store.sidebarCollapsed;
-    const projectTitle = store.projectTitle || 'ÚJ TÖRTÉNET';
 
     return `
       <aside id="sidebar" class="dkv-shadow-sidebar ${isCollapsed ? 'dkv-shadow-sidebar--collapsed' : ''}">
         <div class="dkv-shadow-header">
-           <span class="dkv-shadow-header__text">${projectTitle}</span>
+           <span class="dkv-shadow-header__text">PROJEKT PARAMÉTEREK</span>
            <button id="sidebar-toggle" data-action="sidebar-toggle" class="dkv-shadow-sidebar__toggle" type="button">
              ${isCollapsed ? '»' : '«'}
            </button>

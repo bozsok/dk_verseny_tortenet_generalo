@@ -68,6 +68,7 @@ Ez az útmutató úgy van felépítve, hogy **bármelyik fázisnál meg lehet á
 7. **Nincs Öröklődés**: Még a globális elemek (pl. egyedi scrollbar) is saját shadow-szabályokat kapnak, nem örökölhetik a fő rendszerből.
 8. **Rollback stratégia**: Minden fázis végrehajtása (Lépés 5) előtt kötelező egy git commit a biztonság kedvéért.
 9. **TILOS AZ ÖNKÉNYES TOVÁBBLÉPÉS**: Minden fázis vizuális ellenőrzése és lezárása (Lépés 6) után meg kell állni. **SZIGORÚAN TILOS** a következő fázisba kezdeni a felhasználó kifejezett, egyeztetést követő jóváhagyása nélkül.
+10. **A STÁTUSZ-TÁBLÁZATOT AZ AI NEM ZÁRHATJA LE**: Az AI számára szigorúan **TILOS** bármely fázis állapotát „✅ Kész”-re állítani. Ezt a módosítást kizárólag a **FELHASZNÁLÓ** végezheti el a vizuális ellenőrzést követően.
 
 ---
 
