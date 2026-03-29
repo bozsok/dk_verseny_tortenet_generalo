@@ -287,7 +287,8 @@ Ez az útmutató úgy van felépítve, hogy **bármelyik fázisnál meg lehet á
 **Vizsgálandó terület a fő rendszerben:**
 - Ceruza ikon kattintás → `store.editingSlideId` → `IterationModal`
 - Kártya kattintás → `store.viewingSlideId` → `SlideDetailModal` (olvasó mód)
-- Sidebar toggle → 3 fázisú szekvenciális animáció
+- Sidebar toggle → 3 fázisú szekvenciális animáció transzlációval.  
+  *Megjegyzés: Ez a komplex animáció az 5. fázisban kerül finomhangolásra, addig sima CSS transition biztosítja a működést.*
 - Bridge frissítés kattintás → `refreshBridgeStatus()`
 - Téma váltás → `themeManager.toggleTheme()`
 - Modal bezárás → fade-out animáció (600ms delay)
