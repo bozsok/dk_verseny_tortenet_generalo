@@ -1,5 +1,5 @@
 import { BaseComponent } from './BaseComponent.js';
-import { ShadowHeader } from './ShadowHeader.js';
+// import { ShadowHeader } from './ShadowHeader.js'; // Megtartva biztonsági mentésnek a fájlt, de a hivatkozás kikommentelve
 import { ShadowSidebar } from './ShadowSidebar.js';
 import { PreviewShadow } from './PreviewShadow.js';
 import { store } from '../services/store.js';
@@ -40,6 +40,10 @@ export class RootShadow extends BaseComponent {
     this._unsub_bus.push(eventBus.on(EVENTS.EXPORT_TXT, () => this._handleExport('text')));
     this._unsub_bus.push(eventBus.on(EVENTS.EDIT_BLUEPRINT, () => { store.isEditingBlueprint = true; }));
     this._unsub_bus.push(eventBus.on(EVENTS.SYNC_PROJECT, () => this._handleSyncProject()));
+    
+    // Globális navigáció kezelése (Smooth Scroll)
+    this._unsub_bus.push(eventBus.on(EVENTS.NAVIGATE_TO, (targetId) => this._handleNavigateTo(targetId)));
+    this._unsub_bus.push(eventBus.on(EVENTS.SCROLL_TOP, () => this._handleScrollTop()));
   }
 
   destroy() {
@@ -99,11 +103,13 @@ export class RootShadow extends BaseComponent {
     if (layout) sidebar.mount(layout, 'prepend'); // Legfelülre/Legelőre szúrjuk be
     this.children.push(sidebar);
 
-    // Header: a Global Status Root-ba (mint a fő rendszerben)
-    const header = new ShadowHeader();
-    const globalStatusRoot = this.element.querySelector('#global-status-root');
-    if (globalStatusRoot) header.mount(globalStatusRoot);
-    this.children.push(header);
+    // Header: Kivéve a user kérésére, megtartva csak a hivatkozás szintjén
+    // const header = new ShadowHeader();
+    // const globalStatusRoot = this.element.querySelector('#global-status-root');
+    // if (globalStatusRoot) header.mount(globalStatusRoot);
+    
+    // Globális státusz (2 ikon: téma + bridge) inicializálása
+    this._updateGlobalStatus();
 
     const preview = new PreviewShadow();
     const previewRoot = this.element.querySelector('#preview-root');
@@ -285,10 +291,74 @@ export class RootShadow extends BaseComponent {
     if (!this.element) return;
 
     if (property === 'sidebarCollapsed') {
-      const layout = this.element.querySelector('.dkv-shadow-layout');
-      if (layout) layout.classList.toggle('dkv-shadow-layout--collapsed', value);
+      const wrapper = this.element.querySelector('.dkv-shadow-layout');
+      if (wrapper) wrapper.classList.toggle('dkv-shadow-layout--collapsed', store.sidebarCollapsed);
     }
 
-    // A modálisok és a preview magukat frissítik (Rule 60 reaktív lánc)
+    if (property === 'theme' || property === 'isBridgeOnline' || !property) {
+      this._updateGlobalStatus();
+    }
+  }
+
+  /**
+   * Sima görgetés a megadott elemhez a shadow preview területen belül.
+   */
+  _handleNavigateTo(targetId) {
+    if (!targetId || typeof targetId !== 'string') return;
+    // Megkeressük a cél elemet a saját fánkon belül
+    const target = this.element.querySelector(targetId);
+    const wrapper = this.element.querySelector('.dkv-shadow-preview-wrapper');
+    
+    if (target && wrapper) {
+      Logger.debug(`Shadow: Navigálás a szekcióhoz: ${targetId}`);
+      // Animált görgetés a wrapperen belül
+      const offsetTop = target.offsetTop;
+      wrapper.scrollTo({
+        top: offsetTop - 20, // 20px biztonsági margó
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  /**
+   * Görgessen az előnézeti terület tetejére.
+   */
+  _handleScrollTop() {
+    const wrapper = this.element.querySelector('.dkv-shadow-preview-wrapper');
+    if (wrapper) {
+      wrapper.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  /**
+   * Kirajzolja a két globális státusz ikont (Téma + Bridge)
+   */
+  _updateGlobalStatus() {
+    const root = this.element.querySelector('#global-status-root');
+    if (!root) return;
+
+    const isOnline = store.isBridgeOnline;
+    const themeIcon = store.theme === 'cyber-fantasy' ? 'light_mode' : 'dark_mode';
+    const statusClass = isOnline ? 'dkv-shadow-bridge-status--online' : 'dkv-shadow-bridge-status--offline';
+    
+    root.innerHTML = `
+      <div class="dkv-shadow-global-status-inner">
+        <button id="shadow-theme-toggle" class="dkv-shadow-status-btn" title="Téma váltása">
+          <span class="material-symbols-outlined">${themeIcon}</span>
+        </button>
+        <div class="dkv-shadow-bridge-status ${statusClass}" title="${isOnline ? 'Bridge Online' : 'Bridge Offline'}">
+          <span class="dkv-shadow-bridge-dot"></span>
+        </div>
+      </div>
+    `;
+
+    // Eseménykezelő a témaváltóhoz
+    const themeBtn = root.querySelector('#shadow-theme-toggle');
+    if (themeBtn) {
+      themeBtn.onclick = (e) => {
+        e.stopPropagation();
+        import('../services/ThemeManager.js').then(m => m.themeManager.toggleTheme());
+      };
+    }
   }
 }

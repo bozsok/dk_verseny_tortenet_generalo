@@ -143,4 +143,21 @@ export class ShadowSidebar extends BaseComponent {
       this.element.classList.toggle('dkv-shadow-sidebar--icons-hidden', !store.sidebarIconsVisible);
     }
   }
+
+  setupEventListeners() {
+    // Eseménydelegálás a navigációs linkekhez
+    const qjRoot = this.element.querySelector('#shadow-quick-jump-root');
+    if (qjRoot) {
+      qjRoot.onclick = (e) => {
+        const link = e.target.closest('.dkv-shadow-jump-link');
+        if (link) {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          import('../services/EventBus.js').then(m => {
+            m.eventBus.emit(m.EVENTS.NAVIGATE_TO, targetId);
+          });
+        }
+      };
+    }
+  }
 }

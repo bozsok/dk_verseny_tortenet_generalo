@@ -19,6 +19,10 @@ export const EVENTS = {
   EXPORT_TXT: 'EXPORT_TXT',
   EDIT_BLUEPRINT: 'EDIT_BLUEPRINT',
   
+  // Navigáció
+  NAVIGATE_TO: 'NAVIGATE_TO',
+  SCROLL_TOP: 'SCROLL_TOP',
+  
   // Rendszer események (Pl. zárolás esetén)
   UI_REJECTED_ACTION: 'UI_REJECTED_ACTION'
 };

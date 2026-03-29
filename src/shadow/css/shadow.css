@@ -463,7 +463,7 @@
 [data-theme='literary'] .dkv-shadow-universe .dkv-shadow-btn--secondary {
   background: white;
   border-color: var(--shadow-border-alpha);
-  color: var(--shadow-text-main);
+  color: var(--shadow-text-dim);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -927,6 +927,67 @@
 
 .dkv-shadow-fade-in {
   animation: dkv-shadow-fadeIn 0.4s ease forwards;
+}
+
+/* --- Globális Státusz (Jobb felső sarok) --- */
+.dkv-shadow-universe .dkv-shadow-global-status-container {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 2000;
+}
+
+.dkv-shadow-global-status-inner {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--shadow-bg-panel);
+  padding: 8px 15px;
+  border-radius: 30px;
+  border: 1px solid var(--shadow-border-alpha);
+  box-shadow: var(--shadow-card-shadow);
+  backdrop-filter: blur(10px);
+}
+
+.dkv-shadow-status-btn {
+  background: none;
+  border: none;
+  color: var(--shadow-text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  transition: all 0.2s;
+  border-radius: 50%;
+}
+
+.dkv-shadow-status-btn:hover {
+  background: var(--shadow-border-alpha);
+  color: var(--shadow-neon-cyan);
+}
+
+.dkv-shadow-bridge-status {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.dkv-shadow-bridge-status--online {
+  background: var(--shadow-neon-green);
+  box-shadow: 0 0 10px var(--shadow-neon-green);
+}
+
+.dkv-shadow-bridge-status--offline {
+  background: var(--shadow-neon-pink);
+  box-shadow: 0 0 10px var(--shadow-neon-pink);
+}
+
+.dkv-shadow-bridge-dot {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes dkv-shadow-fadeIn {
