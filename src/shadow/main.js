@@ -29,9 +29,35 @@ function startBridgePolling() {
   check();
   const intervalId = setInterval(check, 3000);
   
+  // Narratíva polling (Aktivitás és iteráció figyelése - AC 1)
+  const narrativeCheck = async () => {
+    if (document.hidden || store.mode !== 'bridge' || store.isEditingBlueprint) return;
+    try {
+      const data = await bridgeService.getNarrative();
+      if (data && data.length > 0) {
+        const currentSerialized = JSON.stringify(store.narrative);
+        const newSerialized = JSON.stringify(data);
+        if (currentSerialized !== newSerialized) {
+          store.narrative = [...data];
+          Logger.info('Shadow: Narratíva frissítve a Bridge-ből (Háttér Polling).');
+          store.toastMessage = 'Történet frissítve!';
+          // Ha épp generálásra vártunk, a betöltés feloldja a várakozást
+          if (store.isWaitingForNarrative) {
+            store.isWaitingForNarrative = false;
+            store.isGenerating = false;
+          }
+        }
+      }
+    } catch (err) {
+      // Csendes hiba, nem zavarja a UI-t
+    }
+  };
+  const narrativeInterval = setInterval(narrativeCheck, 3500);
+  
   // Regisztráció a takarításhoz (Rule 60)
   disposalService.add(() => {
     clearInterval(intervalId);
+    clearInterval(narrativeInterval);
     Logger.info('Shadow: Bridge polling leállítva.');
   });
 }

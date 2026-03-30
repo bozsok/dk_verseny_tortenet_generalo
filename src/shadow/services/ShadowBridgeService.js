@@ -241,10 +241,17 @@ class ShadowBridgeService {
 
   /**
    * Mesterleíró mentése.
+   * Bridge módban: POST /save-master-blueprint
+   * Passive módban: Helyi store-ba mentés (bridge nélkül is működik)
    * @param {string} blueprint 
    */
   async saveMasterBlueprint(blueprint) {
-    if (store.mode === 'passive') throw new Error('Művelet nem engedélyezett Passive módban.');
+    // Passive módban helyi mentés (bridge nélkül is működjön)
+    if (store.mode === 'passive') {
+      store.blueprint = blueprint;
+      Logger.info('Bridge: Mesterleíró helyi (Passive) mentése sikeres.');
+      return { success: true, mode: 'passive' };
+    }
     
     eventBus.emit(EVENTS.SYNC_START, { action: 'saveMasterBlueprint' });
     try {

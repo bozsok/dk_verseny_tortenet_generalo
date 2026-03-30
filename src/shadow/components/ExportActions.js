@@ -99,5 +99,6 @@ export class ExportActions extends BaseComponent {
     this.element.innerHTML = this.render();
     
     parent.appendChild(this.element);
+    this.setupEventListeners();
   }
 }

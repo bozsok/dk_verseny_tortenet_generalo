@@ -554,8 +554,8 @@
 }
 
 /* --- Segédosztályok --- */
-.dkv-shadow-hidden {
-  display: none !important;
+.dkv-shadow-universe .dkv-shadow-hidden {
+  display: none;
 }
 
 .dkv-shadow-universe .dkv-shadow-fade-in {
@@ -596,6 +596,7 @@
   transition: all 0.3s ease;
   overflow: hidden;
   grid-column: span 2;
+  cursor: pointer;
 }
 
 .dkv-shadow-universe .dkv-shadow-hero-card:hover {
@@ -620,6 +621,7 @@
   position: relative;
   box-shadow: var(--shadow-card-shadow);
   overflow: hidden;
+  cursor: pointer;
 }
 
 .dkv-shadow-universe .dkv-shadow-small-card:hover {
@@ -1004,8 +1006,8 @@
 }
 
 .dkv-shadow-universe .dkv-shadow-bridge-status--online {
-  background: var(--shadow-neon-green);
-  box-shadow: 0 0 10px var(--shadow-neon-green);
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
 }
 
 .dkv-shadow-universe .dkv-shadow-bridge-status--offline {
@@ -1072,5 +1074,269 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   MODÁLIS RENDSZER (Fázis 5 – Teljes izoláció)
+   ========================================================================== */
+
+/* --- Modal Overlay (Háttér-réteg) --- */
+.dkv-shadow-universe .dkv-shadow-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2005;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-overlay--visible {
+  opacity: 1;
+  visibility: visible;
+  animation: dkv-shadow-modal-fade-in 0.6s ease forwards;
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-overlay--closing {
+  animation: dkv-shadow-modal-fade-out 0.6s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes dkv-shadow-modal-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dkv-shadow-modal-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* --- Modal Card (Tartalom kártya) --- */
+.dkv-shadow-universe .dkv-shadow-modal-card {
+  background: var(--shadow-bg-panel);
+  border: 1px solid var(--shadow-border-alpha);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 900px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 242, 255, 0.05);
+  backdrop-filter: blur(30px);
+  opacity: 0;
+  animation: dkv-shadow-modal-card-in 0.6s ease forwards;
+}
+
+@keyframes dkv-shadow-modal-card-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-card--cyan {
+  border-color: var(--shadow-neon-cyan);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 242, 255, 0.1);
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-modal-card {
+  background: white;
+  border-color: var(--shadow-border-alpha);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-modal-card--cyan {
+  border-color: var(--shadow-neon-cyan);
+}
+
+/* --- Modal Header --- */
+.dkv-shadow-universe .dkv-shadow-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-header h2 {
+  color: inherit;
+  text-shadow: var(--shadow-glow-shadow);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-modal-header h2 {
+  text-shadow: none;
+}
+
+/* --- Close Button --- */
+.dkv-shadow-universe .dkv-shadow-close-btn {
+  background: none;
+  border: none;
+  color: var(--shadow-text-dim);
+  font-size: 2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s;
+  padding: 0;
+}
+
+.dkv-shadow-universe .dkv-shadow-close-btn:hover {
+  color: var(--shadow-neon-cyan);
+}
+
+/* --- Modal Body --- */
+.dkv-shadow-universe .dkv-shadow-modal-body {
+  margin-bottom: 20px;
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-body--reading {
+  max-height: 60vh;
+  overflow-y: auto;
+  line-height: 1.8;
+  color: var(--shadow-text-main);
+  font-size: 1.05rem;
+}
+
+/* --- Modal Footer --- */
+.dkv-shadow-universe .dkv-shadow-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  border-top: 1px solid var(--shadow-border-alpha);
+  padding-top: 25px;
+  margin-top: 20px;
+}
+
+/* --- Modal Info --- */
+.dkv-shadow-universe .dkv-shadow-modal-info {
+  color: var(--shadow-text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-info--italic {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+/* --- Modal Title variánsok --- */
+.dkv-shadow-universe .dkv-shadow-modal-title--reading {
+  font-family: var(--shadow-font-heading);
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-title--hero {
+  font-size: 1.6rem;
+}
+
+.dkv-shadow-universe .dkv-shadow-modal-title--small {
+  font-size: 1.2rem;
+}
+
+/* --- Fade In Up animáció (modalokhoz) --- */
+.dkv-shadow-universe .dkv-shadow-fade-in-up {
+  animation: dkv-shadow-fade-in-up 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes dkv-shadow-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Textarea variánsok (modalokhoz) --- */
+.dkv-shadow-universe .dkv-shadow-textarea--iteration {
+  height: 120px;
+}
+
+.dkv-shadow-universe .dkv-shadow-textarea--large {
+  height: 450px;
+}
+
+/* --- Shadow Modal Section (instrukcióhoz) --- */
+.dkv-shadow-universe .dkv-shadow-modal-section {
+  margin-bottom: 20px;
+}
+
+.dkv-shadow-universe .dkv-shadow-code-block {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 15px;
+  border-radius: 4px;
+  font-family: var(--shadow-font-mono, monospace);
+  font-size: 0.95rem;
+  border: 1px solid var(--shadow-neon-cyan);
+  white-space: pre-wrap;
+  color: var(--shadow-text-main);
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-code-block {
+  background: var(--shadow-bg-dim);
+  border-color: var(--shadow-border-alpha);
+}
+
+/* ==========================================================================
+   TOAST ÉRTESÍTÉS (Teljes függetlenség)
+   ========================================================================== */
+.dkv-shadow-universe .dkv-shadow-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--shadow-bg-panel);
+  border-left: 4px solid var(--shadow-neon-cyan);
+  padding: 15px 25px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 3000;
+  animation: dkv-shadow-toast-slide-in 0.3s ease-out;
+  color: var(--shadow-text-main);
+  font-size: 0.95rem;
+  font-family: var(--shadow-font-main);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+[data-theme='literary'] .dkv-shadow-universe .dkv-shadow-toast {
+  background: white;
+  border-left-color: var(--shadow-neon-cyan);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dkv-shadow-universe .dkv-shadow-toast--hiding {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes dkv-shadow-toast-slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

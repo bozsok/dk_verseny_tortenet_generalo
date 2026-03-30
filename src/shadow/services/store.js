@@ -17,6 +17,8 @@ const initialState = {
   isEditingBlueprint: false,
   isSetupMode: true,
   editingSlideId: null,
+  isShowingIterationInstructions: false,
+  iterationPrompt: '',
   toastMessage: '',
   notes: {},
   dkv_bridge_interval: null,

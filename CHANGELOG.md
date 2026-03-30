@@ -4,47 +4,59 @@ Minden jelentős változtatás rögzítésre kerül ebben a dokumentumban a **sz
 
 ---
 
+## [1.19.0] – 2026-03-30
+### ✨ Árnyékrendszer-mérföldkő
+- **Visual Parity 5. fázisának befejezése**: Az Árnyékrendszer funkcionalitása (ceruza, olvasó mód, sidebar-toggle, bridge-jelző, történet betöltése, blueprint, .md- és .txt-export gombok) elérte a fő rendszerrel megegyező, 100%-os paritást, fenntartva a „Total Isolation” adatbiztonsági elvet.
+
+### 🛠️ Hozzáadva
+- **Narratíva-polling (háttérszinkronizáció)**: Az Árnyékrendszer mostantól 3,5 másodpercenként nesztelenül figyeli a háttérben futó AI-iterációkat, és változás esetén lapfrissítés (F5) nélkül, animálva cseréli ki a kártyák tartalmát a felületen.
+- **Deep Sync automatikus feltöltés**: A „Történet betöltése” gomb nyomán a betöltött külső (TXT/MD) fájlokat a rendszer azonnal a háttérben szinkronizálja az AI Bridge-szerverrel, így az AI-ágens mindig a legaktuálisabb kontextusból dolgozhat.
+- **Okos iterációs prompt**: A végrehajtás (ceruza) gomb megnyomásakor a másolható AI-prompt immár automatikusan tartalmazza az adott dia eredeti, jelenlegi szövegét is referenciaként, drasztikusan javítva az iterációk minőségét az AI számára.
+
+### 🎨 Megváltoztatva
+- **Exportformázás finomhangolása**: A letöltött `.txt`- és `.md`-fájlok fejlécében a cím formázása pontosítva lett a V4-specifikációnak és a parser-logikának megfelelően. A fájl neve szintén az aktuális projekt címét és dátumát veszi fel dinamikusan (pl. `dk-story-[CÍM]-2026-03-30.txt`), és a parser is tökéletesen visszatölti a vegyes kis- és nagybetűket a csupa nagybetűs kényszerítés elhagyásával.
+
 ## [1.18.0] – 2026-03-27
 ### 🎨 Megváltoztatva
-- **Prémium Interakciók és Animációk (UI/UX)**:
-    - **Modál Fade-Animáció**: Bevezetve a `@keyframes` alapú, tiszta lineáris `fade-in` és `fade-out` (0.6s). A modális ablakok mostantól zökkenőmentesen, függőleges „ugrálás” és nagyítás nélkül jelennek meg.
-    - **Késleltetett bezárási logika**: A központi vezérlő (`main.js`) szinkronizálva lett a CSS-animációval; a bezáráskor 600ms várakozást alkalmazunk, amíg az elem elhalványul, mielőtt töröljük a DOM-ból.
-    - **Vizuális Szabad tér**: A Preview hasáb megnövelt oldalsó margót (padding) kapott, így a kártyák neon és szürke árnyékai már nem vágódnak le a képernyő szélénél.
-- **Kártya Integritás és Esztétika**:
+- **Prémium interakciók és animációk (UI/UX)**:
+    - **Modál fade-animáció**: Bevezetve a `@keyframes`-alapú, tiszta lineáris `fade-in` és `fade-out` (0,6 s). A modális ablakok mostantól zökkenőmentesen, függőleges „ugrálás” és nagyítás nélkül jelennek meg.
+    - **Késleltetett bezárási logika**: A központi vezérlő (`main.js`) szinkronizálva lett a CSS-animációval; a bezáráskor 600 ms várakozást alkalmazunk, amíg az elem elhalványul, mielőtt töröljük a DOM-ból.
+    - **Vizuális szabad tér**: A Preview-hasáb megnövelt oldalsó margót (padding) kapott, így a kártyák neon- és szürkearnyékai már nem vágódnak le a képernyő szélénél.
+- **Kártyaintegritás és esztétika**:
     - **Lekerekített sarkok fixálása**: Az összes kártya és animációs burkolóelem megkapta az `overflow: hidden` és a központi `border-radius` szabályokat, végleg megszüntetve az éles sarkok „kiszűrődését” világos témában.
-    - **Hover Transzformációk**: Konszolidált, stabil `-8px`-es emelkedés minden interaktív kártyatípusnál.
+    - **Hover-transzformációk**: Konszolidált, stabil `-8px`-es emelkedés minden interaktív kártyatípusnál.
 
 ### 🐛 Javítva
-- **Bezárási villanás (Glitch)**: Megszűnt az ablakok eltűnése utáni rövid visszavillanás a CSS és JS időzítések pontos összehangolásával.
+- **Bezárási villanás (glitch)**: Megszűnt az ablakok eltűnése utáni rövid visszavillanás a CSS- és JS-időzítések pontos összehangolásával.
 
 ---
 
 ## [1.17.0] – 2026-03-27
 ### 🛠️ Hozzáadva
-- **Master Blueprint Architektúra**: Bevezetve a `blueprint-master.json` fájl, amely a központi V4-es generálási szabályokat tartalmazza, teljesen elkülönítve a projekt-specifikus metaadatoktól (`blueprint.json`).
-- **AI-narratív Generálás (V4)**: Szigorú 30 diás struktúra (3 Onboarding, 4 Intro, 20 Stage, 3 Finale) és Cyber-Fantasy stílus kényszerítése az AI-motornál.
+- **Master blueprint-architektúra**: Bevezetve a `blueprint-master.json` fájl, amely a központi V4-es generálási szabályokat tartalmazza, teljesen elkülönítve a projektspecifikus metaadatoktól (`blueprint.json`).
+- **AI-narratívagenerálás (V4)**: Szigorú 30 diás struktúra (3 onboarding, 4 intro, 20 stage, 3 finale) és cyber-fantasy stílus kényszerítése az AI-motornál.
 
 ### 🎨 Megváltoztatva
 - **Modális felületek finomhangolása (UI/UX)**:
-    - **Téma-érzékeny árnyékok**: Megszűntek a zavaró sötét árnyékok a világos (Literary) témában; a modálok mostantól lágy, dinamikus árnyékot használnak.
-    - **Pulzáló indikátor**: A nagy központi korong helyett egy 1/4 méretű, diszkrét indikátor került a modális ablakok jobb felső sarkába.
-    - **Várakozási állapot**: Az „AI-válaszra várva” box mostantól téma-specifikus háttérrel jelenik meg (Cyber-Fantasy alatt türkiz, Literary alatt lágy pergamen).
+    - **Témaérzékeny árnyékok**: Megszűntek a zavaró sötét árnyékok a világos (Literary) témában; a modálok mostantól lágy, dinamikus árnyékot használnak.
+    - **Pulzáló indikátor**: A nagy központi korong helyett egy negyedméretű, diszkrét indikátor került a modális ablakok jobb felső sarkába.
+    - **Várakozási állapot**: Az „AI-válaszra várva” box mostantól témaspecifikus háttérrel jelenik meg (cyber-fantasy alatt türkiz, Literary alatt lágy pergamen).
 - **MTA 12. helyesírási kontroll**:
-    - Az összes All-Caps állapotjelző és fejléc Capitalized formátumra váltott (pl. `Szinkronizáció folyamatban`).
-    - Technikai kifejezések egységesítése és kötőjelezése: `AI-generálás`, `QR-kód`, `Nulla-Bit vírus`.
+    - Az összes All-Caps állapotjelző és fejléc „Capitalized” formátumra váltott (pl. `Szinkronizáció folyamatban`).
+    - Technikai kifejezések egységesítése és kötőjelezése: `AI-generálás`, `QR-kód`, `nulla-bit vírus`.
 
 ### 🐛 Javítva
-- **Sidebar Állapotkövetés**: A Sidebar gombjai és mezői mostantól az `isWaitingForNarrative` állapot alatt is helyesen zárolva maradnak, biztosítva az adatok integritását.
+- **Sidebar-állapotkövetés**: A sidebar gombjai és mezői mostantól az `isWaitingForNarrative` állapot alatt is helyesen zárolva maradnak, biztosítva az adatok integritását.
 
 ---
 
 ## [1.16.0] – 2026-03-27
 ### 🛠️ Hozzáadva
-- **Robusztus Narratív Parser**: Teljesen megújult a `parseNarrativeContent` logika, amely mostantól intelligensen kezeli a kézzel módosított fájlokat is.
+- **Robusztus narratíva-parser**: Teljesen megújult a `parseNarrativeContent` logika, amely mostantól intelligensen kezeli a kézzel módosított fájlokat is.
 
 ### 🐛 Javítva
-- **"Történet betöltése" stabilitás**: Megszűnt a beolvasási hiba a Windows-stílusú (`\r\n`) sorvégek és a változó formátumú elválasztó vonalak (`---` / `---`) esetén. A parser mostantól normalizálja a szöveget és rugalmasabb reguláris kifejezéseket használ a diák és a fejlécek kinyeréséhez.
-- **Parser Naplózás**: Részletes konzol riport (`Logger.debug`) segíti a hibakeresést betöltési nehézségek esetén.
+- **A „Történet betöltése” stabilitása**: Megszűnt a beolvasási hiba a Windows-stílusú (`\r\n`) sorvégek és a változó formátumú elválasztóvonalak (`---` / `---`) esetén. A parser mostantól normalizálja a szöveget, és rugalmasabb reguláris kifejezéseket használ a diák és a fejlécek kinyeréséhez.
+- **Parser-naplózás**: Részletes konzolriport (`Logger.debug`) segíti a hibakeresést betöltési nehézségek esetén.
 
 ---
 

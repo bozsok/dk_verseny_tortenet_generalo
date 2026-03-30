@@ -109,7 +109,10 @@ export class NarrativeGridShadow extends BaseComponent {
   }
 
   update(property, value) {
-    if (!this.element) return;
+    if (!this.element) {
+      Logger.info(`NarrativeGrid.update: SKIP – nincs element (property: ${property})`);
+      return;
+    }
 
     if (property === 'projectTitle') {
       const titleEl = this.element.querySelector('#slides-title');
@@ -117,13 +120,25 @@ export class NarrativeGridShadow extends BaseComponent {
     }
 
     if (property === 'narrative') {
-      // Targeted update check (Rule 60)
+      Logger.info(`NarrativeGrid.update: narrative frissítés, cardsMap.size=${this.cardsMap.size}, value.length=${value.length}`);
+      
+      // Ellenőrizzük, hogy minden ID egyezik-e (in-place update feltétele)
+      let idsMatch = true;
       if (this.cardsMap.size === value.length && value.length > 0) {
+        value.forEach(slide => {
+          if (!this.cardsMap.has(slide.id)) idsMatch = false;
+        });
+      }
+
+      // Targeted update check (Rule 60)
+      if (this.cardsMap.size === value.length && value.length > 0 && idsMatch) {
+        Logger.info('NarrativeGrid.update: IN-PLACE frissítés (azonos számú kártya és azonos ID-k)');
         value.forEach(slide => {
           const card = this.cardsMap.get(slide.id);
           if (card) card.update('slide', slide);
         });
       } else {
+        Logger.info('NarrativeGrid.update: TELJES ÚJRARENDERELÉS (layout vagy ID változás)');
         // Layout change or initial load (Rule 60 compliance: selective replacement)
         this.cardsMap.clear();
         this.children = [];
@@ -133,9 +148,11 @@ export class NarrativeGridShadow extends BaseComponent {
         temp.innerHTML = this.render();
         const nextGrid = temp.firstElementChild;
         
+        Logger.info(`NarrativeGrid.update: nextGrid létezik: ${!!nextGrid}, childNodes: ${nextGrid?.childNodes?.length}`);
         if (nextGrid) {
           this.element.replaceChildren(...nextGrid.childNodes);
           this.setupEventListeners();
+          Logger.info(`NarrativeGrid.update: DOM frissítve, cardsMap.size=${this.cardsMap.size}`);
         }
       }
     }

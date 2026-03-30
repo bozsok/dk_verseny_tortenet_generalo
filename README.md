@@ -1,7 +1,7 @@
-# 🌌 Digital Kingdom (DK) – versenynarratív-generátor
+# 🌌 Digital Kingdom (DK) – versenynarratíva-generátor
 
 > **STATUS**: STABLE / CORRUPTION LEVEL: 12%
-> **PROTOCOL**: CYBER-FANTASY v1.14.0
+> **PROTOCOL**: CYBER-FANTASY v1.19.0
 
 Üdvözöllek, Programozó! Beléptél a **Digital Kingdom** szívébe, ahol a kódsorok és a narratívák határai elmosódnak. Ez az alkalmazás nem csupán egy generátor; ez egy interfész a digitális univerzum töredékeihez.
 
@@ -12,10 +12,10 @@ A rendszer célja, hogy segítse a versenyzőket a történetalkotásban és a p
 ## 🛠️ Technikai architektúra
 
 Az interfész modern, letisztult és a végletekig optimalizált:
-- **Core**: vanilla JavaScript (ES6+), proxyalapú reaktív storerendszerrel.
+- **Core**: Vanilla JavaScript (ES2024+), proxyalapú reaktív storerendszerrel.
 - **Tooling**: Vite 8 (ultragyors fejlesztési környezet).
-- **Design**: szigorú BEM-módszertan, glassmorphism (üveghatású megjelenés) és GPU-gyorsított animációk.
-- **Sync**: AI Sync Bridge a blueprint-adatok és a narratívák perzisztens tárolásához.
+- **Design**: Szigorú BEM-módszertan, glassmorphism (üveghatású megjelenés) és GPU-gyorsított animációk.
+- **Sync**: AI Bridge-szerverek a blueprint-adatok és a narratívák perzisztens tárolásához.
 
 ## 🚀 Telepítés és indítás
 
@@ -26,33 +26,35 @@ Készítsd fel a munkaállomásodat az alábbi parancsokkal:
     npm install
     ```
 
-2.  **A fejlesztői szinkron híd indítása** (külön terminálban):
+2.  **A fejlesztői szinkronhíd indítása** (külön terminálokban - Main és Shadow):
     ```bash
-    node server.js
+    npm run bridge
+    npm run bridge:shadow
     ```
 
-3.  **A rendszer aktiválása**:
+3.  **A tartalommegjelenítő aktiválása**:
     ```bash
     npm run dev
     ```
 
 ## 📜 Főbb funkciók
 
-- **Mesterleíró (blueprint) kezelése**: komplex történeti alapok szerkesztése valós idejű szerveroldali mentéssel és vizuális visszajelzéssel.
-- **Szekvenciális kártyamegjelenítés**: fluid, animált kártyarendszer a diák áttekintéséhez.
-- **Navigációs zár**: biztonsági protokoll a generálás alatt, amely megvédi az adatok épségét.
+- **Árnyékrendszer (Shadow System)**: Teljesen izolált, párhuzamos narratíva-univerzum a biztonságos teszteléshez és az okos iterációs promptok generálásához (mély háttérszinkronizációval).
+- **Mesterleíró-kezelés**: Komplex történeti alapok (blueprint) szerkesztése valós idejű szerveroldali mentéssel.
+- **Szekvenciális kártyamegjelenítés**: Fluid, animált kártyarendszer esztétikus, témaváltós (Cyber-Fantasy / Literary) felülettel.
+- **Többformátumú export**: Történetek kinyerése és visszatöltése pontos `.md`- és `.txt`-fájlok formájában.
 
 ## 📖 Dokumentáció
 
 A projekt részletes technikai dokumentációja elérhető a `docs/` mappában:
-- **[Kezdőoldal (Index)](./docs/index.md)**: A dokumentációs bázis központja.
+- **[Kezdőoldal (index)](./docs/index.md)**: A dokumentációs bázis központja.
 - **[Architektúra](./docs/architecture.md)**: Tervezési minták és belső működés.
-- **[Fejlesztői Útmutató](./docs/development-guide.md)**: Környezet beállítása és üzemeltetés.
+- **[Fejlesztői útmutató](./docs/development-guide.md)**: Környezet beállítása és üzemeltetés.
 
 ## 🖋️ Szerzők és verzió
 
 - **Fejlesztő**: Antigravity AI és a Felhasználó
-- **Évad**: 2026 tavasz
+- **Évad**: 2026 tavasza
 
 ---
 *„A kód az út, a történet a cél.”*

@@ -95,7 +95,7 @@ Ez az útmutató úgy van felépítve, hogy **bármelyik fázisnál meg lehet á
 | 2 | Sidebar | Fejléc, inputok, gombok, navigáció | ✅ Kész | 2026-03-29 |
 | 3 | Preview | Kártyák, zóna-kártyák, animációk | ✅ Kész | 2026-03-30 |
 | 4 | Globális | Témaváltó, bridge jelző, fejléc | ✅ Kész | 2026.03.30 |
-| 5 | Funkciók | Ceruza, olvasó mód, sidebar toggle, bridge jelző, AI-generálás indítása gomb, Történet betöltése gomb, Blueprint gomb, .md és .txt gombok | ⬜ Nem kezdődött | – |
+| 5 | Funkciók | Ceruza, olvasó mód, sidebar toggle, bridge jelző, AI-generálás indítása gomb, Történet betöltése gomb, Blueprint gomb, .md és .txt gombok | ✅ Kész | 2026.03.30 |
 
 **Jelölések:**  
 ⬜ Nem kezdődött | 🔍 Vizsgálat alatt | 📊 Összevetés kész | 📝 Terv kész | 🔧 Végrehajtás alatt | ✅ Kész

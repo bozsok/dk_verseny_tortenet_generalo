@@ -16,8 +16,6 @@ export class SetupShadow extends BaseComponent {
   _initSubscriptions() {
     // Csak a SAJÁT tartalmát érintő változásokra iratkozik fel
     store.subscribe('sidebarCollapsed', () => this.update('sidebarCollapsed'));
-    store.subscribe('projectTitle', (val) => this.update('projectTitle', val));
-    store.subscribe('prompt', (val) => this.update('prompt', val));
     store.subscribe('isGenerating', () => this.update('status'));
     store.subscribe('isWaitingForNarrative', () => this.update('status'));
   }
@@ -34,12 +32,12 @@ export class SetupShadow extends BaseComponent {
           <div id="sidebar-inputs" class="dkv-shadow-setup-content dkv-shadow-fade-in ${isCollapsed ? 'dkv-shadow-hidden' : ''}">
             <div class="dkv-shadow-input-block">
               <label class="dkv-shadow-label">PROJEKT CÍME (TÖRTÉNET NEVE)</label>
-              <input id="input-title" type="text" class="dkv-shadow-input" placeholder="pl. Kód Királyság: Az Utolsó Kernel" value="${store.projectTitle || ''}" ${disabledAttr}>
+              <input id="input-title" type="text" class="dkv-shadow-input" placeholder="pl. Kód Királyság: Az Utolsó Kernel" value="" ${disabledAttr}>
             </div>
 
             <div class="dkv-shadow-input-block">
               <label class="dkv-shadow-label">NARRATÍVA-KONCEPTUS ÉS FINOMHANGOLÁS</label>
-              <textarea id="prompt-input" class="dkv-shadow-textarea dkv-shadow-textarea--medium" placeholder="Írd le a történet alapötletét vagy fűzz hozzá globális kéréseket..." ${disabledAttr}>${store.prompt || ''}</textarea>
+              <textarea id="prompt-input" class="dkv-shadow-textarea dkv-shadow-textarea--medium" placeholder="Írd le a történet alapötletét vagy fűzz hozzá globális kéréseket..." ${disabledAttr}></textarea>
             </div>
 
             <div class="dkv-shadow-sidebar__actions">

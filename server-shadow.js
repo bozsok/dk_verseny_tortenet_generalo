@@ -105,6 +105,19 @@ app.get('/get-master-blueprint', (req, res) => {
   }
 });
 
+app.post('/save-master-blueprint', (req, res) => {
+  try {
+    const { version, blueprint } = req.body;
+    const filePath = path.join(SHADOW_DIR, 'blueprint-master.json');
+    const data = { version: version || 'V4', blueprint, lastModified: new Date().toISOString() };
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    console.info(`[SHADOW-BRIDGE] 📜 Shadow Mesterleíró mentve (${version || 'V4'})`);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 app.get('/get-narrative', (req, res) => {
   try {
     const filePath = path.join(SHADOW_DIR, 'narrative.json');
@@ -141,6 +154,18 @@ app.post('/sync-full-project', (req, res) => {
     fs.writeFileSync(jsPath, `export const narrative = ${JSON.stringify(narrative, null, 2)};\n`);
 
     console.info(`[SHADOW-BRIDGE] 🔄 Shadow Projekt szinkronizálva: ${title}`);
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+app.post('/save-iteration', (req, res) => {
+  try {
+    const data = req.body;
+    const filePath = path.join(SHADOW_DIR, 'iteration.json');
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    console.info(`[SHADOW-BRIDGE] 📝 Shadow Iterációs kérelem mentve: ${data.slideId}`);
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
