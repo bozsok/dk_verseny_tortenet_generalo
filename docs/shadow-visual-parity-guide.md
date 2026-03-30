@@ -94,8 +94,8 @@ Ez az útmutató úgy van felépítve, hogy **bármelyik fázisnál meg lehet á
 | 1 | Csontváz | Layout grid, padding, gap, scrollbar | ✅ Kész | 2026-03-29 |
 | 2 | Sidebar | Fejléc, inputok, gombok, navigáció | ✅ Kész | 2026-03-29 |
 | 3 | Preview | Kártyák, zóna-kártyák, animációk | ✅ Kész | 2026-03-30 |
-| 4 | Globális | Témaváltó, bridge jelző, fejléc | ⬜ Nem kezdődött | – |
-| 5 | Funkciók | Ceruza, olvasó mód, sidebar toggle | ⬜ Nem kezdődött | – |
+| 4 | Globális | Témaváltó, bridge jelző, fejléc | ✅ Kész | 2026.03.30 |
+| 5 | Funkciók | Ceruza, olvasó mód, sidebar toggle, bridge jelző, AI-generálás indítása gomb, Történet betöltése gomb, Blueprint gomb, .md és .txt gombok | ⬜ Nem kezdődött | – |
 
 **Jelölések:**  
 ⬜ Nem kezdődött | 🔍 Vizsgálat alatt | 📊 Összevetés kész | 📝 Terv kész | 🔧 Végrehajtás alatt | ✅ Kész
@@ -319,7 +319,6 @@ Ez az útmutató úgy van felépítve, hogy **bármelyik fázisnál meg lehet á
 
 1. **Mondd az AI-nek:** „Vizsgáld meg a `docs/shadow-visual-parity-guide.md` fájlt és folytasd a munkát a következő fázisnál."
 2. Az AI elolvassa ezt a dokumentumot, megnézi a státusz-táblázatot, és a megfelelő fázisnál folytatja.
-3. Minden fázis végén az AI frissíti a státusz-táblázatot ebben a dokumentumban.
 
 ### Ajánlott tempó:
 - **1 beszélgetés = 1–2 fázis** (a komplexitástól függően)
